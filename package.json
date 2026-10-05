@@ -1,0 +1,14 @@
+{
+  "name": "get-more-from-codex",
+  "private": true,
+  "description": "Landing site for GPTImage and GPTVoice. Static, no runtime dependencies.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "images": "python3 design/build_images.py",
+    "test": "node build.mjs && node --test tests/*.test.mjs",
+    "serve": "python3 -m http.server 8765 --bind 127.0.0.1"
+  },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}

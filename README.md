@@ -1,0 +1,45 @@
+# Get more from Codex
+
+Landing site for two open-source tools that let Claude Code use your ChatGPT
+("Sign in with ChatGPT" / Codex) subscription: **GPTImage** (images, available) and
+**GPTVoice** (voices, in development).
+
+Static site, English and French, no framework, no runtime dependencies.
+Ready for GitHub Pages (serve the repository root).
+
+## Edit
+
+| What | Where |
+|------|-------|
+| All text (EN + FR) | `content/site.mjs` |
+| Everything about GPTVoice | `content/gptvoice.mjs` (see `UPGRADE.md`) |
+| Page structure | `build.mjs` |
+| Styles / behavior | `assets/site.css`, `assets/site.js` |
+| Images | `design/source/*.png` -> `npm run images` |
+
+Then:
+
+```bash
+npm test        # rebuild index.html, fr/index.html, 404.html, sitemap.xml + run checks
+npm run serve   # preview at http://127.0.0.1:8765
+```
+
+The generated HTML is committed, so GitHub Pages needs no build step.
+If the site is published somewhere other than
+`https://connected-mate.github.io/get-more-from-codex/`, change `SITE_URL` in
+`content/site.mjs` and rebuild (canonical links, social cards, sitemap and 404 use it).
+
+## Language
+
+`/` is English, `/fr/` is French. The switch is a plain link (works without
+JavaScript). With JavaScript, the choice is remembered, and first-time visitors whose
+browser is in French are sent to `/fr/`. The French page never redirects on its own,
+so shared French links and search engines always see French.
+
+## Images
+
+Every illustration was generated with GPTImage. Sources live in `design/source/`;
+`design/build_images.py` (Pillow) makes the AVIF/WebP sizes, favicons and the social card.
+`design/draft-v0/` keeps the first draft of the page for reference.
+
+Not affiliated with OpenAI or Anthropic. MIT license.

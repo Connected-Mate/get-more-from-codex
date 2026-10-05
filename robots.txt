@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://connected-mate.github.io/get-more-from-codex/sitemap.xml

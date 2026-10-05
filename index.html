@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get more from Codex — from your OpenAI subscription</title>
+<meta name="description" content="Two free, open-source tools that let Claude Code make images (and soon voices) with your ChatGPT sign-in. No API key, no extra subscription.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#b7f2cd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1d1a" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://connected-mate.github.io/get-more-from-codex/">
+<link rel="alternate" hreflang="en" href="https://connected-mate.github.io/get-more-from-codex/">
+<link rel="alternate" hreflang="fr" href="https://connected-mate.github.io/get-more-from-codex/fr/">
+<link rel="alternate" hreflang="x-default" href="https://connected-mate.github.io/get-more-from-codex/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Get more from Codex">
+<meta property="og:title" content="Get more from Codex — from your OpenAI subscription">
+<meta property="og:description" content="Two free, open-source tools that let Claude Code make images (and soon voices) with your ChatGPT sign-in. No API key, no extra subscription.">
+<meta property="og:url" content="https://connected-mate.github.io/get-more-from-codex/">
+<meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Two pixel-art robots: a painter in a purple beret finishing a landscape on an easel, and a singer with headphones and a microphone. A film clapperboard sits between them.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Get more from Codex — from your OpenAI subscription">
+<meta name="twitter:description" content="Two free, open-source tools that let Claude Code make images (and soon voices) with your ChatGPT sign-in. No API key, no extra subscription.">
+<meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/pixelify.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/atkinson.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css?v=fabe444f">
+<script>
+/* Language: explicit ?lang= > saved choice > browser language (EN page only). Storage may be blocked. */
+(function () {
+  var page = "en", q = null, saved = null, stored = false;
+  try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  if (q !== "en" && q !== "fr") q = null;
+  try { if (q) { localStorage.setItem("gmfc-lang", q); stored = true; } saved = localStorage.getItem("gmfc-lang"); } catch (e) {}
+  if (q) {
+    if (stored && history.replaceState) history.replaceState(null, "", location.pathname + location.hash);
+    return;
+  }
+  var want = saved === "en" || saved === "fr" ? saved : null;
+  if (!want && page === "en") {
+    var n = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    if (/^fr\b/i.test(n)) want = "fr";
+  }
+  if (want && want !== page) location.replace((page === "en" ? "fr/" : "../") + location.hash);
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="#top"><img src="assets/favicon-32.png" alt="" width="32" height="32"><span>Get more from Codex</span></a>
+    <nav class="mainnav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#tools">Tools</a>
+      <a href="#film">Short film</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <nav class="lang" aria-label="Language"><a href="./?lang=en" hreflang="en" lang="en" data-lang-link="en" aria-current="page"><span aria-hidden="true">EN</span><span class="sr">English</span></a><a href="fr/?lang=fr" hreflang="fr" lang="fr" data-lang-link="fr"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></nav>
+  </div>
+</header>
+
+<main id="main">
+<section id="top" class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">For Claude Code users with a ChatGPT plan</p>
+      <h1 id="hero-h"><span class="h1-main">Get more from Codex</span> <span class="h1-sub">from your OpenAI subscription</span></h1>
+      <p class="lead">The “Sign in with ChatGPT” you use for Codex can do more than code. Two free, open-source tools let Claude Code use it to make images now, and voices soon. Turn both into visuals, narration, ads and short films.</p>
+      <div class="cta">
+        <a class="btn" href="#install-gptimage">Install GPTImage</a>
+        <a class="btn ghost" href="#film">See a short film being made</a>
+      </div>
+      <ul class="facts"><li>No API key</li><li>No extra subscription</li><li>Runs on your computer</li><li>Open source (MIT)</li></ul>
+    </div>
+    <div class="hero-art">
+      <picture>
+      <source type="image/avif" srcset="assets/img/hero-800.avif 800w, assets/img/hero-1200.avif 1200w, assets/img/hero-1774.avif 1774w" sizes="(min-width: 1180px) 1120px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w, assets/img/hero-1774.webp 1774w" sizes="(min-width: 1180px) 1120px, calc(100vw - 32px)">
+      <img src="assets/img/hero-1200.webp" alt="Two pixel-art robots: a painter in a purple beret finishing a landscape on an easel, and a singer with headphones and a microphone. A film clapperboard sits between them." width="1774" height="887" fetchpriority="high" decoding="async">
+    </picture>
+    </div>
+  </div>
+</section>
+
+<aside class="notice" aria-label="Grey area">
+  <div class="wrap notice-row">
+    <strong>Grey area.</strong>
+    <p>These tools reuse the Codex “Sign in with ChatGPT” login. That is not an official OpenAI API. Keep it personal: heavy use can hit your plan’s limits or, at worst, get your account restricted. <a href="#grey">Read the full notice</a>.</p>
+  </div>
+</aside>
+
+<section id="how" class="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">How it works</p>
+      <h2 id="how-h">Sign in once. Then just ask.</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="num" aria-hidden="true">01</span><h3>Install</h3><p>Copy four lines into your terminal. The tool is added to Claude Code for every project on your computer.</p></li>
+      <li><span class="num" aria-hidden="true">02</span><h3>Sign in with ChatGPT</h3><p>Your browser opens on the official ChatGPT login. You type your password there, never in the tool.</p></li>
+      <li><span class="num" aria-hidden="true">03</span><h3>Ask Claude</h3><p>In plain words, in any project. Claude picks the tool, makes the file and saves it next to your work.</p></li>
+    </ol>
+    <figure class="ask">
+      <figcaption>You type</figcaption>
+      <p><span class="caret" aria-hidden="true">&gt;</span> Make a watercolor red fox in the snow and save it as fox.png.</p>
+    </figure>
+  </div>
+</section>
+
+<section id="tools" class="tools" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Two tools</p>
+      <h2 id="tools-h">One for pictures, one for voices</h2>
+      <p>Each is a small MCP server: a plug-in that gives Claude Code a new skill. Both use the same ChatGPT sign-in.</p>
+    </div>
+
+    <article class="tool" aria-labelledby="gptimage-h">
+      <div class="tool-art">
+        <picture>
+      <source type="image/avif" srcset="assets/img/mascot-360.avif 360w, assets/img/mascot-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
+      <source type="image/webp" srcset="assets/img/mascot-360.webp 360w, assets/img/mascot-720.webp 720w" sizes="(min-width: 900px) 400px, 70vw">
+      <img src="assets/img/mascot-720.webp" alt="The GPTImage mascot: a pixel-art robot painter with a purple beret, a rainbow brush and a framed landscape." width="1074" height="1014" loading="lazy" decoding="async">
+    </picture>
+      </div>
+      <div class="tool-body">
+        <div class="tool-title"><h3 id="gptimage-h">GPTImage</h3><span class="badge is-live">Available</span></div>
+        <p class="tagline">Images and edits from GPT Image 2, straight from Claude Code.</p>
+        <p>Logos, illustrations, mockups, banners, textures, storyboards. The pictures and the storyboard on this page were made with it.</p>
+        <ul class="feat"><li>Works from your reference images: style samples, brand assets, sketches. It keeps them in a <code>references/</code> folder so each new image gets better.</li><li>Never overwrites a file. Each new version is saved next to the last one.</li><li>Three tools for Claude: <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.</li><li>Also works as a one-line command in the terminal.</li></ul>
+        <p class="label">Example request</p>
+        <p class="prompt">Generate a watercolor red fox in snow and save it to fox.png using the gptimage tool.</p>
+        <div id="install-gptimage" class="install">
+          <div class="codeblock">
+          <div class="codebar"><span>Install</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Install commands"><code>git clone https://github.com/Connected-Mate/gptimage.git
+cd gptimage
+npm install
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Needs Node.js 20 or newer, Claude Code and a paid ChatGPT plan (Plus, Pro…). The script is for macOS and Linux. Restart Claude Code afterwards.</p>
+          <p class="note"><a href="https://github.com/Connected-Mate/gptimage">Source code on GitHub</a></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="tool flip" id="gptvoice" aria-labelledby="gptvoice-h" data-status="development">
+      <div class="tool-art">
+        <picture>
+      <source type="image/avif" srcset="assets/img/voice-360.avif 360w, assets/img/voice-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
+      <source type="image/webp" srcset="assets/img/voice-360.webp 360w, assets/img/voice-720.webp 720w" sizes="(min-width: 900px) 400px, 70vw">
+      <img src="assets/img/voice-720.webp" alt="The GPTVoice mascot: a pixel-art robot with headphones, a teal scarf and a vintage microphone." width="974" height="994" loading="lazy" decoding="async">
+    </picture>
+      </div>
+      <div class="tool-body">
+        <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-soon">In development</span></div>
+        <p class="tagline">Text in, voice out. A voice studio for Claude Code, on your ChatGPT plan.</p>
+        <p>GPTVoice is being built right now. The goal: ask Claude for a narration, a voice-over or a dialogue, and get an audio file back. Nothing below is promised until it works on a real run.</p>
+        <p class="label">Planned</p>
+        <ul class="feat is-planned"><li>A catalog of voices you can browse by gender and timbre, each with a short sample.</li><li>Direct the delivery: emotion, intensity, speed, pitch, accent, whisper or shout.</li><li>Stage cues inside your text, like [whispers], [laughs] or [pause 1s].</li><li>Word-for-word reading, checked by transcribing the result.</li><li>Dialogues with several voices in a single audio file.</li><li>Save your favorite voice settings as presets.</li></ul>
+        <p class="label">Example request</p>
+        <p class="prompt">Read this script as a calm storyteller, with a pause before the last line, and save it as keeper.mp3.</p>
+        <p class="label">Listen</p>
+        <ul class="samples"><li class="sample is-soon">
+            <div class="sample-head"><h4>Narration for “The Keeper”</h4><p class="meta">Calm storyteller</p></div>
+            <div class="sample-soon"><p>Audio sample coming soon. This is the script it will read:</p><blockquote lang="en">The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.</blockquote></div>
+          </li><li class="sample is-soon">
+            <div class="sample-head"><h4>Two-voice dialogue, in French</h4><p class="meta">Two voices, one file</p></div>
+            <div class="sample-soon"><p>Audio sample coming soon. This is the script it will read:</p><blockquote lang="fr">— Tu entends ça ? — [chuchote] Oui… c&#39;est la mer qui monte. — Alors on allume le phare. Maintenant.</blockquote></div>
+          </li></ul>
+        <div id="install-gptvoice" class="install">
+          <p class="not-yet">Not released yet. The install command will appear here once GPTVoice works end to end.</p>
+          
+          
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="film" class="film" aria-labelledby="film-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Images + voice</p>
+      <h2 id="film-h">A short film, from one idea</h2>
+      <p>Here is the workflow for a 30-second film called <em>The Keeper</em>. The three frames below are real: each was made with GPTImage from a single request.</p>
+    </div>
+    <figure class="strip">
+      <ol class="frames">
+        <li class="frame">
+          <picture>
+      <source type="image/avif" srcset="assets/img/story-1-640.avif 640w, assets/img/story-1-1000.avif 1000w, assets/img/story-1-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="assets/img/story-1-640.webp 640w, assets/img/story-1-1000.webp 1000w, assets/img/story-1-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <img src="assets/img/story-1-1000.webp" alt="Painted storyboard frame: a lighthouse on black rocks at dusk, storm clouds, a small fishing boat far out on heavy seas." width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+          <p class="scene">Scene 1</p>
+          <p class="line">The storm came early that night.</p>
+        </li>
+        <li class="frame">
+          <picture>
+      <source type="image/avif" srcset="assets/img/story-2-640.avif 640w, assets/img/story-2-1000.avif 1000w, assets/img/story-2-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="assets/img/story-2-640.webp 640w, assets/img/story-2-1000.webp 1000w, assets/img/story-2-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <img src="assets/img/story-2-1000.webp" alt="Painted storyboard frame: an old bearded keeper in a yellow oilskin climbs a spiral iron staircase holding a lantern." width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+          <p class="scene">Scene 2</p>
+          <p class="line">Up in the tower, the old keeper climbed toward the lamp.</p>
+        </li>
+        <li class="frame">
+          <picture>
+      <source type="image/avif" srcset="assets/img/story-3-640.avif 640w, assets/img/story-3-1000.avif 1000w, assets/img/story-3-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="assets/img/story-3-640.webp 640w, assets/img/story-3-1000.webp 1000w, assets/img/story-3-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <img src="assets/img/story-3-1000.webp" alt="Painted storyboard frame: the lighthouse beam cuts through the rain and lights the boat heading for the harbor." width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+          <p class="scene">Scene 3</p>
+          <p class="line">One light, and a boat finds its way home.</p>
+        </li>
+      </ol>
+      <figcaption>Storyboard for The Keeper, made with GPTImage.</figcaption>
+    </figure>
+    <ol class="recipe">
+      <li><h3>Write</h3><p>Ask Claude for a short script cut into scenes, one line of narration per scene.</p></li>
+      <li><h3>Paint</h3><p>GPTImage draws one frame per scene. Reuse the first frame as a reference to keep the same look.</p></li>
+      <li><h3>Voice</h3><p>GPTVoice reads the narration. <span class="tag">Coming soon</span></p></li>
+      <li><h3>Assemble</h3><p>Ask Claude to join frames and audio into a video with <code>ffmpeg</code> (free, installed separately).</p></li>
+    </ol>
+    <div class="also">
+      <h3>The same recipe works for</h3>
+      <ul><li>a product ad with a voice-over</li><li>an explainer video for your app</li><li>a podcast intro</li><li>social posts with captions read aloud</li><li>a bedtime story with pictures</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <h2 id="faq-h">Questions</h2>
+    <div class="faq-list">
+      <details><summary>Is it really free?</summary><div class="answer"><p>The tools are free and open source. What they do counts against the ChatGPT plan you already pay for, within its limits. There is no per-image bill and no extra subscription.</p></div></details>
+      <details><summary>Do I need an API key?</summary><div class="answer"><p>No. You sign in once with your ChatGPT account, in your own browser. The tool never sees your password.</p></div></details>
+      <details><summary>Which ChatGPT plan do I need?</summary><div class="answer"><p>An active paid plan, such as Plus or Pro. How much you can make depends on your plan’s limits.</p></div></details>
+      <details><summary>Does it work outside Claude Code?</summary><div class="answer"><p>It is built and tested for Claude Code. GPTImage is a standard MCP server, so other MCP apps may work, but they are not tested. It also has a terminal command.</p></div></details>
+      <details><summary>Where is my sign-in stored?</summary><div class="answer"><p>On your computer only, in <code>~/.gptimage/auth.json</code> (or your existing Codex CLI sign-in). It is sent only to OpenAI. Run <code>npm run logout</code> to remove it.</p></div></details>
+      <details><summary>I get a “429” error. What now?</summary><div class="answer"><p>You reached your plan’s limit for now. Wait a bit and try again, and avoid making large batches in one go.</p></div></details>
+      <details><summary>Can I use it for my business?</summary><div class="answer"><p>We advise against it. This is meant for personal use on your own computer. For commercial or high-volume work, use the official OpenAI API.</p></div></details>
+      <details><summary>When is GPTVoice coming?</summary><div class="answer"><p>When it works reliably, not before. There is no date yet. This page will show real samples the day it is ready.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="grey" class="grey" aria-labelledby="grey-h">
+  <div class="wrap">
+    <p class="kicker">Please read</p>
+    <h2 id="grey-h">This is a grey area, and we say so</h2>
+    <ul><li><strong>Unofficial.</strong> “Sign in with ChatGPT” is meant for Codex. These tools reuse that login to reach OpenAI’s image (and later voice) models. It works and is widely done, but it is not an officially supported API.</li><li><strong>Personal use.</strong> Keep it personal and local.</li><li><strong>Rate limits.</strong> Heavy use can trigger your plan’s limits (error 429). Wait and retry.</li><li><strong>Account risk.</strong> In the worst case, OpenAI could restrict your account. By using these tools, you accept that risk.</li><li><strong>Not affiliated.</strong> No link with OpenAI or Anthropic. Follow OpenAI’s terms of use.</li></ul>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p>Made by Connected-Mate. Open source under the MIT license.</p>
+      <p class="legal">Not affiliated with OpenAI or Anthropic. ChatGPT, Codex and GPT Image are trademarks of OpenAI; Claude and Claude Code are trademarks of Anthropic.</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage on GitHub</a></li>
+      
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/site.js?v=a4995a68" defer></script>
+</body>
+</html>

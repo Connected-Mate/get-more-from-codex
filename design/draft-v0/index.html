@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get more from Codex — from your OpenAI subscription</title>
+<meta name="description" content="Two MCP tools for Claude Code and Codex: GPTImage (images) and GPTVoice (voices). Use your ChatGPT sign-in. No API key, no extra subscription.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Get more from Codex — from your OpenAI subscription">
+<meta property="og:description" content="Images, voices and short films in Claude Code. No API key, no extra subscription.">
+<meta property="og:image" content="assets/mascot.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
+<script>
+/* Set language before first paint: saved choice > browser language > EN. Storage may be blocked. */
+(function () {
+  var l = null;
+  try { l = localStorage.getItem('gmfc-lang'); } catch (e) {}
+  if (l !== 'fr' && l !== 'en') {
+    var n = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+    l = String(n).toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+  }
+  document.documentElement.lang = l;
+})();
+</script>
+<style>
+:root {
+  /* tokens derived from the GPTImage mascot (greenfield, no prior library) */
+  --mint-50:  oklch(0.975 0.025 160);
+  --mint-100: oklch(0.94 0.055 160);
+  --mint-300: oklch(0.88 0.095 158);   /* mascot background */
+  --ink:      oklch(0.2 0.025 280);    /* mascot outline */
+  --ink-soft: oklch(0.38 0.03 280);
+  --cream:    oklch(0.96 0.02 85);     /* robot body */
+  --gold:     oklch(0.78 0.14 80);     /* frame / buttons */
+  --gold-deep:oklch(0.5 0.11 70);
+  --cyan:     oklch(0.86 0.12 195);    /* screen glow */
+  --cyan-deep:oklch(0.45 0.09 215);
+  --purple:   oklch(0.45 0.14 320);    /* beret, rare solid accent */
+  --alert:    oklch(0.9 0.1 90);
+
+  --bg: var(--mint-50);
+  --surface: var(--mint-100);
+  --band: var(--mint-300);
+  --text: var(--ink);
+  --muted: var(--ink-soft);
+  --line: var(--ink);
+  --shadow: var(--ink);
+  --link: var(--purple);
+  --code-bg: oklch(0.22 0.03 280);
+  --code-fg: oklch(0.93 0.04 160);
+  --btn-bg: var(--gold);
+  --btn-fg: var(--ink);
+  --notice-bg: var(--alert);
+
+  --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 48px; --space-2xl: clamp(56px, 9vw, 112px);
+  --font-display: "Pixelify Sans", ui-monospace, "Courier New", monospace;
+  --font-body: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --t-sm: 0.875rem; --t-base: 1.0625rem; --t-lg: 1.3rem; --t-xl: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem); --t-2xl: clamp(2.4rem, 1.4rem + 4.6vw, 4.6rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: oklch(0.19 0.03 175);
+    --surface: oklch(0.24 0.035 175);
+    --band: oklch(0.28 0.05 170);
+    --text: oklch(0.94 0.035 160);
+    --muted: oklch(0.8 0.04 160);
+    --line: oklch(0.82 0.08 160);
+    --shadow: oklch(0.1 0.02 175);
+    --link: oklch(0.82 0.1 330);
+    --code-bg: oklch(0.14 0.025 200);
+    --notice-bg: oklch(0.34 0.07 85);
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 var(--t-base)/1.6 var(--font-body); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--link); text-underline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.08; letter-spacing: 0; margin: 0; text-wrap: balance; }
+h1 { font-size: var(--t-2xl); }
+h2 { font-size: var(--t-xl); }
+h3 { font-size: var(--t-lg); }
+p { margin: 0; max-width: 68ch; }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--ink); color: var(--mint-50); padding: 10px 16px; z-index: 10; }
+.skip:focus { top: 8px; }
+
+/* language: both languages are in the HTML; CSS shows one. No flash, works before JS. */
+html[lang="en"] [lang="fr"], html[lang="fr"] [lang="en"] { display: none !important; }
+
+/* header */
+header.top { border-bottom: 3px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 5; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.brand img { width: 32px; height: 32px; image-rendering: pixelated; }
+.top nav { display: flex; gap: 20px; align-items: center; }
+.top nav a { color: var(--text); text-decoration: none; font-weight: 600; font-size: var(--t-sm); padding: 8px 2px; }
+.top nav a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.lang { display: inline-flex; border: 3px solid var(--line); }
+.lang button { font: 700 var(--t-sm)/1 var(--font-display); background: transparent; color: var(--text); border: 0; padding: 10px 14px; min-width: 44px; min-height: 44px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--mint-50); }
+@media (prefers-color-scheme: dark) { .lang button[aria-pressed="true"] { background: var(--mint-300); color: var(--ink); } }
+@media (max-width: 760px) { .top nav a { display: none; } }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 700 1rem/1 var(--font-display); text-decoration: none; background: var(--btn-bg); color: var(--btn-fg); border: 3px solid var(--ink); padding: 15px 22px; min-height: 48px; box-shadow: 5px 5px 0 var(--shadow); transition: transform .15s var(--ease), box-shadow .15s var(--ease); cursor: pointer; }
+.btn:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--shadow); }
+.btn:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--shadow); }
+.btn.ghost { background: transparent; color: var(--text); border-color: var(--line); }
+
+/* hero */
+.hero { padding-block: clamp(32px, 6vw, 72px) var(--space-xl); background: var(--band); border-bottom: 3px solid var(--line); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+.eyebrow { font: 700 var(--t-sm)/1.2 var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: var(--space-md); }
+.hero h1 { margin-bottom: var(--space-lg); }
+.hero h1 em { font-style: normal; background: var(--gold); color: var(--ink); padding: 0 .18em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hero .lead { font-size: clamp(1.1rem, 1rem + .5vw, 1.35rem); line-height: 1.5; margin-bottom: var(--space-lg); }
+.cta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: var(--space-lg); }
+.hero figure { margin: 0; justify-self: center; position: relative; }
+.hero figure img { width: min(440px, 100%); image-rendering: pixelated; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--shadow); background: var(--mint-300); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px 10px; list-style: none; padding: 0; margin: var(--space-lg) 0 0; }
+.pills li { font: 600 var(--t-sm)/1 var(--font-body); border: 2px solid var(--line); padding: 8px 12px; background: var(--bg); }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .hero figure { order: -1; } .hero figure img { width: min(260px, 70vw); } }
+
+/* notice (visible, near the top) */
+.notice { background: var(--notice-bg); border-bottom: 3px solid var(--line); }
+.notice .wrap { padding-block: 14px; display: flex; gap: 14px; align-items: baseline; font-size: var(--t-sm); line-height: 1.5; }
+.notice strong { font-family: var(--font-display); font-size: 1rem; white-space: nowrap; }
+.notice p { max-width: none; }
+
+section { padding-block: var(--space-2xl); }
+.sec-head { margin-bottom: var(--space-xl); max-width: 62ch; }
+.sec-head p { margin-top: var(--space-md); color: var(--muted); }
+.kicker { font: 700 var(--t-sm)/1 var(--font-display); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
+
+/* tools */
+.tool { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(24px, 5vw, 64px); align-items: start; padding-block: var(--space-xl); border-top: 3px solid var(--line); }
+.tool:first-of-type { border-top: 0; padding-top: 0; }
+.tool.flip { grid-template-columns: 7fr 5fr; }
+.tool.flip .tool-art { order: 2; }
+.tool-art img { width: 100%; max-width: 420px; image-rendering: pixelated; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--shadow); background: var(--mint-300); }
+.tool-art .soon { margin-top: 20px; font-size: var(--t-sm); color: var(--muted); }
+.tool h3 { font-size: var(--t-xl); margin-bottom: var(--space-md); }
+.tool ul.feat { padding: 0; margin: var(--space-lg) 0; list-style: none; display: grid; gap: 10px; }
+.tool ul.feat li { padding-left: 28px; position: relative; max-width: 62ch; }
+.tool ul.feat li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 12px; height: 12px; background: var(--gold); border: 2px solid var(--line); }
+.label { font: 700 var(--t-sm)/1 var(--font-display); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: var(--space-lg) 0 10px; }
+.prompt { margin: 0; padding: 16px 18px; background: var(--surface); border: 2px dashed var(--line); font-style: italic; max-width: 62ch; }
+.code { position: relative; background: var(--code-bg); color: var(--code-fg); border: 3px solid var(--ink); padding: 16px 64px 16px 18px; font: 400 .88rem/1.65 var(--font-code); overflow-x: auto; white-space: pre; margin: 0; }
+@media (prefers-color-scheme: dark) { .code { border-color: var(--line); } }
+.codewrap { position: relative; }
+.copy { position: absolute; top: 8px; right: 8px; font: 700 .78rem/1 var(--font-display); background: var(--gold); color: var(--ink); border: 2px solid var(--ink); padding: 8px 10px; min-height: 36px; min-width: 56px; cursor: pointer; }
+.copy:hover { background: var(--cyan); }
+.note { font-size: var(--t-sm); color: var(--muted); margin-top: 10px; }
+@media (max-width: 860px) { .tool, .tool.flip { grid-template-columns: 1fr; } .tool.flip .tool-art { order: 0; } .tool-art img { max-width: 300px; } }
+
+/* film */
+.film { background: var(--band); border-block: 3px solid var(--line); }
+.film-grid { display: grid; grid-template-columns: 6fr 5fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+.film-grid img { width: 100%; image-rendering: pixelated; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--shadow); background: var(--mint-300); }
+.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 24px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; }
+.steps li::before { content: counter(s); font: 700 1.4rem/1 var(--font-display); width: 48px; height: 48px; display: grid; place-items: center; background: var(--gold); color: var(--ink); border: 3px solid var(--ink); }
+.steps h3 { font-size: 1.15rem; margin-bottom: 4px; }
+.steps p { color: var(--text); }
+.steps code, .faq code, p code { font: .9em var(--font-code); background: var(--surface); border: 1px solid var(--line); padding: 1px 6px; }
+@media (max-width: 860px) { .film-grid { grid-template-columns: 1fr; } }
+
+/* audio */
+.players { display: grid; gap: 28px; }
+.player { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px 40px; align-items: center; padding-block: 24px; border-top: 3px solid var(--line); }
+.player:first-child { border-top: 0; padding-top: 0; }
+.player h3 { font-size: 1.2rem; margin-bottom: 6px; }
+.player .meta { font-size: var(--t-sm); color: var(--muted); }
+.player audio { width: 100%; min-height: 54px; }
+.player .status { font-size: var(--t-sm); margin-top: 8px; color: var(--muted); }
+.player.missing audio { display: none; }
+.player .soon { display: none; border: 2px dashed var(--line); padding: 14px 16px; font-size: var(--t-sm); background: var(--surface); }
+.player.missing .soon { display: block; }
+details { border-top: 2px solid var(--line); }
+details:last-of-type { border-bottom: 2px solid var(--line); }
+summary { cursor: pointer; padding: 16px 40px 16px 0; font-weight: 700; list-style: none; position: relative; min-height: 48px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 4px; top: 10px; font: 700 1.5rem/1.4 var(--font-display); }
+details[open] > summary::after { content: "\2212"; }
+details .body { padding: 0 0 20px; display: grid; gap: 12px; }
+details.tr { border: 0; grid-column: 1 / -1; }
+details.tr summary { font-weight: 600; font-size: var(--t-sm); padding: 8px 0; min-height: 44px; }
+@media (max-width: 760px) { .player { grid-template-columns: 1fr; } }
+
+/* disclaimer */
+.grey { background: var(--notice-bg); border-block: 3px solid var(--line); }
+.grey .box { max-width: 78ch; }
+.grey ul { padding-left: 1.2em; display: grid; gap: 10px; margin: var(--space-lg) 0; }
+.grey li::marker { color: var(--text); }
+footer { padding-block: var(--space-xl); font-size: var(--t-sm); color: var(--muted); }
+footer .wrap { display: grid; gap: 10px; }
+
+/* motion */
+.rise { animation: rise .7s var(--ease) both; }
+.hero figure.rise { animation-delay: .1s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="fr">Aller au contenu</span></a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/favicon.png" alt="" width="32" height="32"><span>Get more from Codex</span></a>
+    <nav aria-label="Main">
+      <a href="#tools"><span lang="en">Tools</span><span lang="fr">Outils</span></a>
+      <a href="#film"><span lang="en">Make a film</span><span lang="fr">Faire un film</span></a>
+      <a href="#demos">Demo</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language / Langue">
+      <button type="button" data-set-lang="fr" aria-pressed="false" lang="fr" aria-label="Français">FR</button>
+      <button type="button" data-set-lang="en" aria-pressed="true" lang="en" aria-label="English">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div id="top" class="hero">
+  <div class="wrap">
+    <div class="rise">
+      <p class="eyebrow"><span lang="en">For Claude Code &amp; Codex users</span><span lang="fr">Pour les utilisateurs de Claude Code et Codex</span></p>
+      <h1>
+        <span lang="en">Get more from Codex — from your <em>OpenAI subscription</em></span>
+        <span lang="fr">Tirez plus de Codex — avec votre <em>abonnement OpenAI</em></span>
+      </h1>
+      <p class="lead">
+        <span lang="en">Two small tools that give Claude Code a paintbrush and a voice. Make images, narrate them, turn both into short films. You sign in once with ChatGPT. No API key, no extra subscription.</span>
+        <span lang="fr">Deux petits outils qui donnent à Claude Code un pinceau et une voix. Créez des images, faites-les raconter, assemblez le tout en courts films. Vous vous connectez une fois avec ChatGPT. Pas de clé API, pas d'abonnement en plus.</span>
+      </p>
+      <div class="cta">
+        <a class="btn" href="#tools"><span lang="en">See the two tools</span><span lang="fr">Voir les deux outils</span></a>
+        <a class="btn ghost" href="#demos"><span lang="en">Listen to a voice</span><span lang="fr">Écouter une voix</span></a>
+      </div>
+      <ul class="pills">
+        <li><span lang="en">0 API keys</span><span lang="fr">0 clé API</span></li>
+        <li><span lang="en">0 extra subscriptions</span><span lang="fr">0 abonnement en plus</span></li>
+        <li><span lang="en">10 voices</span><span lang="fr">10 voix</span></li>
+        <li><span lang="en">Runs on your machine</span><span lang="fr">Tourne sur votre machine</span></li>
+      </ul>
+    </div>
+    <figure class="rise">
+      <img src="assets/mascot.png" width="700" height="700" alt="Pixel-art robot painter with a purple beret holding a rainbow brush and a golden framed landscape." data-alt-fr="Robot peintre en pixel art avec un béret violet, un pinceau arc-en-ciel et un tableau dans un cadre doré." data-alt-en="Pixel-art robot painter with a purple beret holding a rainbow brush and a golden framed landscape.">
+    </figure>
+  </div>
+</div>
+
+<div class="notice" role="note">
+  <div class="wrap">
+    <strong><span lang="en">Grey area.</span><span lang="fr">Zone grise.</span></strong>
+    <p>
+      <span lang="en">These tools reuse the Codex "Sign in with ChatGPT" login. It is not an official OpenAI API. Personal use only; heavy use can hit rate limits or put your account at risk. <a href="#grey">Read the full notice</a>.</span>
+      <span lang="fr">Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n'est pas une API officielle d'OpenAI. Usage personnel uniquement ; un usage intensif peut déclencher des limites, voire des restrictions sur votre compte. <a href="#grey">Lire l'avis complet</a>.</span>
+    </p>
+  </div>
+</div>
+
+<section id="tools" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker"><span lang="en">Two MCP tools</span><span lang="fr">Deux outils MCP</span></p>
+      <h2 id="tools-h"><span lang="en">One for pictures, one for voices</span><span lang="fr">Un pour les images, un pour les voix</span></h2>
+      <p><span lang="en">Both plug into Claude Code once and then work in every project. You just ask in plain words.</span><span lang="fr">Les deux se branchent une fois sur Claude Code, puis marchent dans tous vos projets. Vous demandez simplement, avec vos mots.</span></p>
+    </div>
+
+    <article class="tool" aria-labelledby="img-h">
+      <div class="tool-art">
+        <img src="assets/mascot.png" width="700" height="700" loading="lazy" alt="GPTImage mascot, a pixel-art robot painter." data-alt-en="GPTImage mascot, a pixel-art robot painter." data-alt-fr="Mascotte de GPTImage, un robot peintre en pixel art.">
+      </div>
+      <div>
+        <h3 id="img-h">GPTImage</h3>
+        <p><span lang="en">Generate and edit images with GPT Image 2, straight from Claude Code. Logos, illustrations, mockups, banners, textures.</span><span lang="fr">Créez et retouchez des images avec GPT Image 2, directement depuis Claude Code. Logos, illustrations, maquettes, bannières, textures.</span></p>
+        <ul class="feat">
+          <li><span lang="en">Work from reference images: style samples, brand assets, sketches.</span><span lang="fr">Partez d'images de référence : styles, éléments de marque, croquis.</span></li>
+          <li><span lang="en">Never overwrites: every version is saved next to the last.</span><span lang="fr">N'écrase jamais : chaque version est enregistrée à côté de la précédente.</span></li>
+          <li><span lang="en">Also a one-line terminal command.</span><span lang="fr">Existe aussi en simple commande de terminal.</span></li>
+        </ul>
+        <p class="label"><span lang="en">Example prompt</span><span lang="fr">Exemple de demande</span></p>
+        <p class="prompt"><span lang="en">“Generate a watercolor red fox in snow and save it to fox.png using the gptimage tool.”</span><span lang="fr">« Génère un renard roux à l'aquarelle dans la neige et enregistre-le dans fox.png avec l'outil gptimage. »</span></p>
+        <p class="label"><span lang="en">Install</span><span lang="fr">Installation</span></p>
+        <div class="codewrap"><pre class="code" tabindex="0">git clone https://github.com/Connected-Mate/gptimage.git
+cd gptimage
+npm install
+./install.sh</pre><button type="button" class="copy" data-copy><span lang="en">Copy</span><span lang="fr">Copier</span></button></div>
+        <p class="note"><span lang="en">Needs Node.js 20 or newer and a ChatGPT plan. The script opens your browser so you sign in yourself; the tool never sees your password.</span><span lang="fr">Demande Node.js 20 ou plus et un abonnement ChatGPT. Le script ouvre votre navigateur : vous vous connectez vous-même, l'outil ne voit jamais votre mot de passe.</span></p>
+        <p class="note"><a href="https://github.com/Connected-Mate/gptimage">github.com/Connected-Mate/gptimage</a></p>
+      </div>
+    </article>
+
+    <article class="tool flip" aria-labelledby="voice-h">
+      <div class="tool-art">
+        <img id="voice-img" src="assets/voice-mascot.png" width="700" height="700" loading="lazy" alt="The robot painter wearing golden headphones and holding a studio microphone." data-alt-en="The robot painter wearing golden headphones and holding a studio microphone." data-alt-fr="Le robot peintre avec un casque doré et un micro de studio.">
+        <p class="soon"><span lang="en">GPTVoice is not public yet. The repository will appear under Connected-Mate once it is ready.</span><span lang="fr">GPTVoice n'est pas encore public. Le dépôt apparaîtra chez Connected-Mate dès qu'il sera prêt.</span></p>
+      </div>
+      <div>
+        <h3 id="voice-h">GPTVoice</h3>
+        <p><span lang="en">Turn text into a spoken audio file (wav or mp3) for narration, voice-overs and films. Pick a voice and describe the delivery in your own words.</span><span lang="fr">Transformez un texte en fichier audio parlé (wav ou mp3) pour la narration, la voix off et les films. Choisissez une voix et décrivez le ton avec vos mots.</span></p>
+        <ul class="feat">
+          <li><span lang="en">10 voices: alloy, ash, ballad, coral, echo, sage, shimmer, verse, marin, cedar.</span><span lang="fr">10 voix : alloy, ash, ballad, coral, echo, sage, shimmer, verse, marin, cedar.</span></li>
+          <li><span lang="en">Style by description: “whisper, excited, French accent”.</span><span lang="fr">Style par description : « murmure, enthousiaste, accent français ».</span></li>
+          <li><span lang="en">Long texts are cut and stitched back into one file.</span><span lang="fr">Les longs textes sont découpés puis recollés en un seul fichier.</span></li>
+          <li><span lang="en">Multi-voice dialogue in a single file, and transcription of existing audio.</span><span lang="fr">Dialogue à plusieurs voix dans un seul fichier, et transcription d'un audio existant.</span></li>
+        </ul>
+        <p class="label"><span lang="en">Example prompt</span><span lang="fr">Exemple de demande</span></p>
+        <p class="prompt"><span lang="en">“Read this script as a movie trailer, voice cedar, deep and slow, and save it as trailer.mp3.”</span><span lang="fr">« Lis ce texte comme une bande-annonce, voix cedar, grave et lent, et enregistre-le dans trailer.mp3. »</span></p>
+        <p class="label"><span lang="en">Install</span><span lang="fr">Installation</span></p>
+        <div class="codewrap"><pre class="code" tabindex="0">git clone https://github.com/Connected-Mate/gptvoice.git
+cd gptvoice
+npm install
+./install.sh</pre><button type="button" class="copy" data-copy><span lang="en">Copy</span><span lang="fr">Copier</span></button></div>
+        <p class="note"><span lang="en">Needs Node.js 22 or newer and a ChatGPT plan. Same one-time sign-in as GPTImage. It uses OpenAI's realtime voice model through that sign-in.</span><span lang="fr">Demande Node.js 22 ou plus et un abonnement ChatGPT. Même connexion unique que GPTImage. Il utilise le modèle de voix temps réel d'OpenAI via cette connexion.</span></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="film" class="film" aria-labelledby="film-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker"><span lang="en">Image + voice</span><span lang="fr">Image + voix</span></p>
+      <h2 id="film-h"><span lang="en">Make a short film in four asks</span><span lang="fr">Un court film en quatre demandes</span></h2>
+    </div>
+    <div class="film-grid">
+      <ol class="steps">
+        <li><div><h3><span lang="en">Write the story</span><span lang="fr">Écrivez l'histoire</span></h3><p><span lang="en">Ask Claude for a short script split into scenes, each with a line of narration.</span><span lang="fr">Demandez à Claude un court scénario découpé en scènes, chacune avec une ligne de narration.</span></p></div></li>
+        <li><div><h3><span lang="en">Paint each scene</span><span lang="fr">Peignez chaque scène</span></h3><p><span lang="en">GPTImage makes one picture per scene, keeping the same look by reusing your reference image.</span><span lang="fr">GPTImage fait une image par scène, avec le même style grâce à votre image de référence.</span></p></div></li>
+        <li><div><h3><span lang="en">Record the voices</span><span lang="fr">Enregistrez les voix</span></h3><p><span lang="en">GPTVoice reads the narration, or plays a dialogue with several voices, into one audio file.</span><span lang="fr">GPTVoice lit la narration, ou joue un dialogue à plusieurs voix, dans un seul fichier audio.</span></p></div></li>
+        <li><div><h3><span lang="en">Assemble</span><span lang="fr">Assemblez</span></h3><p><span lang="en">Ask Claude to join images and sound into an mp4 with <code>ffmpeg</code> (free, installed separately).</span><span lang="fr">Demandez à Claude de réunir images et son en mp4 avec <code>ffmpeg</code> (gratuit, à installer à part).</span></p></div></li>
+      </ol>
+      <img id="film-img" src="assets/film-scene.png" width="1300" height="867" loading="lazy" alt="The robot painter as a film director with a clapperboard, a film strip and a small screen." data-alt-en="The robot painter as a film director with a clapperboard, a film strip and a small screen." data-alt-fr="Le robot peintre en réalisateur, avec un clap, une pellicule et un petit écran.">
+    </div>
+  </div>
+</section>
+
+<section id="demos" aria-labelledby="demo-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Demo</p>
+      <h2 id="demo-h"><span lang="en">Hear it for yourself</span><span lang="fr">Écoutez par vous-même</span></h2>
+      <p><span lang="en">Samples made with GPTVoice. Nothing was edited afterwards.</span><span lang="fr">Extraits faits avec GPTVoice. Rien n'a été retouché ensuite.</span></p>
+    </div>
+    <div class="players">
+      <div class="player" data-audio>
+        <div>
+          <h3 id="p1"><span lang="en">Narration, French</span><span lang="fr">Narration, français</span></h3>
+          <p class="meta"><span lang="en">Voice marin · calm storyteller</span><span lang="fr">Voix marin · conteur posé</span></p>
+        </div>
+        <div>
+          <audio controls preload="metadata" src="assets/audio/narration-fr-marin.mp3" aria-labelledby="p1"></audio>
+          <p class="soon" role="status"><span lang="en">Sample coming soon.</span><span lang="fr">Extrait bientôt disponible.</span></p>
+        </div>
+      </div>
+      <div class="player" data-audio>
+        <div>
+          <h3 id="p2"><span lang="en">Movie trailer, English</span><span lang="fr">Bande-annonce, anglais</span></h3>
+          <p class="meta"><span lang="en">Voice cedar · deep, slow, dramatic</span><span lang="fr">Voix cedar · grave, lent, dramatique</span></p>
+        </div>
+        <div>
+          <audio controls preload="metadata" src="assets/audio/trailer-en-cedar.mp3" aria-labelledby="p2"></audio>
+          <p class="soon" role="status"><span lang="en">Sample coming soon.</span><span lang="fr">Extrait bientôt disponible.</span></p>
+        </div>
+      </div>
+      <div class="player" data-audio>
+        <div>
+          <h3 id="p3"><span lang="en">Dialogue, French</span><span lang="fr">Dialogue, français</span></h3>
+          <p class="meta"><span lang="en">Several voices, one file</span><span lang="fr">Plusieurs voix, un seul fichier</span></p>
+        </div>
+        <div>
+          <audio controls preload="metadata" src="assets/audio/dialogue-fr.mp3" aria-labelledby="p3"></audio>
+          <p class="soon" role="status"><span lang="en">Sample coming soon.</span><span lang="fr">Extrait bientôt disponible.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="faq-h">FAQ</h2></div>
+    <div style="max-width:78ch">
+      <details><summary><span lang="en">Do I need an API key?</span><span lang="fr">Faut-il une clé API ?</span></summary><div class="body"><p><span lang="en">No. You sign in with your ChatGPT account once, in your browser. The tools use that sign-in.</span><span lang="fr">Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre navigateur. Les outils utilisent cette connexion.</span></p></div></details>
+      <details><summary><span lang="en">Is it really free?</span><span lang="fr">C'est vraiment gratuit ?</span></summary><div class="body"><p><span lang="en">The tools are free. Usage is covered by your existing ChatGPT plan, within its limits. There is no per-image bill. For voice, OpenAI does not document where it is billed: check your OpenAI usage page after your first use.</span><span lang="fr">Les outils sont gratuits. L'usage passe par votre abonnement ChatGPT actuel, dans ses limites. Pas de facture par image. Pour la voix, OpenAI ne documente pas où elle est facturée : regardez votre page d'usage OpenAI après la première utilisation.</span></p></div></details>
+      <details><summary><span lang="en">Which plan do I need?</span><span lang="fr">Quel abonnement faut-il ?</span></summary><div class="body"><p><span lang="en">A ChatGPT account with an active paid plan (Plus, Pro or similar). Limits depend on your plan.</span><span lang="fr">Un compte ChatGPT avec un abonnement payant actif (Plus, Pro ou équivalent). Les limites dépendent de votre formule.</span></p></div></details>
+      <details><summary><span lang="en">Does it work with Claude Code and Codex?</span><span lang="fr">Ça marche avec Claude Code et Codex ?</span></summary><div class="body"><p><span lang="en">Yes. Both tools are standard MCP servers, installed at user level, so every Claude Code project can use them. They can also be run from the terminal.</span><span lang="fr">Oui. Les deux outils sont des serveurs MCP standard, installés au niveau utilisateur : tous vos projets Claude Code peuvent s'en servir. Ils se lancent aussi depuis le terminal.</span></p></div></details>
+      <details><summary><span lang="en">Where do my files and sign-in live?</span><span lang="fr">Où sont mes fichiers et ma connexion ?</span></summary><div class="body"><p><span lang="en">On your machine. The sign-in token is stored locally and only sent to OpenAI. Remove it any time with the logout command.</span><span lang="fr">Sur votre machine. Le jeton de connexion est stocké localement et n'est envoyé qu'à OpenAI. Vous pouvez le supprimer à tout moment avec la commande de déconnexion.</span></p></div></details>
+      <details><summary><span lang="en">I get a 429 error. What now?</span><span lang="fr">J'ai une erreur 429. Que faire ?</span></summary><div class="body"><p><span lang="en">You hit your plan's rate limit. Wait a while and try again, and avoid big batches.</span><span lang="fr">Vous avez atteint la limite de votre abonnement. Patientez un peu, réessayez, et évitez les grosses séries.</span></p></div></details>
+      <details><summary><span lang="en">Can I use it for my business?</span><span lang="fr">Puis-je l'utiliser pour mon entreprise ?</span></summary><div class="body"><p><span lang="en">We advise against it. This is built for personal, local use. For commercial or high-volume work, use the official OpenAI API.</span><span lang="fr">Nous le déconseillons. C'est conçu pour un usage personnel et local. Pour du commercial ou du gros volume, utilisez l'API officielle d'OpenAI.</span></p></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="grey" class="grey" aria-labelledby="grey-h">
+  <div class="wrap"><div class="box">
+    <p class="kicker"><span lang="en">Please read</span><span lang="fr">À lire</span></p>
+    <h2 id="grey-h"><span lang="en">This is a grey area, and we say so</span><span lang="fr">C'est une zone grise, et nous le disons</span></h2>
+    <ul>
+      <li><span lang="en"><strong>Unofficial.</strong> “Sign in with ChatGPT” is meant for Codex. These tools reuse that login to reach image and voice models. It works and many people do it, but it is not an officially supported API.</span><span lang="fr"><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d'image et de voix. Ça marche et beaucoup le font, mais ce n'est pas une API officiellement prise en charge.</span></li>
+      <li><span lang="en"><strong>Personal use.</strong> Keep it personal and local.</span><span lang="fr"><strong>Usage personnel.</strong> Gardez-le personnel et local.</span></li>
+      <li><span lang="en"><strong>Rate limits.</strong> Heavy use can return 429 errors from your plan.</span><span lang="fr"><strong>Limites.</strong> Un usage intensif peut renvoyer des erreurs 429 de votre abonnement.</span></li>
+      <li><span lang="en"><strong>Account risk.</strong> In the worst case, OpenAI may restrict your account. You accept that risk by using these tools.</span><span lang="fr"><strong>Risque pour le compte.</strong> Au pire, OpenAI peut restreindre votre compte. En les utilisant, vous acceptez ce risque.</span></li>
+      <li><span lang="en"><strong>Voice billing.</strong> Where voice usage is billed is not officially documented. After your first use, check your OpenAI usage page.</span><span lang="fr"><strong>Facturation de la voix.</strong> L'endroit où l'usage vocal est facturé n'est pas documenté officiellement. Après la première utilisation, vérifiez votre page d'usage OpenAI.</span></li>
+      <li><span lang="en"><strong>Not affiliated with OpenAI.</strong> Use at your own risk and follow OpenAI's terms.</span><span lang="fr"><strong>Aucun lien avec OpenAI.</strong> Utilisation à vos risques, dans le respect des conditions d'OpenAI.</span></li>
+    </ul>
+  </div></div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><span lang="en">Made by Connected-Mate. Not affiliated with OpenAI, Anthropic or Claude. “ChatGPT”, “Codex” and “GPT Image” belong to their owners.</span><span lang="fr">Réalisé par Connected-Mate. Aucun lien avec OpenAI, Anthropic ou Claude. « ChatGPT », « Codex » et « GPT Image » appartiennent à leurs propriétaires.</span></p>
+    <p><a href="https://github.com/Connected-Mate/gptimage">GPTImage on GitHub</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btns = document.querySelectorAll('[data-set-lang]');
+  var titles = {
+    en: 'Get more from Codex — from your OpenAI subscription',
+    fr: 'Tirez plus de Codex — avec votre abonnement OpenAI'
+  };
+  function apply(l) {
+    root.lang = l;
+    document.title = titles[l];
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === l)); });
+    document.querySelectorAll('img[data-alt-' + l + ']').forEach(function (i) { i.alt = i.getAttribute('data-alt-' + l); });
+  }
+  apply(root.lang === 'fr' ? 'fr' : 'en');
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-set-lang');
+      apply(l);
+      try { localStorage.setItem('gmfc-lang', l); } catch (e) {}
+    });
+  });
+
+  /* copy buttons */
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pre = b.parentNode.querySelector('pre');
+      var txt = pre.textContent;
+      function done(ok) {
+        var old = b.innerHTML;
+        b.textContent = ok ? (root.lang === 'fr' ? 'Copié' : 'Copied') : (root.lang === 'fr' ? 'Échec' : 'Failed');
+        setTimeout(function () { b.innerHTML = old; }, 1600);
+      }
+      try {
+        navigator.clipboard.writeText(txt).then(function () { done(true); }, function () { fallback(); });
+      } catch (e) { fallback(); }
+      function fallback() {
+        try {
+          var r = document.createRange(); r.selectNodeContents(pre);
+          var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+          done(document.execCommand('copy'));
+        } catch (e) { done(false); }
+      }
+    });
+  });
+
+  /* audio: missing file -> "coming soon" */
+  document.querySelectorAll('[data-audio]').forEach(function (p) {
+    var a = p.querySelector('audio');
+    function miss() { p.classList.add('missing'); }
+    a.addEventListener('error', miss);
+    if (a.error) miss();
+  });
+
+  /* illustrations not generated yet: hide gracefully */
+  ['voice-img', 'film-img'].forEach(function (id) {
+    var i = document.getElementById(id);
+    if (i) i.addEventListener('error', function () { i.style.display = 'none'; });
+  });
+})();
+</script>
+</body>
+</html>
