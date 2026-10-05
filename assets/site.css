@@ -394,6 +394,12 @@ section { padding-block: var(--section); }
 .tech .cost-note, .motion .label { margin-top: var(--s-24); }
 .cost-note.is-ok { border-style: solid; border-color: var(--hairline-soft); background: var(--graphite); }
 
+.tip { margin-top: var(--s-40); padding: clamp(24px, 3vw, 36px); border-radius: var(--r-card); background: var(--graphite); box-shadow: var(--inset); max-width: 880px; }
+.tip h3 { font-family: var(--f-head); font-size: var(--t-h-sm); letter-spacing: -0.02em; }
+.tip > p:first-of-type { color: var(--ash); margin-top: var(--s-8); max-width: 64ch; }
+.tip .feat { margin-top: var(--s-20); }
+.tip .prompt { background: var(--canvas); }
+
 /* products */
 .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: var(--s-16); }
 .product { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: var(--s-24); align-items: start; padding: var(--s-24); border-radius: var(--r-large); background: var(--frost); box-shadow: var(--inset); }

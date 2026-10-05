@@ -528,6 +528,13 @@ function voices(lang) {
     ${pipeline(P.motion.steps)}
     <p class="label">${esc(L.common.examplePromptLabel)}</p>
     <p class="prompt">${esc(P.motion.example)}</p>
+    ${P.motion.tip ? `<div class="tip" id="clips">
+      <h3>${esc(P.motion.tip.h)}</h3>
+      <p>${esc(P.motion.tip.p)}</p>
+      <ul class="feat">${P.motion.tip.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+      <p class="label">${esc(L.common.examplePromptLabel)}</p>
+      <p class="prompt">${esc(P.motion.tip.example)}</p>
+    </div>` : ""}
   </div>
 </section>
 

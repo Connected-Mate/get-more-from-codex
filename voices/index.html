@@ -30,7 +30,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=b1b4c22f">
+<link rel="stylesheet" href="../assets/site.css?v=26815f67">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -109,6 +109,13 @@
     </ol>
     <p class="label">Example request</p>
     <p class="prompt">Read this script as an upbeat explainer voice, coral, with a short pause between scenes. Save it to audio/voiceover.mp3 with subtitles.</p>
+    <div class="tip" id="clips">
+      <h3>Work in clips, then align them</h3>
+      <p>GPTVoice records your text sentence by sentence. For a video, don’t ask for one long take: ask for one clip per scene or line, then place each clip on your timeline. It sounds more natural and is much easier to fix.</p>
+      <ul class="feat"><li>Number the clips in order: <code>01-intro.mp3</code>, <code>02-problem.mp3</code>…</li><li>Your agent gets each clip’s exact duration, and the <code>.srt</code> shows when every sentence starts.</li><li>A clip too long for its shot? Shorten the line or raise the speed, and record just that clip again.</li><li>Keep the same voice and settings for every clip (save them as a preset) so the clips match.</li></ul>
+      <p class="label">Example request</p>
+      <p class="prompt">From script.md, record one clip per scene with cedar in audio/01-….mp3, with subtitles, then list each clip’s duration so we can fit them to the shots.</p>
+    </div>
   </div>
 </section>
 

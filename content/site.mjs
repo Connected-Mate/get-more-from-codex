@@ -202,6 +202,17 @@ export const t = {
           { h: "Drop it in your video", p: "In your editor, or straight into a code-based video (Remotion and the like) your agent is building." },
         ],
         example: "Read this script as an upbeat explainer voice, coral, with a short pause between scenes. Save it to audio/voiceover.mp3 with subtitles.",
+        tip: {
+          h: "Work in clips, then align them",
+          p: "GPTVoice records your text sentence by sentence. For a video, don’t ask for one long take: ask for one clip per scene or line, then place each clip on your timeline. It sounds more natural and is much easier to fix.",
+          items: [
+            "Number the clips in order: <code>01-intro.mp3</code>, <code>02-problem.mp3</code>…",
+            "Your agent gets each clip’s exact duration, and the <code>.srt</code> shows when every sentence starts.",
+            "A clip too long for its shot? Shorten the line or raise the speed, and record just that clip again.",
+            "Keep the same voice and settings for every clip (save them as a preset) so the clips match.",
+          ],
+          example: "From script.md, record one clip per scene with cedar in audio/01-….mp3, with subtitles, then list each clip’s duration so we can fit them to the shots.",
+        },
       },
       tech: {
         kicker: "Under the hood",
@@ -501,6 +512,17 @@ export const t = {
           { h: "Glissez-le dans votre vidéo", p: "Dans votre logiciel de montage, ou directement dans une vidéo en code (Remotion et compagnie) que votre agent construit." },
         ],
         example: "Lis ce texte avec une voix explicative enjouée, coral, avec une courte pause entre les scènes. Enregistre-le dans audio/voixoff.mp3 avec les sous-titres.",
+        tip: {
+          h: "Travaillez en extraits, puis calez-les",
+          p: "GPTVoice enregistre votre texte phrase par phrase. Pour une vidéo, ne demandez pas une seule longue prise : demandez un extrait par scène ou par réplique, puis placez chaque extrait sur votre timeline. Le rendu est plus naturel et bien plus facile à corriger.",
+          items: [
+            "Numérotez les extraits dans l’ordre : <code>01-intro.mp3</code>, <code>02-probleme.mp3</code>…",
+            "Votre agent reçoit la durée exacte de chaque extrait, et le <code>.srt</code> indique quand commence chaque phrase.",
+            "Un extrait trop long pour son plan ? Raccourcissez la phrase ou accélérez, et réenregistrez seulement cet extrait.",
+            "Gardez la même voix et les mêmes réglages pour tous les extraits (enregistrez-les en préréglage) pour qu’ils s’accordent.",
+          ],
+          example: "À partir de script.md, enregistre un extrait par scène avec cedar dans audio/01-….mp3, avec les sous-titres, puis donne la durée de chaque extrait pour qu’on les cale sur les plans.",
+        },
       },
       tech: {
         kicker: "Sous le capot",

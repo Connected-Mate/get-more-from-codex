@@ -30,7 +30,7 @@
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <link rel="preload" href="../../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../assets/site.css?v=b1b4c22f">
+<link rel="stylesheet" href="../../assets/site.css?v=26815f67">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -109,6 +109,13 @@
     </ol>
     <p class="label">Exemple de demande</p>
     <p class="prompt">Lis ce texte avec une voix explicative enjouée, coral, avec une courte pause entre les scènes. Enregistre-le dans audio/voixoff.mp3 avec les sous-titres.</p>
+    <div class="tip" id="clips">
+      <h3>Travaillez en extraits, puis calez-les</h3>
+      <p>GPTVoice enregistre votre texte phrase par phrase. Pour une vidéo, ne demandez pas une seule longue prise : demandez un extrait par scène ou par réplique, puis placez chaque extrait sur votre timeline. Le rendu est plus naturel et bien plus facile à corriger.</p>
+      <ul class="feat"><li>Numérotez les extraits dans l’ordre : <code>01-intro.mp3</code>, <code>02-probleme.mp3</code>…</li><li>Votre agent reçoit la durée exacte de chaque extrait, et le <code>.srt</code> indique quand commence chaque phrase.</li><li>Un extrait trop long pour son plan ? Raccourcissez la phrase ou accélérez, et réenregistrez seulement cet extrait.</li><li>Gardez la même voix et les mêmes réglages pour tous les extraits (enregistrez-les en préréglage) pour qu’ils s’accordent.</li></ul>
+      <p class="label">Exemple de demande</p>
+      <p class="prompt">À partir de script.md, enregistre un extrait par scène avec cedar dans audio/01-….mp3, avec les sous-titres, puis donne la durée de chaque extrait pour qu’on les cale sur les plans.</p>
+    </div>
   </div>
 </section>
 
