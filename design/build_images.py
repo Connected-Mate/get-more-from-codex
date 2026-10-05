@@ -41,28 +41,11 @@ for name, (fn, box, widths) in JOBS.items():
         im = im.crop(box)
     save_variants(im, name, widths)
 
-# Favicons: the brand mark (subscription ring drawn into an MCP plug), drawn at 8x then reduced.
-def draw_mark(size):
-    k = 8
-    S = 64 * k
-    img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    d.rounded_rectangle((0, 0, S - 1, S - 1), 16 * k, fill=(22, 22, 22, 255))
-    # gradient ring: draw arcs with interpolated color
-    cx, cy, r, w = 20 * k, 32 * k, 9.5 * k, 5 * k
-    import math
-    for a in range(0, 360, 2):
-        t = (math.cos(math.radians(a - 45)) + 1) / 2
-        c = tuple(round(x + (y - x) * (1 - t)) for x, y in zip((74, 116, 240), (233, 138, 60))) + (255,)
-        d.arc((cx - r - w / 2, cy - r - w / 2, cx + r + w / 2, cy + r + w / 2), a, a + 3, fill=c, width=int(w))
-    d.ellipse((32.5 * k - 2.4 * k, 32 * k - 2.4 * k, 32.5 * k + 2.4 * k, 32 * k + 2.4 * k), fill=(237, 237, 237, 255))
-    d.rounded_rectangle((37 * k, 22 * k, 51 * k, 42 * k), 5 * k, fill=(255, 255, 255, 255))
-    d.rounded_rectangle((50 * k, 25.5 * k, 57.5 * k, 29.1 * k), 1.8 * k, fill=(255, 255, 255, 255))
-    d.rounded_rectangle((50 * k, 34.9 * k, 57.5 * k, 38.5 * k), 1.8 * k, fill=(255, 255, 255, 255))
-    return img.resize((size, size), Image.LANCZOS)
-
-for s_, fn in [(32, "favicon-32.png"), (180, "apple-touch-icon.png"), (512, "icon-512.png")]:
-    draw_mark(s_).save(ROOT / "assets" / fn, optimize=True)
+# Favicons: crop the mascot's head (screen face + beret)
+m = Image.open(SRC / "mascot.png").convert("RGBA")
+head = m.crop((270, 160, 790, 680))
+for s, fn in [(32, "favicon-32.png"), (180, "apple-touch-icon.png"), (512, "icon-512.png")]:
+    head.resize((s, s), Image.LANCZOS).save(ROOT / "assets" / fn, optimize=True)
 
 # Social card 1200x630: dusk horizon gradient, framed hero art, DM Sans title
 def horizon(w, h):
@@ -92,15 +75,11 @@ dm = str(SRC / "DMSans.ttf")
 f1 = ImageFont.truetype(dm, 74); f1.set_variation_by_axes([40, 500])
 f2 = ImageFont.truetype(dm, 34); f2.set_variation_by_axes([24, 500])
 d = ImageDraw.Draw(card)
-card.paste(draw_mark(72), (64, 56), draw_mark(72))
-f0 = ImageFont.truetype(dm, 30); f0.set_variation_by_axes([24, 500])
-d.text((152, 76), "Get more from Codex", font=f0, fill=(255, 255, 255))
-f1 = ImageFont.truetype(dm, 60); f1.set_variation_by_axes([40, 500])
-d.text((64, 160), "Your ChatGPT subscription,", font=f1, fill=(255, 255, 255))
-d.text((64, 228), "inside your coding agent", font=f1, fill=(255, 255, 255))
-d.text((66, 318), "Images and voices for Claude Code, Codex, Cursor.", font=f2, fill=(232, 228, 236))
+d.text((64, 70), "Get more", font=f1, fill=(255, 255, 255))
+d.text((64, 148), "from Codex", font=f1, fill=(255, 255, 255))
+d.text((66, 248), "from your OpenAI subscription", font=f2, fill=(232, 228, 236))
 art = Image.open(SRC / "hero.png").convert("RGB")
-art = art.resize((460, round(art.height * 460 / art.width)), Image.LANCZOS)
-card.paste(art, (690, 392), rounded(art, 24))
+art = art.resize((620, round(art.height * 620 / art.width)), Image.LANCZOS)
+card.paste(art, (530, 296), rounded(art, 24))
 card.save(ROOT / "assets" / "og.png", optimize=True)
 print("og + favicons done")

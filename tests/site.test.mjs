@@ -132,6 +132,10 @@ for (const { name, lang, path, html } of all) {
     const target = join(ROOT, path, sw[1], "index.html");
     assert.equal(target, join(ROOT, ROUTES[name][other], "index.html"));
   });
+  test(`${id}: wording uses "generate", no abstract diagram`, () => {
+    assert.ok(!html.includes("flow-art"));
+    assert.ok(!/Make (images|voices)|Créer des (images|voix)/.test(html));
+  });
   test(`${id}: no unverified cost claim for voices, no gptvoice clone while repo is private`, () => {
     assert.ok(!html.includes("No extra bill"));
     assert.ok(!html.includes("gptvoice.git"));
@@ -175,8 +179,9 @@ test("FR pages have no leftover English UI strings", () => {
     for (const s of ["Skip to content", ">Copy<", "How it works<", "Install GPTImage", "Best for", "Recommended"]) assert.ok(!p.html.includes(s), `${p.path}: ${s}`);
   }
 });
-test("404, sitemap with 8 URLs, brand mark", () => {
+test("404, sitemap with 8 URLs, mascot icons", () => {
   assert.ok(existsSync(join(ROOT, "404.html")));
   assert.equal((read("sitemap.xml").match(/<loc>/g) || []).length, 8);
-  assert.ok(existsSync(join(ROOT, "assets/mark.svg")));
+  assert.ok(existsSync(join(ROOT, "assets/favicon-32.png")));
+  assert.ok(!existsSync(join(ROOT, "assets/mark.svg")), "ring mark removed");
 });

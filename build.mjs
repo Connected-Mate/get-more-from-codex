@@ -98,62 +98,6 @@ function codeBlock(L, lines, label) {
         </div>`;
 }
 
-// The brand mark: a subscription ring drawn into an MCP plug.
-function mark(size = 28, id = "m") {
-  return `<svg class="mark" width="${size}" height="${size}" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-  <defs><linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
-  <rect width="64" height="64" rx="16" fill="#161616"/>
-  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#${id}g)" stroke-width="5"/>
-  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
-  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
-  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
-  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
-</svg>`;
-}
-
-// Hero illustration: plan card -> MCP plug -> agent window producing an image and a voice.
-function flowArt(L) {
-  const H = L.home.hero;
-  const two = (s) => {
-    const w = s.split(" ");
-    const mid = Math.ceil(w.length / 2);
-    return [w.slice(0, mid).join(" "), w.slice(mid).join(" ")];
-  };
-  const [p1, p2] = two(H.artPlan);
-  return `<svg class="flow-art" viewBox="0 0 560 380" role="img" aria-label="${attr(H.artLabel)}">
-  <defs>
-    <linearGradient id="fa-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0a060"/><stop offset="1" stop-color="#6d8cff"/></linearGradient>
-    <linearGradient id="fa-img" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c76a2e"/><stop offset="1" stop-color="#2d4fb8"/></linearGradient>
-  </defs>
-  <g class="fa-card">
-    <rect x="16" y="120" width="160" height="140" rx="22" fill="rgb(255 255 255 / 0.1)" stroke="rgb(255 255 255 / 0.35)"/>
-    <circle cx="58" cy="168" r="18" fill="none" stroke="url(#fa-ring)" stroke-width="7"/>
-    <text x="36" y="222" class="fa-label">${esc(p1)}</text>
-    <text x="36" y="242" class="fa-label">${esc(p2)}</text>
-  </g>
-  <path class="fa-wire" d="M176 190 C 210 190, 220 192, 252 192"/>
-  <g class="fa-plug">
-    <rect x="252" y="158" width="72" height="68" rx="20" fill="#ffffff"/>
-    <text x="288" y="198" text-anchor="middle" class="fa-mcp">MCP</text>
-    <rect x="322" y="170" width="16" height="9" rx="4.5" fill="#ffffff"/>
-    <rect x="322" y="205" width="16" height="9" rx="4.5" fill="#ffffff"/>
-  </g>
-  <path class="fa-wire" d="M338 192 C 352 192, 356 192, 372 192"/>
-  <g class="fa-agent">
-    <rect x="372" y="54" width="172" height="276" rx="20" fill="#161616" stroke="rgb(255 255 255 / 0.3)"/>
-    <circle cx="394" cy="76" r="4" fill="rgb(255 255 255 / 0.35)"/><circle cx="408" cy="76" r="4" fill="rgb(255 255 255 / 0.35)"/><circle cx="422" cy="76" r="4" fill="rgb(255 255 255 / 0.35)"/>
-    <text x="390" y="112" class="fa-small">${esc(H.artAgent)}</text>
-    <rect x="390" y="126" width="136" height="84" rx="10" fill="url(#fa-img)"/>
-    <path d="M390 196 L430 160 L456 182 L476 166 L526 204 L526 200 Q526 210 516 210 L400 210 Q390 210 390 200 Z" fill="rgb(255 255 255 / 0.28)"/>
-    <circle cx="500" cy="148" r="9" fill="rgb(255 255 255 / 0.75)"/>
-    <g class="fa-wave">
-      ${[10, 22, 34, 18, 28, 14, 30, 20, 12, 24, 16].map((h, i) => `<rect x="${394 + i * 12}" y="${266 - h / 2}" width="6" height="${h}" rx="3" fill="#ededed" style="--i:${i}"/>`).join("")}
-    </g>
-    <rect x="390" y="296" width="96" height="8" rx="4" fill="rgb(255 255 255 / 0.25)"/>
-  </g>
-</svg>`;
-}
-
 function sample(L, base, s) {
   const lang = L.htmlLang;
   const C = L.common;
@@ -293,7 +237,6 @@ function layout(lang, page, { title, description, body, ogImage = "assets/og.png
 <meta name="twitter:title" content="${attr(title)}">
 <meta name="twitter:description" content="${attr(description)}">
 <meta name="twitter:image" content="${SITE_URL}${ogImage}">
-<link rel="icon" href="${base}assets/mark.svg" type="image/svg+xml">
 <link rel="icon" href="${base}assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="${base}assets/apple-touch-icon.png">
 <link rel="preload" href="${base}assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
@@ -324,7 +267,7 @@ function layout(lang, page, { title, description, body, ogImage = "assets/og.png
 
 <header class="top">
   <div class="top-row">
-    <a class="brand" href="${href(path, "home", lang)}"${page === "home" ? ' aria-current="page"' : ""}>${mark(28, "hm")}<span>${esc(L.brand)}</span></a>
+    <a class="brand" href="${href(path, "home", lang)}"${page === "home" ? ' aria-current="page"' : ""}><img src="${base}assets/favicon-32.png" alt="" width="28" height="28"><span>${esc(L.brand)}</span></a>
     <nav class="mainnav" aria-label="${attr(L.navLabel)}">
       ${navItems}
     </nav>
@@ -342,7 +285,7 @@ ${body}
 <footer class="foot">
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      <p class="foot-mark">${mark(32, "fm")}<span>${esc(L.brand)}</span></p>
+      <p class="foot-mark"><img src="${base}assets/favicon-32.png" alt="" width="28" height="28"><span>${esc(L.brand)}</span></p>
       <p>${esc(L.footer.made)}</p>
       <p class="legal">${esc(L.footer.legal)}</p>
     </div>
@@ -368,7 +311,9 @@ function pageHero(H, { art = "", cls = "" } = {}) {
     <div class="hero-copy">
       ${H.banner ?? ""}
       <p class="eyebrow">${esc(H.eyebrow)}</p>
-      <h1 id="hero-h" class="h1-main">${esc(H.h1)}</h1>
+      ${H.sub
+        ? `<h1 id="hero-h" class="h1-stack"><span class="h1-main">${esc(H.h1)}</span> <span class="h1-sub">${esc(H.sub)}</span></h1>`
+        : `<h1 id="hero-h" class="h1-main">${esc(H.h1)}</h1>`}
       <p class="lead">${H.lead}</p>
       <div class="cta">${H.ctas}</div>
       ${H.facts ? `<ul class="facts">${H.facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>` : ""}
@@ -388,7 +333,7 @@ function home(lang) {
   const banner = V.samples.length
     ? `<a class="banner" href="${href(path, "voices", lang, "#listen")}"><span class="spark" aria-hidden="true"></span>${esc(L.listen.banner[V.status])}<span aria-hidden="true">→</span></a>`
     : "";
-  const body = `${pageHero({ ...H, banner, ctas: `<a class="btn" href="${href(path, "images", lang)}">${esc(H.cta1)}</a><a class="btn ghost" href="${href(path, "voices", lang)}">${esc(H.cta2)}</a>` }, { art: flowArt(L), cls: "hero-home" })}
+  const body = `${pageHero({ ...H, banner, ctas: `<a class="btn" href="${href(path, "images", lang)}">${esc(H.cta1)}</a><a class="btn ghost" href="${href(path, "voices", lang)}">${esc(H.cta2)}</a>` }, { art: picture(base, "hero", H.alt, "(min-width: 1000px) 560px, calc(100vw - 32px)", { eager: true }), cls: "hero-home" })}
 
 <aside class="notice" aria-label="${attr(P.notice.title.replace(/\.$/, ""))}">
   <div class="wrap notice-row">
@@ -597,7 +542,9 @@ function how(lang) {
   <div class="wrap">
     <div class="hero-copy">
       <p class="eyebrow">${esc(H.eyebrow)}</p>
-      <h1 id="hero-h" class="h1-main">${esc(H.h1)}</h1>
+      ${H.sub
+        ? `<h1 id="hero-h" class="h1-stack"><span class="h1-main">${esc(H.h1)}</span> <span class="h1-sub">${esc(H.sub)}</span></h1>`
+        : `<h1 id="hero-h" class="h1-main">${esc(H.h1)}</h1>`}
       <p class="lead">${esc(H.lead)}</p>
     </div>
   </div>
@@ -669,13 +616,13 @@ function notFound() {
 <title>${esc(E.title)} · Get more from Codex</title>
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="dark">
-<link rel="icon" href="${SITE_URL}assets/mark.svg" type="image/svg+xml">
+<link rel="icon" href="${SITE_URL}assets/favicon-32.png" type="image/png">
 <link rel="stylesheet" href="${SITE_URL}assets/site.css?v=${CSS_V}">
 </head>
 <body>
 <main id="main" class="nf">
   <div class="wrap">
-    ${mark(72, "nf")}
+    <img src="${SITE_URL}assets/img/mascot-360.webp" alt="" width="180" height="170">
     <h1>${esc(E.h1)}</h1>
     <p>${esc(E.p)}</p>
     <p><a class="btn" href="${SITE_URL}">${esc(E.back)}</a></p>
@@ -701,7 +648,6 @@ const out = (p, s) => {
 const RENDER = { home, images, voices, how };
 for (const lang of LANGS) for (const p of PAGES) out(ROUTES[p][lang] + "index.html", RENDER[p](lang));
 out("404.html", notFound());
-writeFileSync(join(ROOT, "assets/mark.svg"), mark(64, "fav").replace(' class="mark"', "").replace(' aria-hidden="true" focusable="false"', ' xmlns="http://www.w3.org/2000/svg"') + "\n");
 const today = new Date().toISOString().slice(0, 10);
 out(
   "sitemap.xml",
