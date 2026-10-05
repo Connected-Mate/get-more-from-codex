@@ -96,10 +96,12 @@ export const gptvoice = {
 
   // Demo clips. src = path relative to the site root, or null (then a "coming soon" placeholder is shown).
   // `transcript` must be the EXACT text spoken in the file (it doubles as the accessible transcript).
-  // Sounds that are performed, not spoken, go in parentheses.
+  // Sounds that are performed, not spoken, go in parentheses. `hidden: true` keeps an entry out of the page.
   samples: [
     {
       id: "trailer-en",
+      // Hidden: the clip says "No extra bill", which voice billing may contradict. A re-recorded clip is coming.
+      hidden: true,
       title: { en: "Movie trailer", fr: "Bande-annonce" },
       voice: { en: "cedar · trailer style", fr: "cedar · style bande-annonce" },
       lang: "en",

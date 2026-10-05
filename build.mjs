@@ -9,7 +9,10 @@ import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { t, SITE_URL, GPTIMAGE_REPO } from "./content/site.mjs";
-import { gptvoice as V } from "./content/gptvoice.mjs";
+import { gptvoice as RAW } from "./content/gptvoice.mjs";
+
+// Entries flagged `hidden` stay in the data file but never reach the page.
+const V = { ...RAW, samples: RAW.samples.filter((s) => !s.hidden) };
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const LANGS = ["en", "fr"];
