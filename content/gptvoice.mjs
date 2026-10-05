@@ -19,7 +19,7 @@ export const gptvoice = {
   // Short note under the install block (requirements). null = hidden.
   installNote: {
     en: "Needs Node.js 22+, Claude Code and a ChatGPT plan. Already set up GPTImage or the Codex CLI? GPTVoice reuses that sign-in.",
-    fr: "Nécessite Node.js 22+, Claude Code et un abonnement ChatGPT. Déjà GPTImage ou le Codex CLI ? GPTVoice réutilise cette connexion.",
+    fr: "Nécessite Node.js 22+, Claude Code et un abonnement ChatGPT. Déjà GPTImage ou le Codex CLI ? GPTVoice réutilise cette connexion.",
   },
 
   tagline: {
@@ -33,10 +33,10 @@ export const gptvoice = {
 
   // Feature bullets. Label switches automatically between "Planned" and "What it does".
   features: [
-    { en: "10 voices (marin, cedar, coral, sage…). Every voice speaks every language: the text decides.", fr: "10 voix (marin, cedar, coral, sage…). Chaque voix parle toutes les langues : c'est le texte qui décide." },
-    { en: "Direct the delivery in plain words: emotion, pace, accent, whispering.", fr: "Dirigez le jeu avec des mots simples : émotion, rythme, accent, chuchotement." },
+    { en: "10 voices (marin, cedar, coral, sage…). Every voice speaks every language: the text decides.", fr: "10 voix (marin, cedar, coral, sage…). Chaque voix parle toutes les langues : c'est le texte qui décide." },
+    { en: "Direct the delivery in plain words: emotion, pace, accent, whispering.", fr: "Dirigez le jeu avec des mots simples : émotion, rythme, accent, chuchotement." },
     { en: "Long texts are split at sentences and joined into one file with natural pauses.", fr: "Les longs textes sont découpés aux phrases puis réunis en un seul fichier, avec des pauses naturelles." },
-    { en: "Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.", fr: "Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s'il s'en écarte." },
+    { en: "Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.", fr: "Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s'il s'en écarte." },
     { en: "Dialogues with several voices in a single audio file.", fr: "Des dialogues à plusieurs voix dans un seul fichier audio." },
     { en: "Optional subtitles (.srt) for your video editor, and transcription of any audio file.", fr: "Sous-titres (.srt) en option pour votre logiciel de montage, et transcription de n'importe quel fichier audio." },
   ],
@@ -52,7 +52,7 @@ export const gptvoice = {
   samples: [
     {
       id: "keeper-narration",
-      title: { en: "Narration for “The Keeper”", fr: "Narration de « The Keeper »" },
+      title: { en: "Narration for “The Keeper”", fr: "Narration de « The Keeper »" },
       voice: { en: "cedar, calm storyteller", fr: "cedar, conteur posé" },
       lang: "en",
       src: "assets/audio/keeper-en.mp3",
@@ -66,7 +66,7 @@ export const gptvoice = {
       lang: "fr",
       src: "assets/audio/dialogue-fr.mp3",
       type: "audio/mpeg",
-      transcript: "Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d'API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.",
+      transcript: "Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d'API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.",
     },
     {
       id: "trailer-en",

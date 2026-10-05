@@ -20,6 +20,7 @@ export const t = {
     langNames: { en: "English", fr: "Français" },
 
     hero: {
+      banner: { development: "GPTVoice is in development", preview: "GPTVoice is in preview: listen to it", released: "GPTVoice is out: listen to it" },
       eyebrow: "For Claude Code users with a ChatGPT plan",
       h1: "Get more from Codex",
       sub: "from your OpenAI subscription",
@@ -155,19 +156,20 @@ export const t = {
     langNames: { en: "English", fr: "Français" },
 
     hero: {
+      banner: { development: "GPTVoice est en développement", preview: "GPTVoice en avant-première : écoutez-le", released: "GPTVoice est sorti : écoutez-le" },
       eyebrow: "Pour Claude Code, avec un abonnement ChatGPT",
       h1: "Tirez plus de Codex",
       sub: "avec votre abonnement OpenAI",
-      lead: "La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images et des voix. De quoi faire des visuels, des narrations, des pubs et des courts films.",
+      lead: "La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images et des voix. De quoi faire des visuels, des narrations, des pubs et des courts films.",
       ctaPrimary: "Installer GPTImage",
       ctaSecondary: "Voir un court film se fabriquer",
       facts: ["Pas de clé API", "Pas d’abonnement en plus", "Tourne sur votre ordinateur", "Open source (MIT)"],
-      alt: "Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux.",
+      alt: "Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux.",
     },
 
     notice: {
       title: "Zone grise.",
-      body: "Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI. Restez sur un usage personnel : un usage intensif peut atteindre les limites de votre abonnement, voire, au pire, faire restreindre votre compte.",
+      body: "Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI. Restez sur un usage personnel : un usage intensif peut atteindre les limites de votre abonnement, voire, au pire, faire restreindre votre compte.",
       link: "Lire l’avis complet",
     },
 
@@ -186,7 +188,7 @@ export const t = {
     tools: {
       kicker: "Deux outils",
       h2: "Un pour les images, un pour les voix",
-      intro: "Chacun est un petit serveur MCP : un module qui donne une nouvelle compétence à Claude Code. Les deux utilisent la même connexion ChatGPT.",
+      intro: "Chacun est un petit serveur MCP : un module qui donne une nouvelle compétence à Claude Code. Les deux utilisent la même connexion ChatGPT.",
       badge: { available: "Disponible", development: "En développement", preview: "Avant-première", released: "Disponible" },
       featuresLabel: { planned: "Prévu", live: "Ce qu’il fait" },
       examplePromptLabel: "Exemple de demande",
@@ -199,7 +201,7 @@ export const t = {
       notPublic: "Le code n’est pas encore public. La commande d’installation apparaîtra ici dès que le dépôt sera en ligne.",
       notYet: "Pas encore publié. La commande d’installation apparaîtra ici dès que GPTVoice fonctionnera de bout en bout.",
       samplesLabel: "Écouter",
-      sampleSoon: "Extrait audio bientôt disponible. Voici le texte qu’il lira :",
+      sampleSoon: "Extrait audio bientôt disponible. Voici le texte qu’il lira :",
       transcript: "Transcription",
       audioError: "Cet extrait n’a pas pu se charger. La transcription est juste en dessous.",
     },
@@ -208,23 +210,23 @@ export const t = {
       tagline: "Des images et des retouches par GPT Image 2, directement depuis Claude Code.",
       summary: "Logos, illustrations, maquettes, bannières, textures, storyboards. Les illustrations et le storyboard de cette page ont été faits avec.",
       features: [
-        "Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.",
+        "Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.",
         "N’écrase jamais un fichier. Chaque nouvelle version est enregistrée à côté de la précédente.",
-        "Trois outils pour Claude : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.",
+        "Trois outils pour Claude : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.",
         "Marche aussi en une seule commande dans le terminal.",
       ],
       example: "Génère un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png avec l’outil gptimage.",
       install: ["git clone https://github.com/Connected-Mate/gptimage.git", "cd gptimage", "npm install", "./install.sh"],
       installNote: "Demande Node.js 20 ou plus récent, Claude Code et un abonnement ChatGPT payant (Plus, Pro…). Le script est prévu pour macOS et Linux. Redémarrez Claude Code ensuite.",
-      alt: "La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré.",
+      alt: "La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré.",
     },
 
-    voiceAlt: "La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro.",
+    voiceAlt: "La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro.",
 
     film: {
       kicker: "Images + voix",
       h2: "Un court film, à partir d’une idée",
-      intro: "Voici la méthode pour un film de 30 secondes appelé <em>The Keeper</em> (le gardien de phare). Les trois images ci-dessous sont réelles : chacune a été faite avec GPTImage, en une seule demande.",
+      intro: "Voici la méthode pour un film de 30 secondes appelé <em>The Keeper</em> (le gardien de phare). Les trois images ci-dessous sont réelles : chacune a été faite avec GPTImage, en une seule demande.",
       steps: [
         { h: "Écrire", p: "Demandez à Claude un court scénario découpé en scènes, avec une phrase de narration par scène." },
         { h: "Peindre", p: "GPTImage dessine une image par scène. Réutilisez la première comme référence pour garder le même style." },
@@ -232,9 +234,9 @@ export const t = {
         { h: "Assembler", p: "Demandez à Claude de réunir images et son en vidéo avec <code>ffmpeg</code> (gratuit, à installer à part)." },
       ],
       frames: [
-        { n: "Scène 1", line: "Cette nuit-là, la tempête arriva tôt.", alt: "Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." },
-        { n: "Scène 2", line: "Dans la tour, le vieux gardien monta vers la lampe.", alt: "Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." },
-        { n: "Scène 3", line: "Une lumière, et un bateau retrouve le port.", alt: "Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." },
+        { n: "Scène 1", line: "Cette nuit-là, la tempête arriva tôt.", alt: "Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." },
+        { n: "Scène 2", line: "Dans la tour, le vieux gardien monta vers la lampe.", alt: "Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." },
+        { n: "Scène 3", line: "Une lumière, et un bateau retrouve le port.", alt: "Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." },
       ],
       framesCaption: "Storyboard de The Keeper, fait avec GPTImage.",
       alsoH: "La même recette marche pour",
@@ -244,14 +246,14 @@ export const t = {
     faq: {
       h2: "Questions",
       items: [
-        { q: "C’est vraiment gratuit ?", a: "Les outils sont gratuits et open source. Ce qu’ils produisent est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites. Pas de facture à l’image, pas d’abonnement en plus." },
-        { q: "Faut-il une clé API ?", a: "Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur. L’outil ne voit jamais votre mot de passe." },
-        { q: "Quel abonnement ChatGPT faut-il ?", a: "Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule." },
-        { q: "Ça marche en dehors de Claude Code ?", a: "C’est conçu et testé pour Claude Code. GPTImage est un serveur MCP standard : d’autres applis MCP peuvent marcher, mais elles ne sont pas testées. Il existe aussi une commande de terminal." },
-        { q: "Où est stockée ma connexion ?", a: "Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer." },
-        { q: "J’ai une erreur « 429 ». Que faire ?", a: "Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup." },
-        { q: "Puis-je l’utiliser pour mon entreprise ?", a: "Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI." },
-        { q: "Où est décompté l’usage des voix ?", a: "GPTVoice utilise le modèle vocal temps réel d’OpenAI, qui accepte votre connexion ChatGPT (l’API vocale payante d’OpenAI la refuse). OpenAI ne documente pas où cet usage est décompté. Après vos premières voix, jetez un œil à <code>platform.openai.com/usage</code> : si quelque chose y apparaît, arrêtez." },
+        { q: "C’est vraiment gratuit ?", a: "Les outils sont gratuits et open source. Ce qu’ils produisent est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites. Pas de facture à l’image, pas d’abonnement en plus." },
+        { q: "Faut-il une clé API ?", a: "Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur. L’outil ne voit jamais votre mot de passe." },
+        { q: "Quel abonnement ChatGPT faut-il ?", a: "Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule." },
+        { q: "Ça marche en dehors de Claude Code ?", a: "C’est conçu et testé pour Claude Code. GPTImage est un serveur MCP standard : d’autres applis MCP peuvent marcher, mais elles ne sont pas testées. Il existe aussi une commande de terminal." },
+        { q: "Où est stockée ma connexion ?", a: "Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer." },
+        { q: "J’ai une erreur « 429 ». Que faire ?", a: "Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup." },
+        { q: "Puis-je l’utiliser pour mon entreprise ?", a: "Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI." },
+        { q: "Où est décompté l’usage des voix ?", a: "GPTVoice utilise le modèle vocal temps réel d’OpenAI, qui accepte votre connexion ChatGPT (l’API vocale payante d’OpenAI la refuse). OpenAI ne documente pas où cet usage est décompté. Après vos premières voix, jetez un œil à <code>platform.openai.com/usage</code> : si quelque chose y apparaît, arrêtez." },
       ],
     },
 
@@ -259,7 +261,7 @@ export const t = {
       kicker: "À lire",
       h2: "C’est une zone grise, et nous le disons",
       items: [
-        "<strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.",
+        "<strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.",
         "<strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.",
         "<strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.",
         "<strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.",
@@ -269,7 +271,7 @@ export const t = {
 
     footer: {
       made: "Réalisé par Connected-Mate. Open source sous licence MIT.",
-      legal: "Aucun lien avec OpenAI ou Anthropic. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code sont des marques d’Anthropic.",
+      legal: "Aucun lien avec OpenAI ou Anthropic. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code sont des marques d’Anthropic.",
       gptimage: "GPTImage sur GitHub",
       gptvoice: "GPTVoice sur GitHub",
       top: "Retour en haut",

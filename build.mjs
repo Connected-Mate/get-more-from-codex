@@ -115,9 +115,8 @@ function page(lang) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(L.title)}</title>
 <meta name="description" content="${attr(L.description)}">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#b7f2cd" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1d1a" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="canonical" href="${url}">
 <link rel="alternate" hreflang="en" href="${SITE_URL}">
 <link rel="alternate" hreflang="fr" href="${SITE_URL}fr/">
@@ -139,8 +138,8 @@ function page(lang) {
 <meta name="twitter:image" content="${SITE_URL}assets/og.png">
 <link rel="icon" href="${base}assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="${base}assets/apple-touch-icon.png">
-<link rel="preload" href="${base}assets/fonts/pixelify.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${base}assets/fonts/atkinson.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${base}assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${base}assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${base}assets/site.css?v=${CSS_V}">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (EN page only). Storage may be blocked. */
@@ -166,7 +165,7 @@ function page(lang) {
 <a class="skip" href="#main">${esc(L.skip)}</a>
 
 <header class="top">
-  <div class="wrap top-row">
+  <div class="top-row">
     <a class="brand" href="#top"><img src="${base}assets/favicon-32.png" alt="" width="32" height="32"><span>Get more from Codex</span></a>
     <nav class="mainnav" aria-label="${attr(L.navLabel)}">
       <a href="#how">${esc(L.nav.how)}</a>
@@ -182,6 +181,7 @@ function page(lang) {
 <section id="top" class="hero" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div class="hero-copy">
+      <a class="banner" href="#gptvoice"><span class="spark" aria-hidden="true"></span>${esc(H.banner[V.status])}<span aria-hidden="true">→</span></a>
       <p class="eyebrow">${esc(H.eyebrow)}</p>
       <h1 id="hero-h"><span class="h1-main">${esc(H.h1)}</span> <span class="h1-sub">${esc(H.sub)}</span></h1>
       <p class="lead">${esc(H.lead)}</p>
@@ -192,7 +192,7 @@ function page(lang) {
       <ul class="facts">${H.facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     </div>
     <div class="hero-art">
-      ${picture(base, "hero", H.alt, "(min-width: 1180px) 1120px, calc(100vw - 32px)", { eager: true })}
+      ${picture(base, "hero", H.alt, "(min-width: 1000px) 560px, calc(100vw - 32px)", { eager: true })}
     </div>
   </div>
 </section>
@@ -211,7 +211,7 @@ function page(lang) {
       <h2 id="how-h">${esc(L.how.h2)}</h2>
     </div>
     <ol class="steps">
-      ${L.how.steps.map((s, i) => `<li><span class="num" aria-hidden="true">0${i + 1}</span><h3>${esc(s.h)}</h3><p>${esc(s.p)}</p></li>`).join("\n      ")}
+      ${L.how.steps.map((s, i) => `<li><div><h3>${esc(s.h)}</h3><p>${esc(s.p)}</p></div><span class="num" aria-hidden="true">0${i + 1}</span></li>`).join("\n      ")}
     </ol>
     <figure class="ask">
       <figcaption>${esc(L.how.exampleLabel)}</figcaption>
@@ -345,7 +345,7 @@ function notFound() {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(E.title)} · Get more from Codex</title>
 <meta name="robots" content="noindex">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 <link rel="icon" href="${SITE_URL}assets/favicon-32.png" type="image/png">
 <link rel="stylesheet" href="${SITE_URL}assets/site.css?v=${CSS_V}">
 </head>

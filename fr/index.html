@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tirez plus de Codex — avec votre abonnement OpenAI</title>
 <meta name="description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#b7f2cd" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1d1a" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="canonical" href="https://connected-mate.github.io/get-more-from-codex/fr/">
 <link rel="alternate" hreflang="en" href="https://connected-mate.github.io/get-more-from-codex/">
 <link rel="alternate" hreflang="fr" href="https://connected-mate.github.io/get-more-from-codex/fr/">
@@ -20,7 +19,7 @@
 <meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux.">
+<meta property="og:image:alt" content="Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux.">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,9 +28,9 @@
 <meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
 <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="preload" href="../assets/fonts/pixelify.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/atkinson.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=fabe444f">
+<link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css?v=4694e417">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (EN page only). Storage may be blocked. */
 (function () {
@@ -56,7 +55,7 @@
 <a class="skip" href="#main">Aller au contenu</a>
 
 <header class="top">
-  <div class="wrap top-row">
+  <div class="top-row">
     <a class="brand" href="#top"><img src="../assets/favicon-32.png" alt="" width="32" height="32"><span>Get more from Codex</span></a>
     <nav class="mainnav" aria-label="Sections">
       <a href="#how">Comment ça marche</a>
@@ -72,9 +71,10 @@
 <section id="top" class="hero" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div class="hero-copy">
+      <a class="banner" href="#gptvoice"><span class="spark" aria-hidden="true"></span>GPTVoice en avant-première : écoutez-le<span aria-hidden="true">→</span></a>
       <p class="eyebrow">Pour Claude Code, avec un abonnement ChatGPT</p>
       <h1 id="hero-h"><span class="h1-main">Tirez plus de Codex</span> <span class="h1-sub">avec votre abonnement OpenAI</span></h1>
-      <p class="lead">La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images et des voix. De quoi faire des visuels, des narrations, des pubs et des courts films.</p>
+      <p class="lead">La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images et des voix. De quoi faire des visuels, des narrations, des pubs et des courts films.</p>
       <div class="cta">
         <a class="btn" href="#install-gptimage">Installer GPTImage</a>
         <a class="btn ghost" href="#film">Voir un court film se fabriquer</a>
@@ -83,9 +83,9 @@
     </div>
     <div class="hero-art">
       <picture>
-      <source type="image/avif" srcset="../assets/img/hero-800.avif 800w, ../assets/img/hero-1200.avif 1200w, ../assets/img/hero-1774.avif 1774w" sizes="(min-width: 1180px) 1120px, calc(100vw - 32px)">
-      <source type="image/webp" srcset="../assets/img/hero-800.webp 800w, ../assets/img/hero-1200.webp 1200w, ../assets/img/hero-1774.webp 1774w" sizes="(min-width: 1180px) 1120px, calc(100vw - 32px)">
-      <img src="../assets/img/hero-1200.webp" alt="Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux." width="1774" height="887" fetchpriority="high" decoding="async">
+      <source type="image/avif" srcset="../assets/img/hero-800.avif 800w, ../assets/img/hero-1200.avif 1200w, ../assets/img/hero-1774.avif 1774w" sizes="(min-width: 1000px) 560px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="../assets/img/hero-800.webp 800w, ../assets/img/hero-1200.webp 1200w, ../assets/img/hero-1774.webp 1774w" sizes="(min-width: 1000px) 560px, calc(100vw - 32px)">
+      <img src="../assets/img/hero-1200.webp" alt="Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux." width="1774" height="887" fetchpriority="high" decoding="async">
     </picture>
     </div>
   </div>
@@ -94,7 +94,7 @@
 <aside class="notice" aria-label="Zone grise">
   <div class="wrap notice-row">
     <strong>Zone grise.</strong>
-    <p>Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI. Restez sur un usage personnel : un usage intensif peut atteindre les limites de votre abonnement, voire, au pire, faire restreindre votre compte. <a href="#grey">Lire l’avis complet</a>.</p>
+    <p>Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI. Restez sur un usage personnel : un usage intensif peut atteindre les limites de votre abonnement, voire, au pire, faire restreindre votre compte. <a href="#grey">Lire l’avis complet</a>.</p>
   </div>
 </aside>
 
@@ -105,9 +105,9 @@
       <h2 id="how-h">Connectez-vous une fois. Ensuite, demandez.</h2>
     </div>
     <ol class="steps">
-      <li><span class="num" aria-hidden="true">01</span><h3>Installez</h3><p>Copiez quatre lignes dans votre terminal. L’outil est ajouté à Claude Code pour tous les projets de votre ordinateur.</p></li>
-      <li><span class="num" aria-hidden="true">02</span><h3>Connectez-vous avec ChatGPT</h3><p>Votre navigateur s’ouvre sur la page de connexion officielle de ChatGPT. Vous y tapez votre mot de passe, jamais dans l’outil.</p></li>
-      <li><span class="num" aria-hidden="true">03</span><h3>Demandez à Claude</h3><p>Avec vos mots, dans n’importe quel projet. Claude choisit l’outil, crée le fichier et l’enregistre à côté de votre travail.</p></li>
+      <li><div><h3>Installez</h3><p>Copiez quatre lignes dans votre terminal. L’outil est ajouté à Claude Code pour tous les projets de votre ordinateur.</p></div><span class="num" aria-hidden="true">01</span></li>
+      <li><div><h3>Connectez-vous avec ChatGPT</h3><p>Votre navigateur s’ouvre sur la page de connexion officielle de ChatGPT. Vous y tapez votre mot de passe, jamais dans l’outil.</p></div><span class="num" aria-hidden="true">02</span></li>
+      <li><div><h3>Demandez à Claude</h3><p>Avec vos mots, dans n’importe quel projet. Claude choisit l’outil, crée le fichier et l’enregistre à côté de votre travail.</p></div><span class="num" aria-hidden="true">03</span></li>
     </ol>
     <figure class="ask">
       <figcaption>Vous tapez</figcaption>
@@ -121,7 +121,7 @@
     <div class="sec-head">
       <p class="kicker">Deux outils</p>
       <h2 id="tools-h">Un pour les images, un pour les voix</h2>
-      <p>Chacun est un petit serveur MCP : un module qui donne une nouvelle compétence à Claude Code. Les deux utilisent la même connexion ChatGPT.</p>
+      <p>Chacun est un petit serveur MCP : un module qui donne une nouvelle compétence à Claude Code. Les deux utilisent la même connexion ChatGPT.</p>
     </div>
 
     <article class="tool" aria-labelledby="gptimage-h">
@@ -129,14 +129,14 @@
         <picture>
       <source type="image/avif" srcset="../assets/img/mascot-360.avif 360w, ../assets/img/mascot-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
       <source type="image/webp" srcset="../assets/img/mascot-360.webp 360w, ../assets/img/mascot-720.webp 720w" sizes="(min-width: 900px) 400px, 70vw">
-      <img src="../assets/img/mascot-720.webp" alt="La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré." width="1074" height="1014" loading="lazy" decoding="async">
+      <img src="../assets/img/mascot-720.webp" alt="La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré." width="1074" height="1014" loading="lazy" decoding="async">
     </picture>
       </div>
       <div class="tool-body">
         <div class="tool-title"><h3 id="gptimage-h">GPTImage</h3><span class="badge is-live">Disponible</span></div>
         <p class="tagline">Des images et des retouches par GPT Image 2, directement depuis Claude Code.</p>
         <p>Logos, illustrations, maquettes, bannières, textures, storyboards. Les illustrations et le storyboard de cette page ont été faits avec.</p>
-        <ul class="feat"><li>Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.</li><li>N’écrase jamais un fichier. Chaque nouvelle version est enregistrée à côté de la précédente.</li><li>Trois outils pour Claude : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.</li><li>Marche aussi en une seule commande dans le terminal.</li></ul>
+        <ul class="feat"><li>Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.</li><li>N’écrase jamais un fichier. Chaque nouvelle version est enregistrée à côté de la précédente.</li><li>Trois outils pour Claude : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.</li><li>Marche aussi en une seule commande dans le terminal.</li></ul>
         <p class="label">Exemple de demande</p>
         <p class="prompt">Génère un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png avec l’outil gptimage.</p>
         <div id="install-gptimage" class="install">
@@ -159,7 +159,7 @@ npm install
         <picture>
       <source type="image/avif" srcset="../assets/img/voice-360.avif 360w, ../assets/img/voice-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
       <source type="image/webp" srcset="../assets/img/voice-360.webp 360w, ../assets/img/voice-720.webp 720w" sizes="(min-width: 900px) 400px, 70vw">
-      <img src="../assets/img/voice-720.webp" alt="La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro." width="974" height="994" loading="lazy" decoding="async">
+      <img src="../assets/img/voice-720.webp" alt="La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro." width="974" height="994" loading="lazy" decoding="async">
     </picture>
       </div>
       <div class="tool-body">
@@ -167,12 +167,12 @@ npm install
         <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre abonnement ChatGPT.</p>
         <p>Demandez à Claude une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. GPTVoice pilote le modèle vocal temps réel d&#39;OpenAI avec votre connexion ChatGPT, et vérifie que chaque mot a été lu.</p>
         <p class="label">Ce qu’il fait</p>
-        <ul class="feat"><li>10 voix (marin, cedar, coral, sage…). Chaque voix parle toutes les langues : c&#39;est le texte qui décide.</li><li>Dirigez le jeu avec des mots simples : émotion, rythme, accent, chuchotement.</li><li>Les longs textes sont découpés aux phrases puis réunis en un seul fichier, avec des pauses naturelles.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s&#39;il s&#39;en écarte.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Sous-titres (.srt) en option pour votre logiciel de montage, et transcription de n&#39;importe quel fichier audio.</li></ul>
+        <ul class="feat"><li>10 voix (marin, cedar, coral, sage…). Chaque voix parle toutes les langues : c&#39;est le texte qui décide.</li><li>Dirigez le jeu avec des mots simples : émotion, rythme, accent, chuchotement.</li><li>Les longs textes sont découpés aux phrases puis réunis en un seul fichier, avec des pauses naturelles.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s&#39;il s&#39;en écarte.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Sous-titres (.srt) en option pour votre logiciel de montage, et transcription de n&#39;importe quel fichier audio.</li></ul>
         <p class="label">Exemple de demande</p>
         <p class="prompt">Lis ce texte comme un conteur posé, avec une pause avant la dernière phrase, et enregistre-le dans keeper.mp3.</p>
         <p class="label">Écouter</p>
         <ul class="samples"><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-keeper-narration">Narration de « The Keeper »</h4><p class="meta">cedar, conteur posé</p></div>
+            <div class="sample-head"><h4 id="s-keeper-narration">Narration de « The Keeper »</h4><p class="meta">cedar, conteur posé</p></div>
             <div>
               <audio controls preload="none" aria-labelledby="s-keeper-narration"><source src="../assets/audio/keeper-en.mp3" type="audio/mpeg"></audio>
               <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
@@ -183,7 +183,7 @@ npm install
             <div>
               <audio controls preload="none" aria-labelledby="s-dialogue-fr"><source src="../assets/audio/dialogue-fr.mp3" type="audio/mpeg"></audio>
               <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
-              <details class="transcript"><summary>Transcription</summary><p lang="fr">Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d&#39;API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
+              <details class="transcript"><summary>Transcription</summary><p lang="fr">Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d&#39;API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
             </div>
           </li><li class="sample" data-sample>
             <div class="sample-head"><h4 id="s-trailer-en">Voix de bande-annonce</h4><p class="meta">cedar, grave et dramatique</p></div>
@@ -208,7 +208,7 @@ npm install
     <div class="sec-head">
       <p class="kicker">Images + voix</p>
       <h2 id="film-h">Un court film, à partir d’une idée</h2>
-      <p>Voici la méthode pour un film de 30 secondes appelé <em>The Keeper</em> (le gardien de phare). Les trois images ci-dessous sont réelles : chacune a été faite avec GPTImage, en une seule demande.</p>
+      <p>Voici la méthode pour un film de 30 secondes appelé <em>The Keeper</em> (le gardien de phare). Les trois images ci-dessous sont réelles : chacune a été faite avec GPTImage, en une seule demande.</p>
     </div>
     <figure class="strip">
       <ol class="frames">
@@ -216,7 +216,7 @@ npm install
           <picture>
       <source type="image/avif" srcset="../assets/img/story-1-640.avif 640w, ../assets/img/story-1-1000.avif 1000w, ../assets/img/story-1-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
       <source type="image/webp" srcset="../assets/img/story-1-640.webp 640w, ../assets/img/story-1-1000.webp 1000w, ../assets/img/story-1-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <img src="../assets/img/story-1-1000.webp" alt="Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." width="1600" height="900" loading="lazy" decoding="async">
+      <img src="../assets/img/story-1-1000.webp" alt="Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." width="1600" height="900" loading="lazy" decoding="async">
     </picture>
           <p class="scene">Scène 1</p>
           <p class="line">Cette nuit-là, la tempête arriva tôt.</p>
@@ -225,7 +225,7 @@ npm install
           <picture>
       <source type="image/avif" srcset="../assets/img/story-2-640.avif 640w, ../assets/img/story-2-1000.avif 1000w, ../assets/img/story-2-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
       <source type="image/webp" srcset="../assets/img/story-2-640.webp 640w, ../assets/img/story-2-1000.webp 1000w, ../assets/img/story-2-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <img src="../assets/img/story-2-1000.webp" alt="Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." width="1600" height="900" loading="lazy" decoding="async">
+      <img src="../assets/img/story-2-1000.webp" alt="Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." width="1600" height="900" loading="lazy" decoding="async">
     </picture>
           <p class="scene">Scène 2</p>
           <p class="line">Dans la tour, le vieux gardien monta vers la lampe.</p>
@@ -234,7 +234,7 @@ npm install
           <picture>
       <source type="image/avif" srcset="../assets/img/story-3-640.avif 640w, ../assets/img/story-3-1000.avif 1000w, ../assets/img/story-3-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
       <source type="image/webp" srcset="../assets/img/story-3-640.webp 640w, ../assets/img/story-3-1000.webp 1000w, ../assets/img/story-3-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <img src="../assets/img/story-3-1000.webp" alt="Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." width="1600" height="900" loading="lazy" decoding="async">
+      <img src="../assets/img/story-3-1000.webp" alt="Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." width="1600" height="900" loading="lazy" decoding="async">
     </picture>
           <p class="scene">Scène 3</p>
           <p class="line">Une lumière, et un bateau retrouve le port.</p>
@@ -259,14 +259,14 @@ npm install
   <div class="wrap faq-grid">
     <h2 id="faq-h">Questions</h2>
     <div class="faq-list">
-      <details><summary>C’est vraiment gratuit ?</summary><div class="answer"><p>Les outils sont gratuits et open source. Ce qu’ils produisent est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites. Pas de facture à l’image, pas d’abonnement en plus.</p></div></details>
-      <details><summary>Faut-il une clé API ?</summary><div class="answer"><p>Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur. L’outil ne voit jamais votre mot de passe.</p></div></details>
-      <details><summary>Quel abonnement ChatGPT faut-il ?</summary><div class="answer"><p>Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule.</p></div></details>
-      <details><summary>Ça marche en dehors de Claude Code ?</summary><div class="answer"><p>C’est conçu et testé pour Claude Code. GPTImage est un serveur MCP standard : d’autres applis MCP peuvent marcher, mais elles ne sont pas testées. Il existe aussi une commande de terminal.</p></div></details>
-      <details><summary>Où est stockée ma connexion ?</summary><div class="answer"><p>Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer.</p></div></details>
-      <details><summary>J’ai une erreur « 429 ». Que faire ?</summary><div class="answer"><p>Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup.</p></div></details>
-      <details><summary>Puis-je l’utiliser pour mon entreprise ?</summary><div class="answer"><p>Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI.</p></div></details>
-      <details><summary>Où est décompté l’usage des voix ?</summary><div class="answer"><p>GPTVoice utilise le modèle vocal temps réel d’OpenAI, qui accepte votre connexion ChatGPT (l’API vocale payante d’OpenAI la refuse). OpenAI ne documente pas où cet usage est décompté. Après vos premières voix, jetez un œil à <code>platform.openai.com/usage</code> : si quelque chose y apparaît, arrêtez.</p></div></details>
+      <details><summary>C’est vraiment gratuit ?</summary><div class="answer"><p>Les outils sont gratuits et open source. Ce qu’ils produisent est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites. Pas de facture à l’image, pas d’abonnement en plus.</p></div></details>
+      <details><summary>Faut-il une clé API ?</summary><div class="answer"><p>Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur. L’outil ne voit jamais votre mot de passe.</p></div></details>
+      <details><summary>Quel abonnement ChatGPT faut-il ?</summary><div class="answer"><p>Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule.</p></div></details>
+      <details><summary>Ça marche en dehors de Claude Code ?</summary><div class="answer"><p>C’est conçu et testé pour Claude Code. GPTImage est un serveur MCP standard : d’autres applis MCP peuvent marcher, mais elles ne sont pas testées. Il existe aussi une commande de terminal.</p></div></details>
+      <details><summary>Où est stockée ma connexion ?</summary><div class="answer"><p>Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer.</p></div></details>
+      <details><summary>J’ai une erreur « 429 ». Que faire ?</summary><div class="answer"><p>Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup.</p></div></details>
+      <details><summary>Puis-je l’utiliser pour mon entreprise ?</summary><div class="answer"><p>Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI.</p></div></details>
+      <details><summary>Où est décompté l’usage des voix ?</summary><div class="answer"><p>GPTVoice utilise le modèle vocal temps réel d’OpenAI, qui accepte votre connexion ChatGPT (l’API vocale payante d’OpenAI la refuse). OpenAI ne documente pas où cet usage est décompté. Après vos premières voix, jetez un œil à <code>platform.openai.com/usage</code> : si quelque chose y apparaît, arrêtez.</p></div></details>
     </div>
   </div>
 </section>
@@ -275,7 +275,7 @@ npm install
   <div class="wrap">
     <p class="kicker">À lire</p>
     <h2 id="grey-h">C’est une zone grise, et nous le disons</h2>
-    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
+    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
   </div>
 </section>
 </main>
@@ -284,7 +284,7 @@ npm install
   <div class="wrap foot-grid">
     <div>
       <p>Réalisé par Connected-Mate. Open source sous licence MIT.</p>
-      <p class="legal">Aucun lien avec OpenAI ou Anthropic. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code sont des marques d’Anthropic.</p>
+      <p class="legal">Aucun lien avec OpenAI ou Anthropic. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code sont des marques d’Anthropic.</p>
     </div>
     <ul class="foot-links">
       <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage sur GitHub</a></li>

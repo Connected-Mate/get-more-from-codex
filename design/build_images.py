@@ -47,18 +47,39 @@ head = m.crop((270, 160, 790, 680))
 for s, fn in [(32, "favicon-32.png"), (180, "apple-touch-icon.png"), (512, "icon-512.png")]:
     head.resize((s, s), Image.LANCZOS).save(ROOT / "assets" / fn, optimize=True)
 
-# Social card 1200x630: hero art + title
-font_path = str(SRC / "PixelifySans.ttf")
-card = Image.new("RGB", (1200, 630), MINT)
-hero = Image.open(SRC / "hero.png").convert("RGB")
-hero = hero.resize((1060, round(hero.height * 1060 / hero.width)), Image.LANCZOS)
-card.paste(hero.crop((0, 60, 1060, 470)), (70, 205))
+# Social card 1200x630: dusk horizon gradient, framed hero art, DM Sans title
+def horizon(w, h):
+    stops = [(0.0, (143, 63, 18)), (0.22, (165, 80, 42)), (0.6, (74, 63, 120)), (1.0, (28, 58, 158))]
+    row = Image.new("RGB", (w, 1))
+    for x in range(w):
+        t = x / (w - 1)
+        for (a, ca), (b, cb) in zip(stops, stops[1:]):
+            if a <= t <= b:
+                k = (t - a) / (b - a)
+                row.putpixel((x, 0), tuple(round(ca[i] + (cb[i] - ca[i]) * k) for i in range(3)))
+                break
+    img = row.resize((w, h))
+    fade = Image.new("L", (1, h))
+    for y in range(h):
+        fade.putpixel((0, y), round(255 * max(0.0, (y / h - 0.55) / 0.45)))
+    img.paste(Image.new("RGB", (w, h), (10, 10, 10)), (0, 0), fade.resize((w, h)))
+    return img
+
+def rounded(im, r):
+    mask = Image.new("L", im.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, im.width - 1, im.height - 1), r, fill=255)
+    return mask
+
+card = horizon(1200, 630)
+dm = str(SRC / "DMSans.ttf")
+f1 = ImageFont.truetype(dm, 74); f1.set_variation_by_axes([40, 500])
+f2 = ImageFont.truetype(dm, 34); f2.set_variation_by_axes([24, 500])
 d = ImageDraw.Draw(card)
-f1 = ImageFont.truetype(font_path, 76); f1.set_variation_by_name("Bold")
-f2 = ImageFont.truetype(font_path, 38); f2.set_variation_by_name("Medium")
-d.text((70, 48), "Get more from Codex", font=f1, fill=INK)
-tw = d.textlength("from your OpenAI subscription", font=f2)
-d.rectangle((62, 140, 78 + tw, 192), fill=GOLD)
-d.text((70, 144), "from your OpenAI subscription", font=f2, fill=INK)
+d.text((64, 70), "Get more", font=f1, fill=(255, 255, 255))
+d.text((64, 148), "from Codex", font=f1, fill=(255, 255, 255))
+d.text((66, 248), "from your OpenAI subscription", font=f2, fill=(232, 228, 236))
+art = Image.open(SRC / "hero.png").convert("RGB")
+art = art.resize((620, round(art.height * 620 / art.width)), Image.LANCZOS)
+card.paste(art, (530, 296), rounded(art, 24))
 card.save(ROOT / "assets" / "og.png", optimize=True)
 print("og + favicons done")
