@@ -31,6 +31,12 @@ function validateVoice() {
     throw new Error("gptvoice.repo must be null or a https://github.com/<owner>/<repo> URL");
   if (V.install !== null && !(Array.isArray(V.install) && V.install.every((l) => typeof l === "string")))
     throw new Error("gptvoice.install must be null or an array of strings");
+  for (const v of V.voices ?? []) {
+    for (const l of ["en", "fr"]) {
+      const f = join(ROOT, "assets/audio/voices", `${v.id}-${l}.mp3`);
+      if (!existsSync(f)) throw new Error(`voice ${v.id}: missing sample ${f}`);
+    }
+  }
   for (const s of V.samples) {
     if (!s.id || !/^[a-z0-9-]+$/.test(s.id)) throw new Error(`sample id invalid: ${s.id}`);
     if (!s.transcript) throw new Error(`sample ${s.id} needs a transcript`);
@@ -90,6 +96,39 @@ function sample(L, base, s, lang) {
               ${tr}
             </div>
           </li>`;
+}
+
+function gallery(L, base, lang) {
+  const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+  const G = L.listen;
+  const genders = ["female", "male", "neutral"].filter((g) => V.voices.some((v) => v.gender === g));
+  return `<div class="gallery" data-gallery>
+      <div class="gallery-head">
+        <h3 class="sub-h" id="voices-h">${esc(G.galleryH.replace("{n}", V.voices.length))}</h3>
+        <div class="filters" role="group" aria-label="${attr(G.filterLabel)}" hidden>
+          <button type="button" data-filter="all" aria-pressed="true">${esc(G.all)}</button>
+          ${genders.map((g) => `<button type="button" data-filter="${g}" aria-pressed="false">${esc(G.genders[g])}</button>`).join("")}
+        </div>
+      </div>
+      <div class="voice-line">
+        <p>${esc(G.lineIntro)}</p>
+        <p lang="en">${esc(V.voiceLine.en.replace("{Name}", cap(V.voices[0].id)))}</p>
+        <p lang="fr">${esc(V.voiceLine.fr.replace("{Name}", cap(V.voices[0].id)))}</p>
+      </div>
+      <p class="sr" role="status" aria-live="polite" data-gallery-status></p>
+      <ul class="voices" aria-labelledby="voices-h">
+        ${V.voices.map((v) => {
+          const name = cap(v.id);
+          const play = (l) => `<a class="play" href="${base}assets/audio/voices/${v.id}-${l}.mp3" data-play data-label="${attr(G.playLabel.replace("{name}", name).replace("{lang}", G.langs[l]))}" aria-label="${attr(G.playLabel.replace("{name}", name).replace("{lang}", G.langs[l]))}"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">${l.toUpperCase()}</span></a>`;
+          return `<li class="voice" data-gender="${v.gender}">
+          <div class="v-head"><h4>${name}</h4><span class="v-gender">${esc(G.genders[v.gender])}</span>${v.recommended ? `<span class="badge is-soon">${esc(G.recommended)}</span>` : ""}</div>
+          <p class="v-tags">${v.tags[lang].map(esc).join(" · ")}</p>
+          <p class="v-best"><span>${esc(G.bestFor)}</span> ${esc(v.bestFor[lang])}</p>
+          <div class="v-play">${play("en")}${play("fr")}</div>
+        </li>`;
+        }).join("\n        ")}
+      </ul>
+    </div>`;
 }
 
 // ---------- page ----------
@@ -170,6 +209,7 @@ function page(lang) {
     <nav class="mainnav" aria-label="${attr(L.navLabel)}">
       <a href="#how">${esc(L.nav.how)}</a>
       <a href="#tools">${esc(L.nav.tools)}</a>
+      ${V.samples.length || V.voices?.length ? `<a href="#listen">${esc(L.nav.listen)}</a>` : ""}
       <a href="#film">${esc(L.nav.film)}</a>
       <a href="#faq">${esc(L.nav.faq)}</a>
     </nav>
@@ -181,7 +221,7 @@ function page(lang) {
 <section id="top" class="hero" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <a class="banner" href="#gptvoice"><span class="spark" aria-hidden="true"></span>${esc(H.banner[V.status])}<span aria-hidden="true">→</span></a>
+      <a class="banner" href="${V.samples.length ? "#listen" : "#gptvoice"}"><span class="spark" aria-hidden="true"></span>${esc(H.banner[V.status])}<span aria-hidden="true">→</span></a>
       <p class="eyebrow">${esc(H.eyebrow)}</p>
       <h1 id="hero-h"><span class="h1-main">${esc(H.h1)}</span> <span class="h1-sub">${esc(H.sub)}</span></h1>
       <p class="lead">${esc(H.lead)}</p>
@@ -257,10 +297,18 @@ function page(lang) {
         <p>${esc(V.summary[lang])}</p>
         <p class="label">${esc(live ? L.tools.featuresLabel.live : L.tools.featuresLabel.planned)}</p>
         <ul class="feat${live ? "" : " is-planned"}">${V.features.map((f) => `<li>${esc(f[lang])}</li>`).join("")}</ul>
+        ${V.controls?.length ? `<p class="label">${esc(L.voice.controlsH)}</p>
+        <div class="controls">${V.controls.map((c) => `<div class="ctl">
+          <h4>${esc(c.level[lang])}</h4><p class="ctl-note">${esc(c.note[lang])}</p>
+          <ul>${c.items.map((i) => `<li>${esc(i[lang])}</li>`).join("")}</ul>
+        </div>`).join("")}</div>` : ""}
+        ${V.measured?.length ? `<p class="label">${esc(L.voice.measuredH)}</p>
+        <dl class="measured">${V.measured.map((m) => `<div><dt>${esc(m.value[lang])}</dt><dd>${esc(m.label[lang])}</dd></div>`).join("")}</dl>` : ""}
+        ${V.mcpTools?.length ? `<p class="label">${esc(L.voice.toolsH.replace("{n}", V.mcpTools.length))}</p>
+        <ul class="chips">${V.mcpTools.map((x) => `<li><code>${esc(x)}</code></li>`).join("")}</ul>` : ""}
         <p class="label">${esc(L.tools.examplePromptLabel)}</p>
         <p class="prompt">${esc(V.examplePrompt[lang])}</p>
-        ${V.samples.length ? `<p class="label">${esc(L.tools.samplesLabel)}</p>
-        <ul class="samples">${V.samples.map((s) => sample(L, base, s, lang)).join("")}</ul>` : ""}
+        ${V.samples.length || V.voices?.length ? `<p class="note"><a href="#listen">${esc(L.voice.listenLink)}</a></p>` : ""}
         <div id="install-gptvoice" class="install">
           ${live && V.install && V.repo ? codeBlock(L, V.install, L.tools.installLabel) : `<p class="not-yet">${esc(live ? L.tools.notPublic : L.tools.notYet)}</p>`}
           ${live && V.install && V.repo && V.installNote ? `<p class="note">${esc(V.installNote[lang] ?? V.installNote)}</p>` : ""}
@@ -271,7 +319,20 @@ function page(lang) {
   </div>
 </section>
 
-<section id="film" class="film" aria-labelledby="film-h">
+${V.samples.length || V.voices?.length ? `<section id="listen" class="listen" aria-labelledby="listen-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">${esc(L.listen.kicker)}</p>
+      <h2 id="listen-h">${esc(L.listen.h2)}</h2>
+      <p>${esc(L.listen.intro)}</p>
+    </div>
+    ${V.samples.length ? `<h3 class="sub-h">${esc(L.listen.demosH)}</h3>
+    <ul class="samples">${V.samples.map((s) => sample(L, base, s, lang)).join("")}</ul>` : ""}
+    ${V.voices?.length ? gallery(L, base, lang) : ""}
+  </div>
+</section>
+
+` : ""}<section id="film" class="film" aria-labelledby="film-h">
   <div class="wrap">
     <div class="sec-head">
       <p class="kicker">${esc(L.film.kicker)}</p>

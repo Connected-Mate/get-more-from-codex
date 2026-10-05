@@ -34,67 +34,136 @@ export const gptvoice = {
   // Feature bullets. Label switches automatically between "Planned" and "What it does".
   // Every claim below was measured (gptvoice README: "Controls: real vs. best-effort" and "Quality").
   features: [
-    { en: "10 voices, each with a short French and English sample, sorted by gender, register and best use. Every voice speaks every language.", fr: "10 voix, chacune avec un court extrait en français et en anglais, classées par genre, timbre et usage. Chaque voix parle toutes les langues." },
-    { en: "Direct the performance: emotion (joy, sadness, anger, excitement…), intensity, whisper or shout, narration styles like trailer, documentary or meditation.", fr: "Dirigez le jeu : émotion (joie, tristesse, colère, enthousiasme…), intensité, chuchoté ou crié, styles de narration comme bande-annonce, documentaire ou méditation." },
-    { en: "Exact controls: speed, a higher or lower voice, and silences to the millisecond.", fr: "Des réglages exacts : la vitesse, une voix plus aiguë ou plus grave, et des silences à la milliseconde près." },
-    { en: "Cues inside your text, like [whispers], [laughs], [sighs] or [pause 1s], plus pronunciation hints for names. Cues are performed, never read aloud.", fr: "Des indications dans le texte, comme [chuchote], [rit], [soupire] ou [pause 1s], et des aides de prononciation pour les noms. Elles sont jouées, jamais lues." },
-    { en: "Word-for-word reading, measured at 99.4% in English and 98.8% in French on deliberately tricky texts.", fr: "Une lecture mot pour mot, mesurée à 99,4 % en anglais et 98,8 % en français sur des textes volontairement difficiles." },
-    { en: "Dialogues with several voices in one file, saved voice presets and favorites, and subtitles (.srt) for your video editor.", fr: "Des dialogues à plusieurs voix dans un seul fichier, des réglages et voix favorites enregistrés, et des sous-titres (.srt) pour votre logiciel de montage." },
+    { en: "10 voices, sorted by gender and character. Every voice speaks every language: the text decides.", fr: "10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide." },
+    { en: "Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.", fr: "Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte." },
+    { en: "Dialogues with several voices in a single audio file.", fr: "Des dialogues à plusieurs voix dans un seul fichier audio." },
+    { en: "Save your favorite voices and your own presets (voice + settings) to reuse them.", fr: "Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser." },
+    { en: "Subtitles (.srt) for your video editor, and transcription of any audio file.", fr: "Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio." },
   ],
+
+  // Direction controls, grouped by how reliably they work (measured A/B tests in the gptvoice repo).
+  controls: [
+    {
+      level: { en: "Exact", fr: "Exact" },
+      note: { en: "Applied to the audio itself, every time.", fr: "Appliqué au son lui-même, à chaque fois." },
+      items: [
+        { en: "Speed, from 0.25× to 1.5×", fr: "Vitesse, de 0,25× à 1,5×" },
+        { en: "Pitch shift, ±12 semitones", fr: "Hauteur, ±12 demi-tons" },
+        { en: "Silences to the millisecond: [pause 1s]", fr: "Silences à la milliseconde : [pause 1s]" },
+      ],
+    },
+    {
+      level: { en: "Strong", fr: "Fiable" },
+      note: { en: "Clearly audible on almost every take.", fr: "Nettement audible sur presque chaque prise." },
+      items: [
+        { en: "Whisper or shout", fr: "Chuchoté ou crié" },
+        { en: "Emotion and intensity", fr: "Émotion et intensité" },
+        { en: "Narration styles: trailer, documentary, audiobook, ad, meditation…", fr: "Styles de narration : bande-annonce, documentaire, livre audio, pub, méditation…" },
+        { en: "Cues in your text: [whispers] [excited] [laughs] [sighs]", fr: "Indications dans le texte : [whispers] [excited] [laughs] [sighs]" },
+      ],
+    },
+    {
+      level: { en: "Best effort", fr: "Au mieux" },
+      note: { en: "Works often, not always.", fr: "Marche souvent, pas toujours." },
+      items: [
+        { en: "Accent", fr: "Accent" },
+        { en: "Character voice (“an old sea captain”)", fr: "Voix de personnage (« un vieux capitaine »)" },
+      ],
+    },
+  ],
+
+  // Measured on the gptvoice benchmark (data/bench-accuracy.json, gpt-realtime-1.5, first take, 28 takes per language).
+  measured: [
+    { value: { en: "99.4%", fr: "99,4 %" }, label: { en: "of words read exactly in English, on deliberately hard texts", fr: "des mots lus exactement en anglais, sur des textes volontairement difficiles" } },
+    { value: { en: "98.8%", fr: "98,8 %" }, label: { en: "of words read exactly in French, same test", fr: "des mots lus exactement en français, même test" } },
+    { value: { en: "0 / 32", fr: "0 / 32" }, label: { en: "texts trying to hijack the voice were obeyed. They were read aloud, never followed.", fr: "textes cherchant à détourner la voix ont été suivis. Ils ont été lus, jamais exécutés." } },
+  ],
+
+  // The MCP tools Claude Code gets.
+  mcpTools: ["generate_speech", "generate_dialogue", "transcribe_audio", "list_voices", "favorite_voice", "save_voice_preset", "list_voice_presets", "delete_voice_preset", "voice_auth_status"],
 
   examplePrompt: {
     en: "Read this script as a calm storyteller, with a pause before the last line, and save it as keeper.mp3.",
     fr: "Lis ce texte comme un conteur posé, avec une pause avant la dernière phrase, et enregistre-le dans keeper.mp3.",
   },
 
-  // Audio samples. src = path relative to the site root (e.g. "assets/audio/keeper-en.mp3"), or null.
-  // While src is null, a "coming soon" placeholder is shown with the script.
+  // Demo clips. src = path relative to the site root, or null (then a "coming soon" placeholder is shown).
   // `transcript` must be the EXACT text spoken in the file (it doubles as the accessible transcript).
+  // Sounds that are performed, not spoken, go in parentheses.
   samples: [
     {
-      id: "keeper-narration",
-      title: { en: "Narration for “The Keeper”", fr: "Narration de « The Keeper »" },
-      voice: { en: "cedar, calm storyteller", fr: "cedar, conteur posé" },
+      id: "trailer-en",
+      title: { en: "Movie trailer", fr: "Bande-annonce" },
+      voice: { en: "cedar · trailer style", fr: "cedar · style bande-annonce" },
       lang: "en",
-      src: "assets/audio/keeper-en.mp3",
+      src: "assets/audio/demo/en-trailer-cedar.mp3",
       type: "audio/mpeg",
-      transcript: "The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.",
+      transcript: "In a world where every story deserves a voice… one tool changes everything. No API key. No extra bill. Just your words… brought to life.",
     },
     {
       id: "emotions-en",
-      title: { en: "One voice, four emotions", fr: "Une voix, quatre émotions" },
-      voice: { en: "coral: happy, sad, angry, whispering", fr: "coral : joyeuse, triste, en colère, chuchotée" },
+      title: { en: "One line, four emotions", fr: "Une phrase, quatre émotions" },
+      voice: { en: "coral · happy, sad, angry, whispering", fr: "coral · joie, tristesse, colère, chuchotement" },
       lang: "en",
-      src: "assets/audio/emotions-en.mp3",
+      src: "assets/audio/demo/en-emotions-coral.mp3",
       type: "audio/mpeg",
       transcript: "We won the match! We lost the match. Who lost the match?! Shh… nobody knows about the match.",
     },
     {
-      id: "conte-fr",
-      title: { en: "A French tale, with a whisper", fr: "Un conte, avec un chuchotement" },
-      voice: { en: "marin, audiobook narration", fr: "marin, narration de livre audio" },
-      lang: "fr",
-      src: "assets/audio/conte-fr.mp3",
+      id: "meditation-en",
+      title: { en: "Guided meditation", fr: "Méditation guidée" },
+      voice: { en: "sage · meditation style", fr: "sage · style méditation" },
+      lang: "en",
+      src: "assets/audio/demo/en-meditation-sage.mp3",
       type: "audio/mpeg",
-      transcript: "Il était une fois, au bord de la mer, une vieille horloge qui ne donnait jamais la bonne heure. Un soir, quelqu'un frappa à la porte du clocher… C'était une enfant, une lanterne à la main !",
+      transcript: "Breathe in slowly and let it go. Feel your shoulders soften one breath at a time.",
+    },
+    {
+      id: "conte-fr",
+      title: { en: "A French fairy tale", fr: "Un conte" },
+      voice: { en: "marin · audiobook narration", fr: "marin · narration de livre audio" },
+      lang: "fr",
+      src: "assets/audio/demo/fr-conte-marin.mp3",
+      type: "audio/mpeg",
+      transcript: "Il était une fois, au bord de la mer, une vieille horloge qui ne donnait jamais la bonne heure. Un soir, quelqu’un frappa à la porte du clocher… C’était une enfant, une lanterne à la main !",
+    },
+    {
+      id: "pub-fr",
+      title: { en: "A French radio ad", fr: "Une pub radio" },
+      voice: { en: "coral · ad style", fr: "coral · style pub" },
+      lang: "fr",
+      src: "assets/audio/demo/fr-pub-coral.mp3",
+      type: "audio/mpeg",
+      transcript: "Nouveau ! La voix de vos vidéos, en un clic, avec votre abonnement ChatGPT. Essayez GPTVoice dès aujourd’hui !",
     },
     {
       id: "dialogue-fr",
-      title: { en: "Two-voice dialogue, in French", fr: "Dialogue à deux voix, en français" },
-      voice: { en: "coral and ash, laughs and sighs included", fr: "coral et ash, rires et soupirs compris" },
+      title: { en: "Two-voice dialogue, in French", fr: "Dialogue à deux voix" },
+      voice: { en: "coral and ash · one file", fr: "coral et ash · un seul fichier" },
       lang: "fr",
-      src: "assets/audio/dialogue-fr.mp3",
+      src: "assets/audio/demo/fr-dialogue.mp3",
       type: "audio/mpeg",
-      transcript: "Léa : (rit) Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d’API ? (soupire) Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo (chuchote) : Bon… alors on enregistre la bande-annonce ce soir.",
+      transcript: "Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d’API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.",
     },
-    {
-      id: "trailer-en",
-      title: { en: "Movie-trailer voice", fr: "Voix de bande-annonce" },
-      voice: { en: "cedar, trailer style", fr: "cedar, style bande-annonce" },
-      lang: "en",
-      src: "assets/audio/trailer-en.mp3",
-      type: "audio/mpeg",
-      transcript: "In a world where every story deserves a voice… one tool changes everything. No API key. No extra bill. Just your words… brought to life.",
-    },
+  ],
+
+  // Voice gallery. Each voice reads `voiceLine` (with its own name) in English and French.
+  // Gender follows OpenAI's presentation and the measured pitch; "deep" is measured; other tags are editorial.
+  // Source: gptvoice src/voices.js + data/voice-metrics.json (all 20 clips verified word for word).
+  voiceLine: {
+    en: "Hello, I’m {Name}. I can narrate your stories, voice your videos, and bring your characters to life.",
+    fr: "Bonjour, je suis {Name}. Je peux raconter vos histoires, doubler vos vidéos et donner vie à vos personnages.",
+  },
+  voices: [
+    { id: "marin", gender: "female", recommended: true, tags: { en: ["natural", "polished", "warm"], fr: ["naturelle", "soignée", "chaleureuse"] }, bestFor: { en: "narration, audiobook, podcast", fr: "narration, livre audio, podcast" } },
+    { id: "cedar", gender: "male", recommended: true, tags: { en: ["natural", "warm", "confident"], fr: ["naturelle", "chaleureuse", "assurée"] }, bestFor: { en: "narration, podcast, ad", fr: "narration, podcast, pub" } },
+    { id: "coral", gender: "female", tags: { en: ["warm", "friendly", "lively"], fr: ["chaleureuse", "amicale", "vive"] }, bestFor: { en: "ad, kids, social video", fr: "pub, enfants, vidéo réseaux sociaux" } },
+    { id: "sage", gender: "female", tags: { en: ["gentle", "soft", "thoughtful"], fr: ["douce", "feutrée", "réfléchie"] }, bestFor: { en: "meditation, intimate, e-learning", fr: "méditation, confidence, e-learning" } },
+    { id: "shimmer", gender: "female", tags: { en: ["bright", "airy", "youthful"], fr: ["lumineuse", "aérienne", "jeune"] }, bestFor: { en: "ad, social video, character", fr: "pub, vidéo réseaux sociaux, personnage" } },
+    { id: "ash", gender: "male", tags: { en: ["deep", "direct", "grounded"], fr: ["grave", "directe", "posée"] }, bestFor: { en: "documentary, corporate, trailer", fr: "documentaire, entreprise, bande-annonce" } },
+    { id: "echo", gender: "male", tags: { en: ["deep", "calm", "resonant"], fr: ["grave", "calme", "résonante"] }, bestFor: { en: "meditation, documentary, announcement", fr: "méditation, documentaire, annonce" } },
+    { id: "verse", gender: "male", tags: { en: ["versatile", "smooth", "storyteller"], fr: ["polyvalente", "fluide", "conteuse"] }, bestFor: { en: "audiobook, trailer, character", fr: "livre audio, bande-annonce, personnage" } },
+    { id: "ballad", gender: "male", tags: { en: ["expressive", "gentle", "melodic"], fr: ["expressive", "douce", "mélodieuse"] }, bestFor: { en: "audiobook, poetry, character", fr: "livre audio, poésie, personnage" } },
+    { id: "alloy", gender: "neutral", tags: { en: ["balanced", "clear", "versatile"], fr: ["équilibrée", "claire", "polyvalente"] }, bestFor: { en: "e-learning, assistant, explainer", fr: "e-learning, assistant, vidéo explicative" } },
   ],
 };

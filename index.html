@@ -30,7 +30,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=4694e417">
+<link rel="stylesheet" href="assets/site.css?v=95e5029b">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (EN page only). Storage may be blocked. */
 (function () {
@@ -60,6 +60,7 @@
     <nav class="mainnav" aria-label="Sections">
       <a href="#how">How it works</a>
       <a href="#tools">Tools</a>
+      <a href="#listen">Listen</a>
       <a href="#film">Short film</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -71,7 +72,7 @@
 <section id="top" class="hero" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <a class="banner" href="#gptvoice"><span class="spark" aria-hidden="true"></span>GPTVoice is in preview: listen to it<span aria-hidden="true">→</span></a>
+      <a class="banner" href="#listen"><span class="spark" aria-hidden="true"></span>GPTVoice is in preview: listen to it<span aria-hidden="true">→</span></a>
       <p class="eyebrow">For Claude Code users with a ChatGPT plan</p>
       <h1 id="hero-h"><span class="h1-main">Get more from Codex</span> <span class="h1-sub">from your OpenAI subscription</span></h1>
       <p class="lead">The “Sign in with ChatGPT” you use for Codex can do more than code. Two free, open-source tools let Claude Code use it to make images and voices. Turn both into visuals, narration, ads and short films.</p>
@@ -167,46 +168,25 @@ npm install
         <p class="tagline">Text in, voice out. A voice studio for Claude Code, on your ChatGPT plan.</p>
         <p>Ask Claude for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. Direct it like a voice actor: emotion, speed, whisper or shout, laughs and pauses right in your text. Every passage is checked word for word.</p>
         <p class="label">What it does</p>
-        <ul class="feat"><li>10 voices, each with a short French and English sample, sorted by gender, register and best use. Every voice speaks every language.</li><li>Direct the performance: emotion (joy, sadness, anger, excitement…), intensity, whisper or shout, narration styles like trailer, documentary or meditation.</li><li>Exact controls: speed, a higher or lower voice, and silences to the millisecond.</li><li>Cues inside your text, like [whispers], [laughs], [sighs] or [pause 1s], plus pronunciation hints for names. Cues are performed, never read aloud.</li><li>Word-for-word reading, measured at 99.4% in English and 98.8% in French on deliberately tricky texts.</li><li>Dialogues with several voices in one file, saved voice presets and favorites, and subtitles (.srt) for your video editor.</li></ul>
+        <ul class="feat"><li>10 voices, sorted by gender and character. Every voice speaks every language: the text decides.</li><li>Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.</li><li>Dialogues with several voices in a single audio file.</li><li>Save your favorite voices and your own presets (voice + settings) to reuse them.</li><li>Subtitles (.srt) for your video editor, and transcription of any audio file.</li></ul>
+        <p class="label">How precise is each control</p>
+        <div class="controls"><div class="ctl">
+          <h4>Exact</h4><p class="ctl-note">Applied to the audio itself, every time.</p>
+          <ul><li>Speed, from 0.25× to 1.5×</li><li>Pitch shift, ±12 semitones</li><li>Silences to the millisecond: [pause 1s]</li></ul>
+        </div><div class="ctl">
+          <h4>Strong</h4><p class="ctl-note">Clearly audible on almost every take.</p>
+          <ul><li>Whisper or shout</li><li>Emotion and intensity</li><li>Narration styles: trailer, documentary, audiobook, ad, meditation…</li><li>Cues in your text: [whispers] [excited] [laughs] [sighs]</li></ul>
+        </div><div class="ctl">
+          <h4>Best effort</h4><p class="ctl-note">Works often, not always.</p>
+          <ul><li>Accent</li><li>Character voice (“an old sea captain”)</li></ul>
+        </div></div>
+        <p class="label">Measured</p>
+        <dl class="measured"><div><dt>99.4%</dt><dd>of words read exactly in English, on deliberately hard texts</dd></div><div><dt>98.8%</dt><dd>of words read exactly in French, same test</dd></div><div><dt>0 / 32</dt><dd>texts trying to hijack the voice were obeyed. They were read aloud, never followed.</dd></div></dl>
+        <p class="label">9 tools for Claude</p>
+        <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
         <p class="label">Example request</p>
         <p class="prompt">Read this script as a calm storyteller, with a pause before the last line, and save it as keeper.mp3.</p>
-        <p class="label">Listen</p>
-        <ul class="samples"><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-keeper-narration">Narration for “The Keeper”</h4><p class="meta">cedar, calm storyteller</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-keeper-narration"><source src="assets/audio/keeper-en.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
-              <details class="transcript"><summary>Transcript</summary><p lang="en">The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-emotions-en">One voice, four emotions</h4><p class="meta">coral: happy, sad, angry, whispering</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-emotions-en"><source src="assets/audio/emotions-en.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
-              <details class="transcript"><summary>Transcript</summary><p lang="en">We won the match! We lost the match. Who lost the match?! Shh… nobody knows about the match.</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-conte-fr">A French tale, with a whisper</h4><p class="meta">marin, audiobook narration</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-conte-fr"><source src="assets/audio/conte-fr.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
-              <details class="transcript"><summary>Transcript</summary><p lang="fr">Il était une fois, au bord de la mer, une vieille horloge qui ne donnait jamais la bonne heure. Un soir, quelqu&#39;un frappa à la porte du clocher… C&#39;était une enfant, une lanterne à la main !</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-dialogue-fr">Two-voice dialogue, in French</h4><p class="meta">coral and ash, laughs and sighs included</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-dialogue-fr"><source src="assets/audio/dialogue-fr.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
-              <details class="transcript"><summary>Transcript</summary><p lang="fr">Léa : (rit) Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d’API ? (soupire) Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo (chuchote) : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-trailer-en">Movie-trailer voice</h4><p class="meta">cedar, trailer style</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-trailer-en"><source src="assets/audio/trailer-en.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
-              <details class="transcript"><summary>Transcript</summary><p lang="en">In a world where every story deserves a voice… one tool changes everything. No API key. No extra bill. Just your words… brought to life.</p></details>
-            </div>
-          </li></ul>
+        <p class="note"><a href="#listen">Listen to the demos and all 10 voices</a></p>
         <div id="install-gptvoice" class="install">
           <p class="not-yet">The code is not public yet. The install command will appear here as soon as the repository is online.</p>
           
@@ -214,6 +194,137 @@ npm install
         </div>
       </div>
     </article>
+  </div>
+</section>
+
+<section id="listen" class="listen" aria-labelledby="listen-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">GPTVoice</p>
+      <h2 id="listen-h">Hear it for yourself</h2>
+      <p>Every clip on this page was made with GPTVoice. The transcripts are exactly what is spoken.</p>
+    </div>
+    <h3 class="sub-h">Demos</h3>
+    <ul class="samples"><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-trailer-en">Movie trailer</h4><p class="meta">cedar · trailer style</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-trailer-en"><source src="assets/audio/demo/en-trailer-cedar.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="en">In a world where every story deserves a voice… one tool changes everything. No API key. No extra bill. Just your words… brought to life.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-emotions-en">One line, four emotions</h4><p class="meta">coral · happy, sad, angry, whispering</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-emotions-en"><source src="assets/audio/demo/en-emotions-coral.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="en">We won the match! We lost the match. Who lost the match?! Shh… nobody knows about the match.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-meditation-en">Guided meditation</h4><p class="meta">sage · meditation style</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-meditation-en"><source src="assets/audio/demo/en-meditation-sage.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="en">Breathe in slowly and let it go. Feel your shoulders soften one breath at a time.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-conte-fr">A French fairy tale</h4><p class="meta">marin · audiobook narration</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-conte-fr"><source src="assets/audio/demo/fr-conte-marin.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="fr">Il était une fois, au bord de la mer, une vieille horloge qui ne donnait jamais la bonne heure. Un soir, quelqu’un frappa à la porte du clocher… C’était une enfant, une lanterne à la main !</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-pub-fr">A French radio ad</h4><p class="meta">coral · ad style</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-pub-fr"><source src="assets/audio/demo/fr-pub-coral.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="fr">Nouveau ! La voix de vos vidéos, en un clic, avec votre abonnement ChatGPT. Essayez GPTVoice dès aujourd’hui !</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-dialogue-fr">Two-voice dialogue, in French</h4><p class="meta">coral and ash · one file</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-dialogue-fr"><source src="assets/audio/demo/fr-dialogue.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="fr">Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d’API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
+            </div>
+          </li></ul>
+    <div class="gallery" data-gallery>
+      <div class="gallery-head">
+        <h3 class="sub-h" id="voices-h">The 10 voices</h3>
+        <div class="filters" role="group" aria-label="Filter voices" hidden>
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="female" aria-pressed="false">Female</button><button type="button" data-filter="male" aria-pressed="false">Male</button><button type="button" data-filter="neutral" aria-pressed="false">Neutral</button>
+        </div>
+      </div>
+      <div class="voice-line">
+        <p>Each voice reads this line with its own name, in English and in French:</p>
+        <p lang="en">Hello, I’m Marin. I can narrate your stories, voice your videos, and bring your characters to life.</p>
+        <p lang="fr">Bonjour, je suis Marin. Je peux raconter vos histoires, doubler vos vidéos et donner vie à vos personnages.</p>
+      </div>
+      <p class="sr" role="status" aria-live="polite" data-gallery-status></p>
+      <ul class="voices" aria-labelledby="voices-h">
+        <li class="voice" data-gender="female">
+          <div class="v-head"><h4>Marin</h4><span class="v-gender">Female</span><span class="badge is-soon">Recommended</span></div>
+          <p class="v-tags">natural · polished · warm</p>
+          <p class="v-best"><span>Best for</span> narration, audiobook, podcast</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/marin-en.mp3" data-play data-label="Play Marin in English" aria-label="Play Marin in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/marin-fr.mp3" data-play data-label="Play Marin in French" aria-label="Play Marin in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="male">
+          <div class="v-head"><h4>Cedar</h4><span class="v-gender">Male</span><span class="badge is-soon">Recommended</span></div>
+          <p class="v-tags">natural · warm · confident</p>
+          <p class="v-best"><span>Best for</span> narration, podcast, ad</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/cedar-en.mp3" data-play data-label="Play Cedar in English" aria-label="Play Cedar in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/cedar-fr.mp3" data-play data-label="Play Cedar in French" aria-label="Play Cedar in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="female">
+          <div class="v-head"><h4>Coral</h4><span class="v-gender">Female</span></div>
+          <p class="v-tags">warm · friendly · lively</p>
+          <p class="v-best"><span>Best for</span> ad, kids, social video</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/coral-en.mp3" data-play data-label="Play Coral in English" aria-label="Play Coral in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/coral-fr.mp3" data-play data-label="Play Coral in French" aria-label="Play Coral in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="female">
+          <div class="v-head"><h4>Sage</h4><span class="v-gender">Female</span></div>
+          <p class="v-tags">gentle · soft · thoughtful</p>
+          <p class="v-best"><span>Best for</span> meditation, intimate, e-learning</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/sage-en.mp3" data-play data-label="Play Sage in English" aria-label="Play Sage in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/sage-fr.mp3" data-play data-label="Play Sage in French" aria-label="Play Sage in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="female">
+          <div class="v-head"><h4>Shimmer</h4><span class="v-gender">Female</span></div>
+          <p class="v-tags">bright · airy · youthful</p>
+          <p class="v-best"><span>Best for</span> ad, social video, character</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/shimmer-en.mp3" data-play data-label="Play Shimmer in English" aria-label="Play Shimmer in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/shimmer-fr.mp3" data-play data-label="Play Shimmer in French" aria-label="Play Shimmer in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="male">
+          <div class="v-head"><h4>Ash</h4><span class="v-gender">Male</span></div>
+          <p class="v-tags">deep · direct · grounded</p>
+          <p class="v-best"><span>Best for</span> documentary, corporate, trailer</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/ash-en.mp3" data-play data-label="Play Ash in English" aria-label="Play Ash in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/ash-fr.mp3" data-play data-label="Play Ash in French" aria-label="Play Ash in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="male">
+          <div class="v-head"><h4>Echo</h4><span class="v-gender">Male</span></div>
+          <p class="v-tags">deep · calm · resonant</p>
+          <p class="v-best"><span>Best for</span> meditation, documentary, announcement</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/echo-en.mp3" data-play data-label="Play Echo in English" aria-label="Play Echo in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/echo-fr.mp3" data-play data-label="Play Echo in French" aria-label="Play Echo in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="male">
+          <div class="v-head"><h4>Verse</h4><span class="v-gender">Male</span></div>
+          <p class="v-tags">versatile · smooth · storyteller</p>
+          <p class="v-best"><span>Best for</span> audiobook, trailer, character</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/verse-en.mp3" data-play data-label="Play Verse in English" aria-label="Play Verse in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/verse-fr.mp3" data-play data-label="Play Verse in French" aria-label="Play Verse in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="male">
+          <div class="v-head"><h4>Ballad</h4><span class="v-gender">Male</span></div>
+          <p class="v-tags">expressive · gentle · melodic</p>
+          <p class="v-best"><span>Best for</span> audiobook, poetry, character</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/ballad-en.mp3" data-play data-label="Play Ballad in English" aria-label="Play Ballad in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/ballad-fr.mp3" data-play data-label="Play Ballad in French" aria-label="Play Ballad in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+        <li class="voice" data-gender="neutral">
+          <div class="v-head"><h4>Alloy</h4><span class="v-gender">Neutral</span></div>
+          <p class="v-tags">balanced · clear · versatile</p>
+          <p class="v-best"><span>Best for</span> e-learning, assistant, explainer</p>
+          <div class="v-play"><a class="play" href="assets/audio/voices/alloy-en.mp3" data-play data-label="Play Alloy in English" aria-label="Play Alloy in English"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="assets/audio/voices/alloy-fr.mp3" data-play data-label="Play Alloy in French" aria-label="Play Alloy in French"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -307,6 +418,6 @@ npm install
     </ul>
   </div>
 </footer>
-<script src="assets/site.js?v=a4995a68" defer></script>
+<script src="assets/site.js?v=35464ccc" defer></script>
 </body>
 </html>

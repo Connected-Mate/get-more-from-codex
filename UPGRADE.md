@@ -54,6 +54,16 @@ The site never makes a claim about GPTVoice that is not in **one file**:
    "GPTVoice shown as in development" test) when you change the status.
 8. Commit `content/gptvoice.mjs`, `assets/audio/*`, `index.html`, `fr/index.html`.
 
+## Other GPTVoice blocks (all in `content/gptvoice.mjs`)
+
+- `controls`: three tiers (Exact / Strong / Best effort), each with a note and items.
+- `measured`: the benchmark figures. Only numbers that exist in the gptvoice repo's data files.
+- `mcpTools`: the tool names Claude Code gets (the count in the heading is automatic).
+- `voices` + `voiceLine`: the voice gallery. Each voice needs `assets/audio/voices/<id>-en.mp3`
+  and `-fr.mp3` (the build fails otherwise). `voiceLine` must be the exact sentence the
+  samples say, with `{Name}` where the voice says its own name.
+- Demo clips live in `assets/audio/demo/` and are listed in `samples`.
+
 ## Optional
 
 - A new mascot image: put a PNG in `design/source/`, add a job in

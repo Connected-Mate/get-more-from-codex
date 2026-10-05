@@ -15,7 +15,7 @@ export const t = {
     description: "Two free, open-source tools that let Claude Code make images and voices with your ChatGPT sign-in. No API key, no extra subscription.",
     skip: "Skip to content",
     navLabel: "Sections",
-    nav: { how: "How it works", tools: "Tools", film: "Short film", faq: "FAQ" },
+    nav: { how: "How it works", tools: "Tools", listen: "Listen", film: "Short film", faq: "FAQ" },
     langLabel: "Language",
     langNames: { en: "English", fr: "Français" },
 
@@ -87,6 +87,31 @@ export const t = {
 
     voiceAlt: "The GPTVoice mascot: a pixel-art robot with headphones, a teal scarf and a vintage microphone.",
 
+    voice: {
+      controlsH: "How precise is each control",
+      measuredH: "Measured",
+      toolsH: "{n} tools for Claude",
+      listenLink: "Listen to the demos and all 10 voices",
+    },
+    listen: {
+      kicker: "GPTVoice",
+      h2: "Hear it for yourself",
+      intro: "Every clip on this page was made with GPTVoice. The transcripts are exactly what is spoken.",
+      demosH: "Demos",
+      galleryH: "The {n} voices",
+      lineIntro: "Each voice reads this line with its own name, in English and in French:",
+      filterLabel: "Filter voices",
+      all: "All",
+      genders: { female: "Female", male: "Male", neutral: "Neutral" },
+      recommended: "Recommended",
+      bestFor: "Best for",
+      langs: { en: "English", fr: "French" },
+      playLabel: "Play {name} in {lang}",
+      pauseLabel: "Pause {name}",
+      playing: "Playing {name}",
+      loadError: "This sample could not load.",
+    },
+
     film: {
       kicker: "Images + voice",
       h2: "A short film, from one idea",
@@ -151,7 +176,7 @@ export const t = {
     description: "Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.",
     skip: "Aller au contenu",
     navLabel: "Sections",
-    nav: { how: "Comment ça marche", tools: "Outils", film: "Court film", faq: "FAQ" },
+    nav: { how: "Comment ça marche", tools: "Outils", listen: "Écouter", film: "Court film", faq: "FAQ" },
     langLabel: "Langue",
     langNames: { en: "English", fr: "Français" },
 
@@ -222,6 +247,31 @@ export const t = {
     },
 
     voiceAlt: "La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro.",
+
+    voice: {
+      controlsH: "Précision de chaque réglage",
+      measuredH: "Mesuré",
+      toolsH: "{n} outils pour Claude",
+      listenLink: "Écouter les démos et les 10 voix",
+    },
+    listen: {
+      kicker: "GPTVoice",
+      h2: "Écoutez par vous-même",
+      intro: "Chaque extrait de cette page a été fait avec GPTVoice. Les transcriptions correspondent exactement à ce qui est dit.",
+      demosH: "Démos",
+      galleryH: "Les {n} voix",
+      lineIntro: "Chaque voix lit cette phrase avec son propre nom, en anglais et en français :",
+      filterLabel: "Filtrer les voix",
+      all: "Toutes",
+      genders: { female: "Féminine", male: "Masculine", neutral: "Neutre" },
+      recommended: "Recommandée",
+      bestFor: "Idéale pour",
+      langs: { en: "anglais", fr: "français" },
+      playLabel: "Écouter {name} en {lang}",
+      pauseLabel: "Mettre {name} en pause",
+      playing: "Lecture de {name}",
+      loadError: "Cet extrait n’a pas pu se charger.",
+    },
 
     film: {
       kicker: "Images + voix",

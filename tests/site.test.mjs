@@ -130,6 +130,22 @@ for (const [lang, html] of Object.entries(pages)) {
   });
 }
 
+for (const [lang, html] of Object.entries(pages)) {
+  test(`${lang}: voice gallery lists 10 voices with EN and FR samples, demos have transcripts`, () => {
+    const voices = html.match(/<li class="voice" data-gender="(female|male|neutral)">/g) || [];
+    assert.equal(voices.length, 10);
+    const plays = [...html.matchAll(/class="play" href="([^"]+)"/g)].map((m) => m[1]);
+    assert.equal(plays.length, 20);
+    for (const p of plays) assert.match(p, /assets\/audio\/voices\/[a-z]+-(en|fr)\.mp3$/);
+    const demos = html.match(/<li class="sample" data-sample>[\s\S]*?<\/li>/g) || [];
+    assert.ok(demos.length >= 5, "demo clips");
+    for (const d of demos) assert.match(d, /<details class="transcript">[\s\S]*<p lang="(en|fr)">[^<]{10,}<\/p>/);
+  });
+  test(`${lang}: voice billing caveat present`, () => {
+    assert.ok(html.includes("platform.openai.com/usage") || /usage/i.test(html.slice(html.indexOf('id="faq"'))), "billing caveat");
+  });
+}
+
 test("FR page has no leftover English UI strings", () => {
   for (const s of ["Skip to content", "Copy<", "How it works", "Install GPTImage", "Questions about"]) {
     assert.ok(!pages.fr.includes(s), s);

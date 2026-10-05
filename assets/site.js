@@ -77,3 +77,80 @@
     if (audio) audio.addEventListener("error", fail);
   });
 })();
+
+/* Voice gallery: one shared player, EN/FR buttons, gender filter. Without JS the buttons are plain links to the MP3s. */
+(function () {
+  "use strict";
+  var root = document.querySelector("[data-gallery]");
+  if (!root) return;
+  var status = root.querySelector("[data-gallery-status]");
+  var links = root.querySelectorAll("[data-play]");
+  var player = new Audio();
+  player.preload = "none";
+  var current = null;
+
+  function reset(a) {
+    if (!a) return;
+    a.classList.remove("is-playing");
+    a.setAttribute("aria-pressed", "false");
+  }
+  function say(msg) { if (status) { status.textContent = ""; setTimeout(function () { status.textContent = msg; }, 30); } }
+
+  links.forEach(function (a) {
+    a.setAttribute("role", "button");
+    a.setAttribute("aria-pressed", "false");
+    a.addEventListener("keydown", function (e) { if (e.key === " ") { e.preventDefault(); a.click(); } });
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (current === a && !player.paused) { player.pause(); return; }
+      reset(current);
+      current = a;
+      a.classList.remove("is-error");
+      player.src = a.getAttribute("href");
+      var p = player.play();
+      if (p && p.catch) p.catch(function (err) {
+        if (err && err.name === "AbortError") return; // superseded by another click
+        reset(a);
+        a.classList.add("is-error");
+        say(document.documentElement.lang === "fr" ? "Cet extrait n’a pas pu se lire." : "This sample could not play.");
+      });
+    });
+  });
+  player.addEventListener("playing", function () {
+    if (!current) return;
+    current.classList.add("is-playing");
+    current.setAttribute("aria-pressed", "true");
+    // Pause any demo clip that is playing.
+    document.querySelectorAll("audio").forEach(function (el) { if (!el.paused) el.pause(); });
+  });
+  player.addEventListener("pause", function () { reset(current); });
+  player.addEventListener("ended", function () { reset(current); });
+
+  // Starting a demo clip stops the gallery voice (and other demos).
+  document.querySelectorAll("audio").forEach(function (el) {
+    el.addEventListener("play", function () {
+      if (!player.paused) player.pause();
+      document.querySelectorAll("audio").forEach(function (o) { if (o !== el && !o.paused) o.pause(); });
+    });
+  });
+
+  var filters = root.querySelector(".filters");
+  if (filters) {
+    filters.hidden = false;
+    var items = root.querySelectorAll(".voice");
+    filters.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-filter]");
+      if (!b) return;
+      var f = b.getAttribute("data-filter");
+      filters.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      var n = 0;
+      items.forEach(function (li) {
+        var show = f === "all" || li.getAttribute("data-gender") === f;
+        li.hidden = !show;
+        if (!show && current && li.contains(current)) player.pause();
+        if (show) n++;
+      });
+      say(n + (document.documentElement.lang === "fr" ? " voix" : n === 1 ? " voice" : " voices"));
+    });
+  }
+})();
