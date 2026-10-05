@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get more from Codex — from your OpenAI subscription</title>
-<meta name="description" content="Two free, open-source tools that let Claude Code make images (and soon voices) with your ChatGPT sign-in. No API key, no extra subscription.">
+<meta name="description" content="Two free, open-source tools that let Claude Code make images and voices with your ChatGPT sign-in. No API key, no extra subscription.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#b7f2cd" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1d1a" media="(prefers-color-scheme: dark)">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Get more from Codex">
 <meta property="og:title" content="Get more from Codex — from your OpenAI subscription">
-<meta property="og:description" content="Two free, open-source tools that let Claude Code make images (and soon voices) with your ChatGPT sign-in. No API key, no extra subscription.">
+<meta property="og:description" content="Two free, open-source tools that let Claude Code make images and voices with your ChatGPT sign-in. No API key, no extra subscription.">
 <meta property="og:url" content="https://connected-mate.github.io/get-more-from-codex/">
 <meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <meta property="og:locale:alternate" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Get more from Codex — from your OpenAI subscription">
-<meta name="twitter:description" content="Two free, open-source tools that let Claude Code make images (and soon voices) with your ChatGPT sign-in. No API key, no extra subscription.">
+<meta name="twitter:description" content="Two free, open-source tools that let Claude Code make images and voices with your ChatGPT sign-in. No API key, no extra subscription.">
 <meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
 <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -74,7 +74,7 @@
     <div class="hero-copy">
       <p class="eyebrow">For Claude Code users with a ChatGPT plan</p>
       <h1 id="hero-h"><span class="h1-main">Get more from Codex</span> <span class="h1-sub">from your OpenAI subscription</span></h1>
-      <p class="lead">The “Sign in with ChatGPT” you use for Codex can do more than code. Two free, open-source tools let Claude Code use it to make images now, and voices soon. Turn both into visuals, narration, ads and short films.</p>
+      <p class="lead">The “Sign in with ChatGPT” you use for Codex can do more than code. Two free, open-source tools let Claude Code use it to make images and voices. Turn both into visuals, narration, ads and short films.</p>
       <div class="cta">
         <a class="btn" href="#install-gptimage">Install GPTImage</a>
         <a class="btn ghost" href="#film">See a short film being made</a>
@@ -154,7 +154,7 @@ npm install
       </div>
     </article>
 
-    <article class="tool flip" id="gptvoice" aria-labelledby="gptvoice-h" data-status="development">
+    <article class="tool flip" id="gptvoice" aria-labelledby="gptvoice-h" data-status="preview">
       <div class="tool-art">
         <picture>
       <source type="image/avif" srcset="assets/img/voice-360.avif 360w, assets/img/voice-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
@@ -163,24 +163,45 @@ npm install
     </picture>
       </div>
       <div class="tool-body">
-        <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-soon">In development</span></div>
+        <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-live">Preview</span></div>
         <p class="tagline">Text in, voice out. A voice studio for Claude Code, on your ChatGPT plan.</p>
-        <p>GPTVoice is being built right now. The goal: ask Claude for a narration, a voice-over or a dialogue, and get an audio file back. Nothing below is promised until it works on a real run.</p>
-        <p class="label">Planned</p>
-        <ul class="feat is-planned"><li>A catalog of voices you can browse by gender and timbre, each with a short sample.</li><li>Direct the delivery: emotion, intensity, speed, pitch, accent, whisper or shout.</li><li>Stage cues inside your text, like [whispers], [laughs] or [pause 1s].</li><li>Word-for-word reading, checked by transcribing the result.</li><li>Dialogues with several voices in a single audio file.</li><li>Save your favorite voice settings as presets.</li></ul>
+        <p>Ask Claude for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. It drives OpenAI&#39;s realtime voice model with your ChatGPT sign-in, and checks that every word was read.</p>
+        <p class="label">What it does</p>
+        <ul class="feat"><li>10 voices (marin, cedar, coral, sage…). Every voice speaks every language: the text decides.</li><li>Direct the delivery in plain words: emotion, pace, accent, whispering.</li><li>Long texts are split at sentences and joined into one file with natural pauses.</li><li>Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.</li><li>Dialogues with several voices in a single audio file.</li><li>Optional subtitles (.srt) for your video editor, and transcription of any audio file.</li></ul>
         <p class="label">Example request</p>
         <p class="prompt">Read this script as a calm storyteller, with a pause before the last line, and save it as keeper.mp3.</p>
         <p class="label">Listen</p>
-        <ul class="samples"><li class="sample is-soon">
-            <div class="sample-head"><h4>Narration for “The Keeper”</h4><p class="meta">Calm storyteller</p></div>
-            <div class="sample-soon"><p>Audio sample coming soon. This is the script it will read:</p><blockquote lang="en">The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.</blockquote></div>
-          </li><li class="sample is-soon">
-            <div class="sample-head"><h4>Two-voice dialogue, in French</h4><p class="meta">Two voices, one file</p></div>
-            <div class="sample-soon"><p>Audio sample coming soon. This is the script it will read:</p><blockquote lang="fr">— Tu entends ça ? — [chuchote] Oui… c&#39;est la mer qui monte. — Alors on allume le phare. Maintenant.</blockquote></div>
+        <ul class="samples"><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-keeper-narration">Narration for “The Keeper”</h4><p class="meta">cedar, calm storyteller</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-keeper-narration"><source src="assets/audio/keeper-en.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="en">The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-dialogue-fr">Two-voice dialogue, in French</h4><p class="meta">coral and ash, one file</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-dialogue-fr"><source src="assets/audio/dialogue-fr.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="fr">Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d&#39;API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-trailer-en">Movie-trailer voice</h4><p class="meta">cedar, deep and dramatic</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-trailer-en"><source src="assets/audio/trailer-en.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="en">In a world where every story deserves a voice... one tool changes everything. No API key. No extra bill. Just your words, brought to life.</p></details>
+            </div>
           </li></ul>
         <div id="install-gptvoice" class="install">
-          <p class="not-yet">Not released yet. The install command will appear here once GPTVoice works end to end.</p>
-          
+          <div class="codeblock">
+          <div class="codebar"><span>Install</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Install commands"><code>git clone https://github.com/Connected-Mate/gptvoice.git
+cd gptvoice
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Needs Node.js 22+, Claude Code and a ChatGPT plan. Already set up GPTImage or the Codex CLI? GPTVoice reuses that sign-in.</p>
           
         </div>
       </div>
@@ -230,7 +251,7 @@ npm install
     <ol class="recipe">
       <li><h3>Write</h3><p>Ask Claude for a short script cut into scenes, one line of narration per scene.</p></li>
       <li><h3>Paint</h3><p>GPTImage draws one frame per scene. Reuse the first frame as a reference to keep the same look.</p></li>
-      <li><h3>Voice</h3><p>GPTVoice reads the narration. <span class="tag">Coming soon</span></p></li>
+      <li><h3>Voice</h3><p>GPTVoice reads the narration, with subtitles to time your shots.</p></li>
       <li><h3>Assemble</h3><p>Ask Claude to join frames and audio into a video with <code>ffmpeg</code> (free, installed separately).</p></li>
     </ol>
     <div class="also">
@@ -251,7 +272,7 @@ npm install
       <details><summary>Where is my sign-in stored?</summary><div class="answer"><p>On your computer only, in <code>~/.gptimage/auth.json</code> (or your existing Codex CLI sign-in). It is sent only to OpenAI. Run <code>npm run logout</code> to remove it.</p></div></details>
       <details><summary>I get a “429” error. What now?</summary><div class="answer"><p>You reached your plan’s limit for now. Wait a bit and try again, and avoid making large batches in one go.</p></div></details>
       <details><summary>Can I use it for my business?</summary><div class="answer"><p>We advise against it. This is meant for personal use on your own computer. For commercial or high-volume work, use the official OpenAI API.</p></div></details>
-      <details><summary>When is GPTVoice coming?</summary><div class="answer"><p>When it works reliably, not before. There is no date yet. This page will show real samples the day it is ready.</p></div></details>
+      <details><summary>Where does voice usage count?</summary><div class="answer"><p>GPTVoice uses OpenAI’s realtime voice model, which accepts your ChatGPT sign-in (OpenAI’s paid speech API refuses it). OpenAI does not document where that usage is counted. After your first voices, check <code>platform.openai.com/usage</code>: if anything shows up there, stop.</p></div></details>
     </div>
   </div>
 </section>
@@ -260,7 +281,7 @@ npm install
   <div class="wrap">
     <p class="kicker">Please read</p>
     <h2 id="grey-h">This is a grey area, and we say so</h2>
-    <ul><li><strong>Unofficial.</strong> “Sign in with ChatGPT” is meant for Codex. These tools reuse that login to reach OpenAI’s image (and later voice) models. It works and is widely done, but it is not an officially supported API.</li><li><strong>Personal use.</strong> Keep it personal and local.</li><li><strong>Rate limits.</strong> Heavy use can trigger your plan’s limits (error 429). Wait and retry.</li><li><strong>Account risk.</strong> In the worst case, OpenAI could restrict your account. By using these tools, you accept that risk.</li><li><strong>Not affiliated.</strong> No link with OpenAI or Anthropic. Follow OpenAI’s terms of use.</li></ul>
+    <ul><li><strong>Unofficial.</strong> “Sign in with ChatGPT” is meant for Codex. These tools reuse that login to reach OpenAI’s image and voice models. It works and is widely done, but it is not an officially supported API.</li><li><strong>Personal use.</strong> Keep it personal and local.</li><li><strong>Rate limits.</strong> Heavy use can trigger your plan’s limits (error 429). Wait and retry.</li><li><strong>Account risk.</strong> In the worst case, OpenAI could restrict your account. By using these tools, you accept that risk.</li><li><strong>Not affiliated.</strong> No link with OpenAI or Anthropic. Follow OpenAI’s terms of use.</li></ul>
   </div>
 </section>
 </main>

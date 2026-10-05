@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tirez plus de Codex — avec votre abonnement OpenAI</title>
-<meta name="description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images (et bientôt des voix) avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
+<meta name="description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#b7f2cd" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1d1a" media="(prefers-color-scheme: dark)">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Get more from Codex">
 <meta property="og:title" content="Tirez plus de Codex — avec votre abonnement OpenAI">
-<meta property="og:description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images (et bientôt des voix) avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
+<meta property="og:description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
 <meta property="og:url" content="https://connected-mate.github.io/get-more-from-codex/fr/">
 <meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tirez plus de Codex — avec votre abonnement OpenAI">
-<meta name="twitter:description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images (et bientôt des voix) avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
+<meta name="twitter:description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
 <meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
 <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -74,7 +74,7 @@
     <div class="hero-copy">
       <p class="eyebrow">Pour Claude Code, avec un abonnement ChatGPT</p>
       <h1 id="hero-h"><span class="h1-main">Tirez plus de Codex</span> <span class="h1-sub">avec votre abonnement OpenAI</span></h1>
-      <p class="lead">La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images dès maintenant, et des voix bientôt. De quoi faire des visuels, des narrations, des pubs et des courts films.</p>
+      <p class="lead">La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images et des voix. De quoi faire des visuels, des narrations, des pubs et des courts films.</p>
       <div class="cta">
         <a class="btn" href="#install-gptimage">Installer GPTImage</a>
         <a class="btn ghost" href="#film">Voir un court film se fabriquer</a>
@@ -154,7 +154,7 @@ npm install
       </div>
     </article>
 
-    <article class="tool flip" id="gptvoice" aria-labelledby="gptvoice-h" data-status="development">
+    <article class="tool flip" id="gptvoice" aria-labelledby="gptvoice-h" data-status="preview">
       <div class="tool-art">
         <picture>
       <source type="image/avif" srcset="../assets/img/voice-360.avif 360w, ../assets/img/voice-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
@@ -163,24 +163,45 @@ npm install
     </picture>
       </div>
       <div class="tool-body">
-        <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-soon">En développement</span></div>
+        <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-live">Avant-première</span></div>
         <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre abonnement ChatGPT.</p>
-        <p>GPTVoice est en cours de construction. L&#39;objectif : demander à Claude une narration, une voix off ou un dialogue, et recevoir un fichier audio. Rien ci-dessous n&#39;est promis tant que ça ne marche pas pour de vrai.</p>
-        <p class="label">Prévu</p>
-        <ul class="feat is-planned"><li>Un catalogue de voix à parcourir par genre et par timbre, chacune avec un court extrait.</li><li>Dirigez le jeu : émotion, intensité, vitesse, hauteur, accent, chuchoté ou crié.</li><li>Des indications de jeu dans le texte, comme [chuchote], [rit] ou [pause 1s].</li><li>Une lecture mot pour mot, vérifiée en retranscrivant le résultat.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Enregistrez vos réglages de voix préférés.</li></ul>
+        <p>Demandez à Claude une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. GPTVoice pilote le modèle vocal temps réel d&#39;OpenAI avec votre connexion ChatGPT, et vérifie que chaque mot a été lu.</p>
+        <p class="label">Ce qu’il fait</p>
+        <ul class="feat"><li>10 voix (marin, cedar, coral, sage…). Chaque voix parle toutes les langues : c&#39;est le texte qui décide.</li><li>Dirigez le jeu avec des mots simples : émotion, rythme, accent, chuchotement.</li><li>Les longs textes sont découpés aux phrases puis réunis en un seul fichier, avec des pauses naturelles.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s&#39;il s&#39;en écarte.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Sous-titres (.srt) en option pour votre logiciel de montage, et transcription de n&#39;importe quel fichier audio.</li></ul>
         <p class="label">Exemple de demande</p>
         <p class="prompt">Lis ce texte comme un conteur posé, avec une pause avant la dernière phrase, et enregistre-le dans keeper.mp3.</p>
         <p class="label">Écouter</p>
-        <ul class="samples"><li class="sample is-soon">
-            <div class="sample-head"><h4>Narration de « The Keeper »</h4><p class="meta">Conteur posé</p></div>
-            <div class="sample-soon"><p>Extrait audio bientôt disponible. Voici le texte qu’il lira :</p><blockquote lang="en">The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.</blockquote></div>
-          </li><li class="sample is-soon">
-            <div class="sample-head"><h4>Dialogue à deux voix, en français</h4><p class="meta">Deux voix, un seul fichier</p></div>
-            <div class="sample-soon"><p>Extrait audio bientôt disponible. Voici le texte qu’il lira :</p><blockquote lang="fr">— Tu entends ça ? — [chuchote] Oui… c&#39;est la mer qui monte. — Alors on allume le phare. Maintenant.</blockquote></div>
+        <ul class="samples"><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-keeper-narration">Narration de « The Keeper »</h4><p class="meta">cedar, conteur posé</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-keeper-narration"><source src="../assets/audio/keeper-en.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
+              <details class="transcript"><summary>Transcription</summary><p lang="en">The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-dialogue-fr">Dialogue à deux voix, en français</h4><p class="meta">coral et ash, un seul fichier</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-dialogue-fr"><source src="../assets/audio/dialogue-fr.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
+              <details class="transcript"><summary>Transcription</summary><p lang="fr">Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d&#39;API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-trailer-en">Voix de bande-annonce</h4><p class="meta">cedar, grave et dramatique</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-trailer-en"><source src="../assets/audio/trailer-en.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
+              <details class="transcript"><summary>Transcription</summary><p lang="en">In a world where every story deserves a voice... one tool changes everything. No API key. No extra bill. Just your words, brought to life.</p></details>
+            </div>
           </li></ul>
         <div id="install-gptvoice" class="install">
-          <p class="not-yet">Pas encore publié. La commande d’installation apparaîtra ici dès que GPTVoice fonctionnera de bout en bout.</p>
-          
+          <div class="codeblock">
+          <div class="codebar"><span>Installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes d’installation"><code>git clone https://github.com/Connected-Mate/gptvoice.git
+cd gptvoice
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Nécessite Node.js 22+, Claude Code et un abonnement ChatGPT. Déjà GPTImage ou le Codex CLI ? GPTVoice réutilise cette connexion.</p>
           
         </div>
       </div>
@@ -230,7 +251,7 @@ npm install
     <ol class="recipe">
       <li><h3>Écrire</h3><p>Demandez à Claude un court scénario découpé en scènes, avec une phrase de narration par scène.</p></li>
       <li><h3>Peindre</h3><p>GPTImage dessine une image par scène. Réutilisez la première comme référence pour garder le même style.</p></li>
-      <li><h3>Faire parler</h3><p>GPTVoice lit la narration. <span class="tag">Bientôt</span></p></li>
+      <li><h3>Faire parler</h3><p>GPTVoice lit la narration, avec des sous-titres pour caler vos plans.</p></li>
       <li><h3>Assembler</h3><p>Demandez à Claude de réunir images et son en vidéo avec <code>ffmpeg</code> (gratuit, à installer à part).</p></li>
     </ol>
     <div class="also">
@@ -251,7 +272,7 @@ npm install
       <details><summary>Où est stockée ma connexion ?</summary><div class="answer"><p>Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer.</p></div></details>
       <details><summary>J’ai une erreur « 429 ». Que faire ?</summary><div class="answer"><p>Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup.</p></div></details>
       <details><summary>Puis-je l’utiliser pour mon entreprise ?</summary><div class="answer"><p>Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI.</p></div></details>
-      <details><summary>Quand arrive GPTVoice ?</summary><div class="answer"><p>Quand il marchera de façon fiable, pas avant. Pas de date pour l’instant. Cette page montrera de vrais extraits le jour où il sera prêt.</p></div></details>
+      <details><summary>Où est décompté l’usage des voix ?</summary><div class="answer"><p>GPTVoice utilise le modèle vocal temps réel d’OpenAI, qui accepte votre connexion ChatGPT (l’API vocale payante d’OpenAI la refuse). OpenAI ne documente pas où cet usage est décompté. Après vos premières voix, jetez un œil à <code>platform.openai.com/usage</code> : si quelque chose y apparaît, arrêtez.</p></div></details>
     </div>
   </div>
 </section>
@@ -260,7 +281,7 @@ npm install
   <div class="wrap">
     <p class="kicker">À lire</p>
     <h2 id="grey-h">C’est une zone grise, et nous le disons</h2>
-    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image (et plus tard de voix) d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
+    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
   </div>
 </section>
 </main>

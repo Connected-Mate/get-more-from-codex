@@ -106,12 +106,15 @@ for (const [lang, html] of Object.entries(pages)) {
     for (const b of html.match(/<button[^>]*data-copy[^>]*>/g)) assert.match(b, /\bhidden\b/);
     assert.ok(html.includes("git clone https://github.com/Connected-Mate/gptimage.git"));
   });
-  test(`${lang}: GPTVoice shown as in development, no install, no invented numbers`, () => {
+  test(`${lang}: GPTVoice shown as preview with install, real audio files and only verified numbers`, () => {
     const voice = html.slice(html.indexOf('id="gptvoice"'), html.indexOf('id="film"'));
-    assert.match(voice, /data-status="development"/);
-    assert.ok(!voice.includes("git clone"), "no install while in development");
-    assert.ok(!/\b\d+\s+(voices|voix)\b/i.test(html), "no voice count claims");
-    assert.ok(!voice.includes("<audio"), "no audio player without real files");
+    assert.match(voice, /data-status="preview"/);
+    assert.ok(voice.includes("git clone https://github.com/Connected-Mate/gptvoice.git"), "install block shown");
+    // 10 voices = the set verified against the live endpoint (alloy, ash, ballad, coral, echo, sage, shimmer, verse, marin, cedar).
+    for (const m of html.matchAll(/\b(\d+)\s+(voices|voix)\b/gi)) assert.equal(m[1], "10", `unverified voice count: ${m[0]}`);
+    const srcs = [...html.matchAll(/<source[^>]+src="([^"]+\.mp3)"/g)].map((m) => m[1]);
+    assert.ok(srcs.length >= 3, "audio players present");
+    for (const src of srcs) assert.ok(existsSync(join(ROOT, lang === "fr" ? join("fr", src) : src)), `missing audio ${src}`);
   });
   test(`${lang}: grey-area notice near the top and full section present`, () => {
     assert.ok(html.indexOf('class="notice"') < html.indexOf('id="how"'));
