@@ -30,7 +30,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=95e5029b">
+<link rel="stylesheet" href="../assets/site.css?v=59e4261b">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (EN page only). Storage may be blocked. */
 (function () {
@@ -165,8 +165,9 @@ npm install
       </div>
       <div class="tool-body">
         <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-live">Avant-première</span></div>
-        <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre abonnement ChatGPT.</p>
+        <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre connexion ChatGPT.</p>
         <p>Demandez à Claude une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.</p>
+        <p class="cost-note">Coût : contrairement à GPTImage, les appels de voix passent par l’organisation API OpenAI personnelle liée à votre compte. Ils peuvent être prélevés sur ses crédits API ou sa carte (environ 0,03 à 0,08 $ par minute d’audio) et rien ne prouve qu’ils soient inclus dans votre abonnement ChatGPT. Vérifiez platform.openai.com/usage après votre premier essai.</p>
         <p class="label">Ce qu’il fait</p>
         <ul class="feat"><li>10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser.</li><li>Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio.</li></ul>
         <p class="label">Précision de chaque réglage</p>
@@ -384,14 +385,14 @@ npm install
   <div class="wrap faq-grid">
     <h2 id="faq-h">Questions</h2>
     <div class="faq-list">
-      <details><summary>C’est vraiment gratuit ?</summary><div class="answer"><p>Les outils sont gratuits et open source. Ce qu’ils produisent est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites. Pas de facture à l’image, pas d’abonnement en plus.</p></div></details>
+      <details><summary>C’est vraiment gratuit ?</summary><div class="answer"><p>Les outils sont gratuits et open source. GPTImage est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites : pas de facture à l’image, pas d’abonnement en plus. GPTVoice est différent : il peut être facturé sur votre compte API OpenAI (voir plus bas).</p></div></details>
       <details><summary>Faut-il une clé API ?</summary><div class="answer"><p>Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur. L’outil ne voit jamais votre mot de passe.</p></div></details>
       <details><summary>Quel abonnement ChatGPT faut-il ?</summary><div class="answer"><p>Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule.</p></div></details>
       <details><summary>Ça marche en dehors de Claude Code ?</summary><div class="answer"><p>C’est conçu et testé pour Claude Code. GPTImage est un serveur MCP standard : d’autres applis MCP peuvent marcher, mais elles ne sont pas testées. Il existe aussi une commande de terminal.</p></div></details>
       <details><summary>Où est stockée ma connexion ?</summary><div class="answer"><p>Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer.</p></div></details>
       <details><summary>J’ai une erreur « 429 ». Que faire ?</summary><div class="answer"><p>Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup.</p></div></details>
       <details><summary>Puis-je l’utiliser pour mon entreprise ?</summary><div class="answer"><p>Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI.</p></div></details>
-      <details><summary>Où est décompté l’usage des voix ?</summary><div class="answer"><p>GPTVoice utilise le modèle vocal temps réel d’OpenAI, qui accepte votre connexion ChatGPT (l’API vocale payante d’OpenAI la refuse). OpenAI ne documente pas où cet usage est décompté. Après vos premières voix, jetez un œil à <code>platform.openai.com/usage</code> : si quelque chose y apparaît, arrêtez.</p></div></details>
+      <details><summary>GPTVoice coûte-t-il quelque chose ?</summary><div class="answer"><p>Peut-être. Les appels de voix passent par l’organisation API OpenAI personnelle liée à votre compte : ils peuvent donc être prélevés sur ses crédits API ou sa carte, environ 0,03 à 0,08 $ par minute d’audio. Rien ne prouve qu’ils soient inclus dans votre abonnement ChatGPT. Après vos premières voix, vérifiez <code>platform.openai.com/usage</code>. Si des frais non voulus apparaissent, arrêtez d’utiliser GPTVoice.</p></div></details>
     </div>
   </div>
 </section>
@@ -400,7 +401,7 @@ npm install
   <div class="wrap">
     <p class="kicker">À lire</p>
     <h2 id="grey-h">C’est une zone grise, et nous le disons</h2>
-    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
+    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>La voix peut être payante.</strong> Les appels de GPTVoice passent par votre organisation API OpenAI personnelle et peuvent y être facturés. Vérifiez <code>platform.openai.com/usage</code>.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
   </div>
 </section>
 </main>

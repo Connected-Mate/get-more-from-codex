@@ -295,6 +295,7 @@ function page(lang) {
         <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge ${live ? "is-live" : "is-soon"}">${esc(voiceBadge)}</span></div>
         <p class="tagline">${esc(V.tagline[lang])}</p>
         <p>${esc(V.summary[lang])}</p>
+        ${V.billingNote ? `<p class="cost-note">${esc(V.billingNote[lang])}</p>` : ""}
         <p class="label">${esc(live ? L.tools.featuresLabel.live : L.tools.featuresLabel.planned)}</p>
         <ul class="feat${live ? "" : " is-planned"}">${V.features.map((f) => `<li>${esc(f[lang])}</li>`).join("")}</ul>
         ${V.controls?.length ? `<p class="label">${esc(L.voice.controlsH)}</p>
