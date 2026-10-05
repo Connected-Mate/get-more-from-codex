@@ -100,14 +100,12 @@ export const gptvoice = {
   samples: [
     {
       id: "trailer-en",
-      // Hidden: the clip says "No extra bill", which voice billing may contradict. A re-recorded clip is coming.
-      hidden: true,
       title: { en: "Movie trailer", fr: "Bande-annonce" },
       voice: { en: "cedar · trailer style", fr: "cedar · style bande-annonce" },
       lang: "en",
       src: "assets/audio/demo/en-trailer-cedar.mp3",
       type: "audio/mpeg",
-      transcript: "In a world where every story deserves a voice… one tool changes everything. No API key. No extra bill. Just your words… brought to life.",
+      transcript: "In a world where every story deserves a voice… one tool changes everything. No API key. No studio. Just your words… brought to life.",
     },
     {
       id: "emotions-en",
