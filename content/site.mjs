@@ -1,100 +1,298 @@
-// Site copy (EN + FR). Strings here are trusted and may contain inline HTML
-// (<code>, <strong>, <a>). GPTVoice content lives in ./gptvoice.mjs.
+// Site copy (EN + FR), one block per page. Strings are trusted and may contain
+// inline HTML (<code>, <strong>, <em>, <a>). GPTVoice product facts live in ./gptvoice.mjs.
 
 // Public URL of the published site, with trailing slash. Used for canonical,
-// hreflang, social cards and the sitemap. Update it if the site moves to a custom domain.
+// hreflang, social cards and the sitemap.
 export const SITE_URL = "https://connected-mate.github.io/get-more-from-codex/";
 
 export const GPTIMAGE_REPO = "https://github.com/Connected-Mate/gptimage";
+
+// Page slugs per language (relative to the site root).
+export const ROUTES = {
+  home: { en: "", fr: "fr/" },
+  images: { en: "images/", fr: "fr/images/" },
+  voices: { en: "voices/", fr: "fr/voix/" },
+  how: { en: "how-it-works/", fr: "fr/comment-ca-marche/" },
+};
+
+// Agents shown in the setup guides. `tested` must stay honest.
+export const AGENTS = ["claude", "codex", "cursor", "other"];
 
 export const t = {
   en: {
     htmlLang: "en",
     ogLocale: "en_US",
-    title: "Get more from Codex — from your OpenAI subscription",
-    description: "Two free, open-source tools that let Claude Code make images and voices with your ChatGPT sign-in. No API key, no extra subscription.",
+    brand: "Get more from Codex",
     skip: "Skip to content",
-    navLabel: "Sections",
-    nav: { how: "How it works", tools: "Tools", listen: "Listen", film: "Short film", faq: "FAQ" },
+    navLabel: "Main",
     langLabel: "Language",
     langNames: { en: "English", fr: "Français" },
+    nav: { home: "Home", images: "Images", voices: "Voices", how: "How it works" },
 
-    hero: {
-      banner: { development: "GPTVoice is in development", preview: "GPTVoice is in preview: listen to it", released: "GPTVoice is out: listen to it" },
-      eyebrow: "For Claude Code users with a ChatGPT plan",
-      h1: "Get more from Codex",
-      sub: "from your OpenAI subscription",
-      lead: "The “Sign in with ChatGPT” you use for Codex can do more than code. Two free, open-source tools let Claude Code use it to make images and voices. Turn both into visuals, narration, ads and short films.",
-      ctaPrimary: "Install GPTImage",
-      ctaSecondary: "See a short film being made",
-      facts: ["No API key", "No extra subscription", "Runs on your computer", "Open source (MIT)"],
-      alt: "Two pixel-art robots: a painter in a purple beret finishing a landscape on an easel, and a singer with headphones and a microphone. A film clapperboard sits between them.",
-    },
-
-    notice: {
-      title: "Grey area.",
-      body: "These tools reuse the Codex “Sign in with ChatGPT” login. That is not an official OpenAI API. Keep it personal: heavy use can hit your plan’s limits or, at worst, get your account restricted.",
-      link: "Read the full notice",
-    },
-
-    how: {
-      kicker: "How it works",
-      h2: "Sign in once. Then just ask.",
-      steps: [
-        { h: "Install", p: "Copy four lines into your terminal. The tool is added to Claude Code for every project on your computer." },
-        { h: "Sign in with ChatGPT", p: "Your browser opens on the official ChatGPT login. You type your password there, never in the tool." },
-        { h: "Ask Claude", p: "In plain words, in any project. Claude picks the tool, makes the file and saves it next to your work." },
-      ],
-      example: "Make a watercolor red fox in the snow and save it as fox.png.",
-      exampleLabel: "You type",
-    },
-
-    tools: {
-      kicker: "Two tools",
-      h2: "One for pictures, one for voices",
-      intro: "Each is a small MCP server: a plug-in that gives Claude Code a new skill. Both use the same ChatGPT sign-in.",
-      badge: { available: "Available", development: "In development", preview: "Preview", released: "Available" },
-      featuresLabel: { planned: "Planned", live: "What it does" },
-      examplePromptLabel: "Example request",
-      installLabel: "Install",
+    common: {
       copy: "Copy",
       copied: "Copied",
       copyFailed: "Select the text and press Ctrl+C (⌘C on Mac)",
-      codeLabel: "Install commands",
+      codeLabel: "Commands",
+      installLabel: "Install",
       repoLink: "Source code on GitHub",
-      notPublic: "The code is not public yet. The install command will appear here as soon as the repository is online.",
+      examplePromptLabel: "Example request",
+      badge: { available: "Available", development: "In development", preview: "Preview", released: "Available" },
+      featuresLabel: { planned: "Planned", live: "What it does" },
       notYet: "Not released yet. The install command will appear here once GPTVoice works end to end.",
-      samplesLabel: "Listen",
+      notPublic: "The code is not public yet. The install command will appear here as soon as the repository is online.",
       sampleSoon: "Audio sample coming soon. This is the script it will read:",
       transcript: "Transcript",
       audioError: "This sample could not load. The transcript is below.",
+      next: "Next",
+      readMore: "How it works, in detail",
+      tested: "Tested",
+      untested: "Standard MCP setup, not tested yet",
     },
 
-    gptimage: {
-      tagline: "Images and edits from GPT Image 2, straight from Claude Code.",
-      summary: "Logos, illustrations, mockups, banners, textures, storyboards. The pictures and the storyboard on this page were made with it.",
-      features: [
-        "Works from your reference images: style samples, brand assets, sketches. It keeps them in a <code>references/</code> folder so each new image gets better.",
-        "Never overwrites a file. Each new version is saved next to the last one.",
-        "Three tools for Claude: <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.",
-        "Also works as a one-line command in the terminal.",
+    agents: {
+      claude: { name: "Claude Code", how: "<code>./install.sh</code> registers the tool for every project and adds the skill. Restart Claude Code afterwards." },
+      codex: { name: "Codex CLI", how: "One command adds the tool to Codex (CLI, IDE extension and desktop app share <code>~/.codex/config.toml</code>)." },
+      cursor: { name: "Cursor", how: "Add the server to <code>~/.cursor/mcp.json</code> (all projects) or <code>.cursor/mcp.json</code> (one project)." },
+      other: { name: "Any MCP client", how: "It is a standard MCP server over stdio: point your client at this command." },
+    },
+    signInNote: "Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused.",
+    pathNote: "Replace <code>/path/to/</code> with the folder where you cloned the tool.",
+
+    home: {
+      title: "Get more from Codex — your ChatGPT subscription, inside your coding agent",
+      description: "Two free, open-source MCP tools that let Claude Code, Codex, Cursor and other coding agents make images and voices with the ChatGPT sign-in you already have. No API key.",
+      hero: {
+        eyebrow: "Get more from Codex",
+        h1: "Your ChatGPT subscription, inside your coding agent",
+        lead: "You already pay for ChatGPT to use Codex. Two small open-source tools let Claude Code, Codex, Cursor or any MCP agent use that same sign-in to make <strong>images</strong> and <strong>voices</strong>. No API key to create, nothing new to subscribe to.",
+        cta1: "Make images",
+        cta2: "Make voices",
+        facts: ["No API key", "No extra subscription", "Works with your coding agent", "Open source (MIT)"],
+        artLabel: "Diagram: your ChatGPT plan flows into an MCP plug, which feeds your coding agent with images and voices.",
+        artPlan: "Your ChatGPT plan",
+        artAgent: "Your coding agent",
+      },
+      flow: {
+        kicker: "The idea",
+        h2: "Plug your subscription into your agent",
+        steps: [
+          { h: "Your subscription", p: "The ChatGPT plan you already use for Codex. Its sign-in can do more than code." },
+          { h: "An MCP plug", p: "GPTImage or GPTVoice signs in once, keeps the token on your computer, and turns it into tools your agent can call." },
+          { h: "Your agent creates", p: "Ask in plain words: “make a hero image”, “record the voice-over”. The file lands in your project." },
+        ],
+      },
+      products: {
+        kicker: "Two tools",
+        h2: "One for pictures, one for voices",
+        images: {
+          h: "GPTImage",
+          p: "Logos, illustrations, mockups, banners, storyboards. Your agent makes them with GPT Image 2 and saves them in your project.",
+          points: ["Counts against your ChatGPT plan", "Works from your reference images", "Never overwrites a file"],
+          cta: "Discover GPTImage",
+        },
+        voices: {
+          h: "GPTVoice",
+          p: "Voice-overs for motion design, explainers, ads and podcasts. 10 voices, emotions, whispers and laughs, subtitles included.",
+          points: ["10 voices, English and French", "Read word for word", "MP3 or WAV plus subtitles"],
+          cta: "Discover GPTVoice",
+        },
+      },
+      agents: {
+        kicker: "Works with",
+        h2: "The agent you already use",
+        p: "Both tools are standard MCP servers. Your agent sees them as new skills.",
+        note: "Tested with Claude Code. Codex, Cursor and other MCP clients use the same standard setup and are not tested yet.",
+        cta: "Setup for each agent",
+      },
+      uses: {
+        kicker: "What people make",
+        h2: "From one idea to a finished piece",
+        items: [
+          { h: "A website that has its own pictures", p: "Hero images, icons and illustrations generated where the code lives.", to: "images" },
+          { h: "A motion design video that talks", p: "Write the script, get the voice-over and its subtitles, drop them in your editor.", to: "voices" },
+          { h: "A short film", p: "Storyboard frames from GPTImage, narration from GPTVoice, assembled by your agent.", to: "images", hash: "#film" },
+        ],
+      },
+      notice: {
+        title: "Honest note.",
+        body: "This reuses the Codex “Sign in with ChatGPT” login. It is not an official OpenAI API: keep it personal. Images count against your ChatGPT plan; voice calls may be billed to your OpenAI API account.",
+        link: "Read the details",
+      },
+    },
+
+    images: {
+      title: "GPTImage — images from your ChatGPT plan, made by your coding agent",
+      description: "GPTImage lets Claude Code, Codex, Cursor and other MCP agents generate and edit images with GPT Image 2 through your ChatGPT sign-in. No API key, no per-image bill.",
+      hero: {
+        eyebrow: "GPTImage",
+        h1: "Images for your project, made by your agent",
+        lead: "Ask your coding agent for a logo, a hero image or a storyboard. GPTImage makes it with GPT Image 2 through your ChatGPT plan and saves it next to your code.",
+        cta1: "Install GPTImage",
+        cta2: "See how it works",
+        alt: "The GPTImage mascot: a pixel-art robot painter with a purple beret, a rainbow brush and a framed landscape.",
+      },
+      uses: {
+        kicker: "Made for builders",
+        h2: "Stop leaving your editor to find a picture",
+        items: [
+          { h: "Websites and apps", p: "Hero images, empty-state illustrations, icons and backgrounds, generated in the right size." },
+          { h: "Brand and product", p: "Logo explorations, mockups, banners and social posts from your own brand assets." },
+          { h: "Stories and video", p: "Storyboards and frames with a consistent look, ready for a voice-over." },
+        ],
+      },
+      tech: {
+        kicker: "Under the hood",
+        h2: "How GPTImage gets your images",
+        intro: "No magic and no API key. This is exactly what happens, step by step.",
+        steps: [
+          { h: "You sign in once", p: "A browser window opens on the official ChatGPT login (OAuth with PKCE at <code>auth.openai.com</code>). You type your password there, never in the tool." },
+          { h: "The token stays on your computer", p: "It is saved in <code>~/.gptimage/auth.json</code>, or reused from <code>~/.codex/auth.json</code> if the Codex CLI is signed in. It is refreshed automatically when it expires." },
+          { h: "Your agent calls the tool", p: "The MCP tool <code>generate_image</code> sends your prompt and reference images to <code>chatgpt.com/backend-api/codex/responses</code>, the same backend Codex uses, asking for the image tool (GPT Image 2)." },
+          { h: "The image lands in your project", p: "The streamed result is decoded into a PNG and saved where you asked. Existing files are never overwritten: new versions get <code>-v2</code>, <code>-v3</code>." },
+        ],
+      },
+      cost: "Cost: generations count against your ChatGPT plan’s limits. There is no per-image bill. Heavy use can hit your plan’s rate limit (error 429).",
+      setupH: "Install and connect your agent",
+      setupIntro: "Clone the tool once, then connect the agent you use.",
+      film: {
+        kicker: "Example",
+        h2: "A storyboard in three requests",
+        intro: "The three frames of <em>The Keeper</em>, a 30-second film, were each made with GPTImage from a single request.",
+        frames: [
+          { n: "Scene 1", line: "The storm came early that night.", alt: "Painted storyboard frame: a lighthouse on black rocks at dusk, storm clouds, a small fishing boat far out on heavy seas." },
+          { n: "Scene 2", line: "Up in the tower, the old keeper climbed toward the lamp.", alt: "Painted storyboard frame: an old bearded keeper in a yellow oilskin climbs a spiral iron staircase holding a lantern." },
+          { n: "Scene 3", line: "One light, and a boat finds its way home.", alt: "Painted storyboard frame: the lighthouse beam cuts through the rain and lights the boat heading for the harbor." },
+        ],
+        caption: "Storyboard for The Keeper, made with GPTImage. Add the narration with GPTVoice.",
+        voiceCta: "Add the voice-over",
+      },
+      gptimage: {
+        tagline: "Images and edits from GPT Image 2, straight from your coding agent.",
+        features: [
+          "Works from your reference images: style samples, brand assets, sketches. It keeps them in a <code>references/</code> folder so each new image gets better.",
+          "Any size up to 3840 px on the long edge: square, landscape or portrait.",
+          "Never overwrites a file. Each new version is saved next to the last one.",
+          "Three tools for your agent: <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>. Plus a one-line terminal command.",
+        ],
+        example: "Generate a watercolor red fox in snow and save it to fox.png using the gptimage tool.",
+        install: ["git clone https://github.com/Connected-Mate/gptimage.git", "cd gptimage", "npm install", "./install.sh"],
+        installNote: "Needs Node.js 20 or newer and a paid ChatGPT plan (Plus, Pro…). The install script is for macOS and Linux.",
+      },
+    },
+
+    voices: {
+      title: "GPTVoice — voice-overs for your videos, from your ChatGPT sign-in",
+      description: "GPTVoice lets Claude Code, Codex, Cursor and other MCP agents record voice-overs, narrations and dialogues with OpenAI’s voices through your ChatGPT sign-in. 10 voices, subtitles included.",
+      hero: {
+        eyebrow: "GPTVoice",
+        h1: "Your motion design videos finally have a voice",
+        lead: "You make motion design, explainers or ads with your coding agent, and you are missing the voice-over. You already have a ChatGPT sign-in for Codex. Ask your agent for the voice: GPTVoice records it with OpenAI’s voices, with subtitles.",
+        cta1: "Listen to the voices",
+        cta2: "See how it works",
+        alt: "The GPTVoice mascot: a pixel-art robot with headphones, a teal scarf and a vintage microphone.",
+      },
+      motion: {
+        kicker: "For video makers",
+        h2: "From script to voiced video, without leaving your agent",
+        steps: [
+          { h: "Write the script", p: "Or ask your agent to write it, scene by scene." },
+          { h: "Direct the voice", p: "Pick a voice, an emotion, a pace. Add <code>[pause 1s]</code> or <code>[laughs]</code> right in the text." },
+          { h: "Get audio and subtitles", p: "An MP3 or WAV plus an <code>.srt</code> file, read word for word." },
+          { h: "Drop it in your video", p: "In your editor, or straight into a code-based video (Remotion and the like) your agent is building." },
+        ],
+        example: "Read this script as an upbeat explainer voice, coral, with a short pause between scenes. Save it to audio/voiceover.mp3 with subtitles.",
+      },
+      tech: {
+        kicker: "Under the hood",
+        h2: "How GPTVoice gets your voices",
+        intro: "The same sign-in as GPTImage, a different OpenAI model.",
+        steps: [
+          { h: "The same sign-in", p: "GPTVoice reuses your GPTImage or Codex CLI sign-in (<code>~/.gptimage/auth.json</code>, <code>~/.codex/auth.json</code>), or opens the official ChatGPT login once." },
+          { h: "OpenAI’s realtime voice model", p: "Your text is sent to <code>wss://api.openai.com/v1/realtime</code>, the model behind ChatGPT voice conversations, with directions for the voice, emotion and pace." },
+          { h: "Checked word for word", p: "The model’s own transcript is compared with your text. A passage that drifts is recorded again." },
+          { h: "Saved in your project", p: "The audio is joined, its levels evened out, then saved as MP3 or WAV, with optional subtitles." },
+        ],
+      },
+      setupH: "Install and connect your agent",
+      setupIntro: "Clone the tool once, then connect the agent you use.",
+    },
+
+    how: {
+      title: "How it works — Get more from Codex",
+      description: "How GPTImage and GPTVoice reuse your ChatGPT sign-in, where the token is stored, what is sent where, how to connect Claude Code, Codex or Cursor, and the honest limits.",
+      hero: {
+        eyebrow: "How it works",
+        h1: "What happens between your subscription and your agent",
+        lead: "Everything runs on your computer. Here is where your sign-in lives, what each tool sends to OpenAI, and how to connect your agent.",
+      },
+      flow: {
+        kicker: "The flow",
+        h2: "Sign in once, then every call reuses it",
+        steps: [
+          { h: "Official login", p: "<code>auth.openai.com</code> with OAuth + PKCE. The callback comes back to <code>localhost:1455</code> on your computer." },
+          { h: "Local token", p: "Stored in your home folder, readable only by you. Refreshed automatically." },
+          { h: "MCP server", p: "A small Node.js program your agent starts. It exposes tools like <code>generate_image</code> or <code>generate_speech</code>." },
+          { h: "Your file", p: "The image or audio is written in your project. Nothing goes through our servers: there are none." },
+        ],
+      },
+      data: {
+        kicker: "Where things go",
+        h2: "What each tool sends, and where",
+        headers: ["", "GPTImage", "GPTVoice"],
+        rows: [
+          ["Sign-in stored in", "<code>~/.gptimage/auth.json</code> (or Codex’s)", "<code>~/.gptvoice/auth.json</code> (or GPTImage’s, or Codex’s)"],
+          ["Requests go to", "<code>chatgpt.com/backend-api/codex/responses</code>", "<code>wss://api.openai.com/v1/realtime</code>"],
+          ["Model", "GPT Image 2, via the Codex backend", "OpenAI’s realtime voice model"],
+          ["Counts against", "Your ChatGPT plan’s limits", "Possibly your OpenAI API account (see below)"],
+          ["Output", "PNG", "MP3 or WAV, optional .srt"],
+        ],
+      },
+      security: {
+        kicker: "Safety",
+        h2: "Your password never touches the tools",
+        items: [
+          "You log in on OpenAI’s own page, in your own browser.",
+          "The token never leaves your computer except to talk to OpenAI.",
+          "<code>npm run logout</code> in a tool’s folder deletes its stored sign-in. Your Codex CLI sign-in is left untouched.",
+          "Open source: every line can be read on GitHub.",
+        ],
+      },
+      setupH: "Connect your agent",
+      setupIntro: "Pick your agent. The same setup works for both tools.",
+      faqH: "Questions",
+      faq: [
+        { q: "Is it really free?", a: "The tools are free and open source. GPTImage counts against the ChatGPT plan you already pay for, within its limits: no per-image bill, no extra subscription. GPTVoice is different: it may be charged to your OpenAI API account (see below)." },
+        { q: "Does GPTVoice cost anything?", a: "Possibly. Voice calls are routed to the personal OpenAI API organization linked to your account, so they may be charged to its API credits or card, roughly $0.03–0.08 per minute of audio. It is not proven that they are included in your ChatGPT plan. After your first voices, check <code>platform.openai.com/usage</code>. If you see charges you don’t want, stop using GPTVoice." },
+        { q: "Do I need an API key?", a: "No. You sign in once with your ChatGPT account, in your own browser." },
+        { q: "Which ChatGPT plan do I need?", a: "An active paid plan, such as Plus or Pro. How much you can make depends on your plan’s limits." },
+        { q: "Does it work with Codex, Cursor or other agents?", a: "Both tools are standard MCP servers, so any agent that supports MCP can start them. They are tested with Claude Code. Codex and Cursor use the same standard setup shown above, but we have not tested them yet." },
+        { q: "I get a “429” error. What now?", a: "You reached your plan’s limit for now. Wait a bit and try again, and avoid large batches in one go." },
+        { q: "Can I use it for my business?", a: "We advise against it. This is meant for personal use on your own computer. For commercial or high-volume work, use the official OpenAI API." },
       ],
-      example: "Generate a watercolor red fox in snow and save it to fox.png using the gptimage tool.",
-      install: ["git clone https://github.com/Connected-Mate/gptimage.git", "cd gptimage", "npm install", "./install.sh"],
-      installNote: "Needs Node.js 20 or newer, Claude Code and a paid ChatGPT plan (Plus, Pro…). The script is for macOS and Linux. Restart Claude Code afterwards.",
-      alt: "The GPTImage mascot: a pixel-art robot painter with a purple beret, a rainbow brush and a framed landscape.",
+      grey: {
+        kicker: "Please read",
+        h2: "This is a grey area, and we say so",
+        items: [
+          "<strong>Unofficial.</strong> “Sign in with ChatGPT” is meant for Codex. These tools reuse that login to reach OpenAI’s image and voice models. It works and is widely done, but it is not an officially supported API.",
+          "<strong>Personal use.</strong> Keep it personal and local.",
+          "<strong>Voice may cost money.</strong> GPTVoice calls go to your personal OpenAI API organization and may be charged there. Check <code>platform.openai.com/usage</code>.",
+          "<strong>Rate limits.</strong> Heavy use can trigger your plan’s limits (error 429). Wait and retry.",
+          "<strong>Account risk.</strong> In the worst case, OpenAI could restrict your account. By using these tools, you accept that risk.",
+          "<strong>Synthetic voices.</strong> Never use them to impersonate a real person.",
+          "<strong>Not affiliated.</strong> No link with OpenAI, Anthropic or Cursor. Follow OpenAI’s terms of use.",
+        ],
+      },
     },
-
-    voiceAlt: "The GPTVoice mascot: a pixel-art robot with headphones, a teal scarf and a vintage microphone.",
 
     voice: {
       controlsH: "How precise is each control",
       measuredH: "Measured",
-      toolsH: "{n} tools for Claude",
-      listenLink: "Listen to the demos and all 10 voices",
+      toolsH: "{n} tools for your agent",
     },
     listen: {
-      kicker: "GPTVoice",
+      banner: { development: "GPTVoice is in development", preview: "New: GPTVoice is in preview. Listen to it", released: "GPTVoice is out. Listen to it" },
+      kicker: "Listen",
       h2: "Hear it for yourself",
       intro: "Every clip on this page was made with GPTVoice. The transcripts are exactly what is spoken.",
       demosH: "Demos",
@@ -107,61 +305,11 @@ export const t = {
       bestFor: "Best for",
       langs: { en: "English", fr: "French" },
       playLabel: "Play {name} in {lang}",
-      pauseLabel: "Pause {name}",
-      playing: "Playing {name}",
-      loadError: "This sample could not load.",
-    },
-
-    film: {
-      kicker: "Images + voice",
-      h2: "A short film, from one idea",
-      intro: "Here is the workflow for a 30-second film called <em>The Keeper</em>. The three frames below are real: each was made with GPTImage from a single request.",
-      steps: [
-        { h: "Write", p: "Ask Claude for a short script cut into scenes, one line of narration per scene." },
-        { h: "Paint", p: "GPTImage draws one frame per scene. Reuse the first frame as a reference to keep the same look." },
-        { h: "Voice", p: "GPTVoice reads the narration, with subtitles to time your shots." },
-        { h: "Assemble", p: "Ask Claude to join frames and audio into a video with <code>ffmpeg</code> (free, installed separately)." },
-      ],
-      frames: [
-        { n: "Scene 1", line: "The storm came early that night.", alt: "Painted storyboard frame: a lighthouse on black rocks at dusk, storm clouds, a small fishing boat far out on heavy seas." },
-        { n: "Scene 2", line: "Up in the tower, the old keeper climbed toward the lamp.", alt: "Painted storyboard frame: an old bearded keeper in a yellow oilskin climbs a spiral iron staircase holding a lantern." },
-        { n: "Scene 3", line: "One light, and a boat finds its way home.", alt: "Painted storyboard frame: the lighthouse beam cuts through the rain and lights the boat heading for the harbor." },
-      ],
-      framesCaption: "Storyboard for The Keeper, made with GPTImage.",
-      alsoH: "The same recipe works for",
-      also: ["a product ad with a voice-over", "an explainer video for your app", "a podcast intro", "social posts with captions read aloud", "a bedtime story with pictures"],
-    },
-
-    faq: {
-      h2: "Questions",
-      items: [
-        { q: "Is it really free?", a: "The tools are free and open source. GPTImage counts against the ChatGPT plan you already pay for, within its limits: no per-image bill, no extra subscription. GPTVoice is different: it may be charged to your OpenAI API account (see the next questions)." },
-        { q: "Do I need an API key?", a: "No. You sign in once with your ChatGPT account, in your own browser. The tool never sees your password." },
-        { q: "Which ChatGPT plan do I need?", a: "An active paid plan, such as Plus or Pro. How much you can make depends on your plan’s limits." },
-        { q: "Does it work outside Claude Code?", a: "It is built and tested for Claude Code. GPTImage is a standard MCP server, so other MCP apps may work, but they are not tested. It also has a terminal command." },
-        { q: "Where is my sign-in stored?", a: "On your computer only, in <code>~/.gptimage/auth.json</code> (or your existing Codex CLI sign-in). It is sent only to OpenAI. Run <code>npm run logout</code> to remove it." },
-        { q: "I get a “429” error. What now?", a: "You reached your plan’s limit for now. Wait a bit and try again, and avoid making large batches in one go." },
-        { q: "Can I use it for my business?", a: "We advise against it. This is meant for personal use on your own computer. For commercial or high-volume work, use the official OpenAI API." },
-        { q: "Does GPTVoice cost anything?", a: "Possibly. Voice calls are routed to the personal OpenAI API organization linked to your account, so they may be charged to its API credits or card, roughly $0.03–0.08 per minute of audio. It is not proven that they are included in your ChatGPT plan. After your first voices, check <code>platform.openai.com/usage</code>. If you see charges you don’t want, stop using GPTVoice." },
-      ],
-    },
-
-    grey: {
-      kicker: "Please read",
-      h2: "This is a grey area, and we say so",
-      items: [
-        "<strong>Unofficial.</strong> “Sign in with ChatGPT” is meant for Codex. These tools reuse that login to reach OpenAI’s image and voice models. It works and is widely done, but it is not an officially supported API.",
-        "<strong>Personal use.</strong> Keep it personal and local.",
-        "<strong>Voice may cost money.</strong> GPTVoice calls go to your personal OpenAI API organization and may be charged there. Check <code>platform.openai.com/usage</code>.",
-        "<strong>Rate limits.</strong> Heavy use can trigger your plan’s limits (error 429). Wait and retry.",
-        "<strong>Account risk.</strong> In the worst case, OpenAI could restrict your account. By using these tools, you accept that risk.",
-        "<strong>Not affiliated.</strong> No link with OpenAI or Anthropic. Follow OpenAI’s terms of use.",
-      ],
     },
 
     footer: {
       made: "Made by Connected-Mate. Open source under the MIT license.",
-      legal: "Not affiliated with OpenAI or Anthropic. ChatGPT, Codex and GPT Image are trademarks of OpenAI; Claude and Claude Code are trademarks of Anthropic.",
+      legal: "Not affiliated with OpenAI, Anthropic or Anysphere. ChatGPT, Codex and GPT Image are trademarks of OpenAI; Claude and Claude Code of Anthropic; Cursor of Anysphere.",
       gptimage: "GPTImage on GitHub",
       gptvoice: "GPTVoice on GitHub",
       top: "Back to top",
@@ -173,90 +321,277 @@ export const t = {
   fr: {
     htmlLang: "fr",
     ogLocale: "fr_FR",
-    title: "Tirez plus de Codex — avec votre abonnement OpenAI",
-    description: "Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.",
+    brand: "Get more from Codex",
     skip: "Aller au contenu",
-    navLabel: "Sections",
-    nav: { how: "Comment ça marche", tools: "Outils", listen: "Écouter", film: "Court film", faq: "FAQ" },
+    navLabel: "Principal",
     langLabel: "Langue",
     langNames: { en: "English", fr: "Français" },
+    nav: { home: "Accueil", images: "Images", voices: "Voix", how: "Comment ça marche" },
 
-    hero: {
-      banner: { development: "GPTVoice est en développement", preview: "GPTVoice en avant-première : écoutez-le", released: "GPTVoice est sorti : écoutez-le" },
-      eyebrow: "Pour Claude Code, avec un abonnement ChatGPT",
-      h1: "Tirez plus de Codex",
-      sub: "avec votre abonnement OpenAI",
-      lead: "La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images et des voix. De quoi faire des visuels, des narrations, des pubs et des courts films.",
-      ctaPrimary: "Installer GPTImage",
-      ctaSecondary: "Voir un court film se fabriquer",
-      facts: ["Pas de clé API", "Pas d’abonnement en plus", "Tourne sur votre ordinateur", "Open source (MIT)"],
-      alt: "Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux.",
-    },
-
-    notice: {
-      title: "Zone grise.",
-      body: "Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI. Restez sur un usage personnel : un usage intensif peut atteindre les limites de votre abonnement, voire, au pire, faire restreindre votre compte.",
-      link: "Lire l’avis complet",
-    },
-
-    how: {
-      kicker: "Comment ça marche",
-      h2: "Connectez-vous une fois. Ensuite, demandez.",
-      steps: [
-        { h: "Installez", p: "Copiez quatre lignes dans votre terminal. L’outil est ajouté à Claude Code pour tous les projets de votre ordinateur." },
-        { h: "Connectez-vous avec ChatGPT", p: "Votre navigateur s’ouvre sur la page de connexion officielle de ChatGPT. Vous y tapez votre mot de passe, jamais dans l’outil." },
-        { h: "Demandez à Claude", p: "Avec vos mots, dans n’importe quel projet. Claude choisit l’outil, crée le fichier et l’enregistre à côté de votre travail." },
-      ],
-      example: "Crée un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png.",
-      exampleLabel: "Vous tapez",
-    },
-
-    tools: {
-      kicker: "Deux outils",
-      h2: "Un pour les images, un pour les voix",
-      intro: "Chacun est un petit serveur MCP : un module qui donne une nouvelle compétence à Claude Code. Les deux utilisent la même connexion ChatGPT.",
-      badge: { available: "Disponible", development: "En développement", preview: "Avant-première", released: "Disponible" },
-      featuresLabel: { planned: "Prévu", live: "Ce qu’il fait" },
-      examplePromptLabel: "Exemple de demande",
-      installLabel: "Installation",
+    common: {
       copy: "Copier",
       copied: "Copié",
       copyFailed: "Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)",
-      codeLabel: "Commandes d’installation",
+      codeLabel: "Commandes",
+      installLabel: "Installation",
       repoLink: "Code source sur GitHub",
-      notPublic: "Le code n’est pas encore public. La commande d’installation apparaîtra ici dès que le dépôt sera en ligne.",
+      examplePromptLabel: "Exemple de demande",
+      badge: { available: "Disponible", development: "En développement", preview: "Avant-première", released: "Disponible" },
+      featuresLabel: { planned: "Prévu", live: "Ce qu’il fait" },
       notYet: "Pas encore publié. La commande d’installation apparaîtra ici dès que GPTVoice fonctionnera de bout en bout.",
-      samplesLabel: "Écouter",
+      notPublic: "Le code n’est pas encore public. La commande d’installation apparaîtra ici dès que le dépôt sera en ligne.",
       sampleSoon: "Extrait audio bientôt disponible. Voici le texte qu’il lira :",
       transcript: "Transcription",
       audioError: "Cet extrait n’a pas pu se charger. La transcription est juste en dessous.",
+      next: "Suite",
+      readMore: "Comment ça marche, en détail",
+      tested: "Testé",
+      untested: "Installation MCP standard, pas encore testée",
     },
 
-    gptimage: {
-      tagline: "Des images et des retouches par GPT Image 2, directement depuis Claude Code.",
-      summary: "Logos, illustrations, maquettes, bannières, textures, storyboards. Les illustrations et le storyboard de cette page ont été faits avec.",
-      features: [
-        "Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.",
-        "N’écrase jamais un fichier. Chaque nouvelle version est enregistrée à côté de la précédente.",
-        "Trois outils pour Claude : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.",
-        "Marche aussi en une seule commande dans le terminal.",
+    agents: {
+      claude: { name: "Claude Code", how: "<code>./install.sh</code> ajoute l’outil pour tous vos projets, avec sa compétence. Redémarrez Claude Code ensuite." },
+      codex: { name: "Codex CLI", how: "Une commande ajoute l’outil à Codex (le CLI, l’extension IDE et l’appli partagent <code>~/.codex/config.toml</code>)." },
+      cursor: { name: "Cursor", how: "Ajoutez le serveur dans <code>~/.cursor/mcp.json</code> (tous les projets) ou <code>.cursor/mcp.json</code> (un projet)." },
+      other: { name: "Autre client MCP", how: "C’est un serveur MCP standard (stdio) : indiquez cette commande à votre client." },
+    },
+    signInNote: "Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée.",
+    pathNote: "Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.",
+
+    home: {
+      title: "Get more from Codex — votre abonnement ChatGPT, dans votre agent de code",
+      description: "Deux outils MCP gratuits et open source qui permettent à Claude Code, Codex, Cursor et aux autres agents de code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API.",
+      hero: {
+        eyebrow: "Get more from Codex",
+        h1: "Votre abonnement ChatGPT, dans votre agent de code",
+        lead: "Vous payez déjà ChatGPT pour utiliser Codex. Deux petits outils open source permettent à Claude Code, Codex, Cursor ou n’importe quel agent MCP d’utiliser cette même connexion pour créer des <strong>images</strong> et des <strong>voix</strong>. Pas de clé API à créer, rien de plus à payer en abonnement.",
+        cta1: "Créer des images",
+        cta2: "Créer des voix",
+        facts: ["Pas de clé API", "Pas d’abonnement en plus", "Marche avec votre agent de code", "Open source (MIT)"],
+        artLabel: "Schéma : votre abonnement ChatGPT passe dans une prise MCP, qui alimente votre agent de code en images et en voix.",
+        artPlan: "Votre abonnement ChatGPT",
+        artAgent: "Votre agent de code",
+      },
+      flow: {
+        kicker: "L’idée",
+        h2: "Branchez votre abonnement sur votre agent",
+        steps: [
+          { h: "Votre abonnement", p: "Celui que vous utilisez déjà pour Codex. Sa connexion sait faire plus que du code." },
+          { h: "Une prise MCP", p: "GPTImage ou GPTVoice se connecte une fois, garde le jeton sur votre ordinateur et le transforme en outils que votre agent peut appeler." },
+          { h: "Votre agent crée", p: "Demandez avec vos mots : « fais une image d’accueil », « enregistre la voix off ». Le fichier arrive dans votre projet." },
+        ],
+      },
+      products: {
+        kicker: "Deux outils",
+        h2: "Un pour les images, un pour les voix",
+        images: {
+          h: "GPTImage",
+          p: "Logos, illustrations, maquettes, bannières, storyboards. Votre agent les crée avec GPT Image 2 et les range dans votre projet.",
+          points: ["Décompté de votre abonnement ChatGPT", "Part de vos images de référence", "N’écrase jamais un fichier"],
+          cta: "Découvrir GPTImage",
+        },
+        voices: {
+          h: "GPTVoice",
+          p: "Des voix off pour le motion design, les vidéos explicatives, les pubs et les podcasts. 10 voix, émotions, chuchotements et rires, sous-titres compris.",
+          points: ["10 voix, en anglais et en français", "Lu mot pour mot", "MP3 ou WAV, plus les sous-titres"],
+          cta: "Découvrir GPTVoice",
+        },
+      },
+      agents: {
+        kicker: "Compatible avec",
+        h2: "L’agent que vous utilisez déjà",
+        p: "Les deux outils sont des serveurs MCP standard. Votre agent les voit comme de nouvelles compétences.",
+        note: "Testé avec Claude Code. Codex, Cursor et les autres clients MCP utilisent la même installation standard, pas encore testée.",
+        cta: "L’installation pour chaque agent",
+      },
+      uses: {
+        kicker: "Ce qu’on en fait",
+        h2: "D’une idée à un résultat fini",
+        items: [
+          { h: "Un site qui a ses propres images", p: "Images d’accueil, icônes et illustrations générées là où vit le code.", to: "images" },
+          { h: "Une vidéo de motion design qui parle", p: "Écrivez le texte, récupérez la voix off et ses sous-titres, glissez-les dans votre montage.", to: "voices" },
+          { h: "Un court film", p: "Le storyboard avec GPTImage, la narration avec GPTVoice, le montage par votre agent.", to: "images", hash: "#film" },
+        ],
+      },
+      notice: {
+        title: "En toute franchise.",
+        body: "Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI : restez sur un usage personnel. Les images sont décomptées de votre abonnement ChatGPT ; les voix peuvent être facturées sur votre compte API OpenAI.",
+        link: "Lire les détails",
+      },
+    },
+
+    images: {
+      title: "GPTImage — des images avec votre abonnement ChatGPT, créées par votre agent de code",
+      description: "GPTImage permet à Claude Code, Codex, Cursor et aux autres agents MCP de créer et retoucher des images avec GPT Image 2 via votre connexion ChatGPT. Pas de clé API, pas de facture à l’image.",
+      hero: {
+        eyebrow: "GPTImage",
+        h1: "Des images pour votre projet, créées par votre agent",
+        lead: "Demandez à votre agent de code un logo, une image d’accueil ou un storyboard. GPTImage la crée avec GPT Image 2 via votre abonnement ChatGPT et l’enregistre à côté de votre code.",
+        cta1: "Installer GPTImage",
+        cta2: "Voir comment ça marche",
+        alt: "La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré.",
+      },
+      uses: {
+        kicker: "Pour ceux qui construisent",
+        h2: "Fini de quitter votre éditeur pour chercher une image",
+        items: [
+          { h: "Sites et applis", p: "Images d’accueil, illustrations d’écrans vides, icônes et fonds, générés à la bonne taille." },
+          { h: "Marque et produit", p: "Pistes de logo, maquettes, bannières et posts réseaux sociaux à partir de vos propres éléments de marque." },
+          { h: "Histoires et vidéo", p: "Des storyboards et des images au style cohérent, prêts pour une voix off." },
+        ],
+      },
+      tech: {
+        kicker: "Sous le capot",
+        h2: "Comment GPTImage récupère vos images",
+        intro: "Pas de magie et pas de clé API. Voici exactement ce qui se passe, étape par étape.",
+        steps: [
+          { h: "Vous vous connectez une fois", p: "Une fenêtre de navigateur s’ouvre sur la page de connexion officielle de ChatGPT (OAuth avec PKCE sur <code>auth.openai.com</code>). Vous y tapez votre mot de passe, jamais dans l’outil." },
+          { h: "Le jeton reste sur votre ordinateur", p: "Il est enregistré dans <code>~/.gptimage/auth.json</code>, ou repris de <code>~/.codex/auth.json</code> si le Codex CLI est connecté. Il est renouvelé tout seul quand il expire." },
+          { h: "Votre agent appelle l’outil", p: "L’outil MCP <code>generate_image</code> envoie votre demande et vos images de référence à <code>chatgpt.com/backend-api/codex/responses</code>, le même service que Codex, en demandant l’outil d’image (GPT Image 2)." },
+          { h: "L’image arrive dans votre projet", p: "Le résultat reçu est décodé en PNG et enregistré où vous l’avez demandé. Un fichier existant n’est jamais écrasé : les nouvelles versions prennent <code>-v2</code>, <code>-v3</code>." },
+        ],
+      },
+      cost: "Coût : les créations sont décomptées des limites de votre abonnement ChatGPT. Pas de facture à l’image. Un usage intensif peut atteindre la limite de votre abonnement (erreur 429).",
+      setupH: "Installer et brancher votre agent",
+      setupIntro: "Clonez l’outil une fois, puis branchez l’agent que vous utilisez.",
+      film: {
+        kicker: "Exemple",
+        h2: "Un storyboard en trois demandes",
+        intro: "Les trois images de <em>The Keeper</em> (le gardien de phare), un film de 30 secondes, ont chacune été faites avec GPTImage en une seule demande.",
+        frames: [
+          { n: "Scène 1", line: "Cette nuit-là, la tempête arriva tôt.", alt: "Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." },
+          { n: "Scène 2", line: "Dans la tour, le vieux gardien monta vers la lampe.", alt: "Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." },
+          { n: "Scène 3", line: "Une lumière, et un bateau retrouve le port.", alt: "Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." },
+        ],
+        caption: "Storyboard de The Keeper, fait avec GPTImage. Ajoutez la narration avec GPTVoice.",
+        voiceCta: "Ajouter la voix off",
+      },
+      gptimage: {
+        tagline: "Des images et des retouches par GPT Image 2, directement depuis votre agent de code.",
+        features: [
+          "Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.",
+          "Toutes les tailles jusqu’à 3840 px sur le grand côté : carré, paysage ou portrait.",
+          "N’écrase jamais un fichier. Chaque nouvelle version est enregistrée à côté de la précédente.",
+          "Trois outils pour votre agent : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>. Et une commande de terminal en une ligne.",
+        ],
+        example: "Génère un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png avec l’outil gptimage.",
+        install: ["git clone https://github.com/Connected-Mate/gptimage.git", "cd gptimage", "npm install", "./install.sh"],
+        installNote: "Demande Node.js 20 ou plus récent et un abonnement ChatGPT payant (Plus, Pro…). Le script d’installation est prévu pour macOS et Linux.",
+      },
+    },
+
+    voices: {
+      title: "GPTVoice — des voix off pour vos vidéos, avec votre connexion ChatGPT",
+      description: "GPTVoice permet à Claude Code, Codex, Cursor et aux autres agents MCP d’enregistrer voix off, narrations et dialogues avec les voix d’OpenAI via votre connexion ChatGPT. 10 voix, sous-titres compris.",
+      hero: {
+        eyebrow: "GPTVoice",
+        h1: "Vos vidéos de motion design ont enfin une voix",
+        lead: "Vous faites du motion design, des vidéos explicatives ou des pubs avec votre agent de code, et il vous manque la voix off. Vous avez déjà une connexion ChatGPT pour Codex. Demandez la voix à votre agent : GPTVoice l’enregistre avec les voix d’OpenAI, sous-titres compris.",
+        cta1: "Écouter les voix",
+        cta2: "Voir comment ça marche",
+        alt: "La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro.",
+      },
+      motion: {
+        kicker: "Pour ceux qui font de la vidéo",
+        h2: "Du texte à la vidéo parlée, sans quitter votre agent",
+        steps: [
+          { h: "Écrivez le texte", p: "Ou demandez à votre agent de l’écrire, scène par scène." },
+          { h: "Dirigez la voix", p: "Choisissez une voix, une émotion, un rythme. Ajoutez <code>[pause 1s]</code> ou <code>[laughs]</code> directement dans le texte." },
+          { h: "Récupérez l’audio et les sous-titres", p: "Un MP3 ou un WAV, plus un fichier <code>.srt</code>, lu mot pour mot." },
+          { h: "Glissez-le dans votre vidéo", p: "Dans votre logiciel de montage, ou directement dans une vidéo en code (Remotion et compagnie) que votre agent construit." },
+        ],
+        example: "Lis ce texte avec une voix explicative enjouée, coral, avec une courte pause entre les scènes. Enregistre-le dans audio/voixoff.mp3 avec les sous-titres.",
+      },
+      tech: {
+        kicker: "Sous le capot",
+        h2: "Comment GPTVoice récupère vos voix",
+        intro: "La même connexion que GPTImage, un autre modèle d’OpenAI.",
+        steps: [
+          { h: "La même connexion", p: "GPTVoice reprend votre connexion GPTImage ou Codex CLI (<code>~/.gptimage/auth.json</code>, <code>~/.codex/auth.json</code>), ou ouvre une fois la page de connexion officielle de ChatGPT." },
+          { h: "Le modèle vocal temps réel d’OpenAI", p: "Votre texte est envoyé à <code>wss://api.openai.com/v1/realtime</code>, le modèle des conversations vocales de ChatGPT, avec des indications de voix, d’émotion et de rythme." },
+          { h: "Vérifié mot pour mot", p: "La transcription du modèle est comparée à votre texte. Un passage qui s’en écarte est réenregistré." },
+          { h: "Enregistré dans votre projet", p: "L’audio est assemblé, son volume égalisé, puis enregistré en MP3 ou WAV, avec sous-titres en option." },
+        ],
+      },
+      setupH: "Installer et brancher votre agent",
+      setupIntro: "Clonez l’outil une fois, puis branchez l’agent que vous utilisez.",
+    },
+
+    how: {
+      title: "Comment ça marche — Get more from Codex",
+      description: "Comment GPTImage et GPTVoice réutilisent votre connexion ChatGPT, où est stocké le jeton, ce qui est envoyé où, comment brancher Claude Code, Codex ou Cursor, et les limites en toute franchise.",
+      hero: {
+        eyebrow: "Comment ça marche",
+        h1: "Ce qui se passe entre votre abonnement et votre agent",
+        lead: "Tout tourne sur votre ordinateur. Voici où vit votre connexion, ce que chaque outil envoie à OpenAI, et comment brancher votre agent.",
+      },
+      flow: {
+        kicker: "Le circuit",
+        h2: "Connectez-vous une fois, chaque appel la réutilise",
+        steps: [
+          { h: "Connexion officielle", p: "<code>auth.openai.com</code> en OAuth + PKCE. La réponse revient sur <code>localhost:1455</code>, sur votre ordinateur." },
+          { h: "Jeton local", p: "Rangé dans votre dossier personnel, lisible par vous seul. Renouvelé tout seul." },
+          { h: "Serveur MCP", p: "Un petit programme Node.js que votre agent lance. Il propose des outils comme <code>generate_image</code> ou <code>generate_speech</code>." },
+          { h: "Votre fichier", p: "L’image ou l’audio est écrit dans votre projet. Rien ne passe par nos serveurs : il n’y en a pas." },
+        ],
+      },
+      data: {
+        kicker: "Ce qui va où",
+        h2: "Ce que chaque outil envoie, et à qui",
+        headers: ["", "GPTImage", "GPTVoice"],
+        rows: [
+          ["Connexion rangée dans", "<code>~/.gptimage/auth.json</code> (ou celle de Codex)", "<code>~/.gptvoice/auth.json</code> (ou celle de GPTImage ou de Codex)"],
+          ["Les requêtes vont à", "<code>chatgpt.com/backend-api/codex/responses</code>", "<code>wss://api.openai.com/v1/realtime</code>"],
+          ["Modèle", "GPT Image 2, via le service de Codex", "Le modèle vocal temps réel d’OpenAI"],
+          ["Décompté de", "Les limites de votre abonnement ChatGPT", "Peut-être votre compte API OpenAI (voir plus bas)"],
+          ["Résultat", "PNG", "MP3 ou WAV, .srt en option"],
+        ],
+      },
+      security: {
+        kicker: "Sécurité",
+        h2: "Votre mot de passe ne touche jamais les outils",
+        items: [
+          "Vous vous connectez sur la page d’OpenAI, dans votre propre navigateur.",
+          "Le jeton ne quitte jamais votre ordinateur, sauf pour parler à OpenAI.",
+          "<code>npm run logout</code> dans le dossier d’un outil supprime sa connexion enregistrée. Celle du Codex CLI n’est pas touchée.",
+          "Open source : chaque ligne se lit sur GitHub.",
+        ],
+      },
+      setupH: "Brancher votre agent",
+      setupIntro: "Choisissez votre agent. La même installation marche pour les deux outils.",
+      faqH: "Questions",
+      faq: [
+        { q: "C’est vraiment gratuit ?", a: "Les outils sont gratuits et open source. GPTImage est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites : pas de facture à l’image, pas d’abonnement en plus. GPTVoice est différent : il peut être facturé sur votre compte API OpenAI (voir plus bas)." },
+        { q: "GPTVoice coûte-t-il quelque chose ?", a: "Peut-être. Les appels de voix passent par l’organisation API OpenAI personnelle liée à votre compte : ils peuvent donc être prélevés sur ses crédits API ou sa carte, environ 0,03 à 0,08 $ par minute d’audio. Rien ne prouve qu’ils soient inclus dans votre abonnement ChatGPT. Après vos premières voix, vérifiez <code>platform.openai.com/usage</code>. Si des frais non voulus apparaissent, arrêtez d’utiliser GPTVoice." },
+        { q: "Faut-il une clé API ?", a: "Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur." },
+        { q: "Quel abonnement ChatGPT faut-il ?", a: "Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule." },
+        { q: "Ça marche avec Codex, Cursor ou d’autres agents ?", a: "Les deux outils sont des serveurs MCP standard : tout agent compatible MCP peut les lancer. Ils sont testés avec Claude Code. Codex et Cursor utilisent la même installation standard montrée plus haut, mais nous ne les avons pas encore testés." },
+        { q: "J’ai une erreur « 429 ». Que faire ?", a: "Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup." },
+        { q: "Puis-je l’utiliser pour mon entreprise ?", a: "Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI." },
       ],
-      example: "Génère un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png avec l’outil gptimage.",
-      install: ["git clone https://github.com/Connected-Mate/gptimage.git", "cd gptimage", "npm install", "./install.sh"],
-      installNote: "Demande Node.js 20 ou plus récent, Claude Code et un abonnement ChatGPT payant (Plus, Pro…). Le script est prévu pour macOS et Linux. Redémarrez Claude Code ensuite.",
-      alt: "La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré.",
+      grey: {
+        kicker: "À lire",
+        h2: "C’est une zone grise, et nous le disons",
+        items: [
+          "<strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.",
+          "<strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.",
+          "<strong>La voix peut être payante.</strong> Les appels de GPTVoice passent par votre organisation API OpenAI personnelle et peuvent y être facturés. Vérifiez <code>platform.openai.com/usage</code>.",
+          "<strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.",
+          "<strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.",
+          "<strong>Voix de synthèse.</strong> Ne les utilisez jamais pour imiter une personne réelle.",
+          "<strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic, ni avec Cursor. Respectez les conditions d’utilisation d’OpenAI.",
+        ],
+      },
     },
-
-    voiceAlt: "La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro.",
 
     voice: {
       controlsH: "Précision de chaque réglage",
       measuredH: "Mesuré",
-      toolsH: "{n} outils pour Claude",
-      listenLink: "Écouter les démos et les 10 voix",
+      toolsH: "{n} outils pour votre agent",
     },
     listen: {
-      kicker: "GPTVoice",
+      banner: { development: "GPTVoice est en développement", preview: "Nouveau : GPTVoice en avant-première. Écoutez-le", released: "GPTVoice est sorti. Écoutez-le" },
+      kicker: "Écouter",
       h2: "Écoutez par vous-même",
       intro: "Chaque extrait de cette page a été fait avec GPTVoice. Les transcriptions correspondent exactement à ce qui est dit.",
       demosH: "Démos",
@@ -269,61 +604,11 @@ export const t = {
       bestFor: "Idéale pour",
       langs: { en: "anglais", fr: "français" },
       playLabel: "Écouter {name} en {lang}",
-      pauseLabel: "Mettre {name} en pause",
-      playing: "Lecture de {name}",
-      loadError: "Cet extrait n’a pas pu se charger.",
-    },
-
-    film: {
-      kicker: "Images + voix",
-      h2: "Un court film, à partir d’une idée",
-      intro: "Voici la méthode pour un film de 30 secondes appelé <em>The Keeper</em> (le gardien de phare). Les trois images ci-dessous sont réelles : chacune a été faite avec GPTImage, en une seule demande.",
-      steps: [
-        { h: "Écrire", p: "Demandez à Claude un court scénario découpé en scènes, avec une phrase de narration par scène." },
-        { h: "Peindre", p: "GPTImage dessine une image par scène. Réutilisez la première comme référence pour garder le même style." },
-        { h: "Faire parler", p: "GPTVoice lit la narration, avec des sous-titres pour caler vos plans." },
-        { h: "Assembler", p: "Demandez à Claude de réunir images et son en vidéo avec <code>ffmpeg</code> (gratuit, à installer à part)." },
-      ],
-      frames: [
-        { n: "Scène 1", line: "Cette nuit-là, la tempête arriva tôt.", alt: "Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." },
-        { n: "Scène 2", line: "Dans la tour, le vieux gardien monta vers la lampe.", alt: "Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." },
-        { n: "Scène 3", line: "Une lumière, et un bateau retrouve le port.", alt: "Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." },
-      ],
-      framesCaption: "Storyboard de The Keeper, fait avec GPTImage.",
-      alsoH: "La même recette marche pour",
-      also: ["une pub produit avec voix off", "une vidéo qui explique votre appli", "un générique de podcast", "des posts réseaux sociaux lus à voix haute", "une histoire du soir illustrée"],
-    },
-
-    faq: {
-      h2: "Questions",
-      items: [
-        { q: "C’est vraiment gratuit ?", a: "Les outils sont gratuits et open source. GPTImage est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites : pas de facture à l’image, pas d’abonnement en plus. GPTVoice est différent : il peut être facturé sur votre compte API OpenAI (voir plus bas)." },
-        { q: "Faut-il une clé API ?", a: "Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur. L’outil ne voit jamais votre mot de passe." },
-        { q: "Quel abonnement ChatGPT faut-il ?", a: "Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule." },
-        { q: "Ça marche en dehors de Claude Code ?", a: "C’est conçu et testé pour Claude Code. GPTImage est un serveur MCP standard : d’autres applis MCP peuvent marcher, mais elles ne sont pas testées. Il existe aussi une commande de terminal." },
-        { q: "Où est stockée ma connexion ?", a: "Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer." },
-        { q: "J’ai une erreur « 429 ». Que faire ?", a: "Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup." },
-        { q: "Puis-je l’utiliser pour mon entreprise ?", a: "Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI." },
-        { q: "GPTVoice coûte-t-il quelque chose ?", a: "Peut-être. Les appels de voix passent par l’organisation API OpenAI personnelle liée à votre compte : ils peuvent donc être prélevés sur ses crédits API ou sa carte, environ 0,03 à 0,08 $ par minute d’audio. Rien ne prouve qu’ils soient inclus dans votre abonnement ChatGPT. Après vos premières voix, vérifiez <code>platform.openai.com/usage</code>. Si des frais non voulus apparaissent, arrêtez d’utiliser GPTVoice." },
-      ],
-    },
-
-    grey: {
-      kicker: "À lire",
-      h2: "C’est une zone grise, et nous le disons",
-      items: [
-        "<strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.",
-        "<strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.",
-        "<strong>La voix peut être payante.</strong> Les appels de GPTVoice passent par votre organisation API OpenAI personnelle et peuvent y être facturés. Vérifiez <code>platform.openai.com/usage</code>.",
-        "<strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.",
-        "<strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.",
-        "<strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.",
-      ],
     },
 
     footer: {
       made: "Réalisé par Connected-Mate. Open source sous licence MIT.",
-      legal: "Aucun lien avec OpenAI ou Anthropic. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code sont des marques d’Anthropic.",
+      legal: "Aucun lien avec OpenAI, Anthropic ou Anysphere. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code d’Anthropic ; Cursor d’Anysphere.",
       gptimage: "GPTImage sur GitHub",
       gptvoice: "GPTVoice sur GitHub",
       top: "Retour en haut",

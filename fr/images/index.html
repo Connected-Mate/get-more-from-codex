@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPTImage — des images avec votre abonnement ChatGPT, créées par votre agent de code</title>
+<meta name="description" content="GPTImage permet à Claude Code, Codex, Cursor et aux autres agents MCP de créer et retoucher des images avec GPT Image 2 via votre connexion ChatGPT. Pas de clé API, pas de facture à l’image.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://connected-mate.github.io/get-more-from-codex/fr/images/">
+<link rel="alternate" hreflang="en" href="https://connected-mate.github.io/get-more-from-codex/images/">
+<link rel="alternate" hreflang="fr" href="https://connected-mate.github.io/get-more-from-codex/fr/images/">
+<link rel="alternate" hreflang="x-default" href="https://connected-mate.github.io/get-more-from-codex/images/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Get more from Codex">
+<meta property="og:title" content="GPTImage — des images avec votre abonnement ChatGPT, créées par votre agent de code">
+<meta property="og:description" content="GPTImage permet à Claude Code, Codex, Cursor et aux autres agents MCP de créer et retoucher des images avec GPT Image 2 via votre connexion ChatGPT. Pas de clé API, pas de facture à l’image.">
+<meta property="og:url" content="https://connected-mate.github.io/get-more-from-codex/fr/images/">
+<meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GPTImage — des images avec votre abonnement ChatGPT, créées par votre agent de code">
+<meta name="twitter:description" content="GPTImage permet à Claude Code, Codex, Cursor et aux autres agents MCP de créer et retoucher des images avec GPT Image 2 via votre connexion ChatGPT. Pas de clé API, pas de facture à l’image.">
+<meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<link rel="icon" href="../../assets/mark.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preload" href="../../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css?v=b1b4c22f">
+<script>
+/* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
+(function () {
+  var page = "fr", q = null, saved = null, stored = false;
+  try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  if (q !== "en" && q !== "fr") q = null;
+  try { if (q) { localStorage.setItem("gmfc-lang", q); stored = true; } saved = localStorage.getItem("gmfc-lang"); } catch (e) {}
+  if (q) {
+    if (stored && history.replaceState) history.replaceState(null, "", location.pathname + location.hash);
+    return;
+  }
+  var want = saved === "en" || saved === "fr" ? saved : null;
+  if (!want && page === "en") {
+    var n = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    if (/^fr\b/i.test(n)) want = "fr";
+  }
+  if (want && want !== page) location.replace((want === "fr" ? "./" : "../../images/") + location.hash);
+})();
+</script>
+</head>
+<body data-page="images">
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="../"><svg class="mark" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="hmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#hmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></a>
+    <nav class="mainnav" aria-label="Principal">
+      <a href="./" aria-current="page">Images</a>
+      <a href="../voix/">Voix</a>
+      <a href="../comment-ca-marche/">Comment ça marche</a>
+    </nav>
+    <nav class="lang" aria-label="Langue"><a href="../../images/?lang=en" hreflang="en" lang="en" data-lang-link="en"><span aria-hidden="true">EN</span><span class="sr">English</span></a><a href="./?lang=fr" hreflang="fr" lang="fr" data-lang-link="fr" aria-current="page"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></nav>
+  </div>
+  <nav class="subnav" aria-label="Principal">
+    <a href="./" aria-current="page">Images</a>
+      <a href="../voix/">Voix</a>
+      <a href="../comment-ca-marche/">Comment ça marche</a>
+  </nav>
+</header>
+
+<main id="main">
+<section id="top" class="hero hero-product" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      
+      <p class="eyebrow">GPTImage</p>
+      <h1 id="hero-h" class="h1-main">Des images pour votre projet, créées par votre agent</h1>
+      <p class="lead">Demandez à votre agent de code un logo, une image d’accueil ou un storyboard. GPTImage la crée avec GPT Image 2 via votre abonnement ChatGPT et l’enregistre à côté de votre code.</p>
+      <div class="cta"><a class="btn" href="#install">Installer GPTImage</a><a class="btn ghost" href="#tech">Voir comment ça marche</a></div>
+      
+    </div>
+    <div class="hero-art"><div class="art-frame"><picture>
+      <source type="image/avif" srcset="../../assets/img/mascot-360.avif 360w, ../../assets/img/mascot-720.avif 720w" sizes="(min-width: 1000px) 460px, 70vw">
+      <source type="image/webp" srcset="../../assets/img/mascot-360.webp 360w, ../../assets/img/mascot-720.webp 720w" sizes="(min-width: 1000px) 460px, 70vw">
+      <img src="../../assets/img/mascot-720.webp" alt="La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré." width="1074" height="1014" fetchpriority="high" decoding="async">
+    </picture></div></div>
+  </div>
+</section>
+
+<section class="uses-cards" aria-labelledby="iu-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Pour ceux qui construisent</p><h2 id="iu-h">Fini de quitter votre éditeur pour chercher une image</h2></div>
+    <ul class="three"><li><h3>Sites et applis</h3><p>Images d’accueil, illustrations d’écrans vides, icônes et fonds, générés à la bonne taille.</p></li><li><h3>Marque et produit</h3><p>Pistes de logo, maquettes, bannières et posts réseaux sociaux à partir de vos propres éléments de marque.</p></li><li><h3>Histoires et vidéo</h3><p>Des storyboards et des images au style cohérent, prêts pour une voix off.</p></li></ul>
+  </div>
+</section>
+
+<section id="tech" class="tech" aria-labelledby="tech-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Sous le capot</p><h2 id="tech-h">Comment GPTImage récupère vos images</h2><p>Pas de magie et pas de clé API. Voici exactement ce qui se passe, étape par étape.</p></div>
+    <ol class="pipeline">
+      <li><span class="pipe-n" aria-hidden="true">01</span><h3>Vous vous connectez une fois</h3><p>Une fenêtre de navigateur s’ouvre sur la page de connexion officielle de ChatGPT (OAuth avec PKCE sur <code>auth.openai.com</code>). Vous y tapez votre mot de passe, jamais dans l’outil.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">02</span><h3>Le jeton reste sur votre ordinateur</h3><p>Il est enregistré dans <code>~/.gptimage/auth.json</code>, ou repris de <code>~/.codex/auth.json</code> si le Codex CLI est connecté. Il est renouvelé tout seul quand il expire.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">03</span><h3>Votre agent appelle l’outil</h3><p>L’outil MCP <code>generate_image</code> envoie votre demande et vos images de référence à <code>chatgpt.com/backend-api/codex/responses</code>, le même service que Codex, en demandant l’outil d’image (GPT Image 2).</p></li>
+      <li><span class="pipe-n" aria-hidden="true">04</span><h3>L’image arrive dans votre projet</h3><p>Le résultat reçu est décodé en PNG et enregistré où vous l’avez demandé. Un fichier existant n’est jamais écrasé : les nouvelles versions prennent <code>-v2</code>, <code>-v3</code>.</p></li>
+    </ol>
+    <p class="cost-note is-ok">Coût : les créations sont décomptées des limites de votre abonnement ChatGPT. Pas de facture à l’image. Un usage intensif peut atteindre la limite de votre abonnement (erreur 429).</p>
+    <p class="note"><a href="../comment-ca-marche/">Comment ça marche, en détail</a></p>
+  </div>
+</section>
+
+<section id="install" class="tools" aria-labelledby="install-h">
+  <div class="wrap">
+    <article class="tool solo" aria-labelledby="install-h">
+      <div class="tool-body">
+        <div class="tool-title"><h2 id="install-h">GPTImage</h2><span class="badge is-live">Disponible</span></div>
+        <p class="tagline">Des images et des retouches par GPT Image 2, directement depuis votre agent de code.</p>
+        <ul class="feat"><li>Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.</li><li>Toutes les tailles jusqu’à 3840 px sur le grand côté : carré, paysage ou portrait.</li><li>N’écrase jamais un fichier. Chaque nouvelle version est enregistrée à côté de la précédente.</li><li>Trois outils pour votre agent : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>. Et une commande de terminal en une ligne.</li></ul>
+        <p class="label">Exemple de demande</p>
+        <p class="prompt">Génère un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png avec l’outil gptimage.</p>
+        <p class="label">Installer et brancher votre agent</p>
+        <p class="note">Clonez l’outil une fois, puis branchez l’agent que vous utilisez. Demande Node.js 20 ou plus récent et un abonnement ChatGPT payant (Plus, Pro…). Le script d’installation est prévu pour macOS et Linux.</p>
+        <div class="setup" id="setup-gptimage">
+      <details class="agent" open>
+        <summary><span class="agent-name">Claude Code</span><span class="agent-state is-tested">Testé</span></summary>
+        <div class="agent-body">
+          <p><code>./install.sh</code> ajoute l’outil pour tous vos projets, avec sa compétence. Redémarrez Claude Code ensuite.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>git clone https://github.com/Connected-Mate/gptimage.git
+cd gptimage
+npm install
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Codex CLI</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>Une commande ajoute l’outil à Codex (le CLI, l’extension IDE et l’appli partagent <code>~/.codex/config.toml</code>).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>cd /path/to/gptimage
+npm install
+npm run login
+codex mcp add gptimage -- node /path/to/gptimage/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Cursor</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>Ajoutez le serveur dans <code>~/.cursor/mcp.json</code> (tous les projets) ou <code>.cursor/mcp.json</code> (un projet).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>mcp.json</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="mcp.json"><code>{
+  &quot;mcpServers&quot;: {
+    &quot;gptimage&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/path/to/gptimage/src/server.js&quot;]
+    }
+  }
+}</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Autre client MCP</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>C’est un serveur MCP standard (stdio) : indiquez cette commande à votre client.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>command: node
+args:    /path/to/gptimage/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+    </div>
+        <p class="note"><a href="https://github.com/Connected-Mate/gptimage">Code source sur GitHub</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="film" class="film" aria-labelledby="film-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Exemple</p><h2 id="film-h">Un storyboard en trois demandes</h2><p>Les trois images de <em>The Keeper</em> (le gardien de phare), un film de 30 secondes, ont chacune été faites avec GPTImage en une seule demande.</p></div>
+    <figure class="strip">
+      <ol class="frames">
+        <li class="frame">
+          <picture>
+      <source type="image/avif" srcset="../../assets/img/story-1-640.avif 640w, ../../assets/img/story-1-1000.avif 1000w, ../../assets/img/story-1-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="../../assets/img/story-1-640.webp 640w, ../../assets/img/story-1-1000.webp 1000w, ../../assets/img/story-1-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <img src="../../assets/img/story-1-1000.webp" alt="Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+          <p class="scene">Scène 1</p>
+          <p class="line">Cette nuit-là, la tempête arriva tôt.</p>
+        </li>
+        <li class="frame">
+          <picture>
+      <source type="image/avif" srcset="../../assets/img/story-2-640.avif 640w, ../../assets/img/story-2-1000.avif 1000w, ../../assets/img/story-2-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="../../assets/img/story-2-640.webp 640w, ../../assets/img/story-2-1000.webp 1000w, ../../assets/img/story-2-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <img src="../../assets/img/story-2-1000.webp" alt="Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+          <p class="scene">Scène 2</p>
+          <p class="line">Dans la tour, le vieux gardien monta vers la lampe.</p>
+        </li>
+        <li class="frame">
+          <picture>
+      <source type="image/avif" srcset="../../assets/img/story-3-640.avif 640w, ../../assets/img/story-3-1000.avif 1000w, ../../assets/img/story-3-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <source type="image/webp" srcset="../../assets/img/story-3-640.webp 640w, ../../assets/img/story-3-1000.webp 1000w, ../../assets/img/story-3-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
+      <img src="../../assets/img/story-3-1000.webp" alt="Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+          <p class="scene">Scène 3</p>
+          <p class="line">Une lumière, et un bateau retrouve le port.</p>
+        </li>
+      </ol>
+      <figcaption>Storyboard de The Keeper, fait avec GPTImage. Ajoutez la narration avec GPTVoice.</figcaption>
+    </figure>
+    <p class="cta"><a class="btn ghost" href="../voix/">Ajouter la voix off <span aria-hidden="true">→</span></a></p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <p class="foot-mark"><svg class="mark" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="fmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#fmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></p>
+      <p>Réalisé par Connected-Mate. Open source sous licence MIT.</p>
+      <p class="legal">Aucun lien avec OpenAI, Anthropic ou Anysphere. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code d’Anthropic ; Cursor d’Anysphere.</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="../">Accueil</a></li><li><a href="./">Images</a></li><li><a href="../voix/">Voix</a></li><li><a href="../comment-ca-marche/">Comment ça marche</a></li>
+    </ul>
+    <ul class="foot-links">
+      <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage sur GitHub</a></li>
+      
+      <li><a href="#top">Retour en haut</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../../assets/site.js?v=35464ccc" defer></script>
+</body>
+</html>

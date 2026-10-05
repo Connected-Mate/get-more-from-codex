@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comment ça marche — Get more from Codex</title>
+<meta name="description" content="Comment GPTImage et GPTVoice réutilisent votre connexion ChatGPT, où est stocké le jeton, ce qui est envoyé où, comment brancher Claude Code, Codex ou Cursor, et les limites en toute franchise.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://connected-mate.github.io/get-more-from-codex/fr/comment-ca-marche/">
+<link rel="alternate" hreflang="en" href="https://connected-mate.github.io/get-more-from-codex/how-it-works/">
+<link rel="alternate" hreflang="fr" href="https://connected-mate.github.io/get-more-from-codex/fr/comment-ca-marche/">
+<link rel="alternate" hreflang="x-default" href="https://connected-mate.github.io/get-more-from-codex/how-it-works/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Get more from Codex">
+<meta property="og:title" content="Comment ça marche — Get more from Codex">
+<meta property="og:description" content="Comment GPTImage et GPTVoice réutilisent votre connexion ChatGPT, où est stocké le jeton, ce qui est envoyé où, comment brancher Claude Code, Codex ou Cursor, et les limites en toute franchise.">
+<meta property="og:url" content="https://connected-mate.github.io/get-more-from-codex/fr/comment-ca-marche/">
+<meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Comment ça marche — Get more from Codex">
+<meta name="twitter:description" content="Comment GPTImage et GPTVoice réutilisent votre connexion ChatGPT, où est stocké le jeton, ce qui est envoyé où, comment brancher Claude Code, Codex ou Cursor, et les limites en toute franchise.">
+<meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<link rel="icon" href="../../assets/mark.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preload" href="../../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css?v=b1b4c22f">
+<script>
+/* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
+(function () {
+  var page = "fr", q = null, saved = null, stored = false;
+  try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  if (q !== "en" && q !== "fr") q = null;
+  try { if (q) { localStorage.setItem("gmfc-lang", q); stored = true; } saved = localStorage.getItem("gmfc-lang"); } catch (e) {}
+  if (q) {
+    if (stored && history.replaceState) history.replaceState(null, "", location.pathname + location.hash);
+    return;
+  }
+  var want = saved === "en" || saved === "fr" ? saved : null;
+  if (!want && page === "en") {
+    var n = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    if (/^fr\b/i.test(n)) want = "fr";
+  }
+  if (want && want !== page) location.replace((want === "fr" ? "./" : "../../how-it-works/") + location.hash);
+})();
+</script>
+</head>
+<body data-page="how">
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="../"><svg class="mark" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="hmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#hmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></a>
+    <nav class="mainnav" aria-label="Principal">
+      <a href="../images/">Images</a>
+      <a href="../voix/">Voix</a>
+      <a href="./" aria-current="page">Comment ça marche</a>
+    </nav>
+    <nav class="lang" aria-label="Langue"><a href="../../how-it-works/?lang=en" hreflang="en" lang="en" data-lang-link="en"><span aria-hidden="true">EN</span><span class="sr">English</span></a><a href="./?lang=fr" hreflang="fr" lang="fr" data-lang-link="fr" aria-current="page"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></nav>
+  </div>
+  <nav class="subnav" aria-label="Principal">
+    <a href="../images/">Images</a>
+      <a href="../voix/">Voix</a>
+      <a href="./" aria-current="page">Comment ça marche</a>
+  </nav>
+</header>
+
+<main id="main">
+<section id="top" class="hero hero-text" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Comment ça marche</p>
+      <h1 id="hero-h" class="h1-main">Ce qui se passe entre votre abonnement et votre agent</h1>
+      <p class="lead">Tout tourne sur votre ordinateur. Voici où vit votre connexion, ce que chaque outil envoie à OpenAI, et comment brancher votre agent.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tech" aria-labelledby="flow-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Le circuit</p><h2 id="flow-h">Connectez-vous une fois, chaque appel la réutilise</h2></div>
+    <ol class="pipeline">
+      <li><span class="pipe-n" aria-hidden="true">01</span><h3>Connexion officielle</h3><p><code>auth.openai.com</code> en OAuth + PKCE. La réponse revient sur <code>localhost:1455</code>, sur votre ordinateur.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">02</span><h3>Jeton local</h3><p>Rangé dans votre dossier personnel, lisible par vous seul. Renouvelé tout seul.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">03</span><h3>Serveur MCP</h3><p>Un petit programme Node.js que votre agent lance. Il propose des outils comme <code>generate_image</code> ou <code>generate_speech</code>.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">04</span><h3>Votre fichier</h3><p>L’image ou l’audio est écrit dans votre projet. Rien ne passe par nos serveurs : il n’y en a pas.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="data" aria-labelledby="data-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Ce qui va où</p><h2 id="data-h">Ce que chaque outil envoie, et à qui</h2></div>
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="data-h">
+      <table class="compare">
+        <thead><tr><th scope="col" class="sr-col"><span class="sr">-</span></th><th scope="col">GPTImage</th><th scope="col">GPTVoice</th></tr></thead>
+        <tbody><tr><th scope="row">Connexion rangée dans</th><td><code>~/.gptimage/auth.json</code> (ou celle de Codex)</td><td><code>~/.gptvoice/auth.json</code> (ou celle de GPTImage ou de Codex)</td></tr><tr><th scope="row">Les requêtes vont à</th><td><code>chatgpt.com/backend-api/codex/responses</code></td><td><code>wss://api.openai.com/v1/realtime</code></td></tr><tr><th scope="row">Modèle</th><td>GPT Image 2, via le service de Codex</td><td>Le modèle vocal temps réel d’OpenAI</td></tr><tr><th scope="row">Décompté de</th><td>Les limites de votre abonnement ChatGPT</td><td>Peut-être votre compte API OpenAI (voir plus bas)</td></tr><tr><th scope="row">Résultat</th><td>PNG</td><td>MP3 ou WAV, .srt en option</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="security" aria-labelledby="sec-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Sécurité</p><h2 id="sec-h">Votre mot de passe ne touche jamais les outils</h2></div>
+    <ul class="feat"><li>Vous vous connectez sur la page d’OpenAI, dans votre propre navigateur.</li><li>Le jeton ne quitte jamais votre ordinateur, sauf pour parler à OpenAI.</li><li><code>npm run logout</code> dans le dossier d’un outil supprime sa connexion enregistrée. Celle du Codex CLI n’est pas touchée.</li><li>Open source : chaque ligne se lit sur GitHub.</li></ul>
+  </div>
+</section>
+
+<section id="setup" class="setup-sec" aria-labelledby="setup-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="setup-h">Brancher votre agent</h2><p>Choisissez votre agent. La même installation marche pour les deux outils.</p></div>
+    <h3 class="sub-h">GPTImage</h3>
+    <div class="setup" id="how-gptimage">
+      <details class="agent" open>
+        <summary><span class="agent-name">Claude Code</span><span class="agent-state is-tested">Testé</span></summary>
+        <div class="agent-body">
+          <p><code>./install.sh</code> ajoute l’outil pour tous vos projets, avec sa compétence. Redémarrez Claude Code ensuite.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>git clone https://github.com/Connected-Mate/gptimage.git
+cd gptimage
+npm install
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Codex CLI</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>Une commande ajoute l’outil à Codex (le CLI, l’extension IDE et l’appli partagent <code>~/.codex/config.toml</code>).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>cd /path/to/gptimage
+npm install
+npm run login
+codex mcp add gptimage -- node /path/to/gptimage/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Cursor</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>Ajoutez le serveur dans <code>~/.cursor/mcp.json</code> (tous les projets) ou <code>.cursor/mcp.json</code> (un projet).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>mcp.json</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="mcp.json"><code>{
+  &quot;mcpServers&quot;: {
+    &quot;gptimage&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/path/to/gptimage/src/server.js&quot;]
+    }
+  }
+}</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Autre client MCP</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>C’est un serveur MCP standard (stdio) : indiquez cette commande à votre client.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>command: node
+args:    /path/to/gptimage/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+    </div>
+    <h3 class="sub-h">GPTVoice</h3>
+    <p class="not-yet">Le code n’est pas encore public. La commande d’installation apparaîtra ici dès que le dépôt sera en ligne.</p>
+  </div>
+</section>
+
+<section id="faq" class="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <h2 id="faq-h">Questions</h2>
+    <div class="faq-list">
+      <details><summary>C’est vraiment gratuit ?</summary><div class="answer"><p>Les outils sont gratuits et open source. GPTImage est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites : pas de facture à l’image, pas d’abonnement en plus. GPTVoice est différent : il peut être facturé sur votre compte API OpenAI (voir plus bas).</p></div></details>
+      <details><summary>GPTVoice coûte-t-il quelque chose ?</summary><div class="answer"><p>Peut-être. Les appels de voix passent par l’organisation API OpenAI personnelle liée à votre compte : ils peuvent donc être prélevés sur ses crédits API ou sa carte, environ 0,03 à 0,08 $ par minute d’audio. Rien ne prouve qu’ils soient inclus dans votre abonnement ChatGPT. Après vos premières voix, vérifiez <code>platform.openai.com/usage</code>. Si des frais non voulus apparaissent, arrêtez d’utiliser GPTVoice.</p></div></details>
+      <details><summary>Faut-il une clé API ?</summary><div class="answer"><p>Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur.</p></div></details>
+      <details><summary>Quel abonnement ChatGPT faut-il ?</summary><div class="answer"><p>Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule.</p></div></details>
+      <details><summary>Ça marche avec Codex, Cursor ou d’autres agents ?</summary><div class="answer"><p>Les deux outils sont des serveurs MCP standard : tout agent compatible MCP peut les lancer. Ils sont testés avec Claude Code. Codex et Cursor utilisent la même installation standard montrée plus haut, mais nous ne les avons pas encore testés.</p></div></details>
+      <details><summary>J’ai une erreur « 429 ». Que faire ?</summary><div class="answer"><p>Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup.</p></div></details>
+      <details><summary>Puis-je l’utiliser pour mon entreprise ?</summary><div class="answer"><p>Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="grey" class="grey" aria-labelledby="grey-h">
+  <div class="wrap">
+    <p class="kicker">À lire</p>
+    <h2 id="grey-h">C’est une zone grise, et nous le disons</h2>
+    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>La voix peut être payante.</strong> Les appels de GPTVoice passent par votre organisation API OpenAI personnelle et peuvent y être facturés. Vérifiez <code>platform.openai.com/usage</code>.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Voix de synthèse.</strong> Ne les utilisez jamais pour imiter une personne réelle.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic, ni avec Cursor. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <p class="foot-mark"><svg class="mark" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="fmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#fmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></p>
+      <p>Réalisé par Connected-Mate. Open source sous licence MIT.</p>
+      <p class="legal">Aucun lien avec OpenAI, Anthropic ou Anysphere. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code d’Anthropic ; Cursor d’Anysphere.</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="../">Accueil</a></li><li><a href="../images/">Images</a></li><li><a href="../voix/">Voix</a></li><li><a href="./">Comment ça marche</a></li>
+    </ul>
+    <ul class="foot-links">
+      <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage sur GitHub</a></li>
+      
+      <li><a href="#top">Retour en haut</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../../assets/site.js?v=35464ccc" defer></script>
+</body>
+</html>

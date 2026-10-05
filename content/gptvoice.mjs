@@ -27,8 +27,8 @@ export const gptvoice = {
     fr: "Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre connexion ChatGPT.",
   },
   summary: {
-    en: "Ask Claude for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. Direct it like a voice actor: emotion, speed, whisper or shout, laughs and pauses right in your text. Every passage is checked word for word.",
-    fr: "Demandez à Claude une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.",
+    en: "Ask your agent for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. Direct it like a voice actor: emotion, speed, whisper or shout, laughs and pauses right in your text. Every passage is checked word for word.",
+    fr: "Demandez à votre agent une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.",
   },
 
   // Cost caveat shown in the card. Source: gptvoice agent, 05/10/2026: calls are routed to the user's

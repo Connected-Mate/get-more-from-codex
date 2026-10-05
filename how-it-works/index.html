@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — Get more from Codex</title>
+<meta name="description" content="How GPTImage and GPTVoice reuse your ChatGPT sign-in, where the token is stored, what is sent where, how to connect Claude Code, Codex or Cursor, and the honest limits.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://connected-mate.github.io/get-more-from-codex/how-it-works/">
+<link rel="alternate" hreflang="en" href="https://connected-mate.github.io/get-more-from-codex/how-it-works/">
+<link rel="alternate" hreflang="fr" href="https://connected-mate.github.io/get-more-from-codex/fr/comment-ca-marche/">
+<link rel="alternate" hreflang="x-default" href="https://connected-mate.github.io/get-more-from-codex/how-it-works/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Get more from Codex">
+<meta property="og:title" content="How it works — Get more from Codex">
+<meta property="og:description" content="How GPTImage and GPTVoice reuse your ChatGPT sign-in, where the token is stored, what is sent where, how to connect Claude Code, Codex or Cursor, and the honest limits.">
+<meta property="og:url" content="https://connected-mate.github.io/get-more-from-codex/how-it-works/">
+<meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How it works — Get more from Codex">
+<meta name="twitter:description" content="How GPTImage and GPTVoice reuse your ChatGPT sign-in, where the token is stored, what is sent where, how to connect Claude Code, Codex or Cursor, and the honest limits.">
+<meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css?v=b1b4c22f">
+<script>
+/* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
+(function () {
+  var page = "en", q = null, saved = null, stored = false;
+  try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  if (q !== "en" && q !== "fr") q = null;
+  try { if (q) { localStorage.setItem("gmfc-lang", q); stored = true; } saved = localStorage.getItem("gmfc-lang"); } catch (e) {}
+  if (q) {
+    if (stored && history.replaceState) history.replaceState(null, "", location.pathname + location.hash);
+    return;
+  }
+  var want = saved === "en" || saved === "fr" ? saved : null;
+  if (!want && page === "en") {
+    var n = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    if (/^fr\b/i.test(n)) want = "fr";
+  }
+  if (want && want !== page) location.replace((want === "fr" ? "../fr/comment-ca-marche/" : "./") + location.hash);
+})();
+</script>
+</head>
+<body data-page="how">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="../"><svg class="mark" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="hmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#hmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="../images/">Images</a>
+      <a href="../voices/">Voices</a>
+      <a href="./" aria-current="page">How it works</a>
+    </nav>
+    <nav class="lang" aria-label="Language"><a href="./?lang=en" hreflang="en" lang="en" data-lang-link="en" aria-current="page"><span aria-hidden="true">EN</span><span class="sr">English</span></a><a href="../fr/comment-ca-marche/?lang=fr" hreflang="fr" lang="fr" data-lang-link="fr"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></nav>
+  </div>
+  <nav class="subnav" aria-label="Main">
+    <a href="../images/">Images</a>
+      <a href="../voices/">Voices</a>
+      <a href="./" aria-current="page">How it works</a>
+  </nav>
+</header>
+
+<main id="main">
+<section id="top" class="hero hero-text" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">How it works</p>
+      <h1 id="hero-h" class="h1-main">What happens between your subscription and your agent</h1>
+      <p class="lead">Everything runs on your computer. Here is where your sign-in lives, what each tool sends to OpenAI, and how to connect your agent.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tech" aria-labelledby="flow-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">The flow</p><h2 id="flow-h">Sign in once, then every call reuses it</h2></div>
+    <ol class="pipeline">
+      <li><span class="pipe-n" aria-hidden="true">01</span><h3>Official login</h3><p><code>auth.openai.com</code> with OAuth + PKCE. The callback comes back to <code>localhost:1455</code> on your computer.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">02</span><h3>Local token</h3><p>Stored in your home folder, readable only by you. Refreshed automatically.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">03</span><h3>MCP server</h3><p>A small Node.js program your agent starts. It exposes tools like <code>generate_image</code> or <code>generate_speech</code>.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">04</span><h3>Your file</h3><p>The image or audio is written in your project. Nothing goes through our servers: there are none.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="data" aria-labelledby="data-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Where things go</p><h2 id="data-h">What each tool sends, and where</h2></div>
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="data-h">
+      <table class="compare">
+        <thead><tr><th scope="col" class="sr-col"><span class="sr">-</span></th><th scope="col">GPTImage</th><th scope="col">GPTVoice</th></tr></thead>
+        <tbody><tr><th scope="row">Sign-in stored in</th><td><code>~/.gptimage/auth.json</code> (or Codex’s)</td><td><code>~/.gptvoice/auth.json</code> (or GPTImage’s, or Codex’s)</td></tr><tr><th scope="row">Requests go to</th><td><code>chatgpt.com/backend-api/codex/responses</code></td><td><code>wss://api.openai.com/v1/realtime</code></td></tr><tr><th scope="row">Model</th><td>GPT Image 2, via the Codex backend</td><td>OpenAI’s realtime voice model</td></tr><tr><th scope="row">Counts against</th><td>Your ChatGPT plan’s limits</td><td>Possibly your OpenAI API account (see below)</td></tr><tr><th scope="row">Output</th><td>PNG</td><td>MP3 or WAV, optional .srt</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="security" aria-labelledby="sec-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Safety</p><h2 id="sec-h">Your password never touches the tools</h2></div>
+    <ul class="feat"><li>You log in on OpenAI’s own page, in your own browser.</li><li>The token never leaves your computer except to talk to OpenAI.</li><li><code>npm run logout</code> in a tool’s folder deletes its stored sign-in. Your Codex CLI sign-in is left untouched.</li><li>Open source: every line can be read on GitHub.</li></ul>
+  </div>
+</section>
+
+<section id="setup" class="setup-sec" aria-labelledby="setup-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="setup-h">Connect your agent</h2><p>Pick your agent. The same setup works for both tools.</p></div>
+    <h3 class="sub-h">GPTImage</h3>
+    <div class="setup" id="how-gptimage">
+      <details class="agent" open>
+        <summary><span class="agent-name">Claude Code</span><span class="agent-state is-tested">Tested</span></summary>
+        <div class="agent-body">
+          <p><code>./install.sh</code> registers the tool for every project and adds the skill. Restart Claude Code afterwards.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commands</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Commands"><code>git clone https://github.com/Connected-Mate/gptimage.git
+cd gptimage
+npm install
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Codex CLI</span><span class="agent-state">Standard MCP setup, not tested yet</span></summary>
+        <div class="agent-body">
+          <p>One command adds the tool to Codex (CLI, IDE extension and desktop app share <code>~/.codex/config.toml</code>).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commands</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Commands"><code>cd /path/to/gptimage
+npm install
+npm run login
+codex mcp add gptimage -- node /path/to/gptimage/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused. Replace <code>/path/to/</code> with the folder where you cloned the tool.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Cursor</span><span class="agent-state">Standard MCP setup, not tested yet</span></summary>
+        <div class="agent-body">
+          <p>Add the server to <code>~/.cursor/mcp.json</code> (all projects) or <code>.cursor/mcp.json</code> (one project).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>mcp.json</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="mcp.json"><code>{
+  &quot;mcpServers&quot;: {
+    &quot;gptimage&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/path/to/gptimage/src/server.js&quot;]
+    }
+  }
+}</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused. Replace <code>/path/to/</code> with the folder where you cloned the tool.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Any MCP client</span><span class="agent-state">Standard MCP setup, not tested yet</span></summary>
+        <div class="agent-body">
+          <p>It is a standard MCP server over stdio: point your client at this command.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commands</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Commands"><code>command: node
+args:    /path/to/gptimage/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused. Replace <code>/path/to/</code> with the folder where you cloned the tool.</p>
+        </div>
+      </details>
+    </div>
+    <h3 class="sub-h">GPTVoice</h3>
+    <p class="not-yet">The code is not public yet. The install command will appear here as soon as the repository is online.</p>
+  </div>
+</section>
+
+<section id="faq" class="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <h2 id="faq-h">Questions</h2>
+    <div class="faq-list">
+      <details><summary>Is it really free?</summary><div class="answer"><p>The tools are free and open source. GPTImage counts against the ChatGPT plan you already pay for, within its limits: no per-image bill, no extra subscription. GPTVoice is different: it may be charged to your OpenAI API account (see below).</p></div></details>
+      <details><summary>Does GPTVoice cost anything?</summary><div class="answer"><p>Possibly. Voice calls are routed to the personal OpenAI API organization linked to your account, so they may be charged to its API credits or card, roughly $0.03–0.08 per minute of audio. It is not proven that they are included in your ChatGPT plan. After your first voices, check <code>platform.openai.com/usage</code>. If you see charges you don’t want, stop using GPTVoice.</p></div></details>
+      <details><summary>Do I need an API key?</summary><div class="answer"><p>No. You sign in once with your ChatGPT account, in your own browser.</p></div></details>
+      <details><summary>Which ChatGPT plan do I need?</summary><div class="answer"><p>An active paid plan, such as Plus or Pro. How much you can make depends on your plan’s limits.</p></div></details>
+      <details><summary>Does it work with Codex, Cursor or other agents?</summary><div class="answer"><p>Both tools are standard MCP servers, so any agent that supports MCP can start them. They are tested with Claude Code. Codex and Cursor use the same standard setup shown above, but we have not tested them yet.</p></div></details>
+      <details><summary>I get a “429” error. What now?</summary><div class="answer"><p>You reached your plan’s limit for now. Wait a bit and try again, and avoid large batches in one go.</p></div></details>
+      <details><summary>Can I use it for my business?</summary><div class="answer"><p>We advise against it. This is meant for personal use on your own computer. For commercial or high-volume work, use the official OpenAI API.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="grey" class="grey" aria-labelledby="grey-h">
+  <div class="wrap">
+    <p class="kicker">Please read</p>
+    <h2 id="grey-h">This is a grey area, and we say so</h2>
+    <ul><li><strong>Unofficial.</strong> “Sign in with ChatGPT” is meant for Codex. These tools reuse that login to reach OpenAI’s image and voice models. It works and is widely done, but it is not an officially supported API.</li><li><strong>Personal use.</strong> Keep it personal and local.</li><li><strong>Voice may cost money.</strong> GPTVoice calls go to your personal OpenAI API organization and may be charged there. Check <code>platform.openai.com/usage</code>.</li><li><strong>Rate limits.</strong> Heavy use can trigger your plan’s limits (error 429). Wait and retry.</li><li><strong>Account risk.</strong> In the worst case, OpenAI could restrict your account. By using these tools, you accept that risk.</li><li><strong>Synthetic voices.</strong> Never use them to impersonate a real person.</li><li><strong>Not affiliated.</strong> No link with OpenAI, Anthropic or Cursor. Follow OpenAI’s terms of use.</li></ul>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <p class="foot-mark"><svg class="mark" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="fmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#fmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></p>
+      <p>Made by Connected-Mate. Open source under the MIT license.</p>
+      <p class="legal">Not affiliated with OpenAI, Anthropic or Anysphere. ChatGPT, Codex and GPT Image are trademarks of OpenAI; Claude and Claude Code of Anthropic; Cursor of Anysphere.</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="../">Home</a></li><li><a href="../images/">Images</a></li><li><a href="../voices/">Voices</a></li><li><a href="./">How it works</a></li>
+    </ul>
+    <ul class="foot-links">
+      <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage on GitHub</a></li>
+      
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/site.js?v=35464ccc" defer></script>
+</body>
+</html>

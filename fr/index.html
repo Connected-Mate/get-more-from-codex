@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tirez plus de Codex — avec votre abonnement OpenAI</title>
-<meta name="description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
+<title>Get more from Codex — votre abonnement ChatGPT, dans votre agent de code</title>
+<meta name="description" content="Deux outils MCP gratuits et open source qui permettent à Claude Code, Codex, Cursor et aux autres agents de code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API.">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="canonical" href="https://connected-mate.github.io/get-more-from-codex/fr/">
@@ -13,26 +13,26 @@
 <link rel="alternate" hreflang="x-default" href="https://connected-mate.github.io/get-more-from-codex/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Get more from Codex">
-<meta property="og:title" content="Tirez plus de Codex — avec votre abonnement OpenAI">
-<meta property="og:description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
+<meta property="og:title" content="Get more from Codex — votre abonnement ChatGPT, dans votre agent de code">
+<meta property="og:description" content="Deux outils MCP gratuits et open source qui permettent à Claude Code, Codex, Cursor et aux autres agents de code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API.">
 <meta property="og:url" content="https://connected-mate.github.io/get-more-from-codex/fr/">
 <meta property="og:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux.">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tirez plus de Codex — avec votre abonnement OpenAI">
-<meta name="twitter:description" content="Deux outils gratuits et open source qui permettent à Claude Code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API, pas d’abonnement en plus.">
+<meta name="twitter:title" content="Get more from Codex — votre abonnement ChatGPT, dans votre agent de code">
+<meta name="twitter:description" content="Deux outils MCP gratuits et open source qui permettent à Claude Code, Codex, Cursor et aux autres agents de code de créer des images et des voix avec votre connexion ChatGPT. Pas de clé API.">
 <meta name="twitter:image" content="https://connected-mate.github.io/get-more-from-codex/assets/og.png">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=59e4261b">
+<link rel="stylesheet" href="../assets/site.css?v=b1b4c22f">
 <script>
-/* Language: explicit ?lang= > saved choice > browser language (EN page only). Storage may be blocked. */
+/* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
   var page = "fr", q = null, saved = null, stored = false;
   try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
@@ -47,371 +47,181 @@
     var n = (navigator.languages && navigator.languages[0]) || navigator.language || "";
     if (/^fr\b/i.test(n)) want = "fr";
   }
-  if (want && want !== page) location.replace((page === "en" ? "fr/" : "../") + location.hash);
+  if (want && want !== page) location.replace((want === "fr" ? "./" : "../") + location.hash);
 })();
 </script>
 </head>
-<body>
+<body data-page="home">
 <a class="skip" href="#main">Aller au contenu</a>
 
 <header class="top">
   <div class="top-row">
-    <a class="brand" href="#top"><img src="../assets/favicon-32.png" alt="" width="32" height="32"><span>Get more from Codex</span></a>
-    <nav class="mainnav" aria-label="Sections">
-      <a href="#how">Comment ça marche</a>
-      <a href="#tools">Outils</a>
-      <a href="#listen">Écouter</a>
-      <a href="#film">Court film</a>
-      <a href="#faq">FAQ</a>
+    <a class="brand" href="./" aria-current="page"><svg class="mark" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="hmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#hmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></a>
+    <nav class="mainnav" aria-label="Principal">
+      <a href="images/">Images</a>
+      <a href="voix/">Voix</a>
+      <a href="comment-ca-marche/">Comment ça marche</a>
     </nav>
-    <nav class="lang" aria-label="Langue"><a href="../?lang=en" hreflang="en" lang="en" data-lang-link="en"><span aria-hidden="true">EN</span><span class="sr">English</span></a><a href="../fr/?lang=fr" hreflang="fr" lang="fr" data-lang-link="fr" aria-current="page"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></nav>
+    <nav class="lang" aria-label="Langue"><a href="../?lang=en" hreflang="en" lang="en" data-lang-link="en"><span aria-hidden="true">EN</span><span class="sr">English</span></a><a href="./?lang=fr" hreflang="fr" lang="fr" data-lang-link="fr" aria-current="page"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></nav>
   </div>
+  <nav class="subnav" aria-label="Principal">
+    <a href="images/">Images</a>
+      <a href="voix/">Voix</a>
+      <a href="comment-ca-marche/">Comment ça marche</a>
+  </nav>
 </header>
 
 <main id="main">
-<section id="top" class="hero" aria-labelledby="hero-h">
+<section id="top" class="hero hero-home" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <a class="banner" href="#listen"><span class="spark" aria-hidden="true"></span>GPTVoice en avant-première : écoutez-le<span aria-hidden="true">→</span></a>
-      <p class="eyebrow">Pour Claude Code, avec un abonnement ChatGPT</p>
-      <h1 id="hero-h"><span class="h1-main">Tirez plus de Codex</span> <span class="h1-sub">avec votre abonnement OpenAI</span></h1>
-      <p class="lead">La connexion « Se connecter avec ChatGPT » que vous utilisez pour Codex sait faire plus que du code. Deux outils gratuits et open source permettent à Claude Code de s’en servir pour créer des images et des voix. De quoi faire des visuels, des narrations, des pubs et des courts films.</p>
-      <div class="cta">
-        <a class="btn" href="#install-gptimage">Installer GPTImage</a>
-        <a class="btn ghost" href="#film">Voir un court film se fabriquer</a>
-      </div>
-      <ul class="facts"><li>Pas de clé API</li><li>Pas d’abonnement en plus</li><li>Tourne sur votre ordinateur</li><li>Open source (MIT)</li></ul>
+      <a class="banner" href="voix/#listen"><span class="spark" aria-hidden="true"></span>Nouveau : GPTVoice en avant-première. Écoutez-le<span aria-hidden="true">→</span></a>
+      <p class="eyebrow">Get more from Codex</p>
+      <h1 id="hero-h" class="h1-main">Votre abonnement ChatGPT, dans votre agent de code</h1>
+      <p class="lead">Vous payez déjà ChatGPT pour utiliser Codex. Deux petits outils open source permettent à Claude Code, Codex, Cursor ou n’importe quel agent MCP d’utiliser cette même connexion pour créer des <strong>images</strong> et des <strong>voix</strong>. Pas de clé API à créer, rien de plus à payer en abonnement.</p>
+      <div class="cta"><a class="btn" href="images/">Créer des images</a><a class="btn ghost" href="voix/">Créer des voix</a></div>
+      <ul class="facts"><li>Pas de clé API</li><li>Pas d’abonnement en plus</li><li>Marche avec votre agent de code</li><li>Open source (MIT)</li></ul>
     </div>
-    <div class="hero-art">
-      <picture>
-      <source type="image/avif" srcset="../assets/img/hero-800.avif 800w, ../assets/img/hero-1200.avif 1200w, ../assets/img/hero-1774.avif 1774w" sizes="(min-width: 1000px) 560px, calc(100vw - 32px)">
-      <source type="image/webp" srcset="../assets/img/hero-800.webp 800w, ../assets/img/hero-1200.webp 1200w, ../assets/img/hero-1774.webp 1774w" sizes="(min-width: 1000px) 560px, calc(100vw - 32px)">
-      <img src="../assets/img/hero-1200.webp" alt="Deux robots en pixel art : un peintre en béret violet qui termine un paysage sur un chevalet, et un chanteur avec un casque et un micro. Un clap de cinéma est posé entre eux." width="1774" height="887" fetchpriority="high" decoding="async">
-    </picture>
-    </div>
+    <div class="hero-art"><svg class="flow-art" viewBox="0 0 560 380" role="img" aria-label="Schéma : votre abonnement ChatGPT passe dans une prise MCP, qui alimente votre agent de code en images et en voix.">
+  <defs>
+    <linearGradient id="fa-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0a060"/><stop offset="1" stop-color="#6d8cff"/></linearGradient>
+    <linearGradient id="fa-img" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c76a2e"/><stop offset="1" stop-color="#2d4fb8"/></linearGradient>
+  </defs>
+  <g class="fa-card">
+    <rect x="16" y="120" width="160" height="140" rx="22" fill="rgb(255 255 255 / 0.1)" stroke="rgb(255 255 255 / 0.35)"/>
+    <circle cx="58" cy="168" r="18" fill="none" stroke="url(#fa-ring)" stroke-width="7"/>
+    <text x="36" y="222" class="fa-label">Votre abonnement</text>
+    <text x="36" y="242" class="fa-label">ChatGPT</text>
+  </g>
+  <path class="fa-wire" d="M176 190 C 210 190, 220 192, 252 192"/>
+  <g class="fa-plug">
+    <rect x="252" y="158" width="72" height="68" rx="20" fill="#ffffff"/>
+    <text x="288" y="198" text-anchor="middle" class="fa-mcp">MCP</text>
+    <rect x="322" y="170" width="16" height="9" rx="4.5" fill="#ffffff"/>
+    <rect x="322" y="205" width="16" height="9" rx="4.5" fill="#ffffff"/>
+  </g>
+  <path class="fa-wire" d="M338 192 C 352 192, 356 192, 372 192"/>
+  <g class="fa-agent">
+    <rect x="372" y="54" width="172" height="276" rx="20" fill="#161616" stroke="rgb(255 255 255 / 0.3)"/>
+    <circle cx="394" cy="76" r="4" fill="rgb(255 255 255 / 0.35)"/><circle cx="408" cy="76" r="4" fill="rgb(255 255 255 / 0.35)"/><circle cx="422" cy="76" r="4" fill="rgb(255 255 255 / 0.35)"/>
+    <text x="390" y="112" class="fa-small">Votre agent de code</text>
+    <rect x="390" y="126" width="136" height="84" rx="10" fill="url(#fa-img)"/>
+    <path d="M390 196 L430 160 L456 182 L476 166 L526 204 L526 200 Q526 210 516 210 L400 210 Q390 210 390 200 Z" fill="rgb(255 255 255 / 0.28)"/>
+    <circle cx="500" cy="148" r="9" fill="rgb(255 255 255 / 0.75)"/>
+    <g class="fa-wave">
+      <rect x="394" y="261" width="6" height="10" rx="3" fill="#ededed" style="--i:0"/><rect x="406" y="255" width="6" height="22" rx="3" fill="#ededed" style="--i:1"/><rect x="418" y="249" width="6" height="34" rx="3" fill="#ededed" style="--i:2"/><rect x="430" y="257" width="6" height="18" rx="3" fill="#ededed" style="--i:3"/><rect x="442" y="252" width="6" height="28" rx="3" fill="#ededed" style="--i:4"/><rect x="454" y="259" width="6" height="14" rx="3" fill="#ededed" style="--i:5"/><rect x="466" y="251" width="6" height="30" rx="3" fill="#ededed" style="--i:6"/><rect x="478" y="256" width="6" height="20" rx="3" fill="#ededed" style="--i:7"/><rect x="490" y="260" width="6" height="12" rx="3" fill="#ededed" style="--i:8"/><rect x="502" y="254" width="6" height="24" rx="3" fill="#ededed" style="--i:9"/><rect x="514" y="258" width="6" height="16" rx="3" fill="#ededed" style="--i:10"/>
+    </g>
+    <rect x="390" y="296" width="96" height="8" rx="4" fill="rgb(255 255 255 / 0.25)"/>
+  </g>
+</svg></div>
   </div>
 </section>
 
-<aside class="notice" aria-label="Zone grise">
+<aside class="notice" aria-label="En toute franchise">
   <div class="wrap notice-row">
-    <strong>Zone grise.</strong>
-    <p>Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI. Restez sur un usage personnel : un usage intensif peut atteindre les limites de votre abonnement, voire, au pire, faire restreindre votre compte. <a href="#grey">Lire l’avis complet</a>.</p>
+    <strong>En toute franchise.</strong>
+    <p>Ces outils réutilisent la connexion « Se connecter avec ChatGPT » de Codex. Ce n’est pas une API officielle d’OpenAI : restez sur un usage personnel. Les images sont décomptées de votre abonnement ChatGPT ; les voix peuvent être facturées sur votre compte API OpenAI. <a href="comment-ca-marche/#grey">Lire les détails</a>.</p>
   </div>
 </aside>
 
-<section id="how" class="how" aria-labelledby="how-h">
+<section class="flow" aria-labelledby="flow-h">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Comment ça marche</p>
-      <h2 id="how-h">Connectez-vous une fois. Ensuite, demandez.</h2>
-    </div>
-    <ol class="steps">
-      <li><div><h3>Installez</h3><p>Copiez quatre lignes dans votre terminal. L’outil est ajouté à Claude Code pour tous les projets de votre ordinateur.</p></div><span class="num" aria-hidden="true">01</span></li>
-      <li><div><h3>Connectez-vous avec ChatGPT</h3><p>Votre navigateur s’ouvre sur la page de connexion officielle de ChatGPT. Vous y tapez votre mot de passe, jamais dans l’outil.</p></div><span class="num" aria-hidden="true">02</span></li>
-      <li><div><h3>Demandez à Claude</h3><p>Avec vos mots, dans n’importe quel projet. Claude choisit l’outil, crée le fichier et l’enregistre à côté de votre travail.</p></div><span class="num" aria-hidden="true">03</span></li>
+    <div class="sec-head"><p class="kicker">L’idée</p><h2 id="flow-h">Branchez votre abonnement sur votre agent</h2></div>
+    <ol class="pipeline is-three">
+      <li><span class="pipe-n" aria-hidden="true">01</span><h3>Votre abonnement</h3><p>Celui que vous utilisez déjà pour Codex. Sa connexion sait faire plus que du code.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">02</span><h3>Une prise MCP</h3><p>GPTImage ou GPTVoice se connecte une fois, garde le jeton sur votre ordinateur et le transforme en outils que votre agent peut appeler.</p></li>
+      <li><span class="pipe-n" aria-hidden="true">03</span><h3>Votre agent crée</h3><p>Demandez avec vos mots : « fais une image d’accueil », « enregistre la voix off ». Le fichier arrive dans votre projet.</p></li>
     </ol>
-    <figure class="ask">
-      <figcaption>Vous tapez</figcaption>
-      <p><span class="caret" aria-hidden="true">&gt;</span> Crée un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png.</p>
-    </figure>
   </div>
 </section>
 
-<section id="tools" class="tools" aria-labelledby="tools-h">
+<section class="products" aria-labelledby="products-h">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Deux outils</p>
-      <h2 id="tools-h">Un pour les images, un pour les voix</h2>
-      <p>Chacun est un petit serveur MCP : un module qui donne une nouvelle compétence à Claude Code. Les deux utilisent la même connexion ChatGPT.</p>
+    <div class="sec-head"><p class="kicker">Deux outils</p><h2 id="products-h">Un pour les images, un pour les voix</h2></div>
+    <div class="product-grid">
+      <article class="product" aria-labelledby="pr-images">
+        <picture class="product-art">
+      <source type="image/avif" srcset="../assets/img/mascot-360.avif 360w, ../assets/img/mascot-720.avif 720w" sizes="(min-width: 900px) 200px, 40vw">
+      <source type="image/webp" srcset="../assets/img/mascot-360.webp 360w, ../assets/img/mascot-720.webp 720w" sizes="(min-width: 900px) 200px, 40vw">
+      <img src="../assets/img/mascot-720.webp" alt="" width="1074" height="1014" loading="lazy" decoding="async">
+    </picture>
+        <div class="product-body">
+          <div class="tool-title"><h3 id="pr-images">GPTImage</h3><span class="badge is-live">Disponible</span></div>
+          <p>Logos, illustrations, maquettes, bannières, storyboards. Votre agent les crée avec GPT Image 2 et les range dans votre projet.</p>
+          <ul class="feat"><li>Décompté de votre abonnement ChatGPT</li><li>Part de vos images de référence</li><li>N’écrase jamais un fichier</li></ul>
+          <a class="btn ghost" href="images/">Découvrir GPTImage <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="product" aria-labelledby="pr-voices">
+        <picture class="product-art">
+      <source type="image/avif" srcset="../assets/img/voice-360.avif 360w, ../assets/img/voice-720.avif 720w" sizes="(min-width: 900px) 200px, 40vw">
+      <source type="image/webp" srcset="../assets/img/voice-360.webp 360w, ../assets/img/voice-720.webp 720w" sizes="(min-width: 900px) 200px, 40vw">
+      <img src="../assets/img/voice-720.webp" alt="" width="974" height="994" loading="lazy" decoding="async">
+    </picture>
+        <div class="product-body">
+          <div class="tool-title"><h3 id="pr-voices">GPTVoice</h3><span class="badge is-live">Avant-première</span></div>
+          <p>Des voix off pour le motion design, les vidéos explicatives, les pubs et les podcasts. 10 voix, émotions, chuchotements et rires, sous-titres compris.</p>
+          <ul class="feat"><li>10 voix, en anglais et en français</li><li>Lu mot pour mot</li><li>MP3 ou WAV, plus les sous-titres</li></ul>
+          <a class="btn ghost" href="voix/">Découvrir GPTVoice <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
     </div>
-
-    <article class="tool" aria-labelledby="gptimage-h">
-      <div class="tool-art">
-        <picture>
-      <source type="image/avif" srcset="../assets/img/mascot-360.avif 360w, ../assets/img/mascot-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
-      <source type="image/webp" srcset="../assets/img/mascot-360.webp 360w, ../assets/img/mascot-720.webp 720w" sizes="(min-width: 900px) 400px, 70vw">
-      <img src="../assets/img/mascot-720.webp" alt="La mascotte de GPTImage : un robot peintre en pixel art, avec un béret violet, un pinceau arc-en-ciel et un paysage encadré." width="1074" height="1014" loading="lazy" decoding="async">
-    </picture>
-      </div>
-      <div class="tool-body">
-        <div class="tool-title"><h3 id="gptimage-h">GPTImage</h3><span class="badge is-live">Disponible</span></div>
-        <p class="tagline">Des images et des retouches par GPT Image 2, directement depuis Claude Code.</p>
-        <p>Logos, illustrations, maquettes, bannières, textures, storyboards. Les illustrations et le storyboard de cette page ont été faits avec.</p>
-        <ul class="feat"><li>Part de vos images de référence : styles, éléments de marque, croquis. Il les range dans un dossier <code>references/</code> pour que chaque nouvelle image soit meilleure.</li><li>N’écrase jamais un fichier. Chaque nouvelle version est enregistrée à côté de la précédente.</li><li>Trois outils pour Claude : <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>.</li><li>Marche aussi en une seule commande dans le terminal.</li></ul>
-        <p class="label">Exemple de demande</p>
-        <p class="prompt">Génère un renard roux à l’aquarelle dans la neige et enregistre-le dans renard.png avec l’outil gptimage.</p>
-        <div id="install-gptimage" class="install">
-          <div class="codeblock">
-          <div class="codebar"><span>Installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
-          <pre tabindex="0" aria-label="Commandes d’installation"><code>git clone https://github.com/Connected-Mate/gptimage.git
-cd gptimage
-npm install
-./install.sh</code></pre>
-          <p class="copy-status" role="status" aria-live="polite"></p>
-        </div>
-          <p class="note">Demande Node.js 20 ou plus récent, Claude Code et un abonnement ChatGPT payant (Plus, Pro…). Le script est prévu pour macOS et Linux. Redémarrez Claude Code ensuite.</p>
-          <p class="note"><a href="https://github.com/Connected-Mate/gptimage">Code source sur GitHub</a></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="tool flip" id="gptvoice" aria-labelledby="gptvoice-h" data-status="preview">
-      <div class="tool-art">
-        <picture>
-      <source type="image/avif" srcset="../assets/img/voice-360.avif 360w, ../assets/img/voice-720.avif 720w" sizes="(min-width: 900px) 400px, 70vw">
-      <source type="image/webp" srcset="../assets/img/voice-360.webp 360w, ../assets/img/voice-720.webp 720w" sizes="(min-width: 900px) 400px, 70vw">
-      <img src="../assets/img/voice-720.webp" alt="La mascotte de GPTVoice : un robot en pixel art avec un casque, une écharpe turquoise et un micro rétro." width="974" height="994" loading="lazy" decoding="async">
-    </picture>
-      </div>
-      <div class="tool-body">
-        <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-live">Avant-première</span></div>
-        <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre connexion ChatGPT.</p>
-        <p>Demandez à Claude une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.</p>
-        <p class="cost-note">Coût : contrairement à GPTImage, les appels de voix passent par l’organisation API OpenAI personnelle liée à votre compte. Ils peuvent être prélevés sur ses crédits API ou sa carte (environ 0,03 à 0,08 $ par minute d’audio) et rien ne prouve qu’ils soient inclus dans votre abonnement ChatGPT. Vérifiez platform.openai.com/usage après votre premier essai.</p>
-        <p class="label">Ce qu’il fait</p>
-        <ul class="feat"><li>10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser.</li><li>Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio.</li></ul>
-        <p class="label">Précision de chaque réglage</p>
-        <div class="controls"><div class="ctl">
-          <h4>Exact</h4><p class="ctl-note">Appliqué au son lui-même, à chaque fois.</p>
-          <ul><li>Vitesse, de 0,25× à 1,5×</li><li>Hauteur, ±12 demi-tons</li><li>Silences à la milliseconde : [pause 1s]</li></ul>
-        </div><div class="ctl">
-          <h4>Fiable</h4><p class="ctl-note">Nettement audible sur presque chaque prise.</p>
-          <ul><li>Chuchoté ou crié</li><li>Émotion et intensité</li><li>Styles de narration : bande-annonce, documentaire, livre audio, pub, méditation…</li><li>Indications dans le texte : [whispers] [excited] [laughs] [sighs]</li></ul>
-        </div><div class="ctl">
-          <h4>Au mieux</h4><p class="ctl-note">Marche souvent, pas toujours.</p>
-          <ul><li>Accent</li><li>Voix de personnage (« un vieux capitaine »)</li></ul>
-        </div></div>
-        <p class="label">Mesuré</p>
-        <dl class="measured"><div><dt>99,4 %</dt><dd>des mots lus exactement en anglais, sur des textes volontairement difficiles</dd></div><div><dt>98,8 %</dt><dd>des mots lus exactement en français, même test</dd></div><div><dt>0 / 32</dt><dd>textes cherchant à détourner la voix ont été suivis. Ils ont été lus, jamais exécutés.</dd></div></dl>
-        <p class="label">9 outils pour Claude</p>
-        <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
-        <p class="label">Exemple de demande</p>
-        <p class="prompt">Lis ce texte comme un conteur posé, avec une pause avant la dernière phrase, et enregistre-le dans keeper.mp3.</p>
-        <p class="note"><a href="#listen">Écouter les démos et les 10 voix</a></p>
-        <div id="install-gptvoice" class="install">
-          <p class="not-yet">Le code n’est pas encore public. La commande d’installation apparaîtra ici dès que le dépôt sera en ligne.</p>
-          
-          
-        </div>
-      </div>
-    </article>
   </div>
 </section>
 
-<section id="listen" class="listen" aria-labelledby="listen-h">
+<section class="agents-sec" aria-labelledby="agents-h">
+  <div class="wrap agents-grid">
+    <div>
+      <p class="kicker">Compatible avec</p>
+      <h2 id="agents-h">L’agent que vous utilisez déjà</h2>
+      <p class="sec-p">Les deux outils sont des serveurs MCP standard. Votre agent les voit comme de nouvelles compétences.</p>
+    </div>
+    <div>
+      <ul class="agent-chips"><li class="is-tested">Claude Code</li><li>Codex CLI</li><li>Cursor</li><li>Autre client MCP</li></ul>
+      <p class="note">Testé avec Claude Code. Codex, Cursor et les autres clients MCP utilisent la même installation standard, pas encore testée.</p>
+      <p class="note"><a href="comment-ca-marche/#setup">L’installation pour chaque agent</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="uses" aria-labelledby="uses-h">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">GPTVoice</p>
-      <h2 id="listen-h">Écoutez par vous-même</h2>
-      <p>Chaque extrait de cette page a été fait avec GPTVoice. Les transcriptions correspondent exactement à ce qui est dit.</p>
-    </div>
-    <h3 class="sub-h">Démos</h3>
-    <ul class="samples"><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-trailer-en">Bande-annonce</h4><p class="meta">cedar · style bande-annonce</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-trailer-en"><source src="../assets/audio/demo/en-trailer-cedar.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
-              <details class="transcript"><summary>Transcription</summary><p lang="en">In a world where every story deserves a voice… one tool changes everything. No API key. No studio. Just your words… brought to life.</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-emotions-en">Une phrase, quatre émotions</h4><p class="meta">coral · joie, tristesse, colère, chuchotement</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-emotions-en"><source src="../assets/audio/demo/en-emotions-coral.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
-              <details class="transcript"><summary>Transcription</summary><p lang="en">We won the match! We lost the match. Who lost the match?! Shh… nobody knows about the match.</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-meditation-en">Méditation guidée</h4><p class="meta">sage · style méditation</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-meditation-en"><source src="../assets/audio/demo/en-meditation-sage.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
-              <details class="transcript"><summary>Transcription</summary><p lang="en">Breathe in slowly and let it go. Feel your shoulders soften one breath at a time.</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-conte-fr">Un conte</h4><p class="meta">marin · narration de livre audio</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-conte-fr"><source src="../assets/audio/demo/fr-conte-marin.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
-              <details class="transcript"><summary>Transcription</summary><p lang="fr">Il était une fois, au bord de la mer, une vieille horloge qui ne donnait jamais la bonne heure. Un soir, quelqu’un frappa à la porte du clocher… C’était une enfant, une lanterne à la main !</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-pub-fr">Une pub radio</h4><p class="meta">coral · style pub</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-pub-fr"><source src="../assets/audio/demo/fr-pub-coral.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
-              <details class="transcript"><summary>Transcription</summary><p lang="fr">Nouveau ! La voix de vos vidéos, en un clic, avec votre abonnement ChatGPT. Essayez GPTVoice dès aujourd’hui !</p></details>
-            </div>
-          </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-dialogue-fr">Dialogue à deux voix</h4><p class="meta">coral et ash · un seul fichier</p></div>
-            <div>
-              <audio controls preload="none" aria-labelledby="s-dialogue-fr"><source src="../assets/audio/demo/fr-dialogue.mp3" type="audio/mpeg"></audio>
-              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
-              <details class="transcript"><summary>Transcription</summary><p lang="fr">Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d’API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
-            </div>
-          </li></ul>
-    <div class="gallery" data-gallery>
-      <div class="gallery-head">
-        <h3 class="sub-h" id="voices-h">Les 10 voix</h3>
-        <div class="filters" role="group" aria-label="Filtrer les voix" hidden>
-          <button type="button" data-filter="all" aria-pressed="true">Toutes</button>
-          <button type="button" data-filter="female" aria-pressed="false">Féminine</button><button type="button" data-filter="male" aria-pressed="false">Masculine</button><button type="button" data-filter="neutral" aria-pressed="false">Neutre</button>
-        </div>
-      </div>
-      <div class="voice-line">
-        <p>Chaque voix lit cette phrase avec son propre nom, en anglais et en français :</p>
-        <p lang="en">Hello, I’m Marin. I can narrate your stories, voice your videos, and bring your characters to life.</p>
-        <p lang="fr">Bonjour, je suis Marin. Je peux raconter vos histoires, doubler vos vidéos et donner vie à vos personnages.</p>
-      </div>
-      <p class="sr" role="status" aria-live="polite" data-gallery-status></p>
-      <ul class="voices" aria-labelledby="voices-h">
-        <li class="voice" data-gender="female">
-          <div class="v-head"><h4>Marin</h4><span class="v-gender">Féminine</span><span class="badge is-soon">Recommandée</span></div>
-          <p class="v-tags">naturelle · soignée · chaleureuse</p>
-          <p class="v-best"><span>Idéale pour</span> narration, livre audio, podcast</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/marin-en.mp3" data-play data-label="Écouter Marin en anglais" aria-label="Écouter Marin en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/marin-fr.mp3" data-play data-label="Écouter Marin en français" aria-label="Écouter Marin en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="male">
-          <div class="v-head"><h4>Cedar</h4><span class="v-gender">Masculine</span><span class="badge is-soon">Recommandée</span></div>
-          <p class="v-tags">naturelle · chaleureuse · assurée</p>
-          <p class="v-best"><span>Idéale pour</span> narration, podcast, pub</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/cedar-en.mp3" data-play data-label="Écouter Cedar en anglais" aria-label="Écouter Cedar en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/cedar-fr.mp3" data-play data-label="Écouter Cedar en français" aria-label="Écouter Cedar en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="female">
-          <div class="v-head"><h4>Coral</h4><span class="v-gender">Féminine</span></div>
-          <p class="v-tags">chaleureuse · amicale · vive</p>
-          <p class="v-best"><span>Idéale pour</span> pub, enfants, vidéo réseaux sociaux</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/coral-en.mp3" data-play data-label="Écouter Coral en anglais" aria-label="Écouter Coral en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/coral-fr.mp3" data-play data-label="Écouter Coral en français" aria-label="Écouter Coral en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="female">
-          <div class="v-head"><h4>Sage</h4><span class="v-gender">Féminine</span></div>
-          <p class="v-tags">douce · feutrée · réfléchie</p>
-          <p class="v-best"><span>Idéale pour</span> méditation, confidence, e-learning</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/sage-en.mp3" data-play data-label="Écouter Sage en anglais" aria-label="Écouter Sage en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/sage-fr.mp3" data-play data-label="Écouter Sage en français" aria-label="Écouter Sage en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="female">
-          <div class="v-head"><h4>Shimmer</h4><span class="v-gender">Féminine</span></div>
-          <p class="v-tags">lumineuse · aérienne · jeune</p>
-          <p class="v-best"><span>Idéale pour</span> pub, vidéo réseaux sociaux, personnage</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/shimmer-en.mp3" data-play data-label="Écouter Shimmer en anglais" aria-label="Écouter Shimmer en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/shimmer-fr.mp3" data-play data-label="Écouter Shimmer en français" aria-label="Écouter Shimmer en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="male">
-          <div class="v-head"><h4>Ash</h4><span class="v-gender">Masculine</span></div>
-          <p class="v-tags">grave · directe · posée</p>
-          <p class="v-best"><span>Idéale pour</span> documentaire, entreprise, bande-annonce</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/ash-en.mp3" data-play data-label="Écouter Ash en anglais" aria-label="Écouter Ash en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/ash-fr.mp3" data-play data-label="Écouter Ash en français" aria-label="Écouter Ash en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="male">
-          <div class="v-head"><h4>Echo</h4><span class="v-gender">Masculine</span></div>
-          <p class="v-tags">grave · calme · résonante</p>
-          <p class="v-best"><span>Idéale pour</span> méditation, documentaire, annonce</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/echo-en.mp3" data-play data-label="Écouter Echo en anglais" aria-label="Écouter Echo en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/echo-fr.mp3" data-play data-label="Écouter Echo en français" aria-label="Écouter Echo en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="male">
-          <div class="v-head"><h4>Verse</h4><span class="v-gender">Masculine</span></div>
-          <p class="v-tags">polyvalente · fluide · conteuse</p>
-          <p class="v-best"><span>Idéale pour</span> livre audio, bande-annonce, personnage</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/verse-en.mp3" data-play data-label="Écouter Verse en anglais" aria-label="Écouter Verse en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/verse-fr.mp3" data-play data-label="Écouter Verse en français" aria-label="Écouter Verse en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="male">
-          <div class="v-head"><h4>Ballad</h4><span class="v-gender">Masculine</span></div>
-          <p class="v-tags">expressive · douce · mélodieuse</p>
-          <p class="v-best"><span>Idéale pour</span> livre audio, poésie, personnage</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/ballad-en.mp3" data-play data-label="Écouter Ballad en anglais" aria-label="Écouter Ballad en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/ballad-fr.mp3" data-play data-label="Écouter Ballad en français" aria-label="Écouter Ballad en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-        <li class="voice" data-gender="neutral">
-          <div class="v-head"><h4>Alloy</h4><span class="v-gender">Neutre</span></div>
-          <p class="v-tags">équilibrée · claire · polyvalente</p>
-          <p class="v-best"><span>Idéale pour</span> e-learning, assistant, vidéo explicative</p>
-          <div class="v-play"><a class="play" href="../assets/audio/voices/alloy-en.mp3" data-play data-label="Écouter Alloy en anglais" aria-label="Écouter Alloy en anglais"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">EN</span></a><a class="play" href="../assets/audio/voices/alloy-fr.mp3" data-play data-label="Écouter Alloy en français" aria-label="Écouter Alloy en français"><span class="play-icon" aria-hidden="true"></span><span aria-hidden="true">FR</span></a></div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="film" class="film" aria-labelledby="film-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Images + voix</p>
-      <h2 id="film-h">Un court film, à partir d’une idée</h2>
-      <p>Voici la méthode pour un film de 30 secondes appelé <em>The Keeper</em> (le gardien de phare). Les trois images ci-dessous sont réelles : chacune a été faite avec GPTImage, en une seule demande.</p>
-    </div>
-    <figure class="strip">
-      <ol class="frames">
-        <li class="frame">
-          <picture>
-      <source type="image/avif" srcset="../assets/img/story-1-640.avif 640w, ../assets/img/story-1-1000.avif 1000w, ../assets/img/story-1-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <source type="image/webp" srcset="../assets/img/story-1-640.webp 640w, ../assets/img/story-1-1000.webp 1000w, ../assets/img/story-1-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <img src="../assets/img/story-1-1000.webp" alt="Image de storyboard peinte : un phare sur des rochers noirs au crépuscule, des nuages d’orage, un petit bateau de pêche au loin sur une mer forte." width="1600" height="900" loading="lazy" decoding="async">
-    </picture>
-          <p class="scene">Scène 1</p>
-          <p class="line">Cette nuit-là, la tempête arriva tôt.</p>
-        </li>
-        <li class="frame">
-          <picture>
-      <source type="image/avif" srcset="../assets/img/story-2-640.avif 640w, ../assets/img/story-2-1000.avif 1000w, ../assets/img/story-2-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <source type="image/webp" srcset="../assets/img/story-2-640.webp 640w, ../assets/img/story-2-1000.webp 1000w, ../assets/img/story-2-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <img src="../assets/img/story-2-1000.webp" alt="Image de storyboard peinte : un vieux gardien barbu en ciré jaune monte un escalier en colimaçon, une lanterne à la main." width="1600" height="900" loading="lazy" decoding="async">
-    </picture>
-          <p class="scene">Scène 2</p>
-          <p class="line">Dans la tour, le vieux gardien monta vers la lampe.</p>
-        </li>
-        <li class="frame">
-          <picture>
-      <source type="image/avif" srcset="../assets/img/story-3-640.avif 640w, ../assets/img/story-3-1000.avif 1000w, ../assets/img/story-3-1600.avif 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <source type="image/webp" srcset="../assets/img/story-3-640.webp 640w, ../assets/img/story-3-1000.webp 1000w, ../assets/img/story-3-1600.webp 1600w" sizes="(min-width: 900px) 360px, calc(100vw - 32px)">
-      <img src="../assets/img/story-3-1000.webp" alt="Image de storyboard peinte : le faisceau du phare traverse la pluie et éclaire le bateau qui rentre au port." width="1600" height="900" loading="lazy" decoding="async">
-    </picture>
-          <p class="scene">Scène 3</p>
-          <p class="line">Une lumière, et un bateau retrouve le port.</p>
-        </li>
-      </ol>
-      <figcaption>Storyboard de The Keeper, fait avec GPTImage.</figcaption>
-    </figure>
-    <ol class="recipe">
-      <li><h3>Écrire</h3><p>Demandez à Claude un court scénario découpé en scènes, avec une phrase de narration par scène.</p></li>
-      <li><h3>Peindre</h3><p>GPTImage dessine une image par scène. Réutilisez la première comme référence pour garder le même style.</p></li>
-      <li><h3>Faire parler</h3><p>GPTVoice lit la narration, avec des sous-titres pour caler vos plans.</p></li>
-      <li><h3>Assembler</h3><p>Demandez à Claude de réunir images et son en vidéo avec <code>ffmpeg</code> (gratuit, à installer à part).</p></li>
-    </ol>
-    <div class="also">
-      <h3>La même recette marche pour</h3>
-      <ul><li>une pub produit avec voix off</li><li>une vidéo qui explique votre appli</li><li>un générique de podcast</li><li>des posts réseaux sociaux lus à voix haute</li><li>une histoire du soir illustrée</li></ul>
-    </div>
-  </div>
-</section>
-
-<section id="faq" class="faq" aria-labelledby="faq-h">
-  <div class="wrap faq-grid">
-    <h2 id="faq-h">Questions</h2>
-    <div class="faq-list">
-      <details><summary>C’est vraiment gratuit ?</summary><div class="answer"><p>Les outils sont gratuits et open source. GPTImage est décompté de l’abonnement ChatGPT que vous payez déjà, dans ses limites : pas de facture à l’image, pas d’abonnement en plus. GPTVoice est différent : il peut être facturé sur votre compte API OpenAI (voir plus bas).</p></div></details>
-      <details><summary>Faut-il une clé API ?</summary><div class="answer"><p>Non. Vous vous connectez une fois avec votre compte ChatGPT, dans votre propre navigateur. L’outil ne voit jamais votre mot de passe.</p></div></details>
-      <details><summary>Quel abonnement ChatGPT faut-il ?</summary><div class="answer"><p>Un abonnement payant actif, comme Plus ou Pro. Ce que vous pouvez produire dépend des limites de votre formule.</p></div></details>
-      <details><summary>Ça marche en dehors de Claude Code ?</summary><div class="answer"><p>C’est conçu et testé pour Claude Code. GPTImage est un serveur MCP standard : d’autres applis MCP peuvent marcher, mais elles ne sont pas testées. Il existe aussi une commande de terminal.</p></div></details>
-      <details><summary>Où est stockée ma connexion ?</summary><div class="answer"><p>Uniquement sur votre ordinateur, dans <code>~/.gptimage/auth.json</code> (ou votre connexion Codex CLI existante). Elle n’est envoyée qu’à OpenAI. Lancez <code>npm run logout</code> pour la supprimer.</p></div></details>
-      <details><summary>J’ai une erreur « 429 ». Que faire ?</summary><div class="answer"><p>Vous avez atteint la limite de votre abonnement pour le moment. Patientez un peu, réessayez, et évitez les grosses séries d’un coup.</p></div></details>
-      <details><summary>Puis-je l’utiliser pour mon entreprise ?</summary><div class="answer"><p>Nous le déconseillons. C’est prévu pour un usage personnel, sur votre ordinateur. Pour un usage commercial ou à gros volume, utilisez l’API officielle d’OpenAI.</p></div></details>
-      <details><summary>GPTVoice coûte-t-il quelque chose ?</summary><div class="answer"><p>Peut-être. Les appels de voix passent par l’organisation API OpenAI personnelle liée à votre compte : ils peuvent donc être prélevés sur ses crédits API ou sa carte, environ 0,03 à 0,08 $ par minute d’audio. Rien ne prouve qu’ils soient inclus dans votre abonnement ChatGPT. Après vos premières voix, vérifiez <code>platform.openai.com/usage</code>. Si des frais non voulus apparaissent, arrêtez d’utiliser GPTVoice.</p></div></details>
-    </div>
-  </div>
-</section>
-
-<section id="grey" class="grey" aria-labelledby="grey-h">
-  <div class="wrap">
-    <p class="kicker">À lire</p>
-    <h2 id="grey-h">C’est une zone grise, et nous le disons</h2>
-    <ul><li><strong>Non officiel.</strong> « Se connecter avec ChatGPT » est prévu pour Codex. Ces outils réutilisent cette connexion pour atteindre les modèles d’image et de voix d’OpenAI. Ça marche et c’est très répandu, mais ce n’est pas une API officiellement prise en charge.</li><li><strong>Usage personnel.</strong> Gardez-le personnel et sur votre machine.</li><li><strong>La voix peut être payante.</strong> Les appels de GPTVoice passent par votre organisation API OpenAI personnelle et peuvent y être facturés. Vérifiez <code>platform.openai.com/usage</code>.</li><li><strong>Limites.</strong> Un usage intensif peut déclencher les limites de votre abonnement (erreur 429). Patientez et réessayez.</li><li><strong>Risque pour le compte.</strong> Au pire, OpenAI pourrait restreindre votre compte. En utilisant ces outils, vous acceptez ce risque.</li><li><strong>Aucun lien officiel.</strong> Ni avec OpenAI, ni avec Anthropic. Respectez les conditions d’utilisation d’OpenAI.</li></ul>
+    <div class="sec-head"><p class="kicker">Ce qu’on en fait</p><h2 id="uses-h">D’une idée à un résultat fini</h2></div>
+    <ul class="use-list">
+      <li><a href="images/"><span class="pipe-n" aria-hidden="true">01</span><span class="use-h">Un site qui a ses propres images</span><span class="use-p">Images d’accueil, icônes et illustrations générées là où vit le code.</span><span class="use-go" aria-hidden="true">→</span></a></li>
+      <li><a href="voix/"><span class="pipe-n" aria-hidden="true">02</span><span class="use-h">Une vidéo de motion design qui parle</span><span class="use-p">Écrivez le texte, récupérez la voix off et ses sous-titres, glissez-les dans votre montage.</span><span class="use-go" aria-hidden="true">→</span></a></li>
+      <li><a href="images/#film"><span class="pipe-n" aria-hidden="true">03</span><span class="use-h">Un court film</span><span class="use-p">Le storyboard avec GPTImage, la narration avec GPTVoice, le montage par votre agent.</span><span class="use-go" aria-hidden="true">→</span></a></li>
+    </ul>
   </div>
 </section>
 </main>
 
 <footer class="foot">
   <div class="wrap foot-grid">
-    <div>
+    <div class="foot-brand">
+      <p class="foot-mark"><svg class="mark" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="fmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e98a3c"/><stop offset="1" stop-color="#4a74f0"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#161616"/>
+  <circle cx="20" cy="32" r="9.5" fill="none" stroke="url(#fmg)" stroke-width="5"/>
+  <circle cx="32.5" cy="32" r="2.4" fill="#ededed"/>
+  <rect x="37" y="22" width="14" height="20" rx="5" fill="#ffffff"/>
+  <rect x="50" y="25.5" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+  <rect x="50" y="34.9" width="7.5" height="3.6" rx="1.8" fill="#ffffff"/>
+</svg><span>Get more from Codex</span></p>
       <p>Réalisé par Connected-Mate. Open source sous licence MIT.</p>
-      <p class="legal">Aucun lien avec OpenAI ou Anthropic. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code sont des marques d’Anthropic.</p>
+      <p class="legal">Aucun lien avec OpenAI, Anthropic ou Anysphere. ChatGPT, Codex et GPT Image sont des marques d’OpenAI ; Claude et Claude Code d’Anthropic ; Cursor d’Anysphere.</p>
     </div>
+    <ul class="foot-links">
+      <li><a href="./">Accueil</a></li><li><a href="images/">Images</a></li><li><a href="voix/">Voix</a></li><li><a href="comment-ca-marche/">Comment ça marche</a></li>
+    </ul>
     <ul class="foot-links">
       <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage sur GitHub</a></li>
       
