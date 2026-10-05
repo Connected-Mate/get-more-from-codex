@@ -385,6 +385,19 @@ section { padding-block: var(--section); }
 .tip .feat { margin-top: var(--s-20); }
 .tip .prompt { background: var(--canvas); }
 
+/* starter prompt */
+.starter-sec { padding-block: var(--s-24) 0; }
+.starter { display: grid; gap: var(--s-16); padding: clamp(22px, 3vw, 32px); border-radius: var(--r-card); background: var(--graphite); box-shadow: var(--inset); max-width: 880px; }
+.tool-body .starter { margin: var(--s-8) 0 var(--s-24); background: var(--canvas); }
+.setup-sec .starter { margin-bottom: var(--s-16); }
+.starter-head { display: grid; gap: var(--s-8); }
+.starter-head h2, .starter-head h3 { font-family: var(--f-head); font-size: var(--t-h-sm); letter-spacing: -0.02em; }
+.starter-head p { color: var(--ash); max-width: 64ch; }
+.codeblock.is-prompt { max-width: none; }
+.codeblock.is-prompt pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 340px; overflow-y: auto; font-size: 0.8125rem; line-height: 1.65; }
+.cta-link { align-self: center; color: var(--bone); font-size: var(--t-ui); font-weight: 500; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.45); text-underline-offset: 0.25em; padding: 12px 4px; }
+.cta-link:hover { text-decoration-color: var(--white); }
+
 /* products */
 .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: var(--s-16); }
 .product { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: var(--s-24); align-items: start; padding: var(--s-24); border-radius: var(--r-large); background: var(--frost); box-shadow: var(--inset); }

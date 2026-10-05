@@ -174,6 +174,20 @@ for (const lang of ["en", "fr"]) {
   });
 }
 
+for (const lang of ["en", "fr"]) {
+  test(`${lang}: install prompt for agents on home, images and how pages`, () => {
+    for (const n of ["home", "images", "how"]) {
+      const html = page(n, lang);
+      const m = html.match(/<div class="codeblock is-prompt">[\s\S]*?<code>([\s\S]*?)<\/code>/);
+      assert.ok(m, `${n}: prompt block`);
+      const txt = m[1];
+      for (const must of ["https://github.com/Connected-Mate/gptimage", "node -v", "npm install", "install.sh --no-login", "codex mcp add gptimage", "mcp.json", "npm run login", "npm run gen", "npm run status"]) assert.ok(txt.includes(must), `${n}: ${must}`);
+      assert.ok(!/api[_ -]?key\s*[:=]/i.test(txt), "no key handling");
+    }
+    assert.ok(!page("voices", lang).includes('id="install-prompt"'), "GPTVoice prompt hidden while repo private");
+  });
+}
+
 test("FR pages have no leftover English UI strings", () => {
   for (const p of all.filter((x) => x.lang === "fr")) {
     for (const s of ["Skip to content", ">Copy<", "How it works<", "Install GPTImage", "Best for", "Recommended"]) assert.ok(!p.html.includes(s), `${p.path}: ${s}`);

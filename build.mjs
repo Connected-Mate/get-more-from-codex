@@ -89,13 +89,26 @@ function picture(base, name, alt, sizes, { eager = false, cls = "" } = {}) {
     </picture>`;
 }
 
-function codeBlock(L, lines, label) {
+function codeBlock(L, lines, label, cls = "") {
   const C = L.common;
-  return `<div class="codeblock">
+  return `<div class="codeblock${cls ? " " + cls : ""}">
           <div class="codebar"><span>${esc(label)}</span><button type="button" class="copy" data-copy data-copied="${attr(C.copied)}" data-failed="${attr(C.copyFailed)}" hidden>${esc(C.copy)}</button></div>
           <pre tabindex="0" aria-label="${attr(label)}"><code>${lines.map(esc).join("\n")}</code></pre>
           <p class="copy-status" role="status" aria-live="polite"></p>
         </div>`;
+}
+
+// "Let your agent install it": a copyable prompt for any coding agent.
+function starter(L, text, { id = "install-prompt", heading = "h2", title = "" } = {}) {
+  const S = L.starter;
+  return `<div class="starter" id="${id}">
+      <div class="starter-head">
+        <${heading}>${esc(title || S.h)}</${heading}>
+        <p>${esc(S.p)}</p>
+      </div>
+      ${codeBlock(L, text.split("\n"), S.label, "is-prompt")}
+      <p class="note">${esc(S.note)}</p>
+    </div>`;
 }
 
 function sample(L, base, s) {
@@ -333,7 +346,7 @@ function home(lang) {
   const banner = V.samples.length
     ? `<a class="banner" href="${href(path, "voices", lang, "#listen")}"><span class="spark" aria-hidden="true"></span>${esc(L.listen.banner[V.status])}<span aria-hidden="true">→</span></a>`
     : "";
-  const body = `${pageHero({ ...H, banner, ctas: `<a class="btn" href="${href(path, "images", lang)}">${esc(H.cta1)}</a><a class="btn ghost" href="${href(path, "voices", lang)}">${esc(H.cta2)}</a>` }, { art: picture(base, "hero", H.alt, "(min-width: 1000px) 560px, calc(100vw - 32px)", { eager: true }), cls: "hero-home" })}
+  const body = `${pageHero({ ...H, banner, ctas: `<a class="btn" href="${href(path, "images", lang)}">${esc(H.cta1)}</a><a class="btn ghost" href="${href(path, "voices", lang)}">${esc(H.cta2)}</a><a class="cta-link" href="#install-prompt">${esc(L.starter.cta)} <span aria-hidden="true">↓</span></a>` }, { art: picture(base, "hero", H.alt, "(min-width: 1000px) 560px, calc(100vw - 32px)", { eager: true }), cls: "hero-home" })}
 
 <aside class="notice" aria-label="${attr(P.notice.title.replace(/\.$/, ""))}">
   <div class="wrap notice-row">
@@ -341,6 +354,12 @@ function home(lang) {
     <p>${esc(P.notice.body)} <a href="${href(path, "how", lang, "#grey")}">${esc(P.notice.link)}</a>.</p>
   </div>
 </aside>
+
+<section class="starter-sec" aria-label="${attr(L.starter.h)}">
+  <div class="wrap">
+    ${starter(L, L.starter.gptimage, { title: L.starter.h + " · GPTImage" })}
+  </div>
+</section>
 
 <section class="flow" aria-labelledby="flow-h">
   <div class="wrap">
@@ -403,7 +422,7 @@ function images(lang) {
   const path = ROUTES.images[lang];
   const base = baseFor(path);
   const H = P.hero;
-  const body = `${pageHero({ ...H, ctas: `<a class="btn" href="#install">${esc(H.cta1)}</a><a class="btn ghost" href="#tech">${esc(H.cta2)}</a>` }, { art: `<div class="art-frame">${picture(base, "mascot", H.alt, "(min-width: 1000px) 460px, 70vw", { eager: true })}</div>`, cls: "hero-product" })}
+  const body = `${pageHero({ ...H, ctas: `<a class="btn" href="#install-prompt">${esc(H.cta1)}</a><a class="btn ghost" href="#tech">${esc(H.cta2)}</a>` }, { art: `<div class="art-frame">${picture(base, "mascot", H.alt, "(min-width: 1000px) 460px, 70vw", { eager: true })}</div>`, cls: "hero-product" })}
 
 <section class="uses-cards" aria-labelledby="iu-h">
   <div class="wrap">
@@ -426,6 +445,7 @@ function images(lang) {
     <article class="tool solo" aria-labelledby="install-h">
       <div class="tool-body">
         <div class="tool-title"><h2 id="install-h">GPTImage</h2><span class="badge is-live">${esc(L.common.badge.available)}</span></div>
+        ${starter(L, L.starter.gptimage, { heading: "h3" })}
         <p class="tagline">${esc(G.tagline)}</p>
         <ul class="feat">${G.features.map((f) => `<li>${f}</li>`).join("")}</ul>
         <p class="label">${esc(L.common.examplePromptLabel)}</p>
@@ -522,7 +542,8 @@ ${V.samples.length || V.voices?.length ? `<section id="listen" class="listen" ar
         <ul class="chips">${V.mcpTools.map((x) => `<li><code>${esc(x)}</code></li>`).join("")}</ul>` : ""}
         <p class="label">${esc(P.setupH)}</p>
         ${voicePublic()
-          ? `<p class="note">${esc(P.setupIntro)} ${V.installNote ? esc(V.installNote[lang] ?? V.installNote) : ""}</p>
+          ? `${V.agentPrompt ? starter(L, V.agentPrompt[lang], { heading: "h3" }) : ""}
+        <p class="note">${esc(P.setupIntro)} ${V.installNote ? esc(V.installNote[lang] ?? V.installNote) : ""}</p>
         ${setup(L, "gptvoice", { id: "setup-gptvoice" })}
         <p class="note"><a href="${attr(V.repo)}">${esc(L.common.repoLink)}</a></p>`
           : `<p class="not-yet">${esc(live ? L.common.notPublic : L.common.notYet)}</p>`}
@@ -579,6 +600,8 @@ function how(lang) {
 <section id="setup" class="setup-sec" aria-labelledby="setup-h">
   <div class="wrap">
     <div class="sec-head"><h2 id="setup-h">${esc(P.setupH)}</h2><p>${esc(P.setupIntro)}</p></div>
+    ${starter(L, L.starter.gptimage, { heading: "h3", title: L.starter.h + " · GPTImage" })}
+    ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { id: "install-prompt-voice", heading: "h3", title: L.starter.h + " · GPTVoice" }) : ""}
     <h3 class="sub-h">GPTImage</h3>
     ${setup(L, "gptimage", { id: "how-gptimage" })}
     <h3 class="sub-h">GPTVoice</h3>

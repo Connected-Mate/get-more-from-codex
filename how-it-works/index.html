@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=bf6d27c0">
+<link rel="stylesheet" href="../assets/site.css?v=940b3316">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -115,6 +115,32 @@
 <section id="setup" class="setup-sec" aria-labelledby="setup-h">
   <div class="wrap">
     <div class="sec-head"><h2 id="setup-h">Connect your agent</h2><p>Pick your agent. The same setup works for both tools.</p></div>
+    <div class="starter" id="install-prompt">
+      <div class="starter-head">
+        <h3>Let your agent install it · GPTImage</h3>
+        <p>Copy this prompt and paste it into your coding agent (Claude Code, Codex, Cursor or another). It installs the tool, connects it, asks you to sign in to ChatGPT in your browser, and makes a test image.</p>
+      </div>
+      <div class="codeblock is-prompt">
+          <div class="codebar"><span>Install prompt</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Install prompt"><code>Install GPTImage for me: https://github.com/Connected-Mate/gptimage (an open-source MCP server that generates images with my ChatGPT sign-in). Tell me what you do at each step.
+
+1. Run `node -v`. It must be 20 or newer. If not, stop and tell me to install Node.js from nodejs.org.
+2. If ~/gptimage does not exist, run `git clone https://github.com/Connected-Mate/gptimage.git ~/gptimage`. If it exists, run `git -C ~/gptimage pull`. Then `cd ~/gptimage &amp;&amp; npm install`.
+3. Register the MCP server in the agent you are. The command is `node &lt;full path of ~/gptimage&gt;/src/server.js`.
+   - Claude Code: run `./install.sh --no-login` in ~/gptimage (it registers the server for all projects and adds the /gptimage skill).
+   - Codex: `codex mcp add gptimage -- node &lt;full path&gt;/src/server.js`
+   - Cursor: in ~/.cursor/mcp.json, add a &quot;gptimage&quot; entry under &quot;mcpServers&quot; with &quot;command&quot;: &quot;node&quot; and &quot;args&quot;: [&quot;&lt;full path&gt;/src/server.js&quot;]. Keep the other entries.
+   - Any other agent: add that command to your MCP settings.
+4. Run `npm run status` in ~/gptimage. If I am not signed in, run `npm run login`: it opens the official ChatGPT sign-in page in my browser. Tell me to finish signing in there, then wait. Never ask me for a password or a token. If the browser cannot open from here, ask me to run `npm run login` myself in ~/gptimage.
+5. Test it: `npm run gen -- -p &quot;a small watercolor fox, test image&quot; -o ~/gptimage-test.png --size 1024x1024`, then show me the path of the image.
+6. Tell me to restart you so the new gptimage tool is loaded.
+
+Note: this reuses my ChatGPT sign-in for Codex. It is not an official OpenAI API, so keep the use personal.</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      <p class="note">You stay in control: the agent shows each step, and you type your password only on OpenAI’s own sign-in page.</p>
+    </div>
+    
     <h3 class="sub-h">GPTImage</h3>
     <div class="setup" id="how-gptimage">
       <details class="agent" open>

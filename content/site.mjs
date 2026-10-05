@@ -59,6 +59,15 @@ export const t = {
     signInNote: "Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused.",
     pathNote: "Replace <code>/path/to/</code> with the folder where you cloned the tool.",
 
+    starter: {
+      h: "Let your agent install it",
+      p: "Copy this prompt and paste it into your coding agent (Claude Code, Codex, Cursor or another). It installs the tool, connects it, asks you to sign in to ChatGPT in your browser, and makes a test image.",
+      note: "You stay in control: the agent shows each step, and you type your password only on OpenAI’s own sign-in page.",
+      label: "Install prompt",
+      cta: "Copy the install prompt",
+      gptimage: "Install GPTImage for me: https://github.com/Connected-Mate/gptimage (an open-source MCP server that generates images with my ChatGPT sign-in). Tell me what you do at each step.\n\n1. Run `node -v`. It must be 20 or newer. If not, stop and tell me to install Node.js from nodejs.org.\n2. If ~/gptimage does not exist, run `git clone https://github.com/Connected-Mate/gptimage.git ~/gptimage`. If it exists, run `git -C ~/gptimage pull`. Then `cd ~/gptimage && npm install`.\n3. Register the MCP server in the agent you are. The command is `node <full path of ~/gptimage>/src/server.js`.\n   - Claude Code: run `./install.sh --no-login` in ~/gptimage (it registers the server for all projects and adds the /gptimage skill).\n   - Codex: `codex mcp add gptimage -- node <full path>/src/server.js`\n   - Cursor: in ~/.cursor/mcp.json, add a \"gptimage\" entry under \"mcpServers\" with \"command\": \"node\" and \"args\": [\"<full path>/src/server.js\"]. Keep the other entries.\n   - Any other agent: add that command to your MCP settings.\n4. Run `npm run status` in ~/gptimage. If I am not signed in, run `npm run login`: it opens the official ChatGPT sign-in page in my browser. Tell me to finish signing in there, then wait. Never ask me for a password or a token. If the browser cannot open from here, ask me to run `npm run login` myself in ~/gptimage.\n5. Test it: `npm run gen -- -p \"a small watercolor fox, test image\" -o ~/gptimage-test.png --size 1024x1024`, then show me the path of the image.\n6. Tell me to restart you so the new gptimage tool is loaded.\n\nNote: this reuses my ChatGPT sign-in for Codex. It is not an official OpenAI API, so keep the use personal.",
+    },
+
     home: {
       title: "Get more from Codex — your ChatGPT subscription, inside your coding agent",
       description: "Two free, open-source MCP tools that let Claude Code, Codex, Cursor and other coding agents generate images and voices with the ChatGPT sign-in you already have. No API key.",
@@ -368,6 +377,15 @@ export const t = {
     },
     signInNote: "Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée.",
     pathNote: "Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.",
+
+    starter: {
+      h: "Laissez votre agent l’installer",
+      p: "Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.",
+      note: "Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.",
+      label: "Texte d’installation",
+      cta: "Copier le texte d’installation",
+      gptimage: "Installe GPTImage pour moi : https://github.com/Connected-Mate/gptimage (un serveur MCP open source qui génère des images avec ma connexion ChatGPT). Dis-moi ce que tu fais à chaque étape.\n\n1. Lance `node -v`. Il faut la version 20 ou plus. Sinon, arrête-toi et dis-moi d’installer Node.js depuis nodejs.org.\n2. Si ~/gptimage n’existe pas, lance `git clone https://github.com/Connected-Mate/gptimage.git ~/gptimage`. S’il existe, lance `git -C ~/gptimage pull`. Puis `cd ~/gptimage && npm install`.\n3. Enregistre le serveur MCP dans l’agent que tu es. La commande est `node <chemin complet de ~/gptimage>/src/server.js`.\n   - Claude Code : lance `./install.sh --no-login` dans ~/gptimage (il enregistre le serveur pour tous les projets et ajoute la compétence /gptimage).\n   - Codex : `codex mcp add gptimage -- node <chemin complet>/src/server.js`\n   - Cursor : dans ~/.cursor/mcp.json, ajoute une entrée \"gptimage\" sous \"mcpServers\" avec \"command\": \"node\" et \"args\": [\"<chemin complet>/src/server.js\"]. Garde les autres entrées.\n   - Tout autre agent : ajoute cette commande à tes réglages MCP.\n4. Lance `npm run status` dans ~/gptimage. Si je ne suis pas connecté, lance `npm run login` : il ouvre la page de connexion officielle de ChatGPT dans mon navigateur. Dis-moi d’y finir la connexion, puis attends. Ne me demande jamais de mot de passe ni de jeton. Si le navigateur ne peut pas s’ouvrir d’ici, demande-moi de lancer moi-même `npm run login` dans ~/gptimage.\n5. Teste : `npm run gen -- -p \"a small watercolor fox, test image\" -o ~/gptimage-test.png --size 1024x1024`, puis montre-moi le chemin de l’image.\n6. Dis-moi de te redémarrer pour que le nouvel outil gptimage soit chargé.\n\nÀ savoir : ceci réutilise ma connexion ChatGPT de Codex. Ce n’est pas une API officielle d’OpenAI : usage personnel uniquement.",
+    },
 
     home: {
       title: "Get more from Codex — votre abonnement ChatGPT, dans votre agent de code",
