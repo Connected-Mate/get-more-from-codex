@@ -27,18 +27,19 @@ export const gptvoice = {
     fr: "Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre abonnement ChatGPT.",
   },
   summary: {
-    en: "Ask Claude for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. It drives OpenAI's realtime voice model with your ChatGPT sign-in, and checks that every word was read.",
-    fr: "Demandez à Claude une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. GPTVoice pilote le modèle vocal temps réel d'OpenAI avec votre connexion ChatGPT, et vérifie que chaque mot a été lu.",
+    en: "Ask Claude for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. Direct it like a voice actor: emotion, speed, whisper or shout, laughs and pauses right in your text. Every passage is checked word for word.",
+    fr: "Demandez à Claude une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.",
   },
 
   // Feature bullets. Label switches automatically between "Planned" and "What it does".
+  // Every claim below was measured (gptvoice README: "Controls: real vs. best-effort" and "Quality").
   features: [
-    { en: "10 voices (marin, cedar, coral, sage…). Every voice speaks every language: the text decides.", fr: "10 voix (marin, cedar, coral, sage…). Chaque voix parle toutes les langues : c'est le texte qui décide." },
-    { en: "Direct the delivery in plain words: emotion, pace, accent, whispering.", fr: "Dirigez le jeu avec des mots simples : émotion, rythme, accent, chuchotement." },
-    { en: "Long texts are split at sentences and joined into one file with natural pauses.", fr: "Les longs textes sont découpés aux phrases puis réunis en un seul fichier, avec des pauses naturelles." },
-    { en: "Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.", fr: "Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s'il s'en écarte." },
-    { en: "Dialogues with several voices in a single audio file.", fr: "Des dialogues à plusieurs voix dans un seul fichier audio." },
-    { en: "Optional subtitles (.srt) for your video editor, and transcription of any audio file.", fr: "Sous-titres (.srt) en option pour votre logiciel de montage, et transcription de n'importe quel fichier audio." },
+    { en: "10 voices, each with a short French and English sample, sorted by gender, register and best use. Every voice speaks every language.", fr: "10 voix, chacune avec un court extrait en français et en anglais, classées par genre, timbre et usage. Chaque voix parle toutes les langues." },
+    { en: "Direct the performance: emotion (joy, sadness, anger, excitement…), intensity, whisper or shout, narration styles like trailer, documentary or meditation.", fr: "Dirigez le jeu : émotion (joie, tristesse, colère, enthousiasme…), intensité, chuchoté ou crié, styles de narration comme bande-annonce, documentaire ou méditation." },
+    { en: "Exact controls: speed, a higher or lower voice, and silences to the millisecond.", fr: "Des réglages exacts : la vitesse, une voix plus aiguë ou plus grave, et des silences à la milliseconde près." },
+    { en: "Cues inside your text, like [whispers], [laughs], [sighs] or [pause 1s], plus pronunciation hints for names. Cues are performed, never read aloud.", fr: "Des indications dans le texte, comme [chuchote], [rit], [soupire] ou [pause 1s], et des aides de prononciation pour les noms. Elles sont jouées, jamais lues." },
+    { en: "Word-for-word reading, measured at 99.4% in English and 98.8% in French on deliberately tricky texts.", fr: "Une lecture mot pour mot, mesurée à 99,4 % en anglais et 98,8 % en français sur des textes volontairement difficiles." },
+    { en: "Dialogues with several voices in one file, saved voice presets and favorites, and subtitles (.srt) for your video editor.", fr: "Des dialogues à plusieurs voix dans un seul fichier, des réglages et voix favorites enregistrés, et des sous-titres (.srt) pour votre logiciel de montage." },
   ],
 
   examplePrompt: {
@@ -60,22 +61,40 @@ export const gptvoice = {
       transcript: "The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.",
     },
     {
+      id: "emotions-en",
+      title: { en: "One voice, four emotions", fr: "Une voix, quatre émotions" },
+      voice: { en: "coral: happy, sad, angry, whispering", fr: "coral : joyeuse, triste, en colère, chuchotée" },
+      lang: "en",
+      src: "assets/audio/emotions-en.mp3",
+      type: "audio/mpeg",
+      transcript: "We won the match! We lost the match. Who lost the match?! Shh… nobody knows about the match.",
+    },
+    {
+      id: "conte-fr",
+      title: { en: "A French tale, with a whisper", fr: "Un conte, avec un chuchotement" },
+      voice: { en: "marin, audiobook narration", fr: "marin, narration de livre audio" },
+      lang: "fr",
+      src: "assets/audio/conte-fr.mp3",
+      type: "audio/mpeg",
+      transcript: "Il était une fois, au bord de la mer, une vieille horloge qui ne donnait jamais la bonne heure. Un soir, quelqu'un frappa à la porte du clocher… C'était une enfant, une lanterne à la main !",
+    },
+    {
       id: "dialogue-fr",
       title: { en: "Two-voice dialogue, in French", fr: "Dialogue à deux voix, en français" },
-      voice: { en: "coral and ash, one file", fr: "coral et ash, un seul fichier" },
+      voice: { en: "coral and ash, laughs and sighs included", fr: "coral et ash, rires et soupirs compris" },
       lang: "fr",
       src: "assets/audio/dialogue-fr.mp3",
       type: "audio/mpeg",
-      transcript: "Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d'API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.",
+      transcript: "Léa : (rit) Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d’API ? (soupire) Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo (chuchote) : Bon… alors on enregistre la bande-annonce ce soir.",
     },
     {
       id: "trailer-en",
       title: { en: "Movie-trailer voice", fr: "Voix de bande-annonce" },
-      voice: { en: "cedar, deep and dramatic", fr: "cedar, grave et dramatique" },
+      voice: { en: "cedar, trailer style", fr: "cedar, style bande-annonce" },
       lang: "en",
       src: "assets/audio/trailer-en.mp3",
       type: "audio/mpeg",
-      transcript: "In a world where every story deserves a voice... one tool changes everything. No API key. No extra bill. Just your words, brought to life.",
+      transcript: "In a world where every story deserves a voice… one tool changes everything. No API key. No extra bill. Just your words… brought to life.",
     },
   ],
 };

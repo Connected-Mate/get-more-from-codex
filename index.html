@@ -165,9 +165,9 @@ npm install
       <div class="tool-body">
         <div class="tool-title"><h3 id="gptvoice-h">GPTVoice</h3><span class="badge is-live">Preview</span></div>
         <p class="tagline">Text in, voice out. A voice studio for Claude Code, on your ChatGPT plan.</p>
-        <p>Ask Claude for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. It drives OpenAI&#39;s realtime voice model with your ChatGPT sign-in, and checks that every word was read.</p>
+        <p>Ask Claude for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. Direct it like a voice actor: emotion, speed, whisper or shout, laughs and pauses right in your text. Every passage is checked word for word.</p>
         <p class="label">What it does</p>
-        <ul class="feat"><li>10 voices (marin, cedar, coral, sage…). Every voice speaks every language: the text decides.</li><li>Direct the delivery in plain words: emotion, pace, accent, whispering.</li><li>Long texts are split at sentences and joined into one file with natural pauses.</li><li>Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.</li><li>Dialogues with several voices in a single audio file.</li><li>Optional subtitles (.srt) for your video editor, and transcription of any audio file.</li></ul>
+        <ul class="feat"><li>10 voices, each with a short French and English sample, sorted by gender, register and best use. Every voice speaks every language.</li><li>Direct the performance: emotion (joy, sadness, anger, excitement…), intensity, whisper or shout, narration styles like trailer, documentary or meditation.</li><li>Exact controls: speed, a higher or lower voice, and silences to the millisecond.</li><li>Cues inside your text, like [whispers], [laughs], [sighs] or [pause 1s], plus pronunciation hints for names. Cues are performed, never read aloud.</li><li>Word-for-word reading, measured at 99.4% in English and 98.8% in French on deliberately tricky texts.</li><li>Dialogues with several voices in one file, saved voice presets and favorites, and subtitles (.srt) for your video editor.</li></ul>
         <p class="label">Example request</p>
         <p class="prompt">Read this script as a calm storyteller, with a pause before the last line, and save it as keeper.mp3.</p>
         <p class="label">Listen</p>
@@ -179,18 +179,32 @@ npm install
               <details class="transcript"><summary>Transcript</summary><p lang="en">The storm came early that night. Up in the tower, the old keeper climbed toward the lamp. One light, and a boat finds its way home.</p></details>
             </div>
           </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-dialogue-fr">Two-voice dialogue, in French</h4><p class="meta">coral and ash, one file</p></div>
+            <div class="sample-head"><h4 id="s-emotions-en">One voice, four emotions</h4><p class="meta">coral: happy, sad, angry, whispering</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-emotions-en"><source src="assets/audio/emotions-en.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="en">We won the match! We lost the match. Who lost the match?! Shh… nobody knows about the match.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-conte-fr">A French tale, with a whisper</h4><p class="meta">marin, audiobook narration</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-conte-fr"><source src="assets/audio/conte-fr.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
+              <details class="transcript"><summary>Transcript</summary><p lang="fr">Il était une fois, au bord de la mer, une vieille horloge qui ne donnait jamais la bonne heure. Un soir, quelqu&#39;un frappa à la porte du clocher… C&#39;était une enfant, une lanterne à la main !</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-dialogue-fr">Two-voice dialogue, in French</h4><p class="meta">coral and ash, laughs and sighs included</p></div>
             <div>
               <audio controls preload="none" aria-labelledby="s-dialogue-fr"><source src="assets/audio/dialogue-fr.mp3" type="audio/mpeg"></audio>
               <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
-              <details class="transcript"><summary>Transcript</summary><p lang="fr">Léa : Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d&#39;API ? Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
+              <details class="transcript"><summary>Transcript</summary><p lang="fr">Léa : (rit) Tu as entendu ? On peut faire parler nos films sans payer un centime de plus ! Hugo : Sans clé d’API ? (soupire) Ça me paraît trop beau pour être vrai. Léa : Il suffit de se connecter avec son compte ChatGPT. Le reste se fait tout seul. Hugo (chuchote) : Bon… alors on enregistre la bande-annonce ce soir.</p></details>
             </div>
           </li><li class="sample" data-sample>
-            <div class="sample-head"><h4 id="s-trailer-en">Movie-trailer voice</h4><p class="meta">cedar, deep and dramatic</p></div>
+            <div class="sample-head"><h4 id="s-trailer-en">Movie-trailer voice</h4><p class="meta">cedar, trailer style</p></div>
             <div>
               <audio controls preload="none" aria-labelledby="s-trailer-en"><source src="assets/audio/trailer-en.mp3" type="audio/mpeg"></audio>
               <p class="audio-error" hidden>This sample could not load. The transcript is below.</p>
-              <details class="transcript"><summary>Transcript</summary><p lang="en">In a world where every story deserves a voice... one tool changes everything. No API key. No extra bill. Just your words, brought to life.</p></details>
+              <details class="transcript"><summary>Transcript</summary><p lang="en">In a world where every story deserves a voice… one tool changes everything. No API key. No extra bill. Just your words… brought to life.</p></details>
             </div>
           </li></ul>
         <div id="install-gptvoice" class="install">
