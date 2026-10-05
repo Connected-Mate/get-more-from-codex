@@ -357,7 +357,10 @@ function home(lang) {
 
 <section class="starter-sec" aria-label="${attr(L.starter.h)}">
   <div class="wrap">
-    ${starter(L, L.starter.gptimage, { title: L.starter.h + " · GPTImage" })}
+    <div class="starter-pair">
+      ${starter(L, L.starter.gptimage, { title: L.starter.h + " · GPTImage" })}
+      ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { id: "install-prompt-voice", title: L.starter.h + " · GPTVoice" }) : ""}
+    </div>
   </div>
 </section>
 

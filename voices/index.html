@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=940b3316">
+<link rel="stylesheet" href="../assets/site.css?v=49bc389a">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -261,9 +261,9 @@
 
 <section id="install" class="tools" aria-labelledby="install-h">
   <div class="wrap">
-    <article class="tool solo" id="gptvoice" aria-labelledby="install-h" data-status="preview">
+    <article class="tool solo" id="gptvoice" aria-labelledby="install-h" data-status="released">
       <div class="tool-body">
-        <div class="tool-title"><h2 id="install-h">GPTVoice</h2><span class="badge is-live">Preview</span></div>
+        <div class="tool-title"><h2 id="install-h">GPTVoice</h2><span class="badge is-live">Available</span></div>
         <p class="tagline">Text in, voice out. A voice studio for Claude Code, with your ChatGPT sign-in.</p>
         <p>Ask your agent for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. Direct it like a voice actor: emotion, speed, whisper or shout, laughs and pauses right in your text. Every passage is checked word for word.</p>
         <p class="label">What it does</p>
@@ -284,7 +284,100 @@
         <p class="label">11 tools for your agent</p>
         <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>generate_clips</code></li><li><code>inspect_audio</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
         <p class="label">Install and connect your agent</p>
-        <p class="not-yet">The code is not public yet. The install command will appear here as soon as the repository is online.</p>
+        <div class="starter" id="install-prompt">
+      <div class="starter-head">
+        <h3>Let your agent install it</h3>
+        <p>Copy this prompt and paste it into your coding agent (Claude Code, Codex, Cursor or another). It installs the tool, connects it, asks you to sign in to ChatGPT in your browser, and makes a test image.</p>
+      </div>
+      <div class="codeblock is-prompt">
+          <div class="codebar"><span>Install prompt</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Install prompt"><code>Install GPTVoice for me (text-to-speech MCP server, https://github.com/Connected-Mate/gptvoice). Follow these steps exactly, show me each command&#39;s result, and stop to ask me if anything fails.
+
+1. Check that Node.js 22 or newer is installed (`node -v`). If it is missing or older, stop and tell me to install it from https://nodejs.org.
+2. Clone the project into my home folder (skip the clone if ~/gptvoice already exists, and run `git -C ~/gptvoice pull` instead):
+   git clone https://github.com/Connected-Mate/gptvoice.git ~/gptvoice
+3. Install and register the MCP server for the agent you are (pick the one that matches you):
+   - Claude Code:  cd ~/gptvoice &amp;&amp; ./install.sh --agent claude --no-login --yes
+   - Codex:        cd ~/gptvoice &amp;&amp; ./install.sh --agent codex --no-login --yes
+   - Cursor:       cd ~/gptvoice &amp;&amp; ./install.sh --agent cursor --no-login --yes
+   - Any other agent: cd ~/gptvoice &amp;&amp; ./install.sh --agent none --no-login --yes, then add an MCP server named &quot;gptvoice&quot; to your own configuration with command `node` and argument `~/gptvoice/src/server.js` (stdio, use the absolute path).
+4. Sign-in. Run `cd ~/gptvoice &amp;&amp; node src/login.js --check`.
+   - If it succeeds, I am already signed in (GPTVoice reuses a GPTImage or Codex CLI sign-in): continue.
+   - If it fails, run `cd ~/gptvoice &amp;&amp; npm run login` and tell me: &quot;Your browser is opening: please sign in with your ChatGPT account, then come back.&quot; Wait for the command to finish. NEVER ask me for my password and never type it yourself.
+5. Verify: run `cd ~/gptvoice &amp;&amp; npm run status`, then `cd ~/gptvoice &amp;&amp; npm run selftest`. It must print &quot;Signed in&quot; and create a short test clip with its word accuracy. Give me the path to the clip so I can listen to it.
+6. Tell me to restart you (the agent) so the new &quot;gptvoice&quot; tool loads. After the restart, call the `voice_auth_status` tool once to confirm the connection.
+7. Finally, tell me plainly: &quot;GPTVoice uses your ChatGPT sign-in, not an API key, but voice usage may be billed to your personal OpenAI API organization. Check https://platform.openai.com/usage after your first voices.&quot;
+
+Rules: do not use sudo, do not change any other MCP server or setting, do not commit or publish anything, and never print or share the contents of ~/.gptvoice/auth.json or ~/.codex/auth.json.</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      <p class="note">You stay in control: the agent shows each step, and you type your password only on OpenAI’s own sign-in page.</p>
+    </div>
+        <p class="note">Clone the tool once, then connect the agent you use. Needs Node.js 22+, Claude Code and a ChatGPT plan. Already set up GPTImage or the Codex CLI? GPTVoice reuses that sign-in.</p>
+        <div class="setup" id="setup-gptvoice">
+      <details class="agent" open>
+        <summary><span class="agent-name">Claude Code</span><span class="agent-state is-tested">Tested</span></summary>
+        <div class="agent-body">
+          <p><code>./install.sh</code> registers the tool for every project and adds the skill. Restart Claude Code afterwards.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commands</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Commands"><code>git clone https://github.com/Connected-Mate/gptvoice.git
+cd gptvoice
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Codex CLI</span><span class="agent-state">Standard MCP setup, not tested yet</span></summary>
+        <div class="agent-body">
+          <p>One command adds the tool to Codex (CLI, IDE extension and desktop app share <code>~/.codex/config.toml</code>).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commands</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Commands"><code>cd /path/to/gptvoice
+npm install
+npm run login
+codex mcp add gptvoice -- node /path/to/gptvoice/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused. Replace <code>/path/to/</code> with the folder where you cloned the tool.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Cursor</span><span class="agent-state">Standard MCP setup, not tested yet</span></summary>
+        <div class="agent-body">
+          <p>Add the server to <code>~/.cursor/mcp.json</code> (all projects) or <code>.cursor/mcp.json</code> (one project).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>mcp.json</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="mcp.json"><code>{
+  &quot;mcpServers&quot;: {
+    &quot;gptvoice&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/path/to/gptvoice/src/server.js&quot;]
+    }
+  }
+}</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused. Replace <code>/path/to/</code> with the folder where you cloned the tool.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Any MCP client</span><span class="agent-state">Standard MCP setup, not tested yet</span></summary>
+        <div class="agent-body">
+          <p>It is a standard MCP server over stdio: point your client at this command.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commands</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
+          <pre tabindex="0" aria-label="Commands"><code>command: node
+args:    /path/to/gptvoice/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Then sign in once: <code>npm run login</code> in the tool’s folder opens the official ChatGPT login in your browser. Already signed in to the Codex CLI? It is reused. Replace <code>/path/to/</code> with the folder where you cloned the tool.</p>
+        </div>
+      </details>
+    </div>
+        <p class="note"><a href="https://github.com/Connected-Mate/gptvoice">Source code on GitHub</a></p>
       </div>
     </article>
   </div>
@@ -303,7 +396,7 @@
     </ul>
     <ul class="foot-links">
       <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage on GitHub</a></li>
-      
+      <li><a href="https://github.com/Connected-Mate/gptvoice">GPTVoice on GitHub</a></li>
       <li><a href="#top">Back to top</a></li>
     </ul>
   </div>

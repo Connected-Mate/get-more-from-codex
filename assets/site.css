@@ -398,6 +398,9 @@ section { padding-block: var(--section); }
 .cta-link { align-self: center; color: var(--bone); font-size: var(--t-ui); font-weight: 500; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.45); text-underline-offset: 0.25em; padding: 12px 4px; }
 .cta-link:hover { text-decoration-color: var(--white); }
 
+.starter-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: var(--s-16); align-items: start; }
+.starter-pair .starter { max-width: none; }
+
 /* products */
 .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: var(--s-16); }
 .product { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: var(--s-24); align-items: start; padding: var(--s-24); border-radius: var(--r-large); background: var(--frost); box-shadow: var(--inset); }

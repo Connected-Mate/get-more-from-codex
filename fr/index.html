@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=940b3316">
+<link rel="stylesheet" href="../assets/site.css?v=49bc389a">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -74,7 +74,7 @@
 <section id="top" class="hero hero-home" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <a class="banner" href="voix/#listen"><span class="spark" aria-hidden="true"></span>Nouveau : GPTVoice en avant-première. Écoutez-le<span aria-hidden="true">→</span></a>
+      <a class="banner" href="voix/#listen"><span class="spark" aria-hidden="true"></span>GPTVoice est sorti. Écoutez-le<span aria-hidden="true">→</span></a>
       <p class="eyebrow">Pour Claude Code, Codex, Cursor et tout agent MCP</p>
       <h1 id="hero-h" class="h1-stack"><span class="h1-main">Tirez plus de Codex</span> <span class="h1-sub">avec votre abonnement OpenAI</span></h1>
       <p class="lead">Vous payez déjà ChatGPT pour utiliser Codex. Deux petits outils open source permettent à Claude Code, Codex, Cursor ou n’importe quel agent MCP d’utiliser cette même connexion pour générer des <strong>images</strong> et des <strong>voix</strong>. Pas de clé API à créer, rien de plus à payer en abonnement.</p>
@@ -98,30 +98,65 @@
 
 <section class="starter-sec" aria-label="Laissez votre agent l’installer">
   <div class="wrap">
-    <div class="starter" id="install-prompt">
+    <div class="starter-pair">
+      <div class="starter" id="install-prompt">
       <div class="starter-head">
         <h2>Laissez votre agent l’installer · GPTImage</h2>
         <p>Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.</p>
       </div>
       <div class="codeblock is-prompt">
           <div class="codebar"><span>Texte d’installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
-          <pre tabindex="0" aria-label="Texte d’installation"><code>Installe GPTImage pour moi : https://github.com/Connected-Mate/gptimage (un serveur MCP open source qui génère des images avec ma connexion ChatGPT). Dis-moi ce que tu fais à chaque étape.
+          <pre tabindex="0" aria-label="Texte d’installation"><code>Installe GPTImage pour moi (serveur MCP de génération d&#39;images, https://github.com/Connected-Mate/gptimage). Suis exactement ces étapes, montre-moi le résultat de chaque commande, et arrête-toi pour me demander si quelque chose échoue.
 
-1. Lance `node -v`. Il faut la version 20 ou plus. Sinon, arrête-toi et dis-moi d’installer Node.js depuis nodejs.org.
-2. Si ~/gptimage n’existe pas, lance `git clone https://github.com/Connected-Mate/gptimage.git ~/gptimage`. S’il existe, lance `git -C ~/gptimage pull`. Puis `cd ~/gptimage &amp;&amp; npm install`.
-3. Enregistre le serveur MCP dans l’agent que tu es. La commande est `node &lt;chemin complet de ~/gptimage&gt;/src/server.js`.
-   - Claude Code : lance `./install.sh --no-login` dans ~/gptimage (il enregistre le serveur pour tous les projets et ajoute la compétence /gptimage).
-   - Codex : `codex mcp add gptimage -- node &lt;chemin complet&gt;/src/server.js`
-   - Cursor : dans ~/.cursor/mcp.json, ajoute une entrée &quot;gptimage&quot; sous &quot;mcpServers&quot; avec &quot;command&quot;: &quot;node&quot; et &quot;args&quot;: [&quot;&lt;chemin complet&gt;/src/server.js&quot;]. Garde les autres entrées.
-   - Tout autre agent : ajoute cette commande à tes réglages MCP.
-4. Lance `npm run status` dans ~/gptimage. Si je ne suis pas connecté, lance `npm run login` : il ouvre la page de connexion officielle de ChatGPT dans mon navigateur. Dis-moi d’y finir la connexion, puis attends. Ne me demande jamais de mot de passe ni de jeton. Si le navigateur ne peut pas s’ouvrir d’ici, demande-moi de lancer moi-même `npm run login` dans ~/gptimage.
-5. Teste : `npm run gen -- -p &quot;a small watercolor fox, test image&quot; -o ~/gptimage-test.png --size 1024x1024`, puis montre-moi le chemin de l’image.
-6. Dis-moi de te redémarrer pour que le nouvel outil gptimage soit chargé.
+1. Vérifie que Node.js 20 ou plus récent est installé (`node -v`). S&#39;il manque ou s&#39;il est trop ancien, arrête-toi et dis-moi de l&#39;installer depuis https://nodejs.org.
+2. Clone le projet dans mon dossier personnel (si ~/gptimage existe déjà, ne clone pas et lance plutôt `git -C ~/gptimage pull`) :
+   git clone https://github.com/Connected-Mate/gptimage.git ~/gptimage
+3. Installe et enregistre le serveur MCP pour l&#39;agent que tu es (choisis la ligne qui te correspond) :
+   - Claude Code : cd ~/gptimage &amp;&amp; ./install.sh --agent claude --no-login --yes
+   - Codex :       cd ~/gptimage &amp;&amp; ./install.sh --agent codex --no-login --yes
+   - Cursor :      cd ~/gptimage &amp;&amp; ./install.sh --agent cursor --no-login --yes
+   - Autre agent : cd ~/gptimage &amp;&amp; ./install.sh --agent none --no-login --yes, puis ajoute dans ta propre configuration un serveur MCP nommé &quot;gptimage&quot; avec la commande `node` et l&#39;argument `~/gptimage/src/server.js` (stdio, chemin absolu).
+4. Connexion. Lance `cd ~/gptimage &amp;&amp; npm run status`.
+   - S&#39;il affiche « Authenticated », je suis déjà connecté (GPTImage réutilise aussi une connexion Codex CLI) : continue.
+   - Sinon, lance `cd ~/gptimage &amp;&amp; npm run login` et dis-moi : « Ton navigateur s&#39;ouvre : connecte-toi avec ton compte ChatGPT, puis reviens. » Attends la fin de la commande. Ne me demande JAMAIS mon mot de passe et ne le tape jamais toi-même.
+5. Vérifie : lance `cd ~/gptimage &amp;&amp; npm run gen -- -p &quot;un petit bateau en papier rouge sur l&#39;eau bleue, illustration plate&quot; -o ~/gptimage-test.png --quality low --size 1024x1024`. Il doit afficher le chemin de l&#39;image PNG enregistrée. Donne-moi ce chemin pour que je la regarde.
+6. Dis-moi de te redémarrer (toi, l&#39;agent) pour charger le nouvel outil « gptimage ». Après le redémarrage, appelle une fois l&#39;outil `image_auth_status` pour confirmer la connexion.
+7. Enfin, dis-moi clairement : « GPTImage utilise ta connexion ChatGPT, pas une clé d&#39;API. C&#39;est un usage non officiel de cette connexion : garde-le personnel, un usage intensif peut atteindre les limites de ton abonnement. »
 
-À savoir : ceci réutilise ma connexion ChatGPT de Codex. Ce n’est pas une API officielle d’OpenAI : usage personnel uniquement.</code></pre>
+Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit et ne publie rien, et n&#39;affiche ni ne partage jamais le contenu de ~/.gptimage/auth.json ou ~/.codex/auth.json.</code></pre>
           <p class="copy-status" role="status" aria-live="polite"></p>
         </div>
       <p class="note">Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.</p>
+    </div>
+      <div class="starter" id="install-prompt-voice">
+      <div class="starter-head">
+        <h2>Laissez votre agent l’installer · GPTVoice</h2>
+        <p>Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.</p>
+      </div>
+      <div class="codeblock is-prompt">
+          <div class="codebar"><span>Texte d’installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Texte d’installation"><code>Installe GPTVoice pour moi (serveur MCP de synthèse vocale, https://github.com/Connected-Mate/gptvoice). Suis exactement ces étapes, montre-moi le résultat de chaque commande, et arrête-toi pour me demander si quelque chose échoue.
+
+1. Vérifie que Node.js 22 ou plus récent est installé (`node -v`). S&#39;il manque ou s&#39;il est trop ancien, arrête-toi et dis-moi de l&#39;installer depuis https://nodejs.org.
+2. Clone le projet dans mon dossier personnel (si ~/gptvoice existe déjà, ne clone pas et lance plutôt `git -C ~/gptvoice pull`) :
+   git clone https://github.com/Connected-Mate/gptvoice.git ~/gptvoice
+3. Installe et enregistre le serveur MCP pour l&#39;agent que tu es (choisis la ligne qui te correspond) :
+   - Claude Code : cd ~/gptvoice &amp;&amp; ./install.sh --agent claude --no-login --yes
+   - Codex :       cd ~/gptvoice &amp;&amp; ./install.sh --agent codex --no-login --yes
+   - Cursor :      cd ~/gptvoice &amp;&amp; ./install.sh --agent cursor --no-login --yes
+   - Autre agent : cd ~/gptvoice &amp;&amp; ./install.sh --agent none --no-login --yes, puis ajoute dans ta propre configuration un serveur MCP nommé &quot;gptvoice&quot; avec la commande `node` et l&#39;argument `~/gptvoice/src/server.js` (stdio, chemin absolu).
+4. Connexion. Lance `cd ~/gptvoice &amp;&amp; node src/login.js --check`.
+   - Si ça réussit, je suis déjà connecté (GPTVoice réutilise une connexion GPTImage ou Codex CLI) : continue.
+   - Sinon, lance `cd ~/gptvoice &amp;&amp; npm run login` et dis-moi : « Ton navigateur s&#39;ouvre : connecte-toi avec ton compte ChatGPT, puis reviens. » Attends la fin de la commande. Ne me demande JAMAIS mon mot de passe et ne le tape jamais toi-même.
+5. Vérifie : lance `cd ~/gptvoice &amp;&amp; npm run status`, puis `cd ~/gptvoice &amp;&amp; npm run selftest`. Il doit afficher « Signed in » et créer un court extrait audio avec sa précision mot à mot. Donne-moi le chemin de l&#39;extrait pour que je l&#39;écoute.
+6. Dis-moi de te redémarrer (toi, l&#39;agent) pour charger le nouvel outil « gptvoice ». Après le redémarrage, appelle une fois l&#39;outil `voice_auth_status` pour confirmer la connexion.
+7. Enfin, dis-moi clairement : « GPTVoice utilise ta connexion ChatGPT, pas une clé d&#39;API, mais l&#39;usage de la voix peut être facturé sur ton organisation OpenAI API personnelle. Vérifie https://platform.openai.com/usage après tes premières voix. »
+
+Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit et ne publie rien, et n&#39;affiche ni ne partage jamais le contenu de ~/.gptvoice/auth.json ou ~/.codex/auth.json.</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      <p class="note">Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.</p>
+    </div>
     </div>
   </div>
 </section>
@@ -161,7 +196,7 @@
       <img src="../assets/img/voice-720.webp" alt="" width="974" height="994" loading="lazy" decoding="async">
     </picture>
         <div class="product-body">
-          <div class="tool-title"><h3 id="pr-voices">GPTVoice</h3><span class="badge is-live">Avant-première</span></div>
+          <div class="tool-title"><h3 id="pr-voices">GPTVoice</h3><span class="badge is-live">Disponible</span></div>
           <p>Des voix off pour le motion design, les vidéos explicatives, les pubs et les podcasts. 10 voix, émotions, chuchotements et rires, sous-titres compris.</p>
           <ul class="feat"><li>10 voix, en anglais et en français</li><li>Lu mot pour mot</li><li>MP3 ou WAV, plus les sous-titres</li></ul>
           <a class="btn ghost" href="voix/">Découvrir GPTVoice <span aria-hidden="true">→</span></a>
@@ -210,7 +245,7 @@
     </ul>
     <ul class="foot-links">
       <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage sur GitHub</a></li>
-      
+      <li><a href="https://github.com/Connected-Mate/gptvoice">GPTVoice sur GitHub</a></li>
       <li><a href="#top">Retour en haut</a></li>
     </ul>
   </div>

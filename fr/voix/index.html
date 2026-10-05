@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <link rel="preload" href="../../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../assets/site.css?v=940b3316">
+<link rel="stylesheet" href="../../assets/site.css?v=49bc389a">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -261,9 +261,9 @@
 
 <section id="install" class="tools" aria-labelledby="install-h">
   <div class="wrap">
-    <article class="tool solo" id="gptvoice" aria-labelledby="install-h" data-status="preview">
+    <article class="tool solo" id="gptvoice" aria-labelledby="install-h" data-status="released">
       <div class="tool-body">
-        <div class="tool-title"><h2 id="install-h">GPTVoice</h2><span class="badge is-live">Avant-première</span></div>
+        <div class="tool-title"><h2 id="install-h">GPTVoice</h2><span class="badge is-live">Disponible</span></div>
         <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre connexion ChatGPT.</p>
         <p>Demandez à votre agent une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.</p>
         <p class="label">Ce qu’il fait</p>
@@ -284,7 +284,100 @@
         <p class="label">11 outils pour votre agent</p>
         <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>generate_clips</code></li><li><code>inspect_audio</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
         <p class="label">Installer et brancher votre agent</p>
-        <p class="not-yet">Le code n’est pas encore public. La commande d’installation apparaîtra ici dès que le dépôt sera en ligne.</p>
+        <div class="starter" id="install-prompt">
+      <div class="starter-head">
+        <h3>Laissez votre agent l’installer</h3>
+        <p>Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.</p>
+      </div>
+      <div class="codeblock is-prompt">
+          <div class="codebar"><span>Texte d’installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Texte d’installation"><code>Installe GPTVoice pour moi (serveur MCP de synthèse vocale, https://github.com/Connected-Mate/gptvoice). Suis exactement ces étapes, montre-moi le résultat de chaque commande, et arrête-toi pour me demander si quelque chose échoue.
+
+1. Vérifie que Node.js 22 ou plus récent est installé (`node -v`). S&#39;il manque ou s&#39;il est trop ancien, arrête-toi et dis-moi de l&#39;installer depuis https://nodejs.org.
+2. Clone le projet dans mon dossier personnel (si ~/gptvoice existe déjà, ne clone pas et lance plutôt `git -C ~/gptvoice pull`) :
+   git clone https://github.com/Connected-Mate/gptvoice.git ~/gptvoice
+3. Installe et enregistre le serveur MCP pour l&#39;agent que tu es (choisis la ligne qui te correspond) :
+   - Claude Code : cd ~/gptvoice &amp;&amp; ./install.sh --agent claude --no-login --yes
+   - Codex :       cd ~/gptvoice &amp;&amp; ./install.sh --agent codex --no-login --yes
+   - Cursor :      cd ~/gptvoice &amp;&amp; ./install.sh --agent cursor --no-login --yes
+   - Autre agent : cd ~/gptvoice &amp;&amp; ./install.sh --agent none --no-login --yes, puis ajoute dans ta propre configuration un serveur MCP nommé &quot;gptvoice&quot; avec la commande `node` et l&#39;argument `~/gptvoice/src/server.js` (stdio, chemin absolu).
+4. Connexion. Lance `cd ~/gptvoice &amp;&amp; node src/login.js --check`.
+   - Si ça réussit, je suis déjà connecté (GPTVoice réutilise une connexion GPTImage ou Codex CLI) : continue.
+   - Sinon, lance `cd ~/gptvoice &amp;&amp; npm run login` et dis-moi : « Ton navigateur s&#39;ouvre : connecte-toi avec ton compte ChatGPT, puis reviens. » Attends la fin de la commande. Ne me demande JAMAIS mon mot de passe et ne le tape jamais toi-même.
+5. Vérifie : lance `cd ~/gptvoice &amp;&amp; npm run status`, puis `cd ~/gptvoice &amp;&amp; npm run selftest`. Il doit afficher « Signed in » et créer un court extrait audio avec sa précision mot à mot. Donne-moi le chemin de l&#39;extrait pour que je l&#39;écoute.
+6. Dis-moi de te redémarrer (toi, l&#39;agent) pour charger le nouvel outil « gptvoice ». Après le redémarrage, appelle une fois l&#39;outil `voice_auth_status` pour confirmer la connexion.
+7. Enfin, dis-moi clairement : « GPTVoice utilise ta connexion ChatGPT, pas une clé d&#39;API, mais l&#39;usage de la voix peut être facturé sur ton organisation OpenAI API personnelle. Vérifie https://platform.openai.com/usage après tes premières voix. »
+
+Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit et ne publie rien, et n&#39;affiche ni ne partage jamais le contenu de ~/.gptvoice/auth.json ou ~/.codex/auth.json.</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      <p class="note">Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.</p>
+    </div>
+        <p class="note">Clonez l’outil une fois, puis branchez l’agent que vous utilisez. Nécessite Node.js 22+, Claude Code et un abonnement ChatGPT. Déjà GPTImage ou le Codex CLI ? GPTVoice réutilise cette connexion.</p>
+        <div class="setup" id="setup-gptvoice">
+      <details class="agent" open>
+        <summary><span class="agent-name">Claude Code</span><span class="agent-state is-tested">Testé</span></summary>
+        <div class="agent-body">
+          <p><code>./install.sh</code> ajoute l’outil pour tous vos projets, avec sa compétence. Redémarrez Claude Code ensuite.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>git clone https://github.com/Connected-Mate/gptvoice.git
+cd gptvoice
+./install.sh</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Codex CLI</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>Une commande ajoute l’outil à Codex (le CLI, l’extension IDE et l’appli partagent <code>~/.codex/config.toml</code>).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>cd /path/to/gptvoice
+npm install
+npm run login
+codex mcp add gptvoice -- node /path/to/gptvoice/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Cursor</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>Ajoutez le serveur dans <code>~/.cursor/mcp.json</code> (tous les projets) ou <code>.cursor/mcp.json</code> (un projet).</p>
+          <div class="codeblock">
+          <div class="codebar"><span>mcp.json</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="mcp.json"><code>{
+  &quot;mcpServers&quot;: {
+    &quot;gptvoice&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/path/to/gptvoice/src/server.js&quot;]
+    }
+  }
+}</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+      <details class="agent">
+        <summary><span class="agent-name">Autre client MCP</span><span class="agent-state">Installation MCP standard, pas encore testée</span></summary>
+        <div class="agent-body">
+          <p>C’est un serveur MCP standard (stdio) : indiquez cette commande à votre client.</p>
+          <div class="codeblock">
+          <div class="codebar"><span>Commandes</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
+          <pre tabindex="0" aria-label="Commandes"><code>command: node
+args:    /path/to/gptvoice/src/server.js</code></pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+          <p class="note">Ensuite, connectez-vous une fois : <code>npm run login</code> dans le dossier de l’outil ouvre la page de connexion officielle de ChatGPT. Déjà connecté au Codex CLI ? La connexion est réutilisée. Remplacez <code>/path/to/</code> par le dossier où vous avez cloné l’outil.</p>
+        </div>
+      </details>
+    </div>
+        <p class="note"><a href="https://github.com/Connected-Mate/gptvoice">Code source sur GitHub</a></p>
       </div>
     </article>
   </div>
@@ -303,7 +396,7 @@
     </ul>
     <ul class="foot-links">
       <li><a href="https://github.com/Connected-Mate/gptimage">GPTImage sur GitHub</a></li>
-      
+      <li><a href="https://github.com/Connected-Mate/gptvoice">GPTVoice sur GitHub</a></li>
       <li><a href="#top">Retour en haut</a></li>
     </ul>
   </div>

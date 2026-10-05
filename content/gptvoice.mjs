@@ -9,10 +9,10 @@ export const gptvoice = {
   // "development" -> badge "In development", features shown as "Planned", no install block.
   // "preview"     -> badge "Preview", features shown as "What it does", install shown if set.
   // "released"    -> badge "Available", same as preview.
-  status: "preview",
+  status: "released",
 
   // Public GitHub URL once the repo exists, e.g. "https://github.com/Connected-Mate/gptvoice".
-  repo: null,
+  repo: "https://github.com/Connected-Mate/gptvoice",
 
   // Shell commands shown in the copyable install block (one string per line). null = hidden.
   install: ["git clone https://github.com/Connected-Mate/gptvoice.git", "cd gptvoice", "./install.sh"],
@@ -22,7 +22,7 @@ export const gptvoice = {
     fr: "Nécessite Node.js 22+, Claude Code et un abonnement ChatGPT. Déjà GPTImage ou le Codex CLI ? GPTVoice réutilise cette connexion.",
   },
 
-  // Copy-paste install prompt for coding agents (verbatim from gptvoice AGENT-INSTALL.md, commit bd865d6).
+  // Copy-paste install prompt for coding agents (verbatim from github.com/Connected-Mate/gptvoice AGENT-INSTALL.md).
   // Shown only once `repo` is set (the clone URL must work).
   agentPrompt: {
     en: "Install GPTVoice for me (text-to-speech MCP server, https://github.com/Connected-Mate/gptvoice). Follow these steps exactly, show me each command's result, and stop to ask me if anything fails.\n\n1. Check that Node.js 22 or newer is installed (`node -v`). If it is missing or older, stop and tell me to install it from https://nodejs.org.\n2. Clone the project into my home folder (skip the clone if ~/gptvoice already exists, and run `git -C ~/gptvoice pull` instead):\n   git clone https://github.com/Connected-Mate/gptvoice.git ~/gptvoice\n3. Install and register the MCP server for the agent you are (pick the one that matches you):\n   - Claude Code:  cd ~/gptvoice && ./install.sh --agent claude --no-login --yes\n   - Codex:        cd ~/gptvoice && ./install.sh --agent codex --no-login --yes\n   - Cursor:       cd ~/gptvoice && ./install.sh --agent cursor --no-login --yes\n   - Any other agent: cd ~/gptvoice && ./install.sh --agent none --no-login --yes, then add an MCP server named \"gptvoice\" to your own configuration with command `node` and argument `~/gptvoice/src/server.js` (stdio, use the absolute path).\n4. Sign-in. Run `cd ~/gptvoice && node src/login.js --check`.\n   - If it succeeds, I am already signed in (GPTVoice reuses a GPTImage or Codex CLI sign-in): continue.\n   - If it fails, run `cd ~/gptvoice && npm run login` and tell me: \"Your browser is opening: please sign in with your ChatGPT account, then come back.\" Wait for the command to finish. NEVER ask me for my password and never type it yourself.\n5. Verify: run `cd ~/gptvoice && npm run status`, then `cd ~/gptvoice && npm run selftest`. It must print \"Signed in\" and create a short test clip with its word accuracy. Give me the path to the clip so I can listen to it.\n6. Tell me to restart you (the agent) so the new \"gptvoice\" tool loads. After the restart, call the `voice_auth_status` tool once to confirm the connection.\n7. Finally, tell me plainly: \"GPTVoice uses your ChatGPT sign-in, not an API key, but voice usage may be billed to your personal OpenAI API organization. Check https://platform.openai.com/usage after your first voices.\"\n\nRules: do not use sudo, do not change any other MCP server or setting, do not commit or publish anything, and never print or share the contents of ~/.gptvoice/auth.json or ~/.codex/auth.json.",
