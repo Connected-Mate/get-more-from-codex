@@ -262,8 +262,8 @@ function page(lang) {
         ${V.samples.length ? `<p class="label">${esc(L.tools.samplesLabel)}</p>
         <ul class="samples">${V.samples.map((s) => sample(L, base, s, lang)).join("")}</ul>` : ""}
         <div id="install-gptvoice" class="install">
-          ${live && V.install ? codeBlock(L, V.install, L.tools.installLabel) : `<p class="not-yet">${esc(L.tools.notYet)}</p>`}
-          ${live && V.install && V.installNote ? `<p class="note">${esc(V.installNote[lang] ?? V.installNote)}</p>` : ""}
+          ${live && V.install && V.repo ? codeBlock(L, V.install, L.tools.installLabel) : `<p class="not-yet">${esc(live ? L.tools.notPublic : L.tools.notYet)}</p>`}
+          ${live && V.install && V.repo && V.installNote ? `<p class="note">${esc(V.installNote[lang] ?? V.installNote)}</p>` : ""}
           ${V.repo ? `<p class="note"><a href="${attr(V.repo)}">${esc(L.tools.repoLink)}</a></p>` : ""}
         </div>
       </div>

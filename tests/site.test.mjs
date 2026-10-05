@@ -106,10 +106,12 @@ for (const [lang, html] of Object.entries(pages)) {
     for (const b of html.match(/<button[^>]*data-copy[^>]*>/g)) assert.match(b, /\bhidden\b/);
     assert.ok(html.includes("git clone https://github.com/Connected-Mate/gptimage.git"));
   });
-  test(`${lang}: GPTVoice shown as preview with install, real audio files and only verified numbers`, () => {
+  test(`${lang}: GPTVoice shown as preview, install only with a public repo, real audio files and only verified numbers`, () => {
     const voice = html.slice(html.indexOf('id="gptvoice"'), html.indexOf('id="film"'));
     assert.match(voice, /data-status="preview"/);
-    assert.ok(voice.includes("git clone https://github.com/Connected-Mate/gptvoice.git"), "install block shown");
+    // Install command only once the repository is public (repo set in content/gptvoice.mjs).
+    const hasRepo = /github\.com\/[^"]+\/gptvoice"/.test(voice);
+    assert.equal(voice.includes("git clone https://github.com/Connected-Mate/gptvoice.git"), hasRepo, "install shown iff repo public");
     // 10 voices = the set verified against the live endpoint (alloy, ash, ballad, coral, echo, sage, shimmer, verse, marin, cedar).
     for (const m of html.matchAll(/\b(\d+)\s+(voices|voix)\b/gi)) assert.equal(m[1], "10", `unverified voice count: ${m[0]}`);
     const srcs = [...html.matchAll(/<source[^>]+src="([^"]+\.mp3)"/g)].map((m) => m[1]);
