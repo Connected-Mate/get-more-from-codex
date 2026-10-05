@@ -532,6 +532,7 @@ function voices(lang) {
       <h3>${esc(P.motion.tip.h)}</h3>
       <p>${esc(P.motion.tip.p)}</p>
       <ul class="feat">${P.motion.tip.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+      ${P.motion.tip.measured ? `<p class="note">${esc(P.motion.tip.measured)}</p>` : ""}
       <p class="label">${esc(L.common.examplePromptLabel)}</p>
       <p class="prompt">${esc(P.motion.tip.example)}</p>
     </div>` : ""}

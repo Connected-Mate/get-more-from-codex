@@ -110,11 +110,12 @@
     <p class="label">Example request</p>
     <p class="prompt">Read this script as an upbeat explainer voice, coral, with a short pause between scenes. Save it to audio/voiceover.mp3 with subtitles.</p>
     <div class="tip" id="clips">
-      <h3>Work in clips, then align them</h3>
-      <p>GPTVoice records your text sentence by sentence. For a video, don’t ask for one long take: ask for one clip per scene or line, then place each clip on your timeline. It sounds more natural and is much easier to fix.</p>
-      <ul class="feat"><li>Number the clips in order: <code>01-intro.mp3</code>, <code>02-problem.mp3</code>…</li><li>Your agent gets each clip’s exact duration, and the <code>.srt</code> shows when every sentence starts.</li><li>A clip too long for its shot? Shorten the line or raise the speed, and record just that clip again.</li><li>Keep the same voice and settings for every clip (save them as a preset) so the clips match.</li></ul>
+      <h3>Made for video: one clip per shot, fitted to its length</h3>
+      <p>GPTVoice records sentence by sentence, so don’t ask for one long take. Give your agent the lines and the length of each shot: it makes one numbered clip per line, then looks at each clip and rewrites what doesn’t fit or doesn’t sound human.</p>
+      <ul class="feat"><li><code>generate_clips</code>: one file per line (<code>01-intro.mp3</code>, <code>02-…</code>), each with its subtitles and timings, plus a suggested timeline for the whole set.</li><li>Give each line a target length: the speed is adjusted and the take closest to the shot is kept (up to 3 tries). A line that can’t fit is flagged, so you shorten the text.</li><li><code>inspect_audio</code> lets your agent “see” a clip: when each sentence starts and ends, every pause, the pace, the pitch, and a picture of the waveform.</li><li>Keep the same voice and settings for every clip (save them as a preset) so the clips match.</li></ul>
+      <p class="note">In our tests, 6 of 7 clips with 3 to 5 second targets landed within 0.21 s of their shot. The seventh, a whispered line, could not fit even at top speed and was flagged.</p>
       <p class="label">Example request</p>
-      <p class="prompt">From script.md, record one clip per scene with cedar in audio/01-….mp3, with subtitles, then list each clip’s duration so we can fit them to the shots.</p>
+      <p class="prompt">Here are the 6 lines of my video and the length of each shot. Make one clip per line with cedar, fitted to the shots, then inspect them and fix any line that doesn’t fit or sounds flat.</p>
     </div>
   </div>
 </section>
@@ -268,7 +269,7 @@
         <p class="tagline">Text in, voice out. A voice studio for Claude Code, with your ChatGPT sign-in.</p>
         <p>Ask your agent for a narration, a voice-over or a dialogue, and get an MP3 or WAV back. Direct it like a voice actor: emotion, speed, whisper or shout, laughs and pauses right in your text. Every passage is checked word for word.</p>
         <p class="label">What it does</p>
-        <ul class="feat"><li>10 voices, sorted by gender and character. Every voice speaks every language: the text decides.</li><li>Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.</li><li>Dialogues with several voices in a single audio file.</li><li>Save your favorite voices and your own presets (voice + settings) to reuse them.</li><li>Subtitles (.srt) for your video editor, and transcription of any audio file.</li></ul>
+        <ul class="feat"><li>10 voices, sorted by gender and character. Every voice speaks every language: the text decides.</li><li>Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.</li><li>Made for video: one clip per shot, fitted to its length, and an inspector that lets your agent see each clip (sentence timings, pauses, pace, pitch, waveform picture).</li><li>Dialogues with several voices in a single audio file.</li><li>Save your favorite voices and your own presets (voice + settings) to reuse them.</li><li>Subtitles (.srt) for your video editor, and transcription of any audio file.</li></ul>
         <p class="label">How precise is each control</p>
         <div class="controls"><div class="ctl">
           <h4>Exact</h4><p class="ctl-note">Applied to the audio itself, every time.</p>
@@ -282,8 +283,8 @@
         </div></div>
         <p class="label">Measured</p>
         <dl class="measured"><div><dt>99.4%</dt><dd>of words read exactly in English, on deliberately hard texts</dd></div><div><dt>98.8%</dt><dd>of words read exactly in French, same test</dd></div><div><dt>0 / 32</dt><dd>texts trying to hijack the voice were obeyed. They were read aloud, never followed.</dd></div></dl>
-        <p class="label">9 tools for your agent</p>
-        <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
+        <p class="label">11 tools for your agent</p>
+        <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>generate_clips</code></li><li><code>inspect_audio</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
         <p class="label">Install and connect your agent</p>
         <p class="not-yet">The code is not public yet. The install command will appear here as soon as the repository is online.</p>
       </div>

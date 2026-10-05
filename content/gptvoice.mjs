@@ -43,6 +43,7 @@ export const gptvoice = {
   features: [
     { en: "10 voices, sorted by gender and character. Every voice speaks every language: the text decides.", fr: "10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide." },
     { en: "Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.", fr: "Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte." },
+    { en: "Made for video: one clip per shot, fitted to its length, and an inspector that lets your agent see each clip (sentence timings, pauses, pace, pitch, waveform picture).", fr: "Pensé pour la vidéo : un clip par plan, ajusté à sa durée, et un inspecteur qui permet à votre agent de voir chaque clip (minutage des phrases, pauses, débit, hauteur, image de la forme d’onde)." },
     { en: "Dialogues with several voices in a single audio file.", fr: "Des dialogues à plusieurs voix dans un seul fichier audio." },
     { en: "Save your favorite voices and your own presets (voice + settings) to reuse them.", fr: "Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser." },
     { en: "Subtitles (.srt) for your video editor, and transcription of any audio file.", fr: "Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio." },
@@ -87,7 +88,7 @@ export const gptvoice = {
   ],
 
   // The MCP tools Claude Code gets.
-  mcpTools: ["generate_speech", "generate_dialogue", "transcribe_audio", "list_voices", "favorite_voice", "save_voice_preset", "list_voice_presets", "delete_voice_preset", "voice_auth_status"],
+  mcpTools: ["generate_speech", "generate_dialogue", "generate_clips", "inspect_audio", "transcribe_audio", "list_voices", "favorite_voice", "save_voice_preset", "list_voice_presets", "delete_voice_preset", "voice_auth_status"],
 
   examplePrompt: {
     en: "Read this script as a calm storyteller, with a pause before the last line, and save it as keeper.mp3.",

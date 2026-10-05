@@ -110,11 +110,12 @@
     <p class="label">Exemple de demande</p>
     <p class="prompt">Lis ce texte avec une voix explicative enjouée, coral, avec une courte pause entre les scènes. Enregistre-le dans audio/voixoff.mp3 avec les sous-titres.</p>
     <div class="tip" id="clips">
-      <h3>Travaillez en extraits, puis calez-les</h3>
-      <p>GPTVoice enregistre votre texte phrase par phrase. Pour une vidéo, ne demandez pas une seule longue prise : demandez un extrait par scène ou par réplique, puis placez chaque extrait sur votre timeline. Le rendu est plus naturel et bien plus facile à corriger.</p>
-      <ul class="feat"><li>Numérotez les extraits dans l’ordre : <code>01-intro.mp3</code>, <code>02-probleme.mp3</code>…</li><li>Votre agent reçoit la durée exacte de chaque extrait, et le <code>.srt</code> indique quand commence chaque phrase.</li><li>Un extrait trop long pour son plan ? Raccourcissez la phrase ou accélérez, et réenregistrez seulement cet extrait.</li><li>Gardez la même voix et les mêmes réglages pour tous les extraits (enregistrez-les en préréglage) pour qu’ils s’accordent.</li></ul>
+      <h3>Pensé pour la vidéo : un clip par plan, ajusté à sa durée</h3>
+      <p>GPTVoice enregistre phrase par phrase : ne demandez donc pas une seule longue prise. Donnez à votre agent les répliques et la durée de chaque plan : il fait un clip numéroté par réplique, puis « voit » chaque clip et réécrit ce qui ne tient pas dans le plan ou ne sonne pas humain.</p>
+      <ul class="feat"><li><code>generate_clips</code> : un fichier par réplique (<code>01-intro.mp3</code>, <code>02-…</code>), chacun avec ses sous-titres et son minutage, plus une proposition de timeline pour l’ensemble.</li><li>Donnez une durée cible à chaque réplique : la vitesse est ajustée et la prise la plus proche du plan est gardée (jusqu’à 3 essais). Une réplique qui ne peut pas tenir est signalée : vous raccourcissez le texte.</li><li><code>inspect_audio</code> permet à votre agent de « voir » un clip : le début et la fin de chaque phrase, chaque pause, le débit, la hauteur, et une image de la forme d’onde.</li><li>Gardez la même voix et les mêmes réglages pour tous les clips (enregistrez-les en préréglage) pour qu’ils s’accordent.</li></ul>
+      <p class="note">Lors de nos tests, 6 clips sur 7 avec une cible de 3 à 5 secondes sont tombés à moins de 0,21 s de leur plan. Le septième, une réplique chuchotée, ne tenait pas même à vitesse maximale et a été signalé.</p>
       <p class="label">Exemple de demande</p>
-      <p class="prompt">À partir de script.md, enregistre un extrait par scène avec cedar dans audio/01-….mp3, avec les sous-titres, puis donne la durée de chaque extrait pour qu’on les cale sur les plans.</p>
+      <p class="prompt">Voici les 6 répliques de ma vidéo et la durée de chaque plan. Fais un clip par réplique avec cedar, ajusté aux plans, puis inspecte-les et corrige toute réplique qui ne tient pas ou sonne plat.</p>
     </div>
   </div>
 </section>
@@ -268,7 +269,7 @@
         <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre connexion ChatGPT.</p>
         <p>Demandez à votre agent une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.</p>
         <p class="label">Ce qu’il fait</p>
-        <ul class="feat"><li>10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser.</li><li>Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio.</li></ul>
+        <ul class="feat"><li>10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte.</li><li>Pensé pour la vidéo : un clip par plan, ajusté à sa durée, et un inspecteur qui permet à votre agent de voir chaque clip (minutage des phrases, pauses, débit, hauteur, image de la forme d’onde).</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser.</li><li>Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio.</li></ul>
         <p class="label">Précision de chaque réglage</p>
         <div class="controls"><div class="ctl">
           <h4>Exact</h4><p class="ctl-note">Appliqué au son lui-même, à chaque fois.</p>
@@ -282,8 +283,8 @@
         </div></div>
         <p class="label">Mesuré</p>
         <dl class="measured"><div><dt>99,4 %</dt><dd>des mots lus exactement en anglais, sur des textes volontairement difficiles</dd></div><div><dt>98,8 %</dt><dd>des mots lus exactement en français, même test</dd></div><div><dt>0 / 32</dt><dd>textes cherchant à détourner la voix ont été suivis. Ils ont été lus, jamais exécutés.</dd></div></dl>
-        <p class="label">9 outils pour votre agent</p>
-        <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
+        <p class="label">11 outils pour votre agent</p>
+        <ul class="chips"><li><code>generate_speech</code></li><li><code>generate_dialogue</code></li><li><code>generate_clips</code></li><li><code>inspect_audio</code></li><li><code>transcribe_audio</code></li><li><code>list_voices</code></li><li><code>favorite_voice</code></li><li><code>save_voice_preset</code></li><li><code>list_voice_presets</code></li><li><code>delete_voice_preset</code></li><li><code>voice_auth_status</code></li></ul>
         <p class="label">Installer et brancher votre agent</p>
         <p class="not-yet">Le code n’est pas encore public. La commande d’installation apparaîtra ici dès que le dépôt sera en ligne.</p>
       </div>
