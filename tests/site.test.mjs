@@ -190,6 +190,16 @@ for (const lang of ["en", "fr"]) {
   });
 }
 
+for (const lang of ["en", "fr"]) {
+  test(`${lang}: acting & accents block labels accents as ear-only, voice prompt intro mentions cost`, () => {
+    const v = page("voices", lang);
+    const block = v.slice(v.indexOf('id="acting"'), v.indexOf('id="acting"') + 6000);
+    assert.ok(block.length > 100, "acting block");
+    assert.match(block, lang === "en" ? /Judge by ear/ : /juger à l’oreille/);
+    assert.ok(!/makes a test image|génère une image de test/.test(v.slice(v.indexOf('id="install-prompt"'))), "voice prompt intro is not the image one");
+  });
+}
+
 test("FR pages have no leftover English UI strings", () => {
   for (const p of all.filter((x) => x.lang === "fr")) {
     for (const s of ["Skip to content", ">Copy<", "How it works<", "Install GPTImage", "Best for", "Recommended"]) assert.ok(!p.html.includes(s), `${p.path}: ${s}`);

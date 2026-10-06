@@ -52,6 +52,7 @@ export const gptvoice = {
     { en: "Word-for-word reading: each passage is compared with your text and re-recorded if it drifts.", fr: "Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte." },
     { en: "Made for video: one clip per shot, fitted to its length, and an inspector that lets your agent see each clip (sentence timings, pauses, pace, pitch, waveform picture).", fr: "Pensé pour la vidéo : un clip par plan, ajusté à sa durée, et un inspecteur qui permet à votre agent de voir chaque clip (minutage des phrases, pauses, débit, hauteur, image de la forme d’onde)." },
     { en: "Smooth, natural joins: whole sentences per take, soft crossfades and room tone instead of dead silence. Measured: no clicks or hard cuts between takes.", fr: "Des raccords doux et naturels : des phrases entières par prise, des fondus et un léger fond d’ambiance au lieu d’un silence numérique. Mesuré : aucun clic ni coupure entre les prises." },
+    { en: "12 acting modes (shouting, crying, laughing while speaking, panicked, sports commentator, old storyteller…) and 10 accent and character presets, with the words still read exactly.", fr: "12 modes de jeu (crier, pleurer, rire en parlant, paniquer, commentateur sportif, vieux conteur…) et 10 accents et personnages prêts à l’emploi, sans changer un mot du texte." },
     { en: "Dialogues with several voices in a single audio file.", fr: "Des dialogues à plusieurs voix dans un seul fichier audio." },
     { en: "Save your favorite voices and your own presets (voice + settings) to reuse them.", fr: "Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser." },
     { en: "Subtitles (.srt) for your video editor, and transcription of any audio file.", fr: "Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio." },
@@ -88,6 +89,35 @@ export const gptvoice = {
     },
   ],
 
+  // Acting & accents (gptvoice README "Acting modes", "Accents & characters", "Even more expressive").
+  acting: {
+    h: { en: "Acting & accents", fr: "Jeu d’acteur et accents" },
+    intro: {
+      en: "Turn a voice into a performance. The words stay exactly as written: each take is checked by transcription and recorded again if needed.",
+      fr: "Transformez une voix en interprétation. Le texte reste mot pour mot : chaque prise est vérifiée par transcription et réenregistrée si besoin.",
+    },
+    groups: [
+      {
+        h: { en: "Acting modes", fr: "Modes de jeu" },
+        tag: { en: "Measured", fr: "Mesuré" },
+        items: { en: "shouting · crying · laughing while speaking · whispering in fear · angry rant · broken voice · panicked · sarcastic · intimate · sports commentator · old storyteller · child wonder", fr: "crier · pleurer · rire en parlant · chuchoter de peur · coup de colère · voix brisée · panique · sarcasme · confidence · commentateur sportif · vieux conteur · émerveillement d’enfant" },
+        note: { en: "Every mode measurably changed pitch, range, loudness or pace against a neutral reading (sarcastic is the subtlest), with 99.3–99.5% of words read exactly. A meter can’t hear tears or laughter: your ears are the final judge.", fr: "Chaque mode a changé de façon mesurable la hauteur, l’étendue, le volume ou le rythme par rapport à une lecture neutre (le sarcasme est le plus discret), avec 99,3 à 99,5 % des mots lus exactement. Une mesure n’entend ni les larmes ni le rire : vos oreilles ont le dernier mot." },
+      },
+      {
+        h: { en: "Accents & characters", fr: "Accents et personnages" },
+        tag: { en: "Judge by ear", fr: "À juger à l’oreille" },
+        items: { en: "French-English · English-French · Marseille · Québécois · Spanish-English · Italian-English · posh British · Southern drawl · robot · grandpa", fr: "français-anglais · anglais-français · marseillais · québécois · espagnol-anglais · italien-anglais · british chic · accent du Sud américain · robot · grand-père" },
+        note: { en: "An accent can’t be measured by a machine, so these are best effort. Some clues were measured: the robot is clearly monotone, the Southern drawl 13% slower and lower, the grandpa the slowest.", fr: "Un accent ne se mesure pas par une machine : c’est donc au mieux. Quelques indices ont été mesurés : le robot est nettement monocorde, l’accent du Sud 13 % plus lent et plus grave, le grand-père le plus lent." },
+      },
+      {
+        h: { en: "More expressive by default", fr: "Plus expressif par défaut" },
+        tag: { en: "Measured", fr: "Mesuré" },
+        items: { en: "Audio delivery references (match the energy, not the words) · best of 2 takes for acting and high intensity · a director pass that gives each paragraph of a long story its own direction", fr: "Références audio de jeu (reprendre l’énergie, pas les mots) · meilleure de 2 prises pour le jeu et les fortes intensités · une passe de mise en scène qui donne à chaque paragraphe d’une longue histoire sa propre direction" },
+        note: { en: "Extra takes cost extra usage. The default model stays gpt-realtime-1.5: it was the most expressive in the tests; newer ones can be chosen.", fr: "Les prises en plus consomment davantage. Le modèle par défaut reste gpt-realtime-1.5 : c’était le plus expressif dans les tests ; les plus récents restent au choix." },
+      },
+    ],
+  },
+
   // Measured on the gptvoice benchmark (data/bench-accuracy.json, gpt-realtime-1.5, first take, 28 takes per language).
   measured: [
     { value: { en: "99.4%", fr: "99,4 %" }, label: { en: "of words read exactly in English, on deliberately hard texts", fr: "des mots lus exactement en anglais, sur des textes volontairement difficiles" } },
@@ -107,6 +137,33 @@ export const gptvoice = {
   // `transcript` must be the EXACT text spoken in the file (it doubles as the accessible transcript).
   // Sounds that are performed, not spoken, go in parentheses. `hidden: true` keeps an entry out of the page.
   samples: [
+    {
+      id: "accent-french",
+      title: { en: "French accent, in English", fr: "Accent français, en anglais" },
+      voice: { en: "cedar · french-english preset", fr: "cedar · préréglage français-anglais" },
+      lang: "en",
+      src: "assets/audio/demo/en-accent-french-cedar.mp3",
+      type: "audio/mpeg",
+      transcript: "Excuse me, I think there is a problem with the hotel room: the window does not close, and the heating is broken.",
+    },
+    {
+      id: "accent-robot",
+      title: { en: "Robot character", fr: "Personnage robot" },
+      voice: { en: "alloy · robot preset", fr: "alloy · préréglage robot" },
+      lang: "en",
+      src: "assets/audio/demo/en-accent-robot-alloy.mp3",
+      type: "audio/mpeg",
+      transcript: "Excuse me, I think there is a problem with the hotel room: the window does not close, and the heating is broken.",
+    },
+    {
+      id: "acting-sports",
+      title: { en: "Sports commentator, in French", fr: "Commentateur sportif" },
+      voice: { en: "ash · sports-commentator acting mode", fr: "ash · mode de jeu commentateur sportif" },
+      lang: "fr",
+      src: "assets/audio/demo/fr-acting-sports.mp3",
+      type: "audio/mpeg",
+      transcript: "Il frappe, il frappe… et c’est le but ! Incroyable ! À la dernière seconde, c’est le but de la victoire !",
+    },
     {
       id: "trailer-en",
       title: { en: "Movie trailer", fr: "Bande-annonce" },

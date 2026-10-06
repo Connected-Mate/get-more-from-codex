@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <link rel="preload" href="../../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../assets/site.css?v=49bc389a">
+<link rel="stylesheet" href="../../assets/site.css?v=d6160231">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -116,6 +116,27 @@
     <div class="sec-head"><p class="kicker">Écouter</p><h2 id="listen-h">Écoutez par vous-même</h2><p>Chaque extrait de cette page a été fait avec GPTVoice. Les transcriptions correspondent exactement à ce qui est dit.</p></div>
     <h3 class="sub-h">Démos</h3>
     <ul class="samples"><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-accent-french">Accent français, en anglais</h4><p class="meta">cedar · préréglage français-anglais</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-accent-french"><source src="../../assets/audio/demo/en-accent-french-cedar.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
+              <details class="transcript"><summary>Transcription</summary><p lang="en">Excuse me, I think there is a problem with the hotel room: the window does not close, and the heating is broken.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-accent-robot">Personnage robot</h4><p class="meta">alloy · préréglage robot</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-accent-robot"><source src="../../assets/audio/demo/en-accent-robot-alloy.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
+              <details class="transcript"><summary>Transcription</summary><p lang="en">Excuse me, I think there is a problem with the hotel room: the window does not close, and the heating is broken.</p></details>
+            </div>
+          </li><li class="sample" data-sample>
+            <div class="sample-head"><h4 id="s-acting-sports">Commentateur sportif</h4><p class="meta">ash · mode de jeu commentateur sportif</p></div>
+            <div>
+              <audio controls preload="none" aria-labelledby="s-acting-sports"><source src="../../assets/audio/demo/fr-acting-sports.mp3" type="audio/mpeg"></audio>
+              <p class="audio-error" hidden>Cet extrait n’a pas pu se charger. La transcription est juste en dessous.</p>
+              <details class="transcript"><summary>Transcription</summary><p lang="fr">Il frappe, il frappe… et c’est le but ! Incroyable ! À la dernière seconde, c’est le but de la victoire !</p></details>
+            </div>
+          </li><li class="sample" data-sample>
             <div class="sample-head"><h4 id="s-trailer-en">Bande-annonce</h4><p class="meta">cedar · style bande-annonce</p></div>
             <div>
               <audio controls preload="none" aria-labelledby="s-trailer-en"><source src="../../assets/audio/demo/en-trailer-cedar.mp3" type="audio/mpeg"></audio>
@@ -267,7 +288,7 @@
         <p class="tagline">Du texte en entrée, une voix en sortie. Un studio de voix pour Claude Code, avec votre connexion ChatGPT.</p>
         <p>Demandez à votre agent une narration, une voix off ou un dialogue, et recevez un MP3 ou un WAV. Dirigez-le comme un comédien : émotion, vitesse, chuchoté ou crié, rires et pauses directement dans le texte. Chaque passage est vérifié mot pour mot.</p>
         <p class="label">Ce qu’il fait</p>
-        <ul class="feat"><li>10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte.</li><li>Pensé pour la vidéo : un clip par plan, ajusté à sa durée, et un inspecteur qui permet à votre agent de voir chaque clip (minutage des phrases, pauses, débit, hauteur, image de la forme d’onde).</li><li>Des raccords doux et naturels : des phrases entières par prise, des fondus et un léger fond d’ambiance au lieu d’un silence numérique. Mesuré : aucun clic ni coupure entre les prises.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser.</li><li>Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio.</li></ul>
+        <ul class="feat"><li>10 voix, classées par genre et par caractère. Chaque voix parle toutes les langues : c’est le texte qui décide.</li><li>Lecture mot pour mot : chaque passage est comparé à votre texte et réenregistré s’il s’en écarte.</li><li>Pensé pour la vidéo : un clip par plan, ajusté à sa durée, et un inspecteur qui permet à votre agent de voir chaque clip (minutage des phrases, pauses, débit, hauteur, image de la forme d’onde).</li><li>Des raccords doux et naturels : des phrases entières par prise, des fondus et un léger fond d’ambiance au lieu d’un silence numérique. Mesuré : aucun clic ni coupure entre les prises.</li><li>12 modes de jeu (crier, pleurer, rire en parlant, paniquer, commentateur sportif, vieux conteur…) et 10 accents et personnages prêts à l’emploi, sans changer un mot du texte.</li><li>Des dialogues à plusieurs voix dans un seul fichier audio.</li><li>Enregistrez vos voix favorites et vos propres réglages (voix + paramètres) pour les réutiliser.</li><li>Des sous-titres (.srt) pour votre logiciel de montage, et la transcription de n’importe quel fichier audio.</li></ul>
         <p class="label">Précision de chaque réglage</p>
         <div class="controls"><div class="ctl">
           <h4>Exact</h4><p class="ctl-note">Appliqué au son lui-même, à chaque fois.</p>
@@ -279,6 +300,23 @@
           <h4>Au mieux</h4><p class="ctl-note">Marche souvent, pas toujours.</p>
           <ul><li>Accent</li><li>Voix de personnage (« un vieux capitaine »)</li></ul>
         </div></div>
+        <div class="acting" id="acting">
+          <h3>Jeu d’acteur et accents</h3>
+          <p>Transformez une voix en interprétation. Le texte reste mot pour mot : chaque prise est vérifiée par transcription et réenregistrée si besoin.</p>
+          <div class="acting-grid"><div class="ctl">
+            <h4>Modes de jeu <span class="badge is-soon">Mesuré</span></h4>
+            <p class="ctl-items">crier · pleurer · rire en parlant · chuchoter de peur · coup de colère · voix brisée · panique · sarcasme · confidence · commentateur sportif · vieux conteur · émerveillement d’enfant</p>
+            <p class="ctl-note">Chaque mode a changé de façon mesurable la hauteur, l’étendue, le volume ou le rythme par rapport à une lecture neutre (le sarcasme est le plus discret), avec 99,3 à 99,5 % des mots lus exactement. Une mesure n’entend ni les larmes ni le rire : vos oreilles ont le dernier mot.</p>
+          </div><div class="ctl">
+            <h4>Accents et personnages <span class="badge is-soon">À juger à l’oreille</span></h4>
+            <p class="ctl-items">français-anglais · anglais-français · marseillais · québécois · espagnol-anglais · italien-anglais · british chic · accent du Sud américain · robot · grand-père</p>
+            <p class="ctl-note">Un accent ne se mesure pas par une machine : c’est donc au mieux. Quelques indices ont été mesurés : le robot est nettement monocorde, l’accent du Sud 13 % plus lent et plus grave, le grand-père le plus lent.</p>
+          </div><div class="ctl">
+            <h4>Plus expressif par défaut <span class="badge is-soon">Mesuré</span></h4>
+            <p class="ctl-items">Références audio de jeu (reprendre l’énergie, pas les mots) · meilleure de 2 prises pour le jeu et les fortes intensités · une passe de mise en scène qui donne à chaque paragraphe d’une longue histoire sa propre direction</p>
+            <p class="ctl-note">Les prises en plus consomment davantage. Le modèle par défaut reste gpt-realtime-1.5 : c’était le plus expressif dans les tests ; les plus récents restent au choix.</p>
+          </div></div>
+        </div>
         <p class="label">Mesuré</p>
         <dl class="measured"><div><dt>99,4 %</dt><dd>des mots lus exactement en anglais, sur des textes volontairement difficiles</dd></div><div><dt>98,8 %</dt><dd>des mots lus exactement en français, même test</dd></div><div><dt>0 / 32</dt><dd>textes cherchant à détourner la voix ont été suivis. Ils ont été lus, jamais exécutés.</dd></div></dl>
         <p class="label">11 outils pour votre agent</p>
@@ -287,7 +325,7 @@
         <div class="starter" id="install-prompt">
       <div class="starter-head">
         <h3>Laissez votre agent l’installer</h3>
-        <p>Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.</p>
+        <p>Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, enregistre un court extrait de test, et vous rappelle de vérifier le coût éventuel.</p>
       </div>
       <div class="codeblock is-prompt">
           <div class="codebar"><span>Texte d’installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>

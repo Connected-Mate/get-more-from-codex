@@ -62,6 +62,7 @@ export const t = {
     starter: {
       h: "Let your agent install it",
       p: "Copy this prompt and paste it into your coding agent (Claude Code, Codex, Cursor or another). It installs the tool, connects it, asks you to sign in to ChatGPT in your browser, and makes a test image.",
+      pVoice: "Copy this prompt and paste it into your coding agent (Claude Code, Codex, Cursor or another). It installs the tool, connects it, asks you to sign in to ChatGPT in your browser, records a short test clip, and reminds you to check the possible cost.",
       note: "You stay in control: the agent shows each step, and you type your password only on OpenAI’s own sign-in page.",
       label: "Install prompt",
       cta: "Copy the install prompt",
@@ -381,6 +382,7 @@ export const t = {
     starter: {
       h: "Laissez votre agent l’installer",
       p: "Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.",
+      pVoice: "Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, enregistre un court extrait de test, et vous rappelle de vérifier le coût éventuel.",
       note: "Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.",
       label: "Texte d’installation",
       cta: "Copier le texte d’installation",

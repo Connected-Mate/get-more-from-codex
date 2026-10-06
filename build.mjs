@@ -99,12 +99,12 @@ function codeBlock(L, lines, label, cls = "") {
 }
 
 // "Let your agent install it": a copyable prompt for any coding agent.
-function starter(L, text, { id = "install-prompt", heading = "h2", title = "" } = {}) {
+function starter(L, text, { id = "install-prompt", heading = "h2", title = "", intro = "" } = {}) {
   const S = L.starter;
   return `<div class="starter" id="${id}">
       <div class="starter-head">
         <${heading}>${esc(title || S.h)}</${heading}>
-        <p>${esc(S.p)}</p>
+        <p>${esc(intro || S.p)}</p>
       </div>
       ${codeBlock(L, text.split("\n"), S.label, "is-prompt")}
       <p class="note">${esc(S.note)}</p>
@@ -359,7 +359,7 @@ function home(lang) {
   <div class="wrap">
     <div class="starter-pair">
       ${starter(L, L.starter.gptimage, { title: L.starter.h + " · GPTImage" })}
-      ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { id: "install-prompt-voice", title: L.starter.h + " · GPTVoice" }) : ""}
+      ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, id: "install-prompt-voice", title: L.starter.h + " · GPTVoice" }) : ""}
     </div>
   </div>
 </section>
@@ -539,13 +539,22 @@ ${V.samples.length || V.voices?.length ? `<section id="listen" class="listen" ar
           <h4>${esc(c.level[lang])}</h4><p class="ctl-note">${esc(c.note[lang])}</p>
           <ul>${c.items.map((i) => `<li>${esc(i[lang])}</li>`).join("")}</ul>
         </div>`).join("")}</div>` : ""}
+        ${V.acting ? `<div class="acting" id="acting">
+          <h3>${esc(V.acting.h[lang])}</h3>
+          <p>${esc(V.acting.intro[lang])}</p>
+          <div class="acting-grid">${V.acting.groups.map((g) => `<div class="ctl">
+            <h4>${esc(g.h[lang])} <span class="badge is-soon">${esc(g.tag[lang])}</span></h4>
+            <p class="ctl-items">${esc(g.items[lang])}</p>
+            <p class="ctl-note">${esc(g.note[lang])}</p>
+          </div>`).join("")}</div>
+        </div>` : ""}
         ${V.measured?.length ? `<p class="label">${esc(L.voice.measuredH)}</p>
         <dl class="measured">${V.measured.map((m) => `<div><dt>${esc(m.value[lang])}</dt><dd>${esc(m.label[lang])}</dd></div>`).join("")}</dl>` : ""}
         ${V.mcpTools?.length ? `<p class="label">${esc(L.voice.toolsH.replace("{n}", V.mcpTools.length))}</p>
         <ul class="chips">${V.mcpTools.map((x) => `<li><code>${esc(x)}</code></li>`).join("")}</ul>` : ""}
         <p class="label">${esc(P.setupH)}</p>
         ${voicePublic()
-          ? `${V.agentPrompt ? starter(L, V.agentPrompt[lang], { heading: "h3" }) : ""}
+          ? `${V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, heading: "h3" }) : ""}
         <p class="note">${esc(P.setupIntro)} ${V.installNote ? esc(V.installNote[lang] ?? V.installNote) : ""}</p>
         ${setup(L, "gptvoice", { id: "setup-gptvoice" })}
         <p class="note"><a href="${attr(V.repo)}">${esc(L.common.repoLink)}</a></p>`
@@ -604,7 +613,7 @@ function how(lang) {
   <div class="wrap">
     <div class="sec-head"><h2 id="setup-h">${esc(P.setupH)}</h2><p>${esc(P.setupIntro)}</p></div>
     ${starter(L, L.starter.gptimage, { heading: "h3", title: L.starter.h + " · GPTImage" })}
-    ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { id: "install-prompt-voice", heading: "h3", title: L.starter.h + " · GPTVoice" }) : ""}
+    ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, id: "install-prompt-voice", heading: "h3", title: L.starter.h + " · GPTVoice" }) : ""}
     <h3 class="sub-h">GPTImage</h3>
     ${setup(L, "gptimage", { id: "how-gptimage" })}
     <h3 class="sub-h">GPTVoice</h3>
