@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=d6160231">
+<link rel="stylesheet" href="../assets/site.css?v=3198d104">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -115,14 +115,16 @@
     <article class="tool solo" aria-labelledby="install-h">
       <div class="tool-body">
         <div class="tool-title"><h2 id="install-h">GPTImage</h2><span class="badge is-live">Available</span></div>
-        <div class="starter" id="install-prompt">
+        <div class="starter" id="install-prompt" data-starter>
       <div class="starter-head">
         <h3>Let your agent install it</h3>
-        <p>Copy this prompt and paste it into your coding agent (Claude Code, Codex, Cursor or another). It installs the tool, connects it, asks you to sign in to ChatGPT in your browser, and makes a test image.</p>
+        <p>One click copies a prompt for your coding agent. It installs the tool, connects it, asks you to sign in to ChatGPT in your browser, and makes a test image.</p>
       </div>
-      <div class="codeblock is-prompt">
-          <div class="codebar"><span>Install prompt</span><button type="button" class="copy" data-copy data-copied="Copied" data-failed="Select the text and press Ctrl+C (⌘C on Mac)" hidden>Copy</button></div>
-          <pre tabindex="0" aria-label="Install prompt"><code>Install GPTImage for me (image-generation MCP server, https://github.com/Connected-Mate/gptimage). Follow these steps exactly, show me each command&#39;s result, and stop to ask me if anything fails.
+      <div class="starter-actions">
+        <a class="btn starter-btn" href="https://github.com/Connected-Mate/gptimage/blob/main/AGENT-INSTALL.md" data-prompt-copy data-copied="Copied! Paste it into your agent." data-failed="Copying was blocked. Select the text below and press Ctrl+C (⌘C on Mac).">Copy the prompt for my agent</a>
+        <p class="starter-status" role="status" aria-live="polite"></p>
+      </div>
+      <template data-prompt>Install GPTImage for me (image-generation MCP server, https://github.com/Connected-Mate/gptimage). Follow these steps exactly, show me each command&#39;s result, and stop to ask me if anything fails.
 
 1. Check that Node.js 20 or newer is installed (`node -v`). If it is missing or older, stop and tell me to install it from https://nodejs.org.
 2. Clone the project into my home folder (skip the clone if ~/gptimage already exists, and run `git -C ~/gptimage pull` instead):
@@ -139,10 +141,12 @@
 6. Tell me to restart you (the agent) so the new &quot;gptimage&quot; tool loads. After the restart, call the `image_auth_status` tool once to confirm the connection.
 7. Finally, tell me plainly: &quot;GPTImage uses your ChatGPT sign-in, not an API key. It is an unofficial use of that sign-in: keep it personal, heavy use can hit your plan&#39;s limits.&quot;
 
-Rules: do not use sudo, do not change any other MCP server or setting, do not commit or publish anything, and never print or share the contents of ~/.gptimage/auth.json or ~/.codex/auth.json.</code></pre>
-          <p class="copy-status" role="status" aria-live="polite"></p>
-        </div>
-      <p class="note">You stay in control: the agent shows each step, and you type your password only on OpenAI’s own sign-in page.</p>
+Rules: do not use sudo, do not change any other MCP server or setting, do not commit or publish anything, and never print or share the contents of ~/.gptimage/auth.json or ~/.codex/auth.json.</template>
+      <div class="starter-fallback" hidden>
+        <label class="note" for="install-prompt-text">Install prompt, ready to copy</label>
+        <textarea id="install-prompt-text" readonly rows="8"></textarea>
+      </div>
+      <p class="note">Paste it into your coding agent (Claude Code, Codex, Cursor…). You stay in control: the agent shows each step, and you type your password only on OpenAI’s own sign-in page.</p>
     </div>
         <p class="tagline">Images and edits from GPT Image 2, straight from your coding agent.</p>
         <ul class="feat"><li>Works from your reference images: style samples, brand assets, sketches. It keeps them in a <code>references/</code> folder so each new image gets better.</li><li>Any size up to 3840 px on the long edge: square, landscape or portrait.</li><li>Never overwrites a file. Each new version is saved next to the last one.</li><li>Three tools for your agent: <code>generate_image</code>, <code>list_references</code>, <code>image_auth_status</code>. Plus a one-line terminal command.</li></ul>
@@ -277,6 +281,6 @@ args:    /path/to/gptimage/src/server.js</code></pre>
     </ul>
   </div>
 </footer>
-<script src="../assets/site.js?v=35464ccc" defer></script>
+<script src="../assets/site.js?v=0d8b10b3" defer></script>
 </body>
 </html>

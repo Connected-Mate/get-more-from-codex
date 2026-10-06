@@ -174,19 +174,23 @@ for (const lang of ["en", "fr"]) {
 }
 
 for (const lang of ["en", "fr"]) {
-  test(`${lang}: install prompt for agents on home, images and how pages`, () => {
-    for (const n of ["home", "images", "how"]) {
+  test(`${lang}: install prompts are hidden behind a copy button`, () => {
+    for (const n of ["home", "images", "voices", "how"]) {
       const html = page(n, lang);
-      const m = html.match(/<div class="codeblock is-prompt">[\s\S]*?<code>([\s\S]*?)<\/code>/);
-      assert.ok(m, `${n}: prompt block`);
-      const txt = m[1];
-      for (const must of ["https://github.com/Connected-Mate/gptimage", "node -v", "install.sh --agent claude --no-login --yes", "--agent codex", "--agent cursor", "npm run login", "npm run gen", "npm run status", "image_auth_status"]) assert.ok(txt.includes(must), `${n}: ${must}`);
-      assert.ok(!/api[_ -]?key\s*[:=]/i.test(txt), "no key handling");
+      assert.ok(!html.includes('class="codeblock is-prompt"'), `${n}: prompt not rendered as text`);
+      const boxes = html.match(/<div class="starter" [\s\S]*?<\/template>/g) || [];
+      assert.ok(boxes.length >= 1, `${n}: starter present`);
+      for (const b of boxes) {
+        assert.match(b, /<a class="btn starter-btn" href="https:\/\/github\.com\/Connected-Mate\/(gptimage|gptvoice)\/blob\/main\/AGENT-INSTALL\.md" data-prompt-copy/);
+        assert.match(b, /aria-live="polite"/);
+        const tpl = b.match(/<template data-prompt>([\s\S]*?)<\/template>/)[1];
+        assert.ok(tpl.includes("install.sh --agent claude --no-login --yes"), `${n}: prompt kept in template`);
+        assert.ok(tpl.includes("node -v"));
+      }
     }
     const v = page("voices", lang);
-    assert.ok(v.includes('id="install-prompt"'), "GPTVoice prompt shown once repo is public");
-    assert.ok(v.includes("git clone https://github.com/Connected-Mate/gptvoice.git"));
-    assert.ok(v.includes("platform.openai.com/usage"));
+    assert.ok(/<template data-prompt>[^<]*gptvoice\.git/.test(v), "GPTVoice prompt in template");
+    assert.ok(/<template data-prompt>[^<]*platform\.openai\.com\/usage/.test(v), "GPTVoice prompt mentions cost");
   });
 }
 

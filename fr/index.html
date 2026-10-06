@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=d6160231">
+<link rel="stylesheet" href="../assets/site.css?v=3198d104">
 <script>
 /* Language: explicit ?lang= > saved choice > browser language (English pages only). Storage may be blocked. */
 (function () {
@@ -78,7 +78,7 @@
       <p class="eyebrow">Pour Claude Code, Codex, Cursor et tout agent MCP</p>
       <h1 id="hero-h" class="h1-stack"><span class="h1-main">Tirez plus de Codex</span> <span class="h1-sub">avec votre abonnement OpenAI</span></h1>
       <p class="lead">Vous payez déjà ChatGPT pour utiliser Codex. Deux petits outils open source permettent à Claude Code, Codex, Cursor ou n’importe quel agent MCP d’utiliser cette même connexion pour générer des <strong>images</strong> et des <strong>voix</strong>. Pas de clé API à créer, rien de plus à payer en abonnement.</p>
-      <div class="cta"><a class="btn" href="images/">Générer des images</a><a class="btn ghost" href="voix/">Générer des voix</a><a class="cta-link" href="#install-prompt">Copier le texte d’installation <span aria-hidden="true">↓</span></a></div>
+      <div class="cta"><a class="btn" href="images/">Générer des images</a><a class="btn ghost" href="voix/">Générer des voix</a><a class="cta-link" href="#install-prompt">L’installer avec mon agent <span aria-hidden="true">↓</span></a></div>
       <ul class="facts"><li>Pas de clé API</li><li>Pas d’abonnement en plus</li><li>Marche avec votre agent de code</li><li>Open source (MIT)</li></ul>
     </div>
     <div class="hero-art"><picture>
@@ -99,14 +99,16 @@
 <section class="starter-sec" aria-label="Laissez votre agent l’installer">
   <div class="wrap">
     <div class="starter-pair">
-      <div class="starter" id="install-prompt">
+      <div class="starter" id="install-prompt" data-starter>
       <div class="starter-head">
         <h2>Laissez votre agent l’installer · GPTImage</h2>
-        <p>Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.</p>
+        <p>Un clic copie un texte pour votre agent de code. Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, et génère une image de test.</p>
       </div>
-      <div class="codeblock is-prompt">
-          <div class="codebar"><span>Texte d’installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
-          <pre tabindex="0" aria-label="Texte d’installation"><code>Installe GPTImage pour moi (serveur MCP de génération d&#39;images, https://github.com/Connected-Mate/gptimage). Suis exactement ces étapes, montre-moi le résultat de chaque commande, et arrête-toi pour me demander si quelque chose échoue.
+      <div class="starter-actions">
+        <a class="btn starter-btn" href="https://github.com/Connected-Mate/gptimage/blob/main/AGENT-INSTALL.md" data-prompt-copy data-copied="Copié ! Collez-le dans votre agent." data-failed="La copie a été bloquée. Sélectionnez le texte ci-dessous et faites Ctrl+C (⌘C sur Mac).">Copier le texte pour mon agent</a>
+        <p class="starter-status" role="status" aria-live="polite"></p>
+      </div>
+      <template data-prompt>Installe GPTImage pour moi (serveur MCP de génération d&#39;images, https://github.com/Connected-Mate/gptimage). Suis exactement ces étapes, montre-moi le résultat de chaque commande, et arrête-toi pour me demander si quelque chose échoue.
 
 1. Vérifie que Node.js 20 ou plus récent est installé (`node -v`). S&#39;il manque ou s&#39;il est trop ancien, arrête-toi et dis-moi de l&#39;installer depuis https://nodejs.org.
 2. Clone le projet dans mon dossier personnel (si ~/gptimage existe déjà, ne clone pas et lance plutôt `git -C ~/gptimage pull`) :
@@ -123,19 +125,23 @@
 6. Dis-moi de te redémarrer (toi, l&#39;agent) pour charger le nouvel outil « gptimage ». Après le redémarrage, appelle une fois l&#39;outil `image_auth_status` pour confirmer la connexion.
 7. Enfin, dis-moi clairement : « GPTImage utilise ta connexion ChatGPT, pas une clé d&#39;API. C&#39;est un usage non officiel de cette connexion : garde-le personnel, un usage intensif peut atteindre les limites de ton abonnement. »
 
-Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit et ne publie rien, et n&#39;affiche ni ne partage jamais le contenu de ~/.gptimage/auth.json ou ~/.codex/auth.json.</code></pre>
-          <p class="copy-status" role="status" aria-live="polite"></p>
-        </div>
-      <p class="note">Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.</p>
+Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit et ne publie rien, et n&#39;affiche ni ne partage jamais le contenu de ~/.gptimage/auth.json ou ~/.codex/auth.json.</template>
+      <div class="starter-fallback" hidden>
+        <label class="note" for="install-prompt-text">Texte d’installation, prêt à copier</label>
+        <textarea id="install-prompt-text" readonly rows="8"></textarea>
+      </div>
+      <p class="note">Collez-le dans votre agent de code (Claude Code, Codex, Cursor…). Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.</p>
     </div>
-      <div class="starter" id="install-prompt-voice">
+      <div class="starter" id="install-prompt-voice" data-starter>
       <div class="starter-head">
         <h2>Laissez votre agent l’installer · GPTVoice</h2>
-        <p>Copiez ce texte et collez-le dans votre agent de code (Claude Code, Codex, Cursor ou un autre). Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, enregistre un court extrait de test, et vous rappelle de vérifier le coût éventuel.</p>
+        <p>Un clic copie un texte pour votre agent de code. Il installe l’outil, le branche, vous demande de vous connecter à ChatGPT dans votre navigateur, enregistre un court extrait de test, et vous rappelle de vérifier le coût éventuel.</p>
       </div>
-      <div class="codeblock is-prompt">
-          <div class="codebar"><span>Texte d’installation</span><button type="button" class="copy" data-copy data-copied="Copié" data-failed="Sélectionnez le texte puis Ctrl+C (⌘C sur Mac)" hidden>Copier</button></div>
-          <pre tabindex="0" aria-label="Texte d’installation"><code>Installe GPTVoice pour moi (serveur MCP de synthèse vocale, https://github.com/Connected-Mate/gptvoice). Suis exactement ces étapes, montre-moi le résultat de chaque commande, et arrête-toi pour me demander si quelque chose échoue.
+      <div class="starter-actions">
+        <a class="btn starter-btn" href="https://github.com/Connected-Mate/gptvoice/blob/main/AGENT-INSTALL.md" data-prompt-copy data-copied="Copié ! Collez-le dans votre agent." data-failed="La copie a été bloquée. Sélectionnez le texte ci-dessous et faites Ctrl+C (⌘C sur Mac).">Copier le texte pour mon agent</a>
+        <p class="starter-status" role="status" aria-live="polite"></p>
+      </div>
+      <template data-prompt>Installe GPTVoice pour moi (serveur MCP de synthèse vocale, https://github.com/Connected-Mate/gptvoice). Suis exactement ces étapes, montre-moi le résultat de chaque commande, et arrête-toi pour me demander si quelque chose échoue.
 
 1. Vérifie que Node.js 22 ou plus récent est installé (`node -v`). S&#39;il manque ou s&#39;il est trop ancien, arrête-toi et dis-moi de l&#39;installer depuis https://nodejs.org.
 2. Clone le projet dans mon dossier personnel (si ~/gptvoice existe déjà, ne clone pas et lance plutôt `git -C ~/gptvoice pull`) :
@@ -152,10 +158,12 @@ Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit
 6. Dis-moi de te redémarrer (toi, l&#39;agent) pour charger le nouvel outil « gptvoice ». Après le redémarrage, appelle une fois l&#39;outil `voice_auth_status` pour confirmer la connexion.
 7. Enfin, dis-moi clairement : « GPTVoice utilise ta connexion ChatGPT, pas une clé d&#39;API, mais l&#39;usage de la voix peut être facturé sur ton organisation OpenAI API personnelle. Vérifie https://platform.openai.com/usage après tes premières voix. »
 
-Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit et ne publie rien, et n&#39;affiche ni ne partage jamais le contenu de ~/.gptvoice/auth.json ou ~/.codex/auth.json.</code></pre>
-          <p class="copy-status" role="status" aria-live="polite"></p>
-        </div>
-      <p class="note">Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.</p>
+Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit et ne publie rien, et n&#39;affiche ni ne partage jamais le contenu de ~/.gptvoice/auth.json ou ~/.codex/auth.json.</template>
+      <div class="starter-fallback" hidden>
+        <label class="note" for="install-prompt-voice-text">Texte d’installation, prêt à copier</label>
+        <textarea id="install-prompt-voice-text" readonly rows="8"></textarea>
+      </div>
+      <p class="note">Collez-le dans votre agent de code (Claude Code, Codex, Cursor…). Vous gardez la main : l’agent montre chaque étape, et vous ne tapez votre mot de passe que sur la page de connexion d’OpenAI.</p>
     </div>
     </div>
   </div>
@@ -250,6 +258,6 @@ Règles : pas de sudo, ne modifie aucun autre serveur MCP ni réglage, ne commit
     </ul>
   </div>
 </footer>
-<script src="../assets/site.js?v=35464ccc" defer></script>
+<script src="../assets/site.js?v=0d8b10b3" defer></script>
 </body>
 </html>

@@ -154,3 +154,61 @@
     });
   }
 })();
+
+/* Install prompt buttons: copy the hidden prompt; reveal a selectable box only if copying fails. */
+(function () {
+  "use strict";
+  document.querySelectorAll("[data-starter]").forEach(function (box) {
+    var btn = box.querySelector("[data-prompt-copy]");
+    var tpl = box.querySelector("template[data-prompt]");
+    var status = box.querySelector(".starter-status");
+    var fallback = box.querySelector(".starter-fallback");
+    var area = fallback && fallback.querySelector("textarea");
+    if (!btn || !tpl) return;
+    var text = tpl.content ? tpl.content.textContent : tpl.textContent;
+    var timer = null;
+    btn.setAttribute("role", "button");
+    btn.addEventListener("keydown", function (e) { if (e.key === " ") { e.preventDefault(); btn.click(); } });
+
+    function say(msg) { status.textContent = ""; setTimeout(function () { status.textContent = msg; }, 30); }
+    function ok() {
+      clearTimeout(timer);
+      btn.classList.add("is-done");
+      say(btn.getAttribute("data-copied"));
+      if (fallback) fallback.hidden = true;
+      timer = setTimeout(function () { btn.classList.remove("is-done"); }, 2500);
+    }
+    function fail() {
+      btn.classList.remove("is-done");
+      say(btn.getAttribute("data-failed"));
+      if (fallback && area) {
+        area.value = text;
+        fallback.hidden = false;
+        area.focus();
+        area.select();
+      }
+    }
+    function legacy() {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var done = false;
+      try { done = document.execCommand("copy"); } catch (e) { done = false; }
+      document.body.removeChild(ta);
+      btn.focus();
+      return done;
+    }
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(ok, function () { legacy() ? ok() : fail(); });
+      } else {
+        legacy() ? ok() : fail();
+      }
+    });
+  });
+})();

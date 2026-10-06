@@ -99,15 +99,26 @@ function codeBlock(L, lines, label, cls = "") {
 }
 
 // "Let your agent install it": a copyable prompt for any coding agent.
-function starter(L, text, { id = "install-prompt", heading = "h2", title = "", intro = "" } = {}) {
+// "Let your agent install it": a button that copies an install prompt for any coding agent.
+// The prompt is kept in a <template> (not rendered). Without JS the button is a link to AGENT-INSTALL.md.
+function starter(L, text, { id = "install-prompt", heading = "h2", title = "", intro = "", tool = "gptimage" } = {}) {
   const S = L.starter;
-  return `<div class="starter" id="${id}">
+  const doc = `https://github.com/Connected-Mate/${tool}/blob/main/AGENT-INSTALL.md`;
+  return `<div class="starter" id="${id}" data-starter>
       <div class="starter-head">
         <${heading}>${esc(title || S.h)}</${heading}>
         <p>${esc(intro || S.p)}</p>
       </div>
-      ${codeBlock(L, text.split("\n"), S.label, "is-prompt")}
-      <p class="note">${esc(S.note)}</p>
+      <div class="starter-actions">
+        <a class="btn starter-btn" href="${doc}" data-prompt-copy data-copied="${attr(S.copied)}" data-failed="${attr(S.failed)}">${esc(S.button)}</a>
+        <p class="starter-status" role="status" aria-live="polite"></p>
+      </div>
+      <template data-prompt>${esc(text)}</template>
+      <div class="starter-fallback" hidden>
+        <label class="note" for="${id}-text">${esc(S.fallback)}</label>
+        <textarea id="${id}-text" readonly rows="8"></textarea>
+      </div>
+      <p class="note">${esc(S.paste)} ${esc(S.note)}</p>
     </div>`;
 }
 
@@ -359,7 +370,7 @@ function home(lang) {
   <div class="wrap">
     <div class="starter-pair">
       ${starter(L, L.starter.gptimage, { title: L.starter.h + " · GPTImage" })}
-      ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, id: "install-prompt-voice", title: L.starter.h + " · GPTVoice" }) : ""}
+      ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, tool: "gptvoice", id: "install-prompt-voice", title: L.starter.h + " · GPTVoice" }) : ""}
     </div>
   </div>
 </section>
@@ -554,7 +565,7 @@ ${V.samples.length || V.voices?.length ? `<section id="listen" class="listen" ar
         <ul class="chips">${V.mcpTools.map((x) => `<li><code>${esc(x)}</code></li>`).join("")}</ul>` : ""}
         <p class="label">${esc(P.setupH)}</p>
         ${voicePublic()
-          ? `${V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, heading: "h3" }) : ""}
+          ? `${V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, tool: "gptvoice", heading: "h3" }) : ""}
         <p class="note">${esc(P.setupIntro)} ${V.installNote ? esc(V.installNote[lang] ?? V.installNote) : ""}</p>
         ${setup(L, "gptvoice", { id: "setup-gptvoice" })}
         <p class="note"><a href="${attr(V.repo)}">${esc(L.common.repoLink)}</a></p>`
@@ -613,7 +624,7 @@ function how(lang) {
   <div class="wrap">
     <div class="sec-head"><h2 id="setup-h">${esc(P.setupH)}</h2><p>${esc(P.setupIntro)}</p></div>
     ${starter(L, L.starter.gptimage, { heading: "h3", title: L.starter.h + " · GPTImage" })}
-    ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, id: "install-prompt-voice", heading: "h3", title: L.starter.h + " · GPTVoice" }) : ""}
+    ${voicePublic() && V.agentPrompt ? starter(L, V.agentPrompt[lang], { intro: L.starter.pVoice, tool: "gptvoice", id: "install-prompt-voice", heading: "h3", title: L.starter.h + " · GPTVoice" }) : ""}
     <h3 class="sub-h">GPTImage</h3>
     ${setup(L, "gptimage", { id: "how-gptimage" })}
     <h3 class="sub-h">GPTVoice</h3>
